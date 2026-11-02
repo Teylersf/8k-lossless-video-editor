@@ -1,4 +1,4 @@
-NVIDIA CUDA/cuDNN linking permission
+PyTorch runtime linking permission
 Additional permission under GNU GPL version 3 section 7
 
 Copyright (C) 2026 Taylor Kalin
@@ -9,25 +9,29 @@ Code"). It includes Taylor Kalin's own renderer, device-policy and media-adapter
 code copied into this repository from Video Anamorphics & Lens Studio. It
 does not apply to copyrights held by third parties.
 
-For this permission, "NVIDIA Libraries" means the NVIDIA CUDA Toolkit and
-NVIDIA cuDNN, together with their redistributable runtime components and
-redistributable runtime dependencies used by this application through PyTorch,
-under the applicable NVIDIA license terms.
+For this permission, "PyTorch Runtime" means PyTorch and its redistributable
+CPU and GPU runtime dependencies used by this application, under their
+respective component licenses. This explicitly includes the NVIDIA CUDA
+Toolkit and cuDNN and their redistributable runtime dependencies, and Intel
+oneAPI Math Kernel Library (oneMKL), when present. These components may be
+incorporated statically or dynamically where their respective terms permit.
 
-Taylor Kalin permits you to link or combine Owner Code with the NVIDIA
-Libraries, including modified versions of those libraries where their own
-terms permit modification, and to convey the resulting combination. The Owner
+Taylor Kalin permits you to link or combine Owner Code with the PyTorch
+Runtime, including modified versions of its components where their own terms
+permit modification, and to convey the resulting combination. The Owner
 Code remains covered by the GNU General Public License, version 3 or any later
-version. The NVIDIA Libraries remain subject to their applicable NVIDIA terms.
+version. PyTorch Runtime components remain subject to their respective licenses.
 This additional permission does not require you to provide source code for
-proprietary NVIDIA Libraries. It does not remove any corresponding-source or
-other obligation that applies to Owner Code or to other GPL-covered code.
+proprietary runtime components. It does not remove any corresponding-source or
+other obligation that applies to Owner Code or to other GPL-covered code, and
+does not waive GPL or LGPL obligations for any third-party component.
 
 This is a permission from Taylor Kalin for Taylor Kalin's copyrights only.
 It grants no exception for third-party copyrights and supplies no additional
-rights to redistribute, modify, sublicense or use NVIDIA or other third-party
-components beyond the rights their respective licenses provide. A distributor
-must independently satisfy those components' applicable license conditions.
+rights to redistribute, modify, sublicense or use PyTorch, NVIDIA, Intel or
+other third-party components beyond the rights their respective licenses
+provide. A distributor must independently satisfy those components' applicable
+license conditions.
 
 You may remove this additional permission from a copy in accordance with
 section 7 of the GNU GPL version 3. When relying on this permission, retain

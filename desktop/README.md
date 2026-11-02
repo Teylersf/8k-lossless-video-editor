@@ -1,13 +1,14 @@
 # Native desktop shell
 
-8K Lossless Video Editor by **Taylor Kalin**. GPL-3.0-or-later with the owner-code NVIDIA permission in ../LICENSE-EXCEPTION; bundled Electron,
+8K Lossless Video Editor by **Taylor Kalin**. GPL-3.0-or-later with the owner-code PyTorch runtime permission in ../LICENSE-EXCEPTION; bundled Electron,
 PyTorch, PyAV, FFmpeg and other components retain their respective licenses.
 This folder packages the existing local editor rather than a second renderer.
 The installed app requires no Node, Python, Homebrew or build toolchain.
 
 The current arm64 DMG requires **macOS 26.6.2 or later**. This matches the
-highest deployment target in its bundled native libraries. Builds for older
-macOS versions need a matching native payload and an updated
+highest deployment target in its bundled native libraries (libtesseract).
+Source setups can support older macOS releases; an installed build for an
+older version needs a matching native payload and updated
 `mac.minimumSystemVersion`.
 
 The shell pins Electron **45.2.1** and electron-builder **26.18.0**, verified from
@@ -73,8 +74,11 @@ folder does not install Python dependencies or download model weights.
 Optional native branding files are `assets/icon.png`, `icon.ico`, `icon.icns`.
 
 Windows builds request `asInvoker`; NSIS is per-user and disallows elevation.
-Mac builds request an ad-hoc signature (`identity: "-"`) and the normal JIT
-entitlement needed by Electron. A certificate/notarization workflow can be
+Mac builds default to an ad-hoc signature (`identity: "-"`) and the normal JIT
+entitlement needed by Electron. Ad-hoc builds have no signing Team ID and do
+not enable hardened runtime library validation. Set `EDITOR_CODESIGN_IDENTITY`
+to a Developer ID identity to enable hardened runtime for certificate builds.
+A certificate/notarization workflow can be
 supplied by the release owner; local artifacts are **not** represented as a
 verified publisher or notarized release. No OS security settings are changed.
 

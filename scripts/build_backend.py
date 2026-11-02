@@ -1,6 +1,6 @@
-"""Build a native, self-contained PyInstaller onedir backend. GPL-3.0-or-later.
+"""Build a native, self-contained PyInstaller onedir backend.
 
-See LICENSE and LICENSE-EXCEPTION for the project's license and permission.
+GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION.
 
 Run in the existing application venv after building app/dist. This script never
 installs packages or downloads binaries, and never starts a persistent server.
@@ -20,6 +20,7 @@ import re
 import shutil
 import subprocess
 import sys
+import sysconfig
 
 ROOT = Path(__file__).resolve().parents[1]
 PYINSTALLER_VERSION = "6.22.3"
@@ -38,9 +39,9 @@ def digest(path):
     return value.hexdigest()
 
 
-def raw_executable(path):
+def raw_executable(path, allow_shared=False):
     path = Path(path).resolve(strict=True)
-    if os.name == "nt" and path.stat().st_size < 1024 * 1024:
+    if os.name == "nt" and path.stat().st_size < 1024 * 1024 and not allow_shared:
         # Chocolatey's shim documents this switch and does not run its target.
         # ShimGen's help may return -1 even though it successfully describes
         # its target. Only the parsed target's real version probe is trusted.
@@ -54,14 +55,14 @@ def raw_executable(path):
     return path
 
 
-def locate_tools(directory=None):
+def locate_tools(directory=None, allow_shared=False):
     suffix = ".exe" if os.name == "nt" else ""
     tools = {}
     for name in ("ffmpeg", "ffprobe"):
         candidate = Path(directory) / (name + suffix) if directory else shutil.which(name)
         if not candidate:
             raise ValueError(f"{name} is missing; provide --ffmpeg-dir with native full-build binaries")
-        tools[name] = raw_executable(candidate)
+        tools[name] = raw_executable(candidate, allow_shared)
         output = command([tools[name], "-hide_banner", "-version"])
         if not output.startswith(name + " version"):
             raise ValueError("Selected native media executable failed its version identity")
@@ -98,7 +99,23 @@ def python_notices(target):
                     output = target / "python" / name / Path(relative.split(".dist-info/", 1)[1])
                     output.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copy2(source, output)
+        license_files(Path(distribution._path) / 'licenses', target / 'python' / name / 'licenses')
     (target / "python-distributions.json").write_text(json.dumps(packages, indent=2), encoding="utf-8")
+    # CPython's full notice includes historical licenses and is not a pip dist.
+    python_license = next((path for path in (Path(sys.base_prefix) / 'LICENSE.txt',
+        Path(sysconfig.get_path('stdlib')) / 'LICENSE.txt', Path(sys.base_prefix) / 'Resources/LICENSE.txt')
+        if path.is_file()), None)
+    if python_license is None:
+        raise FileNotFoundError("CPython full LICENSE.txt is required for redistribution")
+    shutil.copy2(python_license, target / "CPython-LICENSE.txt")
+    for name in ("react", "react-dom", "scheduler", "lucide-react"):
+        directory = ROOT / "app/node_modules" / name
+        if not directory.is_dir():
+            raise FileNotFoundError("Frontend dependency notices missing: " + name)
+        license_files(directory, target / "frontend" / name)
+    notices = ROOT / "packaging/notices"
+    if notices.is_dir():
+        shutil.copytree(notices, target / "release-notices")
 
 
 def prepare_mac_runtime(tools, stage, supplied=None, supplied_audit=None):
@@ -190,16 +207,24 @@ def sign_mac_frameworks(destination):
                 frameworks=records, verified_macho_files=len(binaries), strict_verification=True)
 
 
-def stage_windows(tools, stage):
+def stage_windows(tools, stage, vendor_receipt):
     outputs = []
     for name, source in tools.items():
-        if source.stat().st_size < 5 * 1024 * 1024:
-            raise ValueError("Use a full static Windows FFmpeg build; wrappers/small dynamically linked frontends are unsupported")
+        expected = Path(vendor_receipt['ffmpeg_bin']) / (name + '.exe')
+        if source != expected.resolve():
+            raise ValueError("Windows executable must come from the verified LGPL FFmpeg distribution")
         target = stage / "bin" / (name + ".exe")
         shutil.copy2(source, target)
         outputs.append(dict(file="bin/" + target.name, sha256=digest(target), source_name=source.name))
         for directory in (source.parent, source.parent.parent, source.parent.parent.parent):
             license_files(directory, stage / "licenses" / "native" / "ffmpeg")
+    public_keys = ('schema_version', 'archive_url', 'archive_sha256', 'archive_bytes', 'ffmpeg_source', 'pyav_version',
+                   'patches', 'native_overrides', 'cli_files', 'abi_note', 'abi_policy', 'private_files')
+    public = {key: vendor_receipt[key] for key in public_keys}
+    native_notices = stage / 'licenses/native/ffmpeg'
+    native_notices.mkdir(parents=True, exist_ok=True)
+    (native_notices / 'runtime-provenance.json').write_text(json.dumps(public, indent=2), encoding='utf-8')
+    shutil.copy2(ROOT / 'build/vendor-lgpl/ffmpeg-buildconf-v2.txt', native_notices / 'ffmpeg-buildconf-v2.txt')
     return outputs
 
 
@@ -214,27 +239,38 @@ def main():
         raise ValueError("Build natively on 64-bit Windows or arm64 Apple Silicon macOS")
     if sys.maxsize <= 2**32:
         raise ValueError("A native 64-bit Python environment is required")
-    if args.mac_ffmpeg_runtime is not None and system != "Darwin":
-        raise ValueError("--mac-ffmpeg-runtime is supported only on macOS")
+    if args.mac_ffmpeg_runtime is not None and system != 'Darwin':
+        raise ValueError('--mac-ffmpeg-runtime is supported only on macOS')
     if importlib.metadata.version("pyinstaller") != PYINSTALLER_VERSION:
         raise ValueError("Build with the reviewed pyinstaller==" + PYINSTALLER_VERSION)
     if not (ROOT / "app/dist/index.html").is_file():
         raise ValueError("Build app/dist with npm run build before packaging")
+    vendor, vendor_receipt, vendor_receipt_path = None, None, None
+    if system == 'Windows':
+        # Verify in a fresh process before importing av or running PyInstaller.
+        verified = json.loads(command([sys.executable, ROOT / 'scripts/prepare_lgpl_av.py', '--verify-only'], timeout=180))
+        vendor = Path(verified['site_packages'])
+        vendor_receipt_path = Path(verified['receipt'])
+        vendor_receipt = json.loads(vendor_receipt_path.read_text(encoding='utf-8'))
+        sys.path.insert(0, str(vendor))
+        if args.ffmpeg_dir and args.ffmpeg_dir.resolve() != Path(verified['ffmpeg_bin']).resolve():
+            raise ValueError('Windows packaging only accepts the verified LGPL FFmpeg bin directory')
+        args.ffmpeg_dir = Path(verified['ffmpeg_bin'])
     import torch
     import av
     supplied_runtime, supplied_audit = None, None
-    if system == "Darwin" and args.mac_ffmpeg_runtime is not None:
+    if system == 'Darwin' and args.mac_ffmpeg_runtime is not None:
         from bundle_macos_ffmpeg import audit_payload
         supplied_runtime = args.mac_ffmpeg_runtime.resolve(strict=True)
-        supplied_audit = audit_payload(supplied_runtime, arch="arm64", verify_signatures=True)
-    tools = locate_tools(supplied_runtime / "bin" if supplied_runtime else args.ffmpeg_dir)
+        supplied_audit = audit_payload(supplied_runtime, arch='arm64', verify_signatures=True)
+    tools = locate_tools(supplied_runtime / 'bin' if supplied_runtime else args.ffmpeg_dir, allow_shared=bool(vendor))
     target = "win32" if system == "Windows" else "darwin"
     destination, stage = ROOT / "build/backend" / target, ROOT / "build/native-stage" / target
     details = dict(platform=target, architecture=platform.machine(), pyinstaller=PYINSTALLER_VERSION,
                    python=sys.version.split()[0], torch=torch.__version__, cuda_runtime=torch.version.cuda,
                    av=av.__version__, tools={name: str(path) for name, path in tools.items()}, output=str(destination))
     if supplied_runtime is not None:
-        details["mac_ffmpeg_runtime"] = str(supplied_runtime)
+        details['mac_ffmpeg_runtime'] = str(supplied_runtime)
     print(json.dumps(details, indent=2), flush=True)
     if args.plan:
         return 0
@@ -245,20 +281,22 @@ def main():
         raise ValueError("Insufficient free space for native staging and onedir output")
     (stage / "bin").mkdir(parents=True)
     (stage / "licenses").mkdir()
-    for source, name in (("LICENSE", "PROJECT-COPYING"),
-                         ("LICENSE-EXCEPTION", "PROJECT-LICENSE-EXCEPTION"),
-                         ("NOTICE.md", "PROJECT-NOTICE.md")):
-        shutil.copy2(ROOT / source, stage / "licenses" / name)
+    shutil.copy2(ROOT / "LICENSE", stage / "licenses/PROJECT-COPYING")
+    shutil.copy2(ROOT / "LICENSE-EXCEPTION", stage / "licenses/PROJECT-LICENSE-EXCEPTION")
+    shutil.copy2(ROOT / "NOTICE.md", stage / "licenses/PROJECT-NOTICE")
     python_notices(stage / "licenses")
     private_runtime, private_audit = None, None
-    if system == "Windows":
-        native = stage_windows(tools, stage)
+    if system == 'Windows':
+        native = stage_windows(tools, stage, vendor_receipt)
     else:
         private_runtime, private_audit, native = prepare_mac_runtime(tools, stage, supplied_runtime, supplied_audit)
     (stage / "licenses/native-binaries.json").write_text(json.dumps(native, indent=2), encoding="utf-8")
     environment = dict(os.environ, EDITOR_NATIVE_STAGE=str(stage))
-    if system == "Darwin":
-        environment["PYINSTALLER_STRICT_BUNDLE_CODESIGN_ERROR"] = "1"
+    if system == 'Darwin':
+        environment['PYINSTALLER_STRICT_BUNDLE_CODESIGN_ERROR'] = '1'
+    if vendor:
+        environment.update(EDITOR_AV_VENDOR=str(vendor), EDITOR_AV_RECEIPT=str(vendor_receipt_path), PYTHONPATH=str(vendor) + os.pathsep + os.environ.get('PYTHONPATH', ''),
+                           PYTHONDONTWRITEBYTECODE='1')
     subprocess.run([sys.executable, "-m", "PyInstaller", "--noconfirm", "--distpath", str(ROOT / "build/backend"),
                     "--workpath", str(ROOT / "build/pyinstaller-work" / target), str(ROOT / "packaging/backend.spec")],
                    cwd=ROOT, env=environment, check=True)
@@ -273,9 +311,9 @@ def main():
         raise ValueError("Packaged runtime self-test did not validate the frozen backend/static application")
     build_receipt = dict(build=details, self_test=receipt)
     if private_audit is not None:
-        build_receipt["private_ffmpeg_audit"] = private_audit
+        build_receipt['private_ffmpeg_audit'] = private_audit
     if framework_signing is not None:
-        build_receipt["mac_framework_signing"] = framework_signing
+        build_receipt['mac_framework_signing'] = framework_signing
     (destination / "build-receipt.json").write_text(json.dumps(build_receipt, indent=2), encoding="utf-8")
     print(result)
     print("Native backend assembled. Test a frozen import/render before publishing any installer.")

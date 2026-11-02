@@ -27,5 +27,5 @@
   "engines": {
     "node": ">=22.12.0"
   },
-  "licenseException": "See ../LICENSE-EXCEPTION: NVIDIA CUDA/cuDNN permission for owner code only."
+  "licenseException": "See ../LICENSE-EXCEPTION: PyTorch runtime linking permission for owner code only."
 }

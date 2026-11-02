@@ -367,7 +367,8 @@ def _encoder_plan(info, mode, force_cpu=False, device_type=None):
 
 def _active_bytes(frame):
     """Canonical RGB16 bytes, without decoder plane padding."""
-    return frame.to_ndarray(format="rgb48le").tobytes()
+    from av.video.reformatter import Interpolation
+    return frame.reformat(format="rgb48le", interpolation=Interpolation.BICUBIC).to_ndarray().tobytes()
 
 
 def _audio_summary(path):
@@ -571,6 +572,7 @@ def _worker(request):
                     break
                 rgb_frame = reformatter.reformat(decoded, width=info["width"], height=info["height"],
                     format="rgb48le", src_colorspace=matrix,
+                    interpolation=av.video.reformatter.Interpolation.BICUBIC,
                     src_color_range=source_range, dst_color_range=2)
                 rgb = rgb_frame.to_ndarray()
                 tensor = torch.from_numpy(rgb.astype(np.float32)).to(device).permute(2, 0, 1) / 65535.0

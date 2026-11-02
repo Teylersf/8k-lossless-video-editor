@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "node --experimental-strip-types --test tests/editor_state.test.ts tests/media_seek.test.ts"
+    "test": "node --experimental-strip-types --test tests/editor_state.test.ts tests/media_seek.test.ts tests/export_diagnostics.test.ts"
   },
   "dependencies": {
     "lucide-react": "^1.66.0",
@@ -25,5 +25,5 @@
     "vite": "^8.3.5"
   },
   "license": "GPL-3.0-or-later",
-  "licenseException": "See ../LICENSE-EXCEPTION: NVIDIA CUDA/cuDNN permission for owner code only."
+  "licenseException": "See ../LICENSE-EXCEPTION: PyTorch runtime linking permission for owner code only."
 }

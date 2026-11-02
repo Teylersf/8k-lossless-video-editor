@@ -28,7 +28,7 @@ Artwork: **etonline**, [*Taipei Skyline at Night 20210710*](https://commons.wiki
 [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/); adapted through
 crop/downsampling, color/lens treatments and titles. Photo-derived showcase
 images and demo media use CC BY-SA 2.0; application code uses GPL-3.0-or-later
-with the [scoped NVIDIA runtime permission](LICENSE-EXCEPTION).
+with the [scoped PyTorch runtime permission](LICENSE-EXCEPTION).
 
 ## From an 8K timeline to a DPX16 digital intermediate
 
@@ -145,7 +145,7 @@ analytics, Vercel services or automatic uploads to a cloud editor. Save project
 JSON, reopen local projects and relink sources when moving to another machine.
 
 This is **0.1.0-beta.1**, free application source by Taylor Kalin under
-**GPL-3.0-or-later** with a [scoped NVIDIA runtime permission](LICENSE-EXCEPTION).
+**GPL-3.0-or-later** with a [scoped PyTorch runtime permission](LICENSE-EXCEPTION).
 Native 8K proofs include a 24-frame Apple M4 master, RTX 3090 master/effects
 checks and the 48-frame DPX16 cinema showcase. These are offline integrity
 results. Compositing, decoding and audio can use CPU even when a GPU is selected. The
@@ -250,7 +250,7 @@ Created by **Taylor Kalin**. Explore the code, report a reproducible issue,
 or help expand tested workflows through
 [GitHub](https://github.com/Teylersf/8k-lossless-video-editor).
 
-[GPL-3.0-or-later license](LICENSE) · [NVIDIA runtime permission](LICENSE-EXCEPTION) ·
+[GPL-3.0-or-later license](LICENSE) · [PyTorch runtime permission](LICENSE-EXCEPTION) ·
 [Third-party licenses and source](docs/THIRD_PARTY.md) · [Provenance notices](NOTICE.md) ·
 [Issues](https://github.com/Teylersf/8k-lossless-video-editor/issues) ·
 [Releases](https://github.com/Teylersf/8k-lossless-video-editor/releases)

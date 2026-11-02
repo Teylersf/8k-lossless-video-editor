@@ -231,10 +231,34 @@ test("installer config is per-user, non-elevating, explicit arm64 and native res
   assert.equal(config.productName, "8KLosslessVideoEditor");
   assert.equal(config.nsis.perMachine, false);
   assert.equal(config.nsis.allowElevation, false);
+  assert.equal(config.nsis.packElevateHelper, false);
   assert.equal(config.nsis.deleteAppDataOnUninstall, false);
-  assert.equal(config.mac.identity, "-");
+  assert.equal(config.mac.identity, process.env.EDITOR_CODESIGN_IDENTITY || "-");
+  assert.equal(config.mac.minimumSystemVersion, "26.6.2");
   assert.deepEqual(config.mac.target[0].arch, ["arm64"]);
   assert.equal(config.publish, null);
+});
+
+test("Mac ad-hoc and Developer ID settings preserve Windows non-elevation", () => {
+  const { execFileSync } = require("node:child_process");
+  for (const identity of ["", "-", "Developer ID Application: Taylor Kalin (TESTTEAM)"]) {
+    const config = JSON.parse(execFileSync(process.execPath, [
+      "-e",
+      "console.log(JSON.stringify(require('./electron-builder.cjs')))",
+    ], {
+      cwd: path.join(__dirname, ".."),
+      env: { ...process.env, EDITOR_CODESIGN_IDENTITY: identity },
+      encoding: "utf8",
+    }));
+    assert.equal(config.mac.identity, identity || "-");
+    assert.equal(config.mac.hardenedRuntime, !!identity && identity !== "-");
+    assert.equal(config.mac.minimumSystemVersion, "26.6.2");
+    assert.equal(config.nsis.perMachine, false);
+    assert.equal(config.nsis.allowElevation, false);
+    assert.equal(config.nsis.packElevateHelper, false);
+    assert.equal(config.win.requestedExecutionLevel, "asInvoker");
+    assert.equal(config.copyright, "Copyright © 2026 Taylor Kalin");
+  }
 });
 
 test("scoped patched minimatch consumers retain their actual build-tool APIs", () => {
