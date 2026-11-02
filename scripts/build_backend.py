@@ -221,8 +221,10 @@ def stage_windows(tools, stage, vendor_receipt):
     public_keys = ('schema_version', 'archive_url', 'archive_sha256', 'archive_bytes', 'ffmpeg_source', 'pyav_version',
                    'patches', 'native_overrides', 'cli_files', 'abi_note', 'abi_policy', 'private_files')
     public = {key: vendor_receipt[key] for key in public_keys}
-    (stage / 'licenses/native/ffmpeg/runtime-provenance.json').write_text(json.dumps(public, indent=2), encoding='utf-8')
-    shutil.copy2(ROOT / 'build/vendor-lgpl/ffmpeg-buildconf-v2.txt', stage / 'licenses/native/ffmpeg/ffmpeg-buildconf-v2.txt')
+    native_notices = stage / 'licenses/native/ffmpeg'
+    native_notices.mkdir(parents=True, exist_ok=True)
+    (native_notices / 'runtime-provenance.json').write_text(json.dumps(public, indent=2), encoding='utf-8')
+    shutil.copy2(ROOT / 'build/vendor-lgpl/ffmpeg-buildconf-v2.txt', native_notices / 'ffmpeg-buildconf-v2.txt')
     return outputs
 
 
