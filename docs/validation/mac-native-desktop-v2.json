@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "status": "passed_for_recorded_private_v2_artifact",
+  "product": "8K Lossless Video Editor",
+  "artifact": {
+    "basename": "8KLosslessVideoEditor-0.1.0-beta.1-mac-arm64.dmg",
+    "preserved_relative_path": "out/validation/mac-v2-preserved-artifacts/8KLosslessVideoEditor-0.1.0-beta.1-mac-arm64.dmg",
+    "sha256": "3ccc683786ea142661bfa5c28b13bf8adf4396789577120da9562fc1facfc266",
+    "bytes": 284287652,
+    "scope": "Superseded private v2 test build; later rebuilds require separate validation.",
+    "public_binary_status": "held_for_coordinator_matching_sources_and_notices"
+  },
+  "platform": {
+    "os": "macOS",
+    "architecture": "arm64",
+    "gpu": "Apple M4",
+    "backend": "mps"
+  },
+  "provenance": {
+    "backend_collection_source_revision": "49bb767c5f7cd1ad5460a4ad8263da0d42e39b05",
+    "framework_and_ad_hoc_launch_fix_source_revision": "08f8009a90f47b3a85d5900c53763f40df6c1fcd",
+    "assembly_scope": "Existing collected backend received the framework repair; no fresh full PyInstaller rebuild at the fix revision. Electron then assembled and ad-hoc signed the app.",
+    "verification_checkout_revision": "ec77f287476d8fc2b5c2d0eb5c6f303e668183b9",
+    "verification_checkout_scope": "Checkout at verification; installed binaries are bound by the recorded file hashes, without inferring a binary build commit",
+    "installed_source_files_compared": 7,
+    "installed_source_files_match_verification_checkout": true,
+    "binary_identity": "Artifact and installed-file hashes bind this proof; the current checkout is not asserted to be the binary build revision."
+  },
+  "packaging": {
+    "version": "0.1.0-beta.1",
+    "pyinstaller": "6.22.3",
+    "python": "3.13.18",
+    "torch": "2.11.0",
+    "av": "17.0.0",
+    "ffmpeg": "9.0.2",
+    "signing": "ad_hoc",
+    "notarized": false,
+    "gatekeeper_acceptance": "not_asserted",
+    "distribution_scope": "Local private test; public binary held pending coordinator source and notice completion."
+  },
+  "collected_backend_audit": {
+    "scope": "Collected backend after framework repair, before Electron packaging; not a fresh audit of every final app binary.",
+    "status": "passed",
+    "regular_files_scanned": 14432,
+    "macho_files": 300,
+    "macho_bytes": 478331776,
+    "groups": {
+      "other_python_or_bootloader": 112,
+      "pyav": 74,
+      "private_ffmpeg": 102,
+      "torch": 11,
+      "python_framework": 1
+    },
+    "signatures_verified": 300,
+    "internal_dependency_edges": 886,
+    "unique_system_dependencies": 37,
+    "symlinks": 96,
+    "private_ffmpeg_machos": 102,
+    "architecture": "arm64 only",
+    "errors": 0,
+    "private_ffmpeg_symlinks": 44,
+    "build_receipt_sha256": "5fa8c65282afbd3c10b58b79a5995a6ffd60f0845b9df50ad5ccac7db3597474"
+  },
+  "framework_repair": {
+    "frameworks_signed": 1,
+    "identity": "ad_hoc",
+    "timestamp": "none",
+    "strict_framework_and_macho_verification": true,
+    "only_changed_macho": "Python.framework executable",
+    "executable_sha256_before": "fab9d896095049472aa2792853a0f78490d8d03b55afd7e018b20d915dfbbb60",
+    "executable_sha256_after": "5b2749777873a47dda92608cbf08b4a2b2a719eeec0224982f48b20d5ad0f5e4",
+    "resource_seal_sha256": "10fb2dcda3309ecdd11cb58dcb3152b61856fe0916ea9598d9dfaad3e6c1fd1c",
+    "resources_and_info_plist_bound": true
+  },
+  "electron_artifact_relationship": {
+    "electron_may_resign_bundled_code": true,
+    "installed_backend_and_ffmpeg_hashes_differ_from_collected_payload": true,
+    "installed_python_framework_hash_matches_repaired_payload": true,
+    "scope": "Signing can change executable bytes; collected payload audit and installed artifact hashes describe separate stages."
+  },
+  "installation": {
+    "status": "installed-and-signatures-verified",
+    "method": "Actual Finder copy from mounted DMG through its Applications alias",
+    "installed_file_sha256": {
+      "Contents/MacOS/8KLosslessVideoEditor": "8717599c9e14d0963d7f3c2c2ec04fd59fbebabcf571b393c582724669d6847b",
+      "Contents/Resources/app.asar": "02a3b003cd9e7c3e4a3113d4b3fc1d85a6ca7f00f2f8e807ef1ace8f3645f121",
+      "Contents/Resources/backend/8k-editor-backend": "2a2a9c2911a3c46df994c6060ea4f359d47718ad83ad333851d3fee6a433df92",
+      "Contents/Resources/backend/_internal/bin/ffmpeg": "a95a20bb541f027d333130fe320f4e51690ff08cb340e496806d0f4097a39485",
+      "Contents/Resources/backend/_internal/bin/ffprobe": "098a62cc7136efbfc573c251c04234c2df764e62e585a3b79803a5e325be2297"
+    },
+    "installed_python_framework_copy_sha256": "5b2749777873a47dda92608cbf08b4a2b2a719eeec0224982f48b20d5ad0f5e4",
+    "recorded_installed_files_unchanged_across_native_8k_test": true,
+    "preservation_scope": "The installed native proof rehashed its 15 recorded app/backend/source files; the Python framework copy hash is from the installation receipt."
+  },
+  "packaged_app_lifecycle": {
+    "status": "passed",
+    "scope": "Packaged build-output app launch and quit before the later Finder-installed 8K test.",
+    "ready": true,
+    "backend": "mps",
+    "owned_processes_remaining_after_quit": 0,
+    "owned_port_closed_after_quit": true,
+    "existing_separate_studio_and_editor_services_preserved": true
+  },
+  "installed_native_8k_gui_export": {
+    "status": "passed",
+    "scope": "Finder-installed native GUI; generated native 8K RGB16 video and PCM audio; Modern lens plus title; independent decode after workers exited.",
+    "width": 7680,
+    "height": 4320,
+    "frames": 2,
+    "codec": "ffv1",
+    "pixel_format": "gbrp16le",
+    "canonical_samples": "rgb48le",
+    "active_bytes_per_frame": 199065600,
+    "rgb16_sha256": "791256bad8a76e3af8e98d43b8efe7e0da7234f893aaf6fddf28376a4512cd03",
+    "frame_sha256": [
+      "fdb8154c1c05651e81e4c8dbf33f108890a7f4b57097c990e52fb6b1628d7a3b",
+      "70e360db08297098b17488ff714e288ebcf2842f6a3d91b79d42d0bc0c4e9802"
+    ],
+    "matches_rendered_samples": true,
+    "changed_from_untreated_source": true,
+    "container_time_base": "1/1000",
+    "bit_depth": 16,
+    "fps": "24/1",
+    "duration_seconds": 0.08333333333333333,
+    "actual_backend": "mps",
+    "timestamps_seconds": [
+      "0",
+      "21/500"
+    ],
+    "timestamp_tolerance": "Half container time-base tick plus one microsecond; Matroska PTS are quantized",
+    "output_bytes": 143266705,
+    "output_sha256": "97b42271149825ddc5b2692b5bf9f4d94ffb3aba1e8cc861ace159487ff43ea3",
+    "download_published_and_job_hashes_match": true,
+    "created_to_published_seconds": 14.834,
+    "timing_scope": "API job creation to publication file mtime; includes queue/startup/verification",
+    "audio": {
+      "codec": "pcm_f32le",
+      "sample_rate": 48000,
+      "channels": 2,
+      "samples_per_channel": 4000,
+      "canonical_samples": "Interleaved little-endian float32",
+      "sha256": "8f12eb589932cd05fe4a1a24e33ee1a51778c23cd3ec3a81f182f4ee5bcb780c",
+      "exact_source_prefix": true
+    },
+    "original_sources_unchanged": true,
+    "imported_sources_match_originals": true
+  },
+  "installed_test_resources": {
+    "max_sampled_process_tree_rss_bytes": 2881339392,
+    "min_available_ram_bytes": 1474592768,
+    "min_disk_free_bytes": 39640711168,
+    "sampling_interval_seconds": 0.5,
+    "scope": "Sum of sampled installed main-app and descendant process RSS; device memory is outside RSS",
+    "mps_allocator_or_driver_peak_measured": false,
+    "observed_worker_device_setting": "auto",
+    "actual_render_selected_mps": true,
+    "fallback_flag_observed": "unset or 0",
+    "allocator_overrides_changed_by_verifier": false
+  },
+  "limitations": [
+    "The installed GUI export contains two frames; separate 24-frame native and PNG16 sequence proofs have different scopes.",
+    "Sampled process-tree RSS is host residency, can include shared mappings, and is not GPU allocator/Metal driver memory or a guaranteed instantaneous peak.",
+    "Static auditing covers Mach-O linked load commands and run paths, not arbitrary dlopen/plugins or every runtime resource; Apple system libraries/frameworks remain external.",
+    "The 300-file audit covers the collected payload before Electron signing; it is not a full final-app Mach-O re-audit.",
+    "Local ad-hoc launch/install/signature checks establish neither Developer ID signing, notarization nor Gatekeeper acceptance for a downloaded quarantined artifact.",
+    "Synthetic source color tags were partly unspecified; project BT.709 assumptions were applied. This does not establish HDR color-management correctness.",
+    "Matroska PTS are quantized to the container time base; cadence was checked using the recorded tolerance, not exact i/24 PTS."
+  ],
+  "private_evidence_receipt_sha256": {
+    "mac-dmg-install-v2.json": "19e71c86bd8705523d18b1e373c02017b7a37a6620065ad935c4f46346436883",
+    "mac-native-app-lifecycle-v2.json": "dda97af1e458033ccc5a3d9c469cd4565784133d47fdc755eef7f294687a1e81",
+    "mac-frozen-backend-macho-audit-v2.json": "0ec15369113e2bd3c8216138a2e6cc2e54fe9a77f2cf383cd2a302ec58e2b9fc",
+    "mac-framework-signing-repair.json": "f336203fc5f8269a2bc22f98b508101eb2171f82fe2d1f72092e9b55afe6758e",
+    "mac-installed-native-8k-proof.json": "25098a44d6665a40d00abf3c52b02211a83bd93f413ad5491a61aebec01d2c6c"
+  }
+}
