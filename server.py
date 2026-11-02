@@ -46,6 +46,14 @@ ORIGINS = {f'http://127.0.0.1:{PORT}', f'http://localhost:{PORT}', f'http://[::1
            'http://127.0.0.1:5173', 'http://localhost:5173'}
 ACTIVE = {'queued', 'running', 'cancelling'}
 SERVER = None
+MAX_ERROR_DETAILS = 6000
+
+
+def diagnostic_tail(value):
+    """Keep the final encoder/worker cause, with an explicit bounded-log marker."""
+    text = str(value)
+    marker = '[Earlier diagnostic lines omitted]\n'
+    return text if len(text) <= MAX_ERROR_DETAILS else marker + text[-(MAX_ERROR_DETAILS - len(marker)):]
 
 
 def editor_pipeline():
@@ -267,7 +275,7 @@ class EditorService:
                         _output_sha256=file_hash(output), _output_bytes=output.stat().st_size)
         except Exception as error:
             self.update(identifier, status='cancelled' if event.is_set() else 'failed',
-                        message='Render cancelled' if event.is_set() else 'Render failed', error=str(self.clean(str(error)))[:4000])
+                        message='Render cancelled' if event.is_set() else 'Render failed', error=diagnostic_tail(self.clean(str(error))))
         finally:
             if acquired:
                 self.renderer.release()
@@ -342,7 +350,7 @@ def create_app(store=None, *, pipeline=None, model=None, executor=None):
 
     @application.exception_handler(ValueError)
     async def invalid_value(request, error):
-        return JSONResponse({'detail': service().clean(str(error))[:4000]}, status_code=422)
+        return JSONResponse({'detail': diagnostic_tail(service().clean(str(error)))}, status_code=422)
 
     @application.exception_handler(KeyError)
     async def missing_value(request, error):

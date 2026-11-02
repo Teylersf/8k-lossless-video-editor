@@ -2157,6 +2157,72 @@ kbd {
   font-size: 9px;
   color: #6a90a7;
 }
+.job-card .job-result-message {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #a0c7ae;
+  font-size: 12px;
+}
+.job-card .job-failure-summary {
+  color: #e1b0a8;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.job-diagnostics,
+.job-notes {
+  margin-top: 12px;
+  border-top: 1px solid #394b59;
+  padding-top: 10px;
+  font-size: 11px;
+  color: #a8bac8;
+}
+.job-diagnostics summary,
+.job-notes summary {
+  cursor: pointer;
+  padding: 3px 0;
+}
+.diagnostic-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 10px 0;
+}
+.diagnostic-actions button {
+  font-size: 11px;
+  padding: 6px 9px;
+}
+.diagnostic-actions span {
+  font-size: 10px;
+  color: #b8c6cf;
+}
+.job-diagnostics pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-height: 240px;
+  overflow-y: auto;
+  padding: 11px;
+  border: 1px solid #3b4c59;
+  border-radius: 4px;
+  background: #14212b;
+  color: #c5d3dd;
+  font:
+    11px/1.65 ui-monospace,
+    SFMono-Regular,
+    Consolas,
+    monospace;
+  user-select: text;
+}
+.job-notes ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+.job-notes li {
+  margin: 8px 0;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
 .job-actions {
   display: flex;
   align-items: center;

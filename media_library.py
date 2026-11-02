@@ -104,7 +104,7 @@ def still_info(source, poster=None, override=None):
                 mapped = np.where(mapped <= .0031308, mapped * 12.92, 1.055 * np.power(mapped, 1 / 2.4) - .055)
                 image = np.rint(np.clip(mapped, 0, 1) * 255).astype(np.uint8)
             else:
-                image = frame.reformat(width=width, height=height, format='rgb24').to_ndarray()
+                image = frame.reformat(width=width, height=height, format='rgb24', interpolation=av.video.reformatter.Interpolation.BICUBIC).to_ndarray()
             Image.fromarray(image).save(poster, quality=92)
     return info
 

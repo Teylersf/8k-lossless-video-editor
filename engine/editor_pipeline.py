@@ -248,7 +248,10 @@ class _Source:
         matrix = frame.colorspace
         if matrix in (0, 2) and not fmt.is_rgb:
             matrix = 1 if frame.height >= 720 else 5
+        # Explicit bicubic avoids the upstream bilinear YUV10->RGB48 row
+        # corruption; same-raster RGB packing remains a direct conversion.
         image = self.reformatter.reformat(frame, width=target_width, height=target_height, format="rgba64le" if alpha else "rgb48le", src_colorspace=matrix,
+                                         interpolation=self.av.video.reformatter.Interpolation.BICUBIC,
             src_color_range=frame.color_range or (2 if fmt.is_rgb or fmt.name.startswith("yuvj") else 1), dst_color_range=2)
         array = image.to_ndarray()
         value = torch.from_numpy(array.astype(np.float32)).to(device).permute(2, 0, 1)

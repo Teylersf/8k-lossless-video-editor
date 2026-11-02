@@ -363,6 +363,41 @@ class TimelineTests(unittest.TestCase):
                 self.assertEqual(result["codec"], codec)
                 self.assertEqual(len(self.decode(output)), 2)
 
+    def test_av1_software_delivery_decodes_real_pixels_and_audio(self):
+        import av
+        import numpy as np
+        profile = next(row for row in editor.format_catalog.profiles() if row['id'] == 'av1')
+        if not profile['available']:
+            self.skipTest(profile['reason'])
+        timeline = project([dict(id='a', media_id='red', duration=.25)])
+        timeline['tracks'].append(dict(id='audio', kind='audio', clips=[dict(id='tone', media_id='tone', duration=.25)]))
+        output = self.output('-av1.mkv')
+        result = editor.render_project(timeline, self.media, output, mode='av1')
+        self.assertEqual((result['codec'], result['frames']), ('av1', 2))
+        with av.open(str(output)) as container:
+            frames = list(container.decode(video=0))
+        self.assertEqual(len(frames), 2)
+        self.assertEqual((frames[0].width, frames[0].height), (160, 96))
+        # Independent CLI conversion avoids PyAV's default bilinear YUV10
+        # path, which is broken in the pinned upstream swscale build.
+        reference = editor.media._run([editor.media.FFMPEG, '-v', 'error', '-i', str(output),
+                                      '-frames:v', '1', '-sws_flags', 'bicubic', '-pix_fmt', 'rgb48le', '-f', 'rawvideo', 'pipe:1'])
+        pixels = np.frombuffer(reference, dtype='<u2').reshape(96, 160, 3)
+        means = np.mean(pixels, axis=(0, 1))
+        self.assertGreater(means[0], 55000)
+        self.assertLess(max(means[1:]), 5000)
+        metadata = editor._probe_editor(output)
+        audio = next(stream for stream in metadata['streams'] if stream['codec_type'] == 'audio')
+        self.assertEqual(audio['codec_name'], 'flac')
+        self.assertEqual(editor._file_hash(self.media['red']['path']), self.hashes['red'])
+        info = editor.media.inspect_media(output); info.update(kind='video')
+        records = {'av1': dict(path=str(output), public=info)}
+        master = self.output('-av1-master.mkv')
+        editor.render_project(project([dict(id='a', media_id='av1', duration=.25)]), records, master, mode='lossless')
+        with av.open(str(master)) as container:
+            recovered = next(container.decode(video=0)).to_ndarray(format='rgb48le')
+        self.assertTrue(np.array_equal(recovered, pixels), 'Imported YUV10 colors differ from the independently decoded source')
+
     def test_exr_scene_linear_values_above_one_survive_until_exposure(self):
         import av
         import numpy as np

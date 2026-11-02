@@ -6,6 +6,7 @@ const backend = path.resolve(
   process.env.EDITOR_BACKEND_DIR ||
     path.join(__dirname, "..", "build", "backend", process.platform),
 );
+const macIdentity = process.env.EDITOR_CODESIGN_IDENTITY || "-";
 const optionalIcon = (name) => {
   const icon = path.join(__dirname, "assets", name);
   return fs.existsSync(icon) ? icon : undefined;
@@ -60,6 +61,7 @@ module.exports = {
     oneClick: false,
     perMachine: false,
     allowElevation: false,
+    packElevateHelper: false,
     allowToChangeInstallationDirectory: true,
     createDesktopShortcut: true,
     createStartMenuShortcut: true,
@@ -72,11 +74,15 @@ module.exports = {
   mac: {
     target: [{ target: "dmg", arch: ["arm64"] }],
     category: "public.app-category.video",
+    // Highest deployment target in this bundled native payload (libtesseract).
+    minimumSystemVersion: "26.6.2",
     bundleShortVersion: "0.1.0",
     bundleVersion: "0.1.0",
     icon: optionalIcon("icon.icns"),
-    identity: "-",
-    hardenedRuntime: true,
+    identity: macIdentity,
+    // Hardened library validation needs a shared signing Team ID. Ad-hoc
+    // builds have none; Developer ID builds enable runtime hardening.
+    hardenedRuntime: macIdentity !== "-",
     entitlements: "assets/entitlements.mac.plist",
     entitlementsInherit: "assets/entitlements.mac.plist",
   },

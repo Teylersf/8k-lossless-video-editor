@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   Check,
+  Copy,
   Download,
   FolderOpen,
   Info,
@@ -21,6 +22,7 @@ import type {
 import { api, assetUrl, bytesLabel, isTerminal, post } from "../api";
 import { duration, uid, validateProject } from "../editor_state";
 import { NumberField } from "./Inspector";
+import { copyDiagnostics, failureSummary } from "../export_diagnostics";
 
 export function Modal({
   title,
@@ -48,7 +50,7 @@ export function Modal({
       if (e.key === "Tab") {
         const items = [
           ...dialog.current!.querySelectorAll<HTMLElement>(
-            'button:not(:disabled),a[href],input:not(:disabled),select:not(:disabled),textarea:not(:disabled),[tabindex="0"]',
+            'button:not(:disabled),a[href],input:not(:disabled),select:not(:disabled),textarea:not(:disabled),summary,[tabindex="0"]',
           ),
         ].filter((el) => el.getClientRects().length);
         const first = items[0],
@@ -722,6 +724,68 @@ export type JobEntry = {
   mode: string;
   created: number;
 };
+
+function legacyCopy(text: string): boolean {
+  const previous = document.activeElement as HTMLElement | null;
+  const selection = document.getSelection();
+  const ranges = selection
+    ? Array.from({ length: selection.rangeCount }, (_, i) =>
+        selection.getRangeAt(i).cloneRange(),
+      )
+    : [];
+  const input = document.createElement("textarea");
+  input.value = text;
+  input.readOnly = true;
+  input.setAttribute("aria-label", "Copy export diagnostics");
+  input.style.cssText = "position:fixed;left:-9999px;top:0;opacity:0";
+  document.body.appendChild(input);
+  try {
+    input.select();
+    return document.execCommand("copy");
+  } finally {
+    input.remove();
+    previous?.focus({ preventScroll: true });
+    if (selection) {
+      selection.removeAllRanges();
+      for (const range of ranges) selection.addRange(range);
+    }
+  }
+}
+
+function ExportDiagnostics({ text }: { text: string }) {
+  const [copyState, setCopyState] = useState("");
+  const copy = async () => {
+    const clipboard = navigator.clipboard;
+    const copied = await copyDiagnostics(
+      text,
+      clipboard?.writeText?.bind(clipboard),
+      legacyCopy,
+    );
+    setCopyState(
+      copied
+        ? "Details copied."
+        : "Copy unavailable. Select the diagnostic text below and copy it manually.",
+    );
+  };
+  return (
+    <div className="export-failure">
+      <p className="job-failure-summary">{failureSummary(text)}</p>
+      <details className="job-diagnostics">
+        <summary>View diagnostic details</summary>
+        <div className="diagnostic-actions">
+          <button onClick={copy}>
+            <Copy size={13} /> Copy details
+          </button>
+          <span role="status">{copyState}</span>
+        </div>
+        <pre tabIndex={0} aria-label="Export diagnostic details">
+          {text}
+        </pre>
+      </details>
+    </div>
+  );
+}
+
 export function ExportDialog({
   project,
   modes,
@@ -845,7 +909,15 @@ export function ExportDialog({
                     }}
                   />
                 </div>
-                <p>{job.error || job.message || job.status}</p>
+                {job.status === "completed" ? (
+                  <p className="job-result-message">
+                    <Check size={15} /> Export verified and ready
+                  </p>
+                ) : job.error ? (
+                  <ExportDiagnostics text={job.error} />
+                ) : (
+                  <p>{job.message || job.status}</p>
+                )}
                 {job.result && (
                   <small>
                     {job.result.width} × {job.result.height} ·{" "}
@@ -853,11 +925,18 @@ export function ExportDialog({
                     {job.result.pixel_format}
                   </small>
                 )}
-                {job.result?.warnings?.map((w, i) => (
-                  <p className="warning-note" key={i}>
-                    {w}
-                  </p>
-                ))}
+                {!!job.result?.warnings?.length && (
+                  <details className="job-notes">
+                    <summary>
+                      Processing notes ({job.result.warnings.length})
+                    </summary>
+                    <ul>
+                      {job.result.warnings.map((note, i) => (
+                        <li key={i}>{note}</li>
+                      ))}
+                    </ul>
+                  </details>
+                )}
                 <div className="job-actions">
                   <span className="job-status">
                     {job.status} {Math.round(job.progress * 100)}%

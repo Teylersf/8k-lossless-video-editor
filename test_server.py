@@ -412,6 +412,31 @@ class ServerTests(unittest.TestCase):
         response = self.client.post(f"/api/jobs/{completed['id']}/cancel", headers=HEADER)
         self.assertEqual(response.json()['status'], 'completed')
 
+    def test_failed_export_retains_final_worker_cause_and_bounded_private_diagnostics(self):
+        job = self.queue()
+        final_cause = 'ValueError: Requested pixel format is not supported by this encoder'
+        worker_log = 'Export failed: ' + ('progress and encoder context\n' * 400) + str(self.store) + '\n' + final_cause
+        with patch.object(self.pipeline, 'render_project', side_effect=ValueError(worker_log)):
+            self.executor.run()
+        failed = self.client.get(f"/api/jobs/{job['id']}").json()
+        self.assertEqual(failed['status'], 'failed')
+        self.assertEqual(failed['message'], 'Render failed')
+        self.assertEqual(len(failed['error']), server.MAX_ERROR_DETAILS)
+        self.assertTrue(failed['error'].startswith('[Earlier diagnostic lines omitted]\n'))
+        self.assertTrue(failed['error'].endswith(final_cause))
+        self.assertIn('<local data>', failed['error'])
+        self.assertNotIn(str(self.store), failed['error'])
+        self.assertIsNone(failed['output_url'])
+        persisted = json.loads((self.store / 'jobs' / job['id'] / 'job.json').read_text(encoding='utf-8'))
+        self.assertEqual(persisted['error'], failed['error'])
+        self.assertEqual(self.client.get(f"/api/jobs/{job['id']}/download").status_code, 409)
+        with patch.object(self.state, 'validate', side_effect=ValueError(worker_log)):
+            response = self.client.post('/api/jobs', headers=HEADER, json={'project': self.project()})
+        self.assertEqual(response.status_code, 422)
+        self.assertTrue(response.json()['detail'].endswith(final_cause))
+        self.assertLessEqual(len(response.json()['detail']), server.MAX_ERROR_DETAILS)
+        self.assertEqual(server.diagnostic_tail('Short actionable error'), 'Short actionable error')
+
     def test_queued_cancellation_immediately_frees_a_queue_slot(self):
         project = self.project()
         jobs = [self.queue(project) for _ in range(4)]
