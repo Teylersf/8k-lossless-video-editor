@@ -95,13 +95,25 @@ class BackendSession extends EventEmitter {
   }
 
   async start() {
-    const { executable, dataDir, logDir, preferredPort = 0 } = this.options;
+    const {
+      executable,
+      dataDir,
+      logDir,
+      preferredPort = 0,
+      resolvePort = freePort,
+    } = this.options;
+    if (this.stopping)
+      throw new Error("Desktop backend startup was cancelled by stop");
     if (this.child) throw new Error("A desktop backend can only start once");
     if (!fs.statSync(executable).isFile())
       throw new Error("The bundled backend executable is missing");
+    const port = await resolvePort(preferredPort);
+    // A quit during reservation must not spawn after stop() has already resolved.
+    if (this.stopping)
+      throw new Error("Desktop backend startup was cancelled by stop");
     fs.mkdirSync(dataDir, { recursive: true });
     fs.mkdirSync(logDir, { recursive: true });
-    this.port = await freePort(preferredPort);
+    this.port = port;
     this.origin = localOrigin(this.port);
     const directory = path.dirname(executable);
     const environment = {

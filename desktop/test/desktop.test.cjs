@@ -141,6 +141,46 @@ test("real spawned mock child receives private port/data paths and authenticated
   await session.stop();
 });
 
+test("stop before or during port reservation prevents startup without creating an owned child", async (t) => {
+  for (const phase of ["before", "during"]) {
+    let enterReservation, releaseReservation, calls = 0;
+    const entered = new Promise((resolve) => {
+      enterReservation = resolve;
+    });
+    const reserved = new Promise((resolve) => {
+      releaseReservation = resolve;
+    });
+    const session = fixture(t, {
+      resolvePort: () => {
+        calls++;
+        enterReservation();
+        return reserved;
+      },
+    });
+    if (phase === "before") {
+      await session.stop();
+      await assert.rejects(session.start(), /startup was cancelled by stop/);
+      assert.equal(calls, 0);
+    } else {
+      const startRejected = assert.rejects(
+        session.start(),
+        /startup was cancelled by stop/,
+      );
+      await entered;
+      await session.stop();
+      releaseReservation(12345);
+      await startRejected;
+      assert.equal(calls, 1);
+    }
+    assert.equal(session.child, null);
+    assert.equal(session.alive(), false);
+    assert.equal(session.verified, false);
+    assert.equal(fs.existsSync(session.options.dataDir), false);
+    assert.equal(fs.existsSync(session.options.logDir), false);
+    await session.stop();
+  }
+});
+
 test("an occupied saved port is skipped and its unrelated service survives", async (t) => {
   const stranger = http.createServer((_request, response) =>
     response.end("unrelated"),
