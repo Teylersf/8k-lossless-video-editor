@@ -99,95 +99,47 @@ def python_notices(target):
     (target / "python-distributions.json").write_text(json.dumps(packages, indent=2), encoding="utf-8")
 
 
-def mac_dependencies(binary):
-    lines = command(["/usr/bin/otool", "-L", binary]).splitlines()[1:]
-    return [line.strip().split(" (", 1)[0] for line in lines if " (" in line]
-
-
-def mac_rpaths(binary):
-    lines = command(["/usr/bin/otool", "-l", binary]).splitlines()
-    paths = []
-    active = False
-    for line in lines:
-        if line.strip() == "cmd LC_RPATH":
-            active = True
-        elif active and line.strip().startswith("path "):
-            paths.append(line.strip()[5:].split(" (offset", 1)[0])
-            active = False
-    return paths
-
-
-def resolve_mac_dependency(name, source, executable, inherited_rpaths=()):
-    def expand(value):
-        return value.replace("@loader_path", str(source.parent)).replace("@executable_path", str(executable.parent))
-    if name.startswith("@rpath/"):
-        tail = name[len("@rpath/"):]
-        choices = [Path(expand(path)) / tail for path in (*mac_rpaths(source), *inherited_rpaths)]
-        choices.append(source.parent / tail)
+def prepare_mac_runtime(tools, stage, supplied=None, supplied_audit=None):
+    from bundle_macos_ffmpeg import audit_payload, bundle
+    if supplied is None:
+        runtime = stage / "ffmpeg-runtime"
+        audit = bundle(tools["ffmpeg"], tools["ffprobe"], runtime, arch="arm64")["audit"]
     else:
-        choices = [Path(expand(name))]
-    for candidate in choices:
-        if candidate.is_file():
-            return candidate.resolve()
-    raise ValueError(f"Cannot resolve bundled media dependency {name} required by {source.name}")
+        runtime = Path(supplied).resolve(strict=True)
+        audit = supplied_audit or audit_payload(runtime, arch="arm64")
+    if not (runtime / "licenses").is_dir():
+        raise ValueError("The private Mac FFmpeg payload must include its actual license inventory")
+    native = [dict(file=item["path"], sha256=item["sha256"], source_name=Path(item["path"]).name)
+              for item in audit["binaries"]]
+    return runtime, audit, native
 
 
-def stage_mac(tools, stage):
-    binaries, mapping, edges = [], {}, {}
-    for name, source in tools.items():
-        target = stage / "bin" / name
-        mapping[source] = target
-        paths = tuple(path.replace("@loader_path", str(source.parent)).replace("@executable_path", str(source.parent)) for path in mac_rpaths(source))
-        binaries.append((source, source, paths))
-    index = 0
-    while index < len(binaries):
-        source, executable, inherited = binaries[index]
-        index += 1
-        edges[source] = []
-        for dependency in mac_dependencies(source):
-            if dependency.startswith(("/usr/lib/", "/System/Library/")):
-                continue
-            resolved = resolve_mac_dependency(dependency, source, executable, inherited)
-            # A dylib's LC_ID_DYLIB appears in otool -L as its first entry.
-            if resolved == source:
-                continue
-            if resolved not in mapping:
-                mapping[resolved] = stage / "ffmpeg-libs" / (digest(resolved)[:12] + "-" + resolved.name)
-                own_paths = tuple(path.replace("@loader_path", str(source.parent)).replace("@executable_path", str(executable.parent)) for path in mac_rpaths(source))
-                binaries.append((resolved, executable, (*own_paths, *inherited)))
-            edges[source].append((dependency, resolved))
-    for source, target in mapping.items():
-        architecture = command(["/usr/bin/lipo", "-archs", source]).strip().split()
-        if "arm64" not in architecture:
-            raise ValueError(f"Media dependency {source.name} has no arm64 architecture")
+def install_mac_runtime(runtime, destination, source_audit):
+    """Copy only after COLLECT, preserving the private load commands and aliases."""
+    from bundle_macos_ffmpeg import audit_payload
+    internal = destination / "_internal"
+    if not internal.is_dir():
+        raise ValueError("PyInstaller did not produce the expected _internal directory")
+    copies = [(runtime / "bin", internal / "bin"), (runtime / "lib", internal / "lib"),
+              (runtime / "licenses", internal / "licenses" / "native" / "ffmpeg")]
+    for source, target in copies:
+        if not source.is_dir():
+            raise ValueError(f"Private media payload directory is missing: {source}")
+        if target.exists() or target.is_symlink():
+            raise FileExistsError(f"Refusing to overwrite a collected backend path: {target}")
+    for source, target in copies:
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(source, target)
-        target.chmod(target.stat().st_mode | 0o200)
-    for source, target in mapping.items():
-        for dependency, resolved in edges[source]:
-            relative = os.path.relpath(mapping[resolved], target.parent).replace(os.sep, "/")
-            command(["/usr/bin/install_name_tool", "-change", dependency, "@loader_path/" + relative, target])
-        if target.suffix == ".dylib":
-            command(["/usr/bin/install_name_tool", "-id", "@loader_path/" + target.name, target])
-        for path in mac_rpaths(source):
-            if path.startswith("/") and not path.startswith(("/usr/lib/", "/System/Library/")):
-                command(["/usr/bin/install_name_tool", "-delete_rpath", path, target])
-        command(["/usr/bin/codesign", "--force", "--sign", "-", "--timestamp=none", target])
-        for dependency in mac_dependencies(target):
-            if dependency.startswith("/") and not dependency.startswith(("/usr/lib/", "/System/Library/")):
-                raise ValueError(f"Unrelocated external dependency remains: {dependency}")
-        for ancestor in source.parents:
-            if ancestor.parent.name == "Cellar":
-                # Homebrew formula directories contain version children.
-                continue
-            if ancestor.parent.parent.name == "Cellar":
-                license_files(ancestor, stage / "licenses" / "native" / ancestor.parent.name)
-                break
-    environment = dict(os.environ, PATH="/usr/bin:/bin", DYLD_LIBRARY_PATH="", DYLD_FALLBACK_LIBRARY_PATH="")
-    for name in tools:
-        subprocess.run([str(stage / "bin" / name), "-hide_banner", "-version"], env=environment,
-                       check=True, capture_output=True, timeout=30)
-    return [dict(file=str(target.relative_to(stage)), sha256=digest(target), source_name=source.name) for source, target in mapping.items()]
+        shutil.copytree(source, target, symlinks=True)
+    for directory in (internal / "bin", internal / "lib"):
+        for path in directory.rglob("*"):
+            if path.is_file() and not path.is_symlink():
+                path.chmod(path.stat().st_mode | 0o111)
+    audit = audit_payload(internal, arch="arm64", verify_signatures=True)
+    before = {item["path"]: item["sha256"] for item in source_audit["binaries"]}
+    after = {item["path"]: item["sha256"] for item in audit["binaries"]}
+    if before != after or source_audit["symlinks"] != audit["symlinks"]:
+        raise ValueError("Post-COLLECT private FFmpeg payload differs from its audited source")
+    return audit
 
 
 def stage_windows(tools, stage):
@@ -206,6 +158,7 @@ def stage_windows(tools, stage):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ffmpeg-dir", type=Path, help="Native full-build bin directory; never a Chocolatey shim directory")
+    parser.add_argument("--mac-ffmpeg-runtime", type=Path, help="Audited private Mac bin/lib/licenses payload to copy after PyInstaller")
     parser.add_argument("--plan", action="store_true", help="Inspect dependencies and paths without copying or building")
     args = parser.parse_args()
     system = platform.system()
@@ -213,18 +166,27 @@ def main():
         raise ValueError("Build natively on 64-bit Windows or arm64 Apple Silicon macOS")
     if sys.maxsize <= 2**32:
         raise ValueError("A native 64-bit Python environment is required")
+    if args.mac_ffmpeg_runtime is not None and system != "Darwin":
+        raise ValueError("--mac-ffmpeg-runtime is supported only on macOS")
     if importlib.metadata.version("pyinstaller") != PYINSTALLER_VERSION:
         raise ValueError("Build with the reviewed pyinstaller==" + PYINSTALLER_VERSION)
     if not (ROOT / "app/dist/index.html").is_file():
         raise ValueError("Build app/dist with npm run build before packaging")
     import torch
     import av
-    tools = locate_tools(args.ffmpeg_dir)
+    supplied_runtime, supplied_audit = None, None
+    if system == "Darwin" and args.mac_ffmpeg_runtime is not None:
+        from bundle_macos_ffmpeg import audit_payload
+        supplied_runtime = args.mac_ffmpeg_runtime.resolve(strict=True)
+        supplied_audit = audit_payload(supplied_runtime, arch="arm64", verify_signatures=True)
+    tools = locate_tools(supplied_runtime / "bin" if supplied_runtime else args.ffmpeg_dir)
     target = "win32" if system == "Windows" else "darwin"
     destination, stage = ROOT / "build/backend" / target, ROOT / "build/native-stage" / target
     details = dict(platform=target, architecture=platform.machine(), pyinstaller=PYINSTALLER_VERSION,
                    python=sys.version.split()[0], torch=torch.__version__, cuda_runtime=torch.version.cuda,
                    av=av.__version__, tools={name: str(path) for name, path in tools.items()}, output=str(destination))
+    if supplied_runtime is not None:
+        details["mac_ffmpeg_runtime"] = str(supplied_runtime)
     print(json.dumps(details, indent=2), flush=True)
     if args.plan:
         return 0
@@ -237,21 +199,29 @@ def main():
     (stage / "licenses").mkdir()
     shutil.copy2(ROOT / "LICENSE", stage / "licenses/PROJECT-COPYING")
     python_notices(stage / "licenses")
-    native = stage_windows(tools, stage) if system == "Windows" else stage_mac(tools, stage)
+    private_runtime, private_audit = None, None
+    if system == "Windows":
+        native = stage_windows(tools, stage)
+    else:
+        private_runtime, private_audit, native = prepare_mac_runtime(tools, stage, supplied_runtime, supplied_audit)
     (stage / "licenses/native-binaries.json").write_text(json.dumps(native, indent=2), encoding="utf-8")
     environment = dict(os.environ, EDITOR_NATIVE_STAGE=str(stage))
+    if system == "Darwin":
+        environment["PYINSTALLER_STRICT_BUNDLE_CODESIGN_ERROR"] = "1"
     subprocess.run([sys.executable, "-m", "PyInstaller", "--noconfirm", "--distpath", str(ROOT / "build/backend"),
                     "--workpath", str(ROOT / "build/pyinstaller-work" / target), str(ROOT / "packaging/backend.spec")],
                    cwd=ROOT, env=environment, check=True)
     if system == "Darwin":
-        for path in (destination / "_internal/bin").iterdir():
-            path.chmod(path.stat().st_mode | 0o111)
+        private_audit = install_mac_runtime(private_runtime, destination, private_audit)
     executable = destination / ("8k-editor-backend.exe" if system == "Windows" else "8k-editor-backend")
     result = command([executable, "--self-test"], timeout=180)
     receipt = json.loads(result)
     if not receipt.get("ready") or not receipt.get("frozen") or not receipt.get("static_assets"):
         raise ValueError("Packaged runtime self-test did not validate the frozen backend/static application")
-    (destination / "build-receipt.json").write_text(json.dumps(dict(build=details, self_test=receipt), indent=2), encoding="utf-8")
+    build_receipt = dict(build=details, self_test=receipt)
+    if private_audit is not None:
+        build_receipt["private_ffmpeg_audit"] = private_audit
+    (destination / "build-receipt.json").write_text(json.dumps(build_receipt, indent=2), encoding="utf-8")
     print(result)
     print("Native backend assembled. Test a frozen import/render before publishing any installer.")
     return 0

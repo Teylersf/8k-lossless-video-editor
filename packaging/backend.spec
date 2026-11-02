@@ -13,9 +13,14 @@ if platform.system() not in ('Windows', 'Darwin'):
 
 datas = [(str(root / 'server.py'), '.'), (str(root / 'media_library.py'), '.'),
          (str(root / 'LICENSE'), '.'), (str(root / 'app/dist'), 'app/dist'),
-         (str(stage / 'bin'), 'bin'), (str(stage / 'licenses'), 'licenses')]
-if (stage / 'ffmpeg-libs').is_dir():
-    datas.append((str(stage / 'ffmpeg-libs'), 'ffmpeg-libs'))
+         (str(stage / 'licenses'), 'licenses')]
+# Mac media tools are already privately relocated and signed. Analysis would
+# reclassify even DATA Mach-Os and rewrite their paths to shared basenames.
+# The builder therefore copies their bin/lib payload only after COLLECT.
+if target == 'win32':
+    datas.append((str(stage / 'bin'), 'bin'))
+    if (stage / 'ffmpeg-libs').is_dir():
+        datas.append((str(stage / 'ffmpeg-libs'), 'ffmpeg-libs'))
 engine_modules = ['editor_pipeline', 'project_model', 'media_pipeline', 'runtime_backend', 'studio_engine', 'format_catalog']
 datas += [(str(root / 'engine' / (name + '.py')), 'engine') for name in engine_modules]
 binaries, hiddenimports = [], ['server', 'media_library'] + engine_modules + ['engine.' + name for name in engine_modules]
