@@ -18,7 +18,10 @@
     "application_files": 330,
     "application_notice_files": 229,
     "all_archive_entries_byte_verified": 472,
-    "unresolved": []
+    "unresolved": [],
+    "strict_gzip_crc_and_eof": "passed",
+    "uncompressed_tar_bytes": 191293440,
+    "uncompressed_tar_sha256": "335d63f7fa5b065cb6d0d8b18bd3dbe3ab3312efeda063a9b28244332ed0c070"
   },
   "macos": {
     "basename": "8k-editor-macos-corresponding-source.tar.gz",
@@ -36,7 +39,27 @@
     "captured_recipe_receipt_files": 314,
     "auxiliary_recipe_inputs": 18,
     "rav1e_registry_crates": 271,
-    "native_inventory_sha256": "559be72a8bb839e0b8084e427aa37fea0459fcf12acdc2fdf3da31ef4d607b4d"
+    "native_inventory_sha256": "559be72a8bb839e0b8084e427aa37fea0459fcf12acdc2fdf3da31ef4d607b4d",
+    "strict_gzip_crc_and_eof": "passed",
+    "uncompressed_tar_bytes": 775608320,
+    "uncompressed_tar_sha256": "936ac97e1e75e31136ce487d2e36334e89c67f6f7f3af368cbbdeb906da4732a",
+    "independent_full_entry_audits_passed": 2,
+    "fresh_sha256_implementations": [
+      "Python hashlib",
+      "Windows .NET SHA256"
+    ],
+    "read_only_file_attribute_after_validation": true,
+    "post_read_only_sha256_verified": true
   },
-  "scope": "Checks source-asset bytes, captured release inputs and provenance. Optional/dev Cargo sources are included without claiming all were linked. Source collection is separate from native binary/render validation; byte-identical rebuilding of upstream binaries is not claimed."
+  "scope": "Checks source-asset bytes, captured release inputs and provenance. Optional/dev Cargo sources are included without claiming all were linked. Source collection is separate from native binary/render validation; byte-identical rebuilding of upstream binaries is not claimed.",
+  "macos_integrity_recovery": {
+    "status": "verified_recovery",
+    "rejected_candidate_sha256": "a136ee9894c61e8efba5c7b7608078027af247c9e85ebda7dcd7a963d3e49d42",
+    "rejected_candidate_issue": "One bit differed at compressed offset368349893; libomp source payload SHA256 and outer gzip CRC failed. All other tar entries matched.",
+    "cause": "Not established; no storage or hardware cause inferred.",
+    "recovery": "Fresh deterministic archive from all verified frozen loose source inputs, created on a separate local volume and durably flushed before validation.",
+    "recovery_hash_matches_original_expected_archive": true,
+    "verification": "Two fresh independent complete source/application/capture/tar-entry audits plus strict gzip CRC to EOF; independent .NET/Python digests, then a further digest after the read-only attribute was applied.",
+    "original_candidate_and_reports_preserved": true
+  }
 }
