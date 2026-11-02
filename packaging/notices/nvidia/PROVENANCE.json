@@ -1,0 +1,22 @@
+{
+  "CUDA-12.6-EULA.txt": {
+    "source": "NVIDIA CUDA Toolkit12.6 installation LICENSE; unmodified original file",
+    "official_url": "https://docs.nvidia.com/cuda/archive/12.6.0/eula/index.html"
+  },
+  "cuDNN-9.10.2-EULA.txt": {
+    "source": "https://docs.nvidia.com/deeplearning/cudnn/backend/v9.10.2/reference/eula.html",
+    "conversion": "HTML main article to plain text; terms retained; source/retrieval heading added"
+  },
+  "files": [
+    {
+      "file": "CUDA-12.6-EULA.txt",
+      "sha256": "e2c71babfd18a8e69542dd7e9ca018f9caa438094001a58e6bc4d8c999bf0d07",
+      "bytes": 63021
+    },
+    {
+      "file": "cuDNN-9.10.2-EULA.txt",
+      "sha256": "5b01c7ffbd22accb5f6f9073beb90121c53b9180ccdfc60a98053c6a3959e0a6",
+      "bytes": 18529
+    }
+  ]
+}

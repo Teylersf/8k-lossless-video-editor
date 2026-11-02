@@ -1,0 +1,65 @@
+{
+  "package": "Intel official onemkl-license2025.3.0 Windowswheel",
+  "runtime_evidence": "PyTorch2.11.0+cu126 torch.__config__: InteloneAPIMKL2025.3, USE_MKL=ON; staticallyincorporatedintotorch_cpu.dll",
+  "source": {
+    "url": "https://files.pythonhosted.org/packages/0e/8e/98ad8181e4af2ea7a6c7827ef6d24c73b6ee96a2890eacf46103f596195d/onemkl_license-2025.3.0-py2.py3-none-win_amd64.whl",
+    "sha256": "35a179620bcadbcc3d17d74f7f72cab75889f3736b89685f6a68158325b65e91",
+    "bytes": 58961
+  },
+  "files": [
+    {
+      "file": "third-party-programs-IntelMPI.txt",
+      "wheel_path": "onemkl_license-2025.3.0.data/data/share/doc/mkl/licensing/third-party-programs-IntelMPI.txt",
+      "sha256": "82fa46762c37662a52ab9df58781813c1dc6c268ae2b6f9cf2d83183e706aa09",
+      "bytes": 77510
+    },
+    {
+      "file": "third-party-programs-benchmarks.txt",
+      "wheel_path": "onemkl_license-2025.3.0.data/data/share/doc/mkl/licensing/third-party-programs-benchmarks.txt",
+      "sha256": "1f1224af12a7d3e51150ce6f762e32472076a31f6e44db41d3b651a7fa20f2f5",
+      "bytes": 5234
+    },
+    {
+      "file": "third-party-programs-level-zero.txt",
+      "wheel_path": "onemkl_license-2025.3.0.data/data/share/doc/mkl/licensing/third-party-programs-level-zero.txt",
+      "sha256": "cfe7d2ba4b4cd53271c7f91937e906256c0f14ea62ba33ffb556664b8d39aa59",
+      "bytes": 1124
+    },
+    {
+      "file": "third-party-programs-oneMath.txt",
+      "wheel_path": "onemkl_license-2025.3.0.data/data/share/doc/mkl/licensing/third-party-programs-oneMath.txt",
+      "sha256": "2ba4e9858c253331691370f4e8e3899ca6a5baa20907f189f5970635870b860d",
+      "bytes": 6777
+    },
+    {
+      "file": "third-party-programs-oneTBB.txt",
+      "wheel_path": "onemkl_license-2025.3.0.data/data/share/doc/mkl/licensing/third-party-programs-oneTBB.txt",
+      "sha256": "d507da4fffae647ebc1bbb7e12cc5cca8087d36b0d78cc75caa96cae37688cb1",
+      "bytes": 19504
+    },
+    {
+      "file": "third-party-programs-openmp.txt",
+      "wheel_path": "onemkl_license-2025.3.0.data/data/share/doc/mkl/licensing/third-party-programs-openmp.txt",
+      "sha256": "8fdfbbdfed13bca3641da35182e7ee1bb92a99f302ce8b0deb981ac1f18adee2",
+      "bytes": 31028
+    },
+    {
+      "file": "third-party-programs-safestring.txt",
+      "wheel_path": "onemkl_license-2025.3.0.data/data/share/doc/mkl/licensing/third-party-programs-safestring.txt",
+      "sha256": "415000d1887939ffc6826e0ed3f099cebcab6aaeda2da0acb017110a456b3d42",
+      "bytes": 2448
+    },
+    {
+      "file": "third-party-programs.txt",
+      "wheel_path": "onemkl_license-2025.3.0.data/data/share/doc/mkl/licensing/third-party-programs.txt",
+      "sha256": "6fb57367c2107b8b3347e0e9db10d368c7b9ea898a08132b2f841b24b86f076f",
+      "bytes": 65770
+    },
+    {
+      "file": "LICENSE.txt",
+      "wheel_path": "onemkl_license-2025.3.0.dist-info/LICENSE.txt",
+      "sha256": "7721633d0ddff43fae25ebfd405f8166a0ce730cbcec44f2f3ad9d5eb8ac9a6f",
+      "bytes": 4105
+    }
+  ]
+}

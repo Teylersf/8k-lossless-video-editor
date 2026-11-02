@@ -1,0 +1,12 @@
+{
+  "component": "MAGMA2.5.4",
+  "runtime_evidence": "Actualtorch2.11.0+cu126config reportsMAGMA2.5.4; torchaggregateLICENSEhadnomagmaentry",
+  "files": [
+    {
+      "file": "COPYRIGHT",
+      "source": "https://raw.githubusercontent.com/icl-utk-edu/magma/v2.5.4/COPYRIGHT",
+      "sha256": "1d7c838bebca064654dac2b702b0c0a2fc22ab1bec0797f9fe8baf8d1d0731de",
+      "bytes": 1655
+    }
+  ]
+}
