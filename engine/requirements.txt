@@ -1,0 +1,12 @@
+# Shared HTTP/media dependencies; install a compatible PyTorch for your backend.
+# Windows/CUDA: use pytorch.org; a venv can reuse it with --system-site-packages.
+# Apple Silicon: install root requirements-macos.txt (includes this file + torch).
+# Metal/MPS and CPU setup: README.md#start-on-mac; no CUDA package is required on Mac.
+fastapi==0.139.0
+annotated-doc==0.0.5
+uvicorn==0.40.0
+python-multipart==0.0.22
+httpx==0.28.1
+av==17.0.0
+numpy>=2.2,<3
+Pillow>=11.3,<13
