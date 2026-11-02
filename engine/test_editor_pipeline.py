@@ -458,7 +458,7 @@ class TimelineTests(unittest.TestCase):
             output = original([editor.media.FFMPEG, "-v", "error", "-i", str(path), "-f", "f32le", "pipe:1"])
             self.assertEqual(len(output), samples * 8)
             self.assertGreater(float(np.abs(np.frombuffer(output, dtype=np.float32)).max()), .01)
-            render_argv = next(args for args in arguments if "-/filter_complex" in args)
+            render_argv = next(args for args in arguments if "-/filter_complex" in args or "-filter_complex_script" in args)
         self.assertLess(len(subprocess.list2cmdline(render_argv)), 32767)
         self.assertEqual(sum(1 for args in arguments if "-show_streams" in args), 1)
 

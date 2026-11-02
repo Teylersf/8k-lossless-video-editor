@@ -7,6 +7,7 @@ file is modified. Codec-lossless YUV and verified RGB16 are distinct modes.
 """
 from __future__ import annotations
 from fractions import Fraction
+from functools import lru_cache
 import hashlib
 import json
 import math
@@ -32,6 +33,14 @@ _ACESCG_TO_709 = ((1.7050509926579844, -.6217921206570052, -.0832588720009787),
                  (-.1302564175070434, 1.1408047365754013, -.010548319068357955),
                  (-.024003356804618035, -.12896897606497057, 1.1529723328695887))
 _CHANNELS = {"mono": 1, "stereo": 2, "5.1": 6, "7.1": 8}
+
+
+@lru_cache(maxsize=1)
+def _filter_graph_option():
+    # FFmpeg 6 needs the legacy form; FFmpeg 9 removed it. Probe this binary's
+    # actual options, keeping the graph in an owned file on both versions.
+    help_text = media._run([media.FFMPEG, "-hide_banner", "-h", "full"], 30).decode(errors="replace")
+    return "-filter_complex_script" if "-filter_complex_script " in help_text else "-/filter_complex"
 
 
 def _progress(work, value, message):
@@ -533,7 +542,7 @@ def _audio(project, media_map, duration, work):
         chains += ["".join(labels) + f"amix=inputs={len(labels)}:normalize=0,apad,atrim=end_sample={samples}[mix]"]
         graph = work / "audio.ffgraph"
         graph.write_text(";\n".join(chains), encoding="utf-8")
-        arguments += ["-/filter_complex", str(graph), "-map", "[mix]"]
+        arguments += [_filter_graph_option(), str(graph), "-map", "[mix]"]
     else:
         arguments += ["-f", "lavfi", "-i", f"anullsrc=r={rate}:cl={layout}", "-t", f"{samples / rate:.12f}"]
     media._run(arguments + ["-c:a", "pcm_f32le", "-ar", str(rate), "-ac", str(channels), str(audio)], 86400)
