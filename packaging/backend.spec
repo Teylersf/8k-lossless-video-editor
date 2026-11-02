@@ -1,5 +1,8 @@
 # -*- mode: python ; coding: utf-8 -*-
-"""Native PyInstaller 6.22.3 onedir backend. GPL-2.0-only."""
+"""Native PyInstaller 6.22.3 onedir backend. GPL-3.0-or-later.
+
+See LICENSE and LICENSE-EXCEPTION.
+"""
 import os
 from pathlib import Path
 import platform

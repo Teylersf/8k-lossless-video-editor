@@ -1,4 +1,6 @@
-"""Build a native, self-contained PyInstaller onedir backend. GPL-2.0-only.
+"""Build a native, self-contained PyInstaller onedir backend. GPL-3.0-or-later.
+
+See LICENSE and LICENSE-EXCEPTION for the project's license and permission.
 
 Run in the existing application venv after building app/dist. This script never
 installs packages or downloads binaries, and never starts a persistent server.
@@ -243,7 +245,10 @@ def main():
         raise ValueError("Insufficient free space for native staging and onedir output")
     (stage / "bin").mkdir(parents=True)
     (stage / "licenses").mkdir()
-    shutil.copy2(ROOT / "LICENSE", stage / "licenses/PROJECT-COPYING")
+    for source, name in (("LICENSE", "PROJECT-COPYING"),
+                         ("LICENSE-EXCEPTION", "PROJECT-LICENSE-EXCEPTION"),
+                         ("NOTICE.md", "PROJECT-NOTICE.md")):
+        shutil.copy2(ROOT / source, stage / "licenses" / name)
     python_notices(stage / "licenses")
     private_runtime, private_audit = None, None
     if system == "Windows":
