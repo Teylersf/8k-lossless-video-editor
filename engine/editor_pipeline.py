@@ -533,7 +533,7 @@ def _audio(project, media_map, duration, work):
         chains += ["".join(labels) + f"amix=inputs={len(labels)}:normalize=0,apad,atrim=end_sample={samples}[mix]"]
         graph = work / "audio.ffgraph"
         graph.write_text(";\n".join(chains), encoding="utf-8")
-        arguments += ["-filter_complex_script", str(graph), "-map", "[mix]"]
+        arguments += ["-/filter_complex", str(graph), "-map", "[mix]"]
     else:
         arguments += ["-f", "lavfi", "-i", f"anullsrc=r={rate}:cl={layout}", "-t", f"{samples / rate:.12f}"]
     media._run(arguments + ["-c:a", "pcm_f32le", "-ar", str(rate), "-ac", str(channels), str(audio)], 86400)

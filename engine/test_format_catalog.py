@@ -20,7 +20,7 @@ class CatalogTests(unittest.TestCase):
         self.assertEqual(catalog.get_profile('lossless')['options']['level'], '3')
         self.assertFalse(catalog.get_profile('prores')['lossless'])
         self.assertFalse(catalog.get_profile('hevc')['lossless'])
-        self.assertFalse(catalog.get_profile('nvenc-lossless')['rgb_lossless'])
+        self.assertFalse(next(p for p in rows if p['id'] == 'nvenc-lossless')['rgb_lossless'])
 
     def test_broadcast_geometry_is_explicit(self):
         p = {'width':1920,'height':1080,'fps':'24000/1001'}
