@@ -2,6 +2,7 @@ import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import {
   accepts,
+  adoptImportedSettings,
   animated,
   duplicateClip,
   findClip,
@@ -10,6 +11,7 @@ import {
   makeClip,
   moveClip,
   newProject,
+  newImportSettings,
   parseTimecode,
   putKeyframe,
   relinkMedia,
@@ -52,6 +54,132 @@ function sequence() {
   p = insertClip(p, clip, p.tracks[0].id, media);
   return { p, id: clip.id };
 }
+test("first audio import adopts supported audio without consuming first-video defaults", () => {
+  const p = newProject(),
+    settings = newImportSettings();
+  const audio = adoptImportedSettings(
+    p,
+    {
+      ...media,
+      kind: "audio",
+      width: 0,
+      height: 0,
+      audio_layout: "5.1",
+      audio_sample_rate: 96000,
+    },
+    settings,
+  );
+  assert.equal(audio.project.audio_layout, "5.1");
+  assert.equal(audio.project.audio_sample_rate, 96000);
+  assert.equal(audio.project.width, 1920);
+  assert.deepEqual(audio.settings, {
+    video: false,
+    audioLayout: true,
+    audioSampleRate: true,
+  });
+  const video = adoptImportedSettings(
+    audio.project,
+    {
+      ...media,
+      width: 7680,
+      height: 4320,
+      fps_exact: "30000/1001",
+      audio_layout: "stereo",
+      audio_sample_rate: 48000,
+    },
+    audio.settings,
+  );
+  assert.equal(video.project.width, 7680);
+  assert.equal(video.project.height, 4320);
+  assert.equal(video.project.fps, "30000/1001");
+  assert.equal(video.project.audio_layout, "5.1");
+  assert.equal(video.project.audio_sample_rate, 96000);
+  assert.equal(video.settings.video, true);
+  assert.equal(p.audio_layout, "stereo");
+  assert.deepEqual(settings, newImportSettings());
+  validateProject(video.project);
+});
+test("unknown or unsupported audio metadata leaves each default open for a known source", () => {
+  const p = newProject();
+  for (const metadata of [
+    {},
+    { audio_layout: "unknown", audio_sample_rate: 0 },
+    { audio_layout: "7.1.4", audio_sample_rate: 192000 },
+    { audio_layout: "mono", audio_sample_rate: 44100, audio_streams: 0 },
+  ]) {
+    const result = adoptImportedSettings(
+      p,
+      { ...media, kind: "audio", ...metadata },
+      newImportSettings(),
+    );
+    assert.equal(result.project, p);
+    assert.deepEqual(result.settings, newImportSettings());
+  }
+  const partial = adoptImportedSettings(
+    p,
+    {
+      ...media,
+      kind: "audio",
+      audio_layout: "unknown",
+      audio_sample_rate: 44100,
+    },
+    newImportSettings(),
+  );
+  assert.equal(partial.settings.audioLayout, false);
+  assert.equal(partial.settings.audioSampleRate, true);
+  const known = adoptImportedSettings(
+    partial.project,
+    {
+      ...media,
+      kind: "audio",
+      audio_layout: "mono",
+      audio_sample_rate: 96000,
+    },
+    partial.settings,
+  );
+  assert.equal(known.project.audio_layout, "mono");
+  assert.equal(known.project.audio_sample_rate, 44100);
+});
+test("explicit sequence settings and restored projects retain their audio and video choices", () => {
+  const p: Project = {
+    ...newProject(),
+    width: 3840,
+    height: 2160,
+    fps: "25/1",
+    audio_layout: "7.1",
+    audio_sample_rate: 96000,
+  };
+  const result = adoptImportedSettings(
+    p,
+    { ...media, audio_layout: "mono", audio_sample_rate: 44100 },
+    newImportSettings(true),
+  );
+  assert.equal(result.project, p);
+  assert.deepEqual(result.settings, newImportSettings(true));
+});
+test("subsequent sources cannot overwrite independently adopted settings", () => {
+  const first = adoptImportedSettings(
+    newProject(),
+    { ...media, audio_layout: "mono", audio_sample_rate: 44100 },
+    newImportSettings(),
+  );
+  const next = adoptImportedSettings(
+    first.project,
+    {
+      ...media,
+      width: 7680,
+      height: 4320,
+      fps_exact: "60/1",
+      audio_layout: "5.1",
+      audio_sample_rate: 96000,
+    },
+    first.settings,
+  );
+  assert.equal(next.project, first.project);
+  assert.equal(next.project.width, 1920);
+  assert.equal(next.project.audio_layout, "mono");
+  assert.equal(next.project.audio_sample_rate, 44100);
+});
 test("project validation rejects unknown, nonfinite, duplicate and excessive values", () => {
   const { p, id } = sequence();
   assert.equal(validateProject(p).tracks[0].clips[0].id, id);

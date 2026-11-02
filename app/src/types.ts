@@ -77,6 +77,9 @@ export type Media = {
   pixel_format: string;
   bit_depth: number;
   audio_streams: number;
+  audio_channels?: number;
+  audio_layout?: string;
+  audio_sample_rate?: number;
   transfer: string;
   color_primaries: string;
   color_space: string;
@@ -167,7 +170,7 @@ export type ProjectEnvelope = {
   id: string;
   name?: string;
   project: Project;
-  updated_at: string | number;
+  updated_at: number;
 };
 export type FormatEntry = {
   id: string;

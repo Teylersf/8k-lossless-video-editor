@@ -51,6 +51,7 @@ import {
 } from "./api";
 import {
   accepts,
+  adoptImportedSettings,
   clamp,
   clipCount,
   duplicateClip,
@@ -62,6 +63,7 @@ import {
   makeClip,
   makeTrack,
   newProject,
+  newImportSettings,
   relinkMedia,
   removeClip,
   renderKey,
@@ -95,12 +97,16 @@ function initial() {
       return {
         project: validateProject(saved.project),
         id: typeof saved.id === "string" ? saved.id : undefined,
-        touched: !!saved.touched,
+        settings: {
+          video: !!saved.touched,
+          audioLayout: saved.settings?.audioLayout !== false,
+          audioSampleRate: saved.settings?.audioSampleRate !== false,
+        },
       };
   } catch {
     /* An invalid recovery never replaces a valid blank project. */
   }
-  return { project: newProject(), id: undefined, touched: false };
+  return { project: newProject(), id: undefined, settings: newImportSettings() };
 }
 function requestUpload(
   files: File[],
@@ -181,7 +187,7 @@ export default function App() {
     [menu, setMenu] = useState(false);
   const savedId = useRef<string | undefined>(startup.id),
     savedSnapshot = useRef(""),
-    formatTouched = useRef(startup.touched),
+    importSettings = useRef(startup.settings),
     generation = useRef(0),
     saveInFlight = useRef<Promise<void> | null>(null);
   const [entries, setEntries] = useState<JobEntry[]>([]),
@@ -334,7 +340,8 @@ export default function App() {
               JSON.stringify({
                 project: projectRef.current,
                 id: savedId.current,
-                touched: formatTouched.current,
+                touched: importSettings.current.video,
+                settings: importSettings.current,
               }),
             );
           } catch {
@@ -362,7 +369,8 @@ export default function App() {
         JSON.stringify({
           project,
           id: savedId.current,
-          touched: formatTouched.current,
+          touched: importSettings.current.video,
+          settings: importSettings.current,
         }),
       );
     } catch {
@@ -378,7 +386,7 @@ export default function App() {
     generation.current++;
     savedId.current = id;
     savedSnapshot.current = id ? JSON.stringify(next) : "";
-    formatTouched.current = true;
+    importSettings.current = newImportSettings(true);
     setSaving(false);
     dispatch({ type: "replace", project: { ...next, id: undefined } });
     setPlayhead(0);
@@ -390,7 +398,7 @@ export default function App() {
   }, []);
   const applyFormat = useCallback(
     (p: Project) => {
-      formatTouched.current = true;
+      importSettings.current = newImportSettings(true);
       commit(p);
     },
     [commit],
@@ -428,23 +436,13 @@ export default function App() {
             imported,
           ]);
           setSourceId(imported.id);
-          if (
-            !formatTouched.current &&
-            imported.kind === "video" &&
-            imported.width >= 16 &&
-            imported.height >= 16 &&
-            imported.width <= 8192 &&
-            imported.height <= 8192 &&
-            imported.width * imported.height <= 35651584
-          ) {
-            formatTouched.current = true;
-            commit({
-              ...projectRef.current,
-              width: imported.display_width || imported.width,
-              height: imported.display_height || imported.height,
-              fps: imported.fps_exact || "24/1",
-            });
-          }
+          const adopted = adoptImportedSettings(
+            projectRef.current,
+            imported,
+            importSettings.current,
+          );
+          importSettings.current = adopted.settings;
+          if (adopted.project !== projectRef.current) commit(adopted.project);
           setUploadProgress(100);
         }
         notify(
@@ -1296,7 +1294,7 @@ export default function App() {
             <button
               onClick={() => {
                 loadProject(newProject());
-                formatTouched.current = false;
+                importSettings.current = newImportSettings();
                 setModal(null);
               }}
             >
@@ -1317,7 +1315,7 @@ export default function App() {
                     return;
                   }
                   loadProject(newProject());
-                  formatTouched.current = false;
+                  importSettings.current = newImportSettings();
                   setModal(null);
                 })
               }

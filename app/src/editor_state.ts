@@ -93,6 +93,60 @@ export function newProject(name = "Untitled sequence"): Project {
     markers: [],
   };
 }
+export type ImportSettings = {
+  video: boolean;
+  audioLayout: boolean;
+  audioSampleRate: boolean;
+};
+export const newImportSettings = (restored = false): ImportSettings => ({
+  video: restored,
+  audioLayout: restored,
+  audioSampleRate: restored,
+});
+/** Adopt each supported source setting once; explicit sequence choices lock it. */
+export function adoptImportedSettings(
+  project: Project,
+  media: Media,
+  settings: ImportSettings,
+): { project: Project; settings: ImportSettings } {
+  const next = { ...settings },
+    patch: Partial<Project> = {};
+  if (
+    !settings.video &&
+    media.kind === "video" &&
+    media.width >= 16 &&
+    media.height >= 16 &&
+    media.width <= 8192 &&
+    media.height <= 8192 &&
+    media.width * media.height <= 35651584
+  ) {
+    patch.width = media.display_width || media.width;
+    patch.height = media.display_height || media.height;
+    patch.fps = media.fps_exact || "24/1";
+    next.video = true;
+  }
+  if (media.audio_streams > 0) {
+    if (
+      !settings.audioLayout &&
+      ["mono", "stereo", "5.1", "7.1"].includes(media.audio_layout || "")
+    ) {
+      patch.audio_layout = media.audio_layout as Project["audio_layout"];
+      next.audioLayout = true;
+    }
+    if (
+      !settings.audioSampleRate &&
+      [44100, 48000, 96000].includes(media.audio_sample_rate || 0)
+    ) {
+      patch.audio_sample_rate =
+        media.audio_sample_rate as Project["audio_sample_rate"];
+      next.audioSampleRate = true;
+    }
+  }
+  return {
+    project: Object.keys(patch).length ? { ...project, ...patch } : project,
+    settings: next,
+  };
+}
 export function makeClip(media?: Media, start = 0): Clip {
   return {
     id: uid("clip"),

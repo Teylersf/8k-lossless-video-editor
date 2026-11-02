@@ -384,7 +384,7 @@ export function OpenProject({
                 <small>
                   {item.project.width} × {item.project.height} ·{" "}
                   {duration(item.project).toFixed(2)}s ·{" "}
-                  {new Date(item.updated_at).toLocaleString()}
+                  {new Date(item.updated_at * 1000).toLocaleString()}
                 </small>
               </span>
             </button>
