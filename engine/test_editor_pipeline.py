@@ -231,6 +231,22 @@ class TimelineTests(unittest.TestCase):
         self.assertEqual(green, sorted(green, reverse=True))
         self.assertGreater(green[0] - green[-1], 20000)
 
+    def test_dpx16_embeds_correct_sdr_interpretation_and_exact_pixels(self):
+        import zipfile
+        import numpy as np
+        timeline = project([dict(id="dpx", media_id="red", duration=.125)])
+        result = editor.render_project(timeline, self.media, self.output(".zip"), mode="dpx-sequence")
+        with zipfile.ZipFile(self.output(".zip")) as archive:
+            name = next(n for n in archive.namelist() if n.endswith(".dpx"))
+            data = archive.read(name)
+        self.assertEqual(data[801:804], bytes((6, 6, 16)))
+        image = self.output(".dpx")
+        image.write_bytes(data)
+        tags = editor.media._video(editor._probe_editor(image))
+        self.assertEqual((tags.get("color_transfer"), tags.get("color_primaries")), ("bt709", "bt709"))
+        np.testing.assert_array_equal(self.decode(image)[0], self.decode(self.media["red"]["path"])[0])
+        self.assertEqual(result["frames"], 1)
+
     def test_24fps_millisecond_container_timestamps_do_not_repeat_frames(self):
         import av
         import numpy as np

@@ -96,6 +96,8 @@ def get_profile(mode, project=None):
         width, height, rate = int(project['width']), int(project['height']), Fraction(str(project['fps']))
         if mode == 'uncompressed' and project.get('color_space', 'bt709') != 'bt709':
             raise ValueError('Uncompressed NUT cannot retain HDR colorimetry in this build; choose a Matroska RGB16 master.')
+        if mode == 'dpx-sequence' and project.get('color_space', 'bt709') != 'bt709':
+            raise ValueError('This DPX16 profile uses Rec.709 SDR; choose a Matroska RGB16 or linear OpenEXR master for HDR.')
         if mode == 'dnxhd':
             rates = {Fraction(24):175000000, Fraction(24000,1001):175000000,
                      Fraction(25):185000000, Fraction(30):220000000, Fraction(30000,1001):220000000}

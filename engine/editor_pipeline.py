@@ -649,11 +649,28 @@ def _sequence_export(project, media_map, profile, compositor, device, work, outp
                 encoder = av.CodecContext.create(profile["encoder"], "w")
                 encoder.width, encoder.height, encoder.pix_fmt = project["width"], project["height"], profile["pixel_format"]
                 encoder.time_base, encoder.options = 1 / fps, profile["options"]
+                encoder.color_trc = 8 if linear else {"bt709": 1, "bt2020-pq": 16, "bt2020-hlg": 18}[project["color_space"]]
+                encoder.color_primaries = 1 if project["color_space"] == "bt709" else 9
+                encoder.colorspace, encoder.color_range = 0, 2
                 encoded = raw.reformat(format=profile["pixel_format"])
                 encoded.pts, encoded.time_base = 0, 1 / fps
+                encoded.color_trc, encoded.color_primaries = encoder.color_trc, encoder.color_primaries
+                encoded.colorspace, encoded.color_range = 0, 2
                 with image.open("xb") as target:
                     for packet in list(encoder.encode(encoded)) + list(encoder.encode()):
                         target.write(memoryview(packet))
+                if profile["id"] == "dpx-sequence":
+                    # Older FFmpeg DPX writers hard-code linear/unspecified.
+                    # SMPTE DPX transfer and colorimetric enum 6 both mean 709;
+                    # correct only our owned SDR file header, never pixel bytes.
+                    with image.open("r+b") as target:
+                        if target.read(4) not in (b"SDPX", b"XPDS"):
+                            raise ValueError("Invalid owned DPX header")
+                        target.seek(801)
+                        target.write(bytes((6, 6)))
+                    tags = media._video(_probe_editor(image))
+                    if (tags.get("color_transfer"), tags.get("color_primaries")) != ("bt709", "bt709"):
+                        raise ValueError("DPX output color interpretation verification failed")
                 with av.open(str(image), options={"protocol_whitelist": "file,pipe", "format_whitelist": _INPUT_OPTIONS[-1]}) as decoder:
                     decoded = next(decoder.decode(video=0))
                     if (decoded.width, decoded.height) != (project["width"], project["height"]):
