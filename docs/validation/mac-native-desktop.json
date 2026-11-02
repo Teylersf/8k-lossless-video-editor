@@ -1,34 +1,32 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "passed",
-  "artifact_stage": "v4 final signed Electron app and installed copy",
+  "artifact_stage": "Final v5 signed native app, installed AV1 delivery and lifecycle proof",
   "artifact": {
     "basename": "8KLosslessVideoEditor-0.1.0-beta.1-mac-arm64.dmg",
-    "bytes": 284239138,
-    "sha256": "238c3d554bea71593d9cecc27db4d1f48ba7a772a11f7fd6aede6dca076aad38",
-    "distribution": "private test build",
-    "public_binary": "held for Windows coordinator matching-source and notice collection"
+    "bytes": 284896376,
+    "sha256": "ad5eb2ed5d4f61816f784819a2faa5d2641d3356864d95e58b1e84b8b8b5fe21",
+    "distribution": "Local private ad-hoc test build",
+    "public_binary": "Held for Windows coordinator matching-source and notice collection"
   },
   "provenance": {
-    "wrapper_source_revision": "cdecb799d911ff3f30f92ea7939d0b4a940caca4",
-    "backend_build_input_revision": "21372303633d09ca19cdc3f021c711315e0da1f1",
-    "merged_main_revision": "97d2ff7d1003f7823a0b0ed2babe5f25db493ac2",
-    "scope": "Wrapper-only minimum-OS metadata change; frozen backend retained unchanged. Installed source comparisons and artifact hashes bind this proof.",
-    "installed_source_files_compared": 7,
-    "all_installed_source_comparisons_match": true
+    "product_build_input_revision": "d50d0b100cd43e5cd6078d63bc48065e2e971e7f",
+    "notice_refresh_revision": "1bc53573481eddc6405cccb2f987b0c0d6c131e9",
+    "assembly": "Fresh backend/app from product input, then notice-only Git-byte refresh and final Electron repack/sign. No full backend rebuild at the notice revision is claimed.",
+    "core_source_files_bound_to_product_input": 8,
+    "frontend_files_match_original_generated_snapshot": true
   },
   "platform": {
     "os": "macOS",
     "architecture": "arm64",
+    "minimum_macos": "26.6.2",
     "gpu": "Apple M4",
-    "backend": "mps",
     "version": "0.1.0-beta.1",
     "python": "3.13.18",
     "pyinstaller": "6.22.3",
     "torch": "2.11.0",
     "av": "17.0.0",
     "ffmpeg": "9.0.2",
-    "minimum_macos": "26.6.2",
     "tested_macos": "26.6.2"
   },
   "signing": {
@@ -36,151 +34,165 @@
     "developer_id_signed": false,
     "notarized": false,
     "gatekeeper_acceptance": "not asserted",
-    "automatic_post_collect_framework_sealing": true,
-    "frameworks_sealed": 1,
-    "outer_app_and_python_framework_deep_strict_verified": true
+    "outer_app_and_python_framework_deep_strict_verified": true,
+    "automatic_post_collect_framework_sealing": true
   },
   "final_app_audit": {
     "status": "passed",
-    "stage": "Final Electron app after signing, not just the collected build output",
-    "count_scope": "All regular Mach-O in final app Resources/backend; outer app and Python framework also separately deep/strict verified.",
+    "scope": "Final app after notice refresh and Electron signing; every regular Mach-O in Resources/backend, plus separate outer-app/Python-framework deep verification.",
+    "regular_files_scanned": 14670,
     "arm64_only_macho_files": 300,
-    "strict_macho_signatures_verified": 300,
-    "macho_bytes": 478337392,
+    "macho_bytes": 478338272,
+    "strict_signatures_verified": 300,
     "internal_dependency_edges": 886,
     "internal_symlinks": 96,
-    "unique_apple_system_dependency_names": 37,
+    "unique_apple_system_dependencies": 37,
     "errors": 0,
     "private_ffmpeg_macho_subset": 102,
-    "pyav_and_private_ffmpeg_linked_closures_separate": true,
-    "root_license_exception_notice_copies_matched": 7,
-    "build_receipt_sha256": "fad84337299db239cb2bf6974c1068b69eb0d93dd59488b88daaa17b8d74bb23"
+    "pyav_and_ffmpeg_linked_closures_separate": true,
+    "maximum_backend_deployment_floor": "26.6.2",
+    "declared_minimum_covers_all_machos": true,
+    "limiting_library": "libtesseract.5.dylib",
+    "root_license_exception_notice_copies_matched": 7
   },
-  "installation": {
-    "method": "APFS clone copy from final built app; mounted DMG identity verified",
-    "prior_v3_finder_copy_verified": true,
+  "release_notices": {
+    "files": 229,
+    "bytes": 7922440,
+    "all_match_raw_current_git_blobs": true,
+    "crlf_source_files_preserved": 25,
+    "source_inventory_sha256": "e2ee77f9c24810ad97620f411856cbe7628c05d2ab3c886f2be4022f60141d45",
+    "scope": "Exact bytes, including intentional CRLF; this is not an independent legal completeness judgment."
+  },
+  "installation_and_preservation": {
+    "method": "APFS clone copy from final built app; mounted final DMG identity verified",
     "dmg_image_verified": true,
     "installed_deep_strict_signature_verified": true,
-    "recorded_files_unchanged_across_export": true,
-    "recorded_files_compared": 22,
+    "full_userdata_apfs_backup_retained": true,
+    "original_project_bodies_preserved": 1,
+    "original_user_av1_output_preserved": true,
+    "recorded_installed_files_unchanged_across_export": true,
+    "recorded_installed_files_compared": 22,
     "installed_sha256": {
-      "app_executable": "d0a7696dc35a6d0117d679719b0e9fca351bd85e26787234a1c0fee945c989da",
-      "app_asar": "b14a56f9b60521905f1dec9dd4b92cb6b2650192b5edc79f59885f1ec2c85dab",
-      "backend_executable": "9481019ac29ea0543091dd953010f3795a80441739574ddc41bf4290fbd829d6"
+      "app_executable": "4b0b9cfe55f88d890faabc71d0f596239683122666b72dc81b4c133ea840ff5d",
+      "app_asar": "e199f0787b6d5b3fb48c737de214d9b958d835dd5a386f03fe5407dbe5e7f8e6",
+      "backend_executable": "4bae55a7ff017473a8b86a4fbb5bfa5fd298d6b9d06acb3d875b80d7c1ce391f"
+    },
+    "full_backend_unchanged_across_export": {
+      "regular_files": 14670,
+      "symlinks": 96,
+      "all_match_baseline": true
     }
   },
-  "installed_gui_native_8k_export": {
+  "original_user_av1_report": {
+    "status": "Successful export; seven amber processing notes resembled errors",
+    "bytes": 706839,
+    "output_sha256": "a17db413f4188097166f28607335da5cbef7999395ffd0bc1655452c406e6fe9",
+    "independent_decode_passed": true,
+    "unchanged_after_update": true
+  },
+  "installed_gui_av1_export": {
     "status": "passed",
-    "content": "Synthetic native RGB16 clip and PCM audio, Modern lens effects and title",
+    "content": "Synthetic native 8K, Modern lens and title",
     "width": 7680,
     "height": 4320,
     "frames": 2,
-    "codec": "ffv1",
-    "pixel_format": "gbrp16le",
-    "canonical_samples": "rgb48le",
-    "rgb16_sha256": "791256bad8a76e3af8e98d43b8efe7e0da7234f893aaf6fddf28376a4512cd03",
-    "bit_depth": 16,
+    "codec": "av1",
+    "pixel_format": "yuv420p10le",
+    "bit_depth": 10,
     "fps": "24/1",
     "duration_seconds": 0.08333333333333333,
-    "actual_backend": "mps",
-    "independent_decode_after_worker_exit": true,
-    "matches_rendered_samples": true,
-    "changed_from_untreated_source": true,
-    "output_bytes": 143266705,
-    "output_sha256": "bc1b4f76601f02644ca5a8b38e7e8dc1d5a24cdbc439ddcb5f405b95e0cc600f",
-    "download_published_and_job_hashes_match": true,
-    "job_creation_to_publication_seconds": 14.792,
-    "timing_scope": "Includes queue, startup and output verification",
+    "compositing_backend": "mps",
+    "video_encoder": "libsvtav1 software CPU",
+    "precision": "Lossy AV1 YUV420 delivery; no RGB16 or encoder-input equality claim",
+    "complete_independent_decode_after_worker_exit": true,
+    "decoded_yuv10_sha256": "aab92bd2f6fdfcec6377f18054b2ddf5d98ad63a6d92b3b8220ea341c3399b2b",
     "timestamps_seconds": [
       "0",
       "21/500"
     ],
     "container_time_base": "1/1000",
-    "timestamp_tolerance": "Half container tick plus one microsecond; Matroska PTS are quantized",
+    "timestamp_tolerance": "Half container tick plus one microsecond; Matroska timestamps are quantized",
+    "output_bytes": 706839,
+    "output_sha256": "5aad9399b65d1d6847397e3f125a2cec4b92b81f732457fa082fef2a5dc6b0a8",
+    "GUI_download_published_job_and_served_API_hashes_match": true,
+    "job_creation_to_publication_seconds": 15.68,
+    "timing_scope": "Includes queue, startup and output verification",
     "audio": {
-      "codec": "pcm_f32le",
+      "codec": "flac",
       "sample_rate": 48000,
       "channels": 2,
       "samples_per_channel": 4000,
-      "sha256": "8f12eb589932cd05fe4a1a24e33ee1a51778c23cd3ec3a81f182f4ee5bcb780c",
-      "exact_source_prefix": true
+      "canonical_samples": "Interleaved signed little-endian 24-bit PCM",
+      "sha256": "05a7e4e551bcb2868fe39fcadeeb370907b9fa533ab92fb602a86f0e2540ef5e",
+      "bits_per_raw_sample": 24,
+      "exact_quantized_source_prefix": true,
+      "float32_bit_exactness_claimed": false
     },
-    "original_sources_unchanged": true,
-    "imported_sources_match_originals": true
+    "original_and_imported_sources_preserved": true
   },
-  "installed_readonly_api": {
+  "processing_notes_ui": {
     "status": "passed",
-    "ready": true,
-    "backend": "mps",
-    "public_completed_job_matches_independent_proof": true
+    "count": 7,
+    "collapsed_bodies_hidden": true,
+    "expanded_messages_preserved": true,
+    "success_and_download_visible_in_both_states": true,
+    "evidence": "Actual native accessibility snapshots and screenshots; notes remain distinct from failures"
+  },
+  "historical_v4_rgb16_master": {
+    "scope": "Retained prior v4 FFV1 proof, not a new v5 lossless render",
+    "frames": 2,
+    "codec": "ffv1",
+    "bit_depth": 16,
+    "output_sha256": "bc1b4f76601f02644ca5a8b38e7e8dc1d5a24cdbc439ddcb5f405b95e0cc600f",
+    "rgb16_sha256": "791256bad8a76e3af8e98d43b8efe7e0da7234f893aaf6fddf28376a4512cd03"
   },
   "resources": {
     "sampling_interval_seconds": 0.5,
-    "max_sampled_process_tree_host_rss_bytes": 2955313152,
-    "max_sampled_process_tree_host_rss_gib": 2.75,
-    "scope": "Installed main app plus sampled descendants; host RSS can include shared mappings",
+    "max_sampled_process_tree_host_rss_bytes": 5294997504,
+    "max_sampled_host_rss_gib": 4.93,
+    "scope": "Installed main app and sampled descendants; host RSS may include shared mappings",
     "gpu_allocator_or_metal_driver_peak_measured": false
   },
   "installed_lifecycle": {
     "status": "passed",
-    "quit_method": "Actual native menu keyboard Command-Q",
+    "quit_method": "Actual native keyboard Command-Q",
     "owned_processes_before_quit": 5,
     "owned_processes_remaining_after_quit": 0,
     "owned_port_closed": true,
     "separate_existing_studio_and_editor_services_preserved": true,
     "relaunch_ready": true,
     "relaunch_backend": "mps",
-    "left_open_after_relaunch": true
+    "left_open": true,
+    "owned_dmg_mount_detached_normally": true
   },
-  "checks": {
-    "frontend_tests_passed": 23,
-    "desktop_tests_passed": 15,
-    "test_failures": 0,
-    "frontend_lint_exit_code": 0,
-    "packaging_python_syntax_passed": true,
-    "source_input_revision": "21372303633d09ca19cdc3f021c711315e0da1f1"
+  "tests": {
+    "frontend_passed": 26,
+    "desktop_passed": 16,
+    "engine_passed": 31,
+    "api_passed": 21,
+    "frontend_lint_exit": 0,
+    "failures": 0,
+    "regressions": "Actual AV1/YUV10-to-RGB48 conversion and bounded final diagnostic cause; macOS canonical-store fixture corrected without product changes"
   },
   "limitations": [
-    "This installed GUI render covers two native 8K frames, separately from the 24-frame and PNG16 sequence proofs.",
+    "Two-frame synthetic offline export; not sustained native 8K playback or long-form stability.",
+    "AV1 video is lossy; FLAC preserves the quantized 24-bit prefix, not float32 source precision.",
     "Sampled host RSS is neither GPU memory nor a guaranteed instantaneous peak.",
-    "Static linked-dependency/signature checks do not cover arbitrary dlopen/plugins; permitted Apple frameworks remain external.",
-    "Local ad-hoc tests establish no Developer ID, notarization or Gatekeeper acceptance for a downloaded quarantined build.",
-    "Synthetic source tags were partly unspecified; project BT.709 assumptions apply, without an HDR correctness claim."
+    "Static linked-dependency checks do not cover arbitrary dlopen/plugins. Apple system frameworks remain external.",
+    "Ad-hoc tests establish no notarization, Developer ID or Gatekeeper acceptance for a downloaded quarantined artifact.",
+    "Partly unspecified synthetic source tags used project BT.709 assumptions; no HDR correctness claim."
   ],
   "screenshot": {
-    "path": "docs/images/editor-mac-native.jpg",
-    "bytes": 155024,
-    "sha256": "337d30520d585d16806d2c2e5aca548591487ba20ced4425f91b734d463ac1fb"
-  },
-  "minimum_os": {
-    "app_declared": "26.6.2",
-    "maximum_backend_deployment_floor": "26.6.2",
-    "declared_floor_covers_all_300_machos": true,
-    "limiting_file": "libtesseract.5.dylib"
-  },
-  "retained_backend_identity": {
-    "files": 14434,
-    "symlinks": 96,
-    "total_file_bytes": 588733715,
-    "inventory_sha256": "a1258463ff7037a38977c9ed71cd7f7bce93e0bdba0167dfcf34293ee0ceab14",
-    "every_file_mode_and_symlink_matches_tested_v3": true,
-    "unchanged_during_v4_export": true
-  },
-  "prior_gui_import_proxy": {
-    "scope": "Fresh GUI import/full proxy decode on v3; identical retained backend. V4 served-proxy GET matched; no fresh v4 import claimed.",
-    "codec": "h264",
-    "width": 1280,
-    "height": 720,
-    "frames": 24,
-    "audio_codec": "aac",
-    "sha256": "a7e01fad3acc8f890bbc7fba6756a8675426fae3bde34bbadf2dde8d75a60303",
-    "source_and_imported_file_unchanged": true,
-    "v4_served_proxy_matches_independent_file": true
+    "path": "docs/images/editor-mac-av1-export.jpg",
+    "bytes": 92980,
+    "sha256": "959a4d98f2e567d37ec3092f48f0b65cd3763f96084d19b00ca44fd5e6830d02"
   },
   "evidence_receipt_sha256": {
-    "mac-v4-installed-native-8k-proof.json": "13aa75b82c29139949fa3f77881a82315735f288203494af85268753c27e3e6a",
-    "mac-final-app-backend-macho-audit-v4.json": "f75787f928727e307eab40389a043bb70f809afbc765e87a0777d1909cbe55e3",
-    "mac-native-app-lifecycle-v4.json": "dddd77f6402648e620cde752246d6617fcc19f2b169ae799acd7811c73fc8084",
-    "mac-v4-wrapper-build-inputs.json": "0eac53c7e2ebca5628f6e992a9f05d18d3fc31550efeb6d434ae77be2a61fbe6"
+    "mac-final-app-backend-macho-audit-v5-final.json": "9150e793a40613107f956c08b0f00ce0c4d538cb448258492a5c8d69c118de8a",
+    "mac-v5-installed-native-8k-proof.json": "0c6607d8d0beb6725c35020f045a825f78ef7792bf74f42b81d2cf2c45318266",
+    "mac-v5-installed-readonly-api.json": "8aa99040e4d9836360aaf5c1b3ea821e59473a97b6003b3860ec399ddbe1e69b",
+    "mac-v5-native-notes-check.json": "80f95d8dcbde3665b7f26c131b52562c27330e75de45acdbb10b1bc5a19b689e",
+    "mac-native-app-lifecycle-v5.json": "c24d8f5feef4e4d84492d8eea36db451e977907884348bdb0fa068aff72712df",
+    "mac-v5-python-tests-final.json": "ea00133d8e4e6503b5df96dc0ebb6f2977a869ba20fbd72f437f4398fef3c3ff"
   }
 }
