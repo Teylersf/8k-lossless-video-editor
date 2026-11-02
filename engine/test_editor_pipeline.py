@@ -409,7 +409,7 @@ class TimelineTests(unittest.TestCase):
     def test_rounded_349_frame_source_duration_does_not_add_frame(self):
         source = self.output("-349.mov")
         subprocess.run([editor.media.FFMPEG, "-v", "error", "-f", "lavfi", "-i", "color=red:s=160x96:r=30000/1001",
-                        "-frames:v", "349", "-c:v", "libx264", str(source)], check=True)
+                        "-frames:v", "349", *editor.media._cli_h264_encoder(editor.media.FFMPEG), str(source)], check=True)
         info = editor.media.inspect_media(source)
         info.update(kind="video", duration=11.644967)
         records = {"source": dict(path=str(source), public=info)}

@@ -1,6 +1,7 @@
 """Installed codec/format catalogue and explicit professional export profiles.
 
-GPL-2.0-only. An installed encoder is not a successful hardware capability probe.
+GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION.
+An installed encoder is not a successful hardware capability probe.
 The export worker must open/encode/verify the requested geometry before claiming
 hardware or lossless success. Container names never imply codec losslessness.
 """
@@ -77,10 +78,14 @@ def profiles():
     result = []
     for original in _PROFILES:
         p = deepcopy(original)
-        p['available'] = p['encoder'] is None or _codec_available(p['encoder'], 'w')
+        alternatives = {'hevc': ('libx265', 'hevc_nvenc', 'hevc_videotoolbox'),
+                        'h264': ('libx264', 'libopenh264', 'h264_nvenc', 'h264_videotoolbox')}
+        candidates = alternatives.get(p['id'], (p['encoder'],))
+        p['installed_encoders'] = [name for name in candidates if name is not None and _codec_available(name, 'w')]
+        p['available'] = p['encoder'] is None or bool(p['installed_encoders'])
         p['hardware_verified'] = False
         p['availability_scope'] = 'encoder installed; actual project capability is checked during export'
-        p['reason'] = '' if p['available'] else f"This PyAV build does not include {p['encoder']}"
+        p['reason'] = '' if p['available'] else f"This PyAV build does not include a supported encoder: {', '.join(candidates)}"
         result.append(p)
     return result
 

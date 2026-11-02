@@ -1,13 +1,13 @@
 # Validation and release scope
 
-Version **0.1.0-local** is an initial source beta. Included tests exercise actual
+Version **0.1.0-beta.1** is an initial beta. Included tests exercise actual
 small media processing; availability flags are not substituted for codec
 round trips. Results for a separate Lens Studio project do not establish this
 editor's end-to-end performance.
 
 ## Completed local checks
 
-Windows checks passed the client build/lint, 19 editor state tests, 25 engine
+Windows checks passed the client build/lint, 23 editor state tests, 26 engine
 tests, four catalogue tests and 20 API tests, including precise MOV stream
 duration and NUT final-frame regressions. These are small synthetic cases,
 not sustained 8K benchmarks.
@@ -53,8 +53,48 @@ verified. Source hashes remained unchanged.
 The complete script took 146.98 seconds including fixture generation and
 verification. These timings cover just two output frames. They establish a
 native-8K raster/sample result, not sustained frame rate or long-form stability.
-GPU-memory measurement was unavailable; no peak-VRAM claim is made. Local raw
-receipts include private paths and are not copied into this documentation.
+GPU-memory measurement was unavailable; no peak-VRAM claim is made. The
+[sanitized public receipt](validation/windows-rtx3090-native-8k.json) records
+the tested scope without personal source paths.
+
+## Actual editor: 48-frame 8K DPX16 cinema master
+
+The actual GUI rendered a 48-frame **7680×4320 / 24 fps / two-second DPX16**
+sequence with lens/color treatment, animated composition, titles and a float32
+PCM mix. The result was a 9,556,010,570-byte ZIP archive. Independent verification
+decoded all 48 DPX frames, matched every RGB16 frame hash and the complete
+sample-stream hash against the worker manifest, checked BT.709 metadata and ZIP
+CRC, and confirmed the imported DPX and audio sources remained unchanged.
+Independent verification took **84.868 seconds**.
+
+The [public receipt](validation/cinema-8k-dpx16.json),
+[actual editor screenshot](images/editor-8k-dpx.png) and
+[output-frame viewing JPEG](images/cinema-8k-dpx-frame.jpg) accompany this proof.
+The scene derives from a licensed high-resolution JPEG photograph, cropped and
+downsampled into the demo DPX source. It demonstrates processed 16-bit delivery,
+not 16-bit camera acquisition or native motion capture. The job did not record
+an exact code-file provenance snapshot, so the receipt makes no such claim.
+
+## Consumer Apple Silicon: native M4 8K proof
+
+The [published Apple M4 receipt](validation/mac-m4-native-8k.json) records a
+native ARM64 Mac mini with 16 GiB memory, macOS 26.6.2 and PyTorch 2.11.0/MPS.
+At tested revision `336abdaceea469dd471850fc9f64f6f5ea804948`, a two-clip,
+**24-frame 7680×4320 / 24 fps** RGB16 FFV1 master independently recovered every
+expected frame in sequence order and all 48,000 float32 PCM samples per stereo
+channel. Source hashes were unchanged.
+
+| M4 case | Render + engine verification | Additional independent verification |
+| --- | ---: | ---: |
+| 24-frame RGB16 FFV1 master | 94.593 s | 58.36 s |
+| Two-frame effects/title/overlay proof | 28.39 s | 6.80 s |
+
+The complete native validation script took **280.567 seconds**, including
+fixture generation and verification. The same public receipt includes separate
+PNG16 sequence and real browser editing/export checks. MPS was selected for
+supported effects; decoding, compositing and audio can use CPU. There was no
+NVENC test or measured Metal allocator peak. This is a one-second offline
+master proof, not a sustained 8K playback benchmark.
 
 ## Mac and browser scope
 
@@ -64,7 +104,6 @@ preview, queued cancellation and download of a verified 96-frame RGB16/PCM
 master. The downloaded file's SHA256 matched the server's verified output.
 Source-to-program switching passed after a finite-metadata seeking fix.
 
-Consumer Apple Silicon end-to-end 8K results remain pending their own receipt.
 Long-form 8K stability, interactive frame rate and broad real-world
 camera/interchange variant coverage remain separate validation work.
 

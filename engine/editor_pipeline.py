@@ -1,4 +1,4 @@
-"""Streaming local timeline compositor/exporter. GPL-2.0-only.
+"""Streaming local timeline compositor/exporter. GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION.
 
 Each output frame is composed in float32 linear project RGB. PyAV decodes
 source frames; row-sized sampling grids implement transforms. Audio is mixed
@@ -69,7 +69,7 @@ def capabilities():
     modes = []
     for profile in format_catalog.profiles():
         identifier, label, extension, required = profile["id"], profile["label"], profile["extension"], profile["encoder"]
-        available = required is None or required in encoders
+        available = profile['available']
         if identifier == "nvenc-lossless":
             available = available and device.type == "cuda"
         modes.append(dict(id=identifier, name=label, extension=extension, available=available,

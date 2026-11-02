@@ -1,4 +1,4 @@
-"""Create original desktop application icons from code. GPL-2.0-only."""
+"""Create original desktop application icons from code. GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION."""
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 

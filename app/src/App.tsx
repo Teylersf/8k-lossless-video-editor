@@ -1231,7 +1231,7 @@ export default function App() {
         </span>
         <button onClick={() => setModal("formats")}>Format support</button>
         <span className="status-version">
-          8K LOSSLESS · {status?.version || "0.1.0-local"}
+          8K LOSSLESS · {status?.version || "0.1.0-beta.1"}
         </span>
       </footer>
       {notice && (

@@ -1,5 +1,5 @@
 "use strict";
-// GPL-2.0-only. Own a spawned child and token, never a process found by name/port.
+// GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION. Own a spawned child and token, never a process found by name/port.
 const { spawn } = require("node:child_process");
 const { randomBytes } = require("node:crypto");
 const { EventEmitter } = require("node:events");

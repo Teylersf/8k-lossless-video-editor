@@ -24,7 +24,7 @@ from PIL import Image
 
 import server
 from engine import project_model
-from media_library import file_hash, atomic_json, MediaLibrary
+from media_library import file_hash, atomic_json, MediaLibrary, media_pipeline
 
 HEADER = {'X-Editor-Client': '8k-lossless-editor'}
 
@@ -172,7 +172,7 @@ class ServerTests(unittest.TestCase):
 
     def test_real_audio_and_video_proxy_waveform_and_source_preservation(self):
         for suffix, args, kind in [('.wav', ['-f', 'lavfi', '-i', 'sine=frequency=440:sample_rate=16000:duration=0.25', '-c:a', 'pcm_s16le'], 'audio'),
-                                   ('.mov', ['-f', 'lavfi', '-i', 'testsrc2=size=64x48:rate=24:duration=0.25', '-f', 'lavfi', '-i', 'sine=frequency=400:duration=0.25', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-c:a', 'pcm_s16le', '-shortest'], 'video')]:
+                                   ('.mov', ['-f', 'lavfi', '-i', 'testsrc2=size=64x48:rate=24:duration=0.25', '-f', 'lavfi', '-i', 'sine=frequency=400:duration=0.25', *media_pipeline._cli_h264_encoder(media_pipeline.FFMPEG), '-pix_fmt', 'yuv420p', '-c:a', 'pcm_s16le', '-shortest'], 'video')]:
             path = Path(self.temp.name) / ('fixture' + suffix)
             subprocess.run(['ffmpeg', '-v', 'error', '-n', *args, str(path)], check=True, capture_output=True)
             before = file_hash(path)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Opt-in native 8K editor verification, with original synthetic fixtures.
 
-GPL-2.0-only. Run with the editor's Python environment, for example:
+GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION. Run with the editor's Python environment, for example:
   python scripts/validate_native_8k.py --device cuda --frames 2 --nvenc --effects
   python scripts/validate_native_8k.py --device mps --frames 24
 

@@ -1,126 +1,171 @@
-# Formats, samples and color
+# A format for every stage of the edit
 
-The app's **Format support** panel and `GET /api/formats` report the installed
-catalogue. A decoder or encoder being installed is not proof that every codec
-variant, container, raster, frame rate or hardware combination will work. The
-actual source is inspected on import; exports are encoded and independently
-decoded before publication. [FFmpeg's format documentation](https://ffmpeg.org/general.html)
-describes its broader library support, which is larger than this editor's tested scope.
+**Cinema frames. Editing intermediates. Broadcast containers. Delivery files.**
 
-## Import families
+8K Lossless Video Editor brings those choices into one local timeline. Its
+catalogue has **24 explicit export profiles**, with installed decoder/encoder
+availability shown in **Format support** and `GET /api/formats`. The tables
+below describe the current implementation; actual file variants and requested
+geometry are checked during import/export.
 
-| Family | Catalogue examples |
+## The cinema-master workflow
+
+Create a UHD 8K **7680×4320** or DCI 8K **8192×4320** project, cut and composite
+the picture, set the source interpretation, finish the color, and export a
+**DPX16**, **EXR float**, **PNG16** or **TIFF16** frame sequence. Each archive
+contains numbered frames, `mix.wav` and `timeline.json`.
+
+For a single-file master, choose **RGB16 FFV1/Matroska** or reversible
+**JPEG 2000 RGB16/MOV**. For editorial interchange, choose the appropriate
+ProRes, DNxHR or CineForm profile. For viewing/delivery, choose an explicitly
+labeled H.264, HEVC or AV1 encode.
+
+### All 24 export profiles
+
+| # | Profile ID | Output | Picture contract | Audio |
+| ---: | --- | --- | --- | --- |
+| 1 | `lossless` | MKV / FFV1 | Verified processed RGB16 integer master | Float32 PCM |
+| 2 | `nvenc-lossless` | MKV / HEVC NVENC | Verified target 10-bit 4:2:0 YUV; actual hardware probe | Float32 PCM |
+| 3 | `copy` | Original container | One unchanged whole source; byte-identical copy | Original audio |
+| 4 | `hevc` | MP4 / H.265 | High-quality 10-bit 4:2:0 delivery | AAC |
+| 5 | `h264` | MP4 / AVC | High-quality 8-bit 4:2:0 delivery | AAC |
+| 6 | `av1` | MKV / AV1 | High-quality 10-bit 4:2:0 delivery | 24-bit FLAC |
+| 7 | `prores` | MOV / ProRes 422 HQ | 10-bit 4:2:2 editing intermediate | 24-bit PCM |
+| 8 | `prores-proxy` | MOV / ProRes Proxy | 10-bit 4:2:2 editing intermediate | 24-bit PCM |
+| 9 | `prores-lt` | MOV / ProRes 422 LT | 10-bit 4:2:2 editing intermediate | 24-bit PCM |
+| 10 | `prores-422` | MOV / ProRes 422 | 10-bit 4:2:2 editing intermediate | 24-bit PCM |
+| 11 | `prores-4444` | MOV / ProRes 4444 | Opaque 10-bit 4:4:4 in this implementation | 24-bit PCM |
+| 12 | `prores-xq` | MOV / ProRes 4444 XQ | Opaque 10-bit 4:4:4 in this implementation | 24-bit PCM |
+| 13 | `dnxhr` | MOV / DNxHR HQX | 10-bit 4:2:2 editing intermediate | 24-bit PCM |
+| 14 | `dnxhr-444` | MOV / DNxHR 444 | 10-bit RGB editing intermediate | 24-bit PCM |
+| 15 | `dnxhd` | MOV / DNxHD | Explicit 1080p broadcast raster/rate restrictions | 24-bit PCM |
+| 16 | `mxf` | MXF OP1a / DNxHR HQX | 10-bit 4:2:2 interchange | 24-bit PCM |
+| 17 | `mxf-mpeg2` | MXF / MPEG-2 | 4:2:2, 50 Mb/s, supported HD rasters | 24-bit PCM |
+| 18 | `cineform` | MOV / CineForm | 12-bit RGB editing intermediate | 24-bit PCM |
+| 19 | `jpeg2000` | MOV / reversible JPEG 2000 | Verified processed RGB16 | Float32 PCM |
+| 20 | `uncompressed` | NUT / rawvideo | Uncompressed RGB16; SDR in this build | Float32 PCM |
+| 21 | `png-sequence` | ZIP / PNG frames | Verified 16-bit RGB sequence | Float32 PCM WAV |
+| 22 | `tiff-sequence` | ZIP / TIFF frames | Verified 16-bit RGB sequence | Float32 PCM WAV |
+| 23 | `dpx-sequence` | ZIP / DPX frames | Verified 16-bit RGB sequence | Float32 PCM WAV |
+| 24 | `exr-sequence` | ZIP / EXR frames | Rendered linear float32 sequence; explicit interpretation | Float32 PCM WAV |
+
+All available profiles are selectable from the same export drawer. An absent
+encoder is reported as unavailable. An installed hardware encoder still has
+to open and encode the requested geometry; a GPU label is not the probe.
+DNxHD and MPEG-2 broadcast MXF are HD-specific profiles, not 8K export options.
+ProRes, DNxHR, CineForm and ordinary delivery profiles are not labeled
+mathematically lossless.
+
+## Bring your source material
+
+### Cinema, editorial and interchange
+
+| Source family | Containers / files |
 | --- | --- |
-| Everyday video | MOV/MP4/M4V, Matroska/WebM, AVI, NUT; H.264/AVC, HEVC, VP8/9, AV1, FFV1, MJPEG, uncompressed video |
-| Broadcast containers | MXF, GXF, MPEG program/transport streams, MTS/M2TS; supported MPEG-2, AVC-Intra/XDCAM and other installed codec variants |
-| Film/interchange | ProRes, DNxHD/DNxHR, CineForm, JPEG 2000/MJ2 |
-| Stills and sequences | DPX, EXR, 8/16-bit TIFF/PNG, JPEG/JPEG-LS/JPEG XL, BMP, TGA and WebP, according to installed decoders |
-| Audio | WAV/BWF/RF64/Wave64, AIFF, FLAC, ALAC/M4A, MP3, AAC, Opus and Vorbis/Ogg |
+| ProRes Proxy, LT, 422, HQ, 4444 and XQ | Supported MOV/MXF variants |
+| DNxHD and DNxHR | Supported MOV/MXF variants |
+| GoPro CineForm | MOV / AVI |
+| JPEG 2000 | MOV / MXF / MJ2 / J2K / JP2 |
+| FFV1 and uncompressed RGB | Matroska / NUT / supported AVI variants |
 
-An import copies source bytes into a private UUID folder and records SHA-256.
-The browser receives display proxies/posters and real decoded waveform peaks,
-not source filesystem paths. A sequence stores numbered copies in explicit
-upload order, an explicit rational frame rate and a private frame manifest.
-Current bounds are 64 GiB per import/sequence and 10,000 sequence frames.
+### Everyday and broadcast video
 
-### SDK and package boundaries
+| Family | Formats and codec families |
+| --- | --- |
+| QuickTime / MPEG-4 | MOV, MP4, M4V, 3GP; installed H.264/HEVC and other supported variants |
+| Matroska / WebM | MKV, WebM; H.264, HEVC, VP8, VP9, AV1, FFV1 |
+| AVI | MPEG-4, MJPEG and uncompressed variants |
+| MPEG transport / program | TS, MTS, M2TS, M2T, MPG, MPEG, VOB; MPEG-2/H.264/HEVC variants |
+| Broadcast interchange | MXF OP1a/OP-Atom, GXF; installed DNxHD/DNxHR, ProRes, MPEG-2, AVC-Intra/XDCAM, JPEG 2000 and DV variants |
+| Other everyday containers | WMV, ASF, FLV with installed WMV/VC-1/FLV/MPEG decoders |
 
-BRAW, RED R3D, ARRIRAW, Canon Cinema RAW and ProRes RAW are not made supported
-by ordinary ProRes/rawvideo decoding. Vendor SDK adapters are not implemented;
-the catalogue reports those paths as unavailable. For example, Blackmagic
-publishes its own [Blackmagic RAW SDK](https://www.blackmagicdesign.com/developer/products/braw/sdk-and-software).
-Import a supported interchange render instead.
+Container names do not guarantee every compression variant is supported.
+The editor uses the actual installed FFmpeg/PyAV decoders. The
+[upstream FFmpeg format documentation](https://ffmpeg.org/general.html)
+describes its broader library support, not a blanket promise for this app.
 
-DCP/IMF package assembly, CPL interpretation, encrypted assets and mastering
-are not implemented. An individual supported MXF/JPEG 2000 asset is different
-from opening a complete DCP or IMF package. Playlist/script/network demuxers
-are refused; uploads cannot nominate arbitrary filesystem paths or URLs.
+### Stills and image sequences
 
-## Export contracts
+**DPX 10/12/16-bit · OpenEXR float · TIFF 8/16-bit · PNG 8/16-bit · JPEG ·
+JPEG-LS · JPEG XL · BMP · TGA · WebP**
 
-### Original packet copy
+DPX/EXR/high-bit-depth images use native FFmpeg/PyAV inspection and decoding.
+The original image is retained; the 8-bit JPEG poster is only a viewing asset.
+Float EXR values above 1 survive decoding into grading. Source/clip
+interpretation supplies known transfer and primaries when those are missing.
 
-This release accepts one unchanged whole video source with matching project
-dimensions/rate. It copies the file bytes and preserves its original compressed
-video/audio. Edits, fades, mixing, grades, transforms, speed changes, gaps,
-overlap and partial/non-keyframe cuts are rejected. Multi-clip concatenation is
-not offered as a verified lossless shortcut in this release.
+Sequence imports preserve explicit upload order at a rational frame rate.
+The UI sends natural filename order. Current bounds are **10,000 frames** and
+**64 GiB** per import/sequence. The private manifest records each owned frame;
+the browser cannot submit arbitrary server paths or a wildcard pattern.
 
-### Lossless RGB16 master
+### Audio
 
-The default is FFV1 in Matroska with float32 PCM timeline audio. The renderer
-generates 16-bit integer RGB samples; an independent decode must recover their
-SHA-256 exactly. FFV1 itself is a lossless intraframe format, documented in
-[RFC 9043](https://www.rfc-editor.org/rfc/rfc9043.html). The app additionally
-checks frame count, geometry, cadence and audio.
+**WAV · BWF · RF64 · Wave64 · AIFF · FLAC · ALAC/M4A · MP3 · AAC · Opus · Ogg/Vorbis**
 
-“RGB16 lossless” refers to those processed samples. Source decoding, color
-conversion, grading, transforms and the conversion to a finite 16-bit integer
-range can change information before encoding. It does not claim identical
-source packets, original camera RAW data or arbitrary floating-point precision.
-Uncompressed RGB16 and reversible JPEG 2000 are separate catalogue profiles;
-actual installed support and verification still apply.
+Project sample rates are **44.1, 48 and 96 kHz**; layouts are **mono, stereo,
+5.1 and 7.1**. The first source audio stream of each clip contributes to the
+mix. Gain, clip-local volume keyframes, fades, overlaps, timing, speed and
+channel conversion are applied to the rendered program. Browser waveforms
+come from real decoded peaks.
 
-### NVIDIA HEVC codec-lossless
+Float32 PCM master audio preserves the processed mix without forcing a
+24-bit integer intermediate. Mezzanine/broadcast profiles use 24-bit PCM where
+specified; delivery AAC and 24-bit FLAC follow the table above. None of those
+mixing or conversion choices imply unchanged original audio packets.
 
-This profile probes NVENC at the requested geometry and pixel format. The
-target is 10-bit YUV 4:2:0; independently decoded active YUV samples are checked.
-RGB→YUV/chroma conversion is outside the codec-lossless claim. A driver, GPU
-name or installed `hevc_nvenc` encoder alone is insufficient. NVIDIA's
-[NVENC capability tables](https://docs.nvidia.com/video-technologies/video-codec-sdk/13.0/nvenc-application-note/index.html)
-describe generation-dependent HEVC/lossless support; this app still requires
-a successful actual encode and verification.
+## Three distinct promises of preservation
 
-### Delivery, intermediate and broadcast profiles
+| What you need | Choose | What is verified |
+| --- | --- | --- |
+| Keep the original file exactly | Original packet copy | One unchanged whole video source, copied byte-for-byte |
+| Keep the processed RGB picture exactly | RGB16 master or another verified RGB16 profile | Independently decoded integer RGB samples match the rendered samples |
+| Keep the chosen hardware-codec samples exactly | NVIDIA HEVC codec-lossless | Independently decoded active target YUV10 samples match |
 
-The catalogue includes H.264/HEVC/AV1 delivery, ProRes variants, DNxHD/DNxHR,
-MXF, CineForm and image-sequence profiles. Availability is dynamic. ProRes,
-DNxHR and ordinary delivery modes are not labeled mathematically lossless.
-DNxHD and MPEG-2 broadcast MXF have explicit HD raster/rate restrictions and
-are not 8K export profiles. ProRes 4444/XQ uses opaque `yuv444p10le` here; it is
-not a 12-bit/alpha-preserving compositor or export path.
+Source imports are copied and hashed; editing does not overwrite those bytes.
+Rendering color, compositing, transforms, transfer conversion and audio mixing
+changes samples before encoding. RGB→YUV conversion and chroma subsampling
+are outside the NVENC codec-lossless claim. RGB16 is integer data, not arbitrary
+float EXR precision.
 
-Supported HEVC/H.264 delivery or previews may use NVENC or Apple's VideoToolbox
-after probing, otherwise reported software encoders are used. VideoToolbox
-delivery is not codec-lossless. Broadcast/intermediate audio commonly uses
-24-bit PCM for compatibility; delivery may use AAC or 24-bit FLAC. The output
-report describes the selected conversion.
+FFV1's lossless intraframe format is specified in
+[RFC 9043](https://www.rfc-editor.org/rfc/rfc9043.html). NVIDIA documents its
+generation-dependent HEVC/lossless capabilities in the
+[NVENC application note](https://docs.nvidia.com/video-technologies/video-codec-sdk/13.0/nvenc-application-note/index.html).
+The editor also checks its own actual outputs; codec specifications alone do
+not validate a render.
 
-### Image sequence exports
+## Compact compatibility notes
 
-PNG16, TIFF16, DPX16 and linear float EXR profiles produce ZIP archives with
-numbered rendered frames, `mix.wav` and `timeline.json`. Integer RGB profiles
-and EXR float have different sample contracts. An EXR archive is not a camera
-RAW decoder or a promise that graded pixels equal the original EXR pixels.
+- **SDK / package paths:** BRAW, RED R3D, ARRIRAW, Canon Cinema RAW and ProRes
+  RAW are not implemented through the ordinary ProRes/rawvideo paths. They
+  need the relevant SDK/decoder integration. Blackmagic, for example, publishes
+  its own [RAW SDK](https://www.blackmagicdesign.com/developer/products/braw/sdk-and-software).
+  DCP/IMF CPL/package assembly, encryption and mastering are not implemented;
+  supported individual MXF/JPEG 2000 assets remain separate import paths.
+- **Original copy:** one whole unchanged source only. Edits, partial/non-keyframe
+  cuts, transforms, grades, mixing, fades, gaps and multi-clip concatenation
+  are rejected by this mode.
+- **Raster and timing:** projects support 16..8192 pixels per axis, up to
+  35,651,584 pixels, rational 1..120 fps and up to one day. The output is
+  project-CFR; VFR sources are sampled onto it. Each codec has its own additional
+  restrictions. Uncompressed NUT is SDR-only here; use an RGB16 Matroska master
+  for embedded HDR colorimetry.
+- **Color:** project spaces are BT.709, BT.2020 PQ and BT.2020 HLG. Input transfer,
+  primaries and reference white can be explicit. ACEScg support uses a primaries
+  matrix and chromatic adaptation; it is not a complete OCIO/ACES display/view/IDT
+  pipeline. Dolby Vision/HDR10+ mastering metadata is not rebuilt after effects.
+- **Alpha / interlace:** the compositor produces opaque RGB. ProRes 4444/XQ
+  currently outputs 10-bit 4:4:4 without alpha preservation. Interlaced sources
+  require preprocessing; interlaced mastering is not implemented.
+- **Hardware:** CUDA, Metal/MPS and CPU are available rendering paths, with
+  processing split across CPU and accelerator as needed. VideoToolbox delivery
+  is not labeled lossless. Installed codecs and short 8K proofs do not establish
+  real-time playback or sustained performance.
+- **Viewing:** posters and playback proxies are SDR viewing approximations,
+  separate from original sources and final masters. HDR viewing needs `zscale`
+  and `tonemap`; on Mac use [ffmpeg-full](https://formulae.brew.sh/formula/ffmpeg-full).
+  Lens effects are artistic approximations; oval focus falloff does not estimate
+  scene depth. Reverse audio is bounded to 60 source seconds per clip.
 
-## Timeline, audio and color limits
-
-Uncompressed NUT exports currently support SDR; this build cannot retain its
-HDR colorimetry fields. Use the RGB16 Matroska master for embedded HDR tags.
-
-- Projects support 16..8192 pixels per axis, up to 35,651,584 pixels, rational
-  rates from 1..120 fps and timelines up to one day. UHD 8K and DCI 8192×4320
-  fit this envelope. Unsupported codec-specific geometry fails explicitly.
-- Rendered timelines are project-CFR. VFR sources are sampled to that cadence;
-  the editor does not claim to preserve every original VFR timestamp after edits.
-- Project audio supports 44.1/48/96 kHz and mono/stereo/5.1/7.1. Clips currently
-  use the first source audio stream. Mixing, channel conversion, gain, fades
-  and resampling change samples. Reverse audio is bounded to 60 source seconds
-  per clip; mute it or split long reversed clips.
-- BT.709, BT.2020 PQ and BT.2020 HLG are project spaces. Input interpretation
-  includes linear/sRGB/BT.709/PQ/HLG, supported primaries and a reference-white
-  control. Mixed sources can therefore undergo transfer/primary conversion.
-- Float EXR values above 1 are retained through source decoding and into
-  grading; unknown primaries require an explicit source or clip interpretation.
-  ACEScg support is a primaries matrix with chromatic adaptation, not a full
-  OCIO/ACES display, view or camera-IDT pipeline.
-- Browser JPEG/playback assets are SDR viewing approximations. HDR/linear
-  viewing tone maps do not overwrite the source. The regular Homebrew FFmpeg
-  build can omit `zscale`; use [ffmpeg-full](https://formulae.brew.sh/formula/ffmpeg-full).
-- The compositor produces opaque RGB. Alpha-channel preservation, interlaced
-  mastering, calibrated Dolby Vision/HDR10+ metadata rebuilding and camera RAW
-  development are not implemented. Interlaced sources require preprocessing.
-
-Lens streaks, halation, ghosts and focus-band bokeh are artistic effects. Bokeh
-does not estimate scene depth or reconstruct obscured detail. No export option
-turns a lower-resolution source into additional captured detail.
+[Return to the product overview](../README.md) · [Validation and hardware evidence](VALIDATION.md)

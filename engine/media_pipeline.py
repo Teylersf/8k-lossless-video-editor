@@ -1,4 +1,4 @@
-"""Local, streaming media adapter. GPL-2.0; originals are opened read-only.
+"""Local, streaming media adapter. GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION.
 
 PyAV carries each decoded presentation timestamp through the render. FFmpeg
 remuxes original audio and metadata. Public export owns an isolated worker so a
@@ -7,6 +7,7 @@ cancel/deadline can stop native codec/CUDA calls as well as pipe waits.
 from __future__ import annotations
 
 from fractions import Fraction
+from functools import lru_cache
 import hashlib
 import json
 import math
@@ -168,6 +169,19 @@ def _require_hdr_proxy_filters():
                          "Set STUDIO_FFMPEG to that build's executable and restart Studio.")
 
 
+@lru_cache(maxsize=8)
+def _cli_h264_encoder(executable):
+    listing = _run([executable, "-hide_banner", "-encoders"], 30).decode(errors="replace")
+    names = {parts[1] for line in listing.splitlines() if len(parts := line.split()) >= 3}
+    if "libx264" in names:
+        return ("-c:v", "libx264", "-preset", "veryfast", "-crf", "20")
+    if "libopenh264" in names:
+        # Explicit high-bitrate browser proxy; OpenH264 is lossy and has no
+        # x264 preset/CRF controls. Never pass options belonging to another codec.
+        return ("-c:v", "libopenh264", "-b:v", "12000000", "-rc_mode", "quality", "-allow_skip_frames", "0")
+    raise ValueError("This FFmpeg build has no supported software H.264 proxy encoder (libx264 or libopenh264)")
+
+
 def make_proxy(source, outmp4, posterjpg):
     """Checked, browser-safe SDR H.264/AAC proxy; never changes the source."""
     source = _regular(source)
@@ -194,7 +208,7 @@ def make_proxy(source, outmp4, posterjpg):
             color_options = ["-color_range", "tv", "-colorspace", "bt709", "-color_trc", "bt709", "-color_primaries", "bt709"]
         _run([FFMPEG, "-hide_banner", "-v", "error", "-xerror", "-n", *_PROTOCOLS,
               "-i", str(source), "-map", f"0:{selected_video}", "-map", "0:a:0?", "-vf", ",".join(filters),
-              "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-c:a", "aac", "-b:a", "160k",
+              *_cli_h264_encoder(FFMPEG), "-c:a", "aac", "-b:a", "160k",
               *color_options, "-movflags", "+faststart", str(proxy)], 7200)
         _run([FFMPEG, "-v", "error", "-xerror", "-n", *_PROTOCOLS, "-i", str(proxy),
               "-frames:v", "1", "-update", "1", str(jpg)], 120)
@@ -324,6 +338,11 @@ def _encoder_plan(info, mode, force_cpu=False, device_type=None):
         options, quality = {"preset": "medium", "crf": "0" if lossless else "16"}, "lossless codec" if lossless else "highest quality"
         if codec == "hevc":
             options = {"preset": "medium", "x265-params": "log-level=error:pools=4:frame-threads=2" + (":lossless=1" if lossless else ""), **({} if lossless else {"crf": "16"})}
+        elif encoder not in av.codecs_available and "libopenh264" in av.codecs_available:
+            encoder, quality = "libopenh264", "highest quality"
+            options = {"b": str(int(min(1_000_000_000, max(12_000_000, width * height * float(_fraction(info.get("fps_exact", "30"))) * 2)))),
+                       "rc_mode": "quality", "allow_skip_frames": "0"}
+            plan_warnings.append("OpenH264 software encoding is lossy; the installed runtime has no software lossless H.264 encoder. RGB16 masters remain available.")
     elif codec == "ffv1":
         options, quality = {"level": "3"}, "lossless codec"
     elif codec == "vp9":
@@ -339,7 +358,7 @@ def _encoder_plan(info, mode, force_cpu=False, device_type=None):
     elif codec == "dnxhd":
         options = {"profile": "dnxhr_hqx" if "10" in pixel else "dnxhr_hq"}
     if encoder not in av.codecs_available:
-        raise ValueError(f"Installed PyAV does not provide {encoder}")
+        raise ValueError(f"No usable {codec} encoder for this format/geometry: hardware probe failed or is unavailable and this runtime does not provide {encoder}. Select an RGB16 master or another installed delivery codec.")
     formats = _encoder_formats(encoder)
     if pixel not in formats and formats:
         raise ValueError(f"{encoder} cannot preserve source pixel format {pixel}; choose an explicit conversion mode")

@@ -1,4 +1,4 @@
-"""Start/stop only this local editor; never deploy or stop Lens Studio. GPL2."""
+"""Start/stop only this local editor; never deploy or stop Lens Studio. GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION."""
 from pathlib import Path
 import json
 import os

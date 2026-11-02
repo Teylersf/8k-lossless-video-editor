@@ -1,37 +1,168 @@
 # 8K Lossless Video Editor
 
-**A free, local timeline editor for Apple Silicon Mac, NVIDIA CUDA and CPU.**
+## Cut in 8K. Shape the image. Deliver a verified cinema master.
 
-Arrange video, images, image sequences, titles and audio. Trim and split clips,
-shape the grade and lens character, preview the actual timeline and export a
-verified master. Your imported source bytes stay intact.
+**Created by [Taylor Kalin](https://github.com/Teylersf)** · **Free & open source** · **Apple Silicon / NVIDIA CUDA / CPU**
 
-![Actual Windows editor with a two-clip lens and animated-title project](docs/images/editor-windows.png)
+A local editing workspace for the whole creative pass: build the cut, layer
+images and titles, shape color and anamorphic lens character, mix the sound,
+and deliver a master in the format your next step needs.
 
-The screenshot shows a 1080p demonstration in the actual editor. Its photograph,
-[*Hong Kong night street 2*](https://commons.wikimedia.org/wiki/File:Hong_Kong_night_street_2.jpg),
-is by Wilfredor, CC0. Native 8K pixel-verification results are documented below.
+**Native 8K timelines. 16-bit RGB masters. Float EXR. Multitrack audio.
+24 export profiles. Your footage stays on your computer.**
 
-**0.1.0-local is an early source release**, under GPL-2.0-only. It is not a
-packaged or signed EXE/DMG. The project supports rasters through 8192 pixels per
-axis and 35,651,584 pixels, including UHD 8K and 8192×4320 DCI 8K. A format limit
-is not a real-time playback or hardware-throughput guarantee.
+[**Download / Releases**](https://github.com/Teylersf/8k-lossless-video-editor/releases)
+— installers are being prepared; source setup is available below.
 
-[Format support and export quality](docs/FORMAT_SUPPORT.md) ·
-[Validation and current limits](docs/VALIDATION.md) · [Architecture](docs/ARCHITECTURE.md)
+[Explore the formats](docs/FORMAT_SUPPORT.md) · [See the verification](docs/VALIDATION.md) ·
+[Browse the source](https://github.com/Teylersf/8k-lossless-video-editor) ·
+[Report an issue](https://github.com/Teylersf/8k-lossless-video-editor/issues)
 
-An **RTX 3090 two-frame, two-clip 7680×4320 / 24 fps offline proof passed**:
-RGB16 master recovery, target-YUV10 NVENC recovery, float32 stereo audio,
-effects/title/overlay rendering and unchanged sources. This is a short raster
-and sample-integrity proof, not real-time playback or long-form 8K validation.
-See [the measured scope](docs/VALIDATION.md#native-nvidia-8k-offline-proof).
+![8K Lossless Video Editor — native 8K cinema-master workspace with DPX16 delivery](docs/images/editor-8k-dpx.png)
 
-## Start on Mac
+*Actual editor workspace: an 8K DPX16 digital-intermediate workflow using
+cropped/downsampled high-resolution JPEG still artwork. Sixteen-bit describes
+the master delivery precision. [Artwork preparation and credits](#showcase-artwork).*
 
-Use native Apple Silicon Python 3.13, Node **22.12+ within 22.x**, and FFmpeg full.
-macOS 15+ is recommended for current Homebrew; the pinned PyTorch dependencies
+Artwork: **etonline**, [*Taipei Skyline at Night 20210710*](https://commons.wikimedia.org/wiki/File:Taipei_Skyline_at_Night_20210710.jpg),
+[CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/); adapted through
+crop/downsampling, color/lens treatments and titles. Photo-derived showcase
+images and demo media use CC BY-SA 2.0; application code uses GPL-3.0-or-later
+with the [scoped NVIDIA runtime permission](LICENSE-EXCEPTION).
+
+## From an 8K timeline to a DPX16 digital intermediate
+
+Build a native **7680×4320 UHD 8K** or **8192×4320 DCI 8K** sequence. Make the
+edit, composite an overlay, add a title and finish the color. Choose
+**DPX 16-bit image sequence** to deliver numbered cinema/interchange frames,
+a float32 PCM mix and a timeline manifest in one ZIP archive.
+
+The same project can become a verified **FFV1 RGB16 master**, a **linear float
+EXR sequence**, reversible **JPEG 2000**, a ProRes/DNxHR editing file, or an
+H.264/HEVC/AV1 delivery encode. Select the picture precision, codec and audio
+format that fit the next step in your workflow.
+
+**Verified in the actual editor:** the showcased **48-frame, 7680×4320 DPX16
+master at 24 fps** passed independent decoded RGB16 verification for every
+frame, ZIP integrity and source-file checks. Its 9.56 GB archive includes the
+processed float32 PCM mix. [See the public proof.](docs/validation/cinema-8k-dpx16.json)
+
+**Verification is part of the render.** Lossless picture exports are decoded
+again and compared with the rendered samples before publication. Native 8K
+proofs on **NVIDIA RTX 3090 and Apple M4** have passed RGB16 recovery, exact
+float32 audio and effects/title/overlay rendering; NVIDIA's codec-lossless
+YUV10 path also passed. [Read the measured scope and results.](docs/VALIDATION.md)
+
+![An actual independently verified 8K DPX16 output frame from the Taipei cinema-master project](docs/images/cinema-8k-dpx-frame.jpg)
+
+*A viewing JPEG of the actual 8K DPX16 output, with the same artwork credit
+and license as the hero above. The verification checks the DPX samples.*
+
+## A focused workspace with room to create
+
+| Build the cut | Finish the picture | Deliver the master |
+| --- | --- | --- |
+| Multitrack video, audio and titles | Exposure, contrast, saturation and temperature | Native UHD/DCI 8K project rasters |
+| Drag, trim, split, duplicate and reorder | Crop, position, scale, rotation and flips | Verified RGB16 FFV1, reversible JPEG 2000 and uncompressed RGB16 |
+| Snapping, frame stepping and timeline zoom | Opacity, compositing and clip-local keyframes | PNG16, TIFF16, DPX16 and float EXR sequences |
+| Markers, track names, mute and edit locks | Anamorphic streaks, halation, bloom, ghosts and grain | ProRes, DNxHD/DNxHR, MXF, CineForm and delivery profiles |
+| Undo/redo, local saves and project JSON | Blue/amber flare color and oval focus falloff | Render progress, cancellation and verified downloads |
+
+### See the program you are actually making
+
+The **Program** viewer renders your timeline's current edits, compositing and
+effects. Press Play to create a full-timeline playback proxy. Switch to
+**Source** to inspect the source viewing proxy. Change the edit and the old
+program playback is invalidated, so an earlier render cannot masquerade as
+the new cut.
+
+### Make light part of the look
+
+Give highlights a horizontal anamorphic streak, move the coating color from
+cool blue to warm amber, and combine bloom, halation, reflected ghosts,
+chromatic separation, vignette and animated grain. Optional oval focus
+falloff uses an adjustable artistic focus band. Color, lens and transform
+controls live beside the selected clip, with linear animation for position,
+scale, opacity and volume.
+
+### Give the soundtrack its own timeline
+
+Layer audio clips, trim and move them, adjust gain, animate volume, and build
+fades or overlaps. Work at **44.1, 48 or 96 kHz**, with **mono, stereo, 5.1 or
+7.1** project layouts. Lossless-master paths retain the processed mix as
+**float32 PCM**; delivery and broadcast profiles report their chosen audio
+conversion. Waveforms are calculated from decoded audio.
+
+## Bring the formats your workflow uses
+
+### Cinema, editorial and broadcast
+
+**ProRes Proxy · LT · 422 · HQ · 4444 · XQ**
+**DNxHD · DNxHR HQX · DNxHR 444 · CineForm · JPEG 2000**
+
+Import supported variants in **MOV, MXF, AVI, MJ2, GXF, MPEG program streams,
+MPEG-TS, MTS and M2TS**. Work with individual **DPX**, **EXR**, **TIFF** and
+**PNG** images or explicit image sequences. Sixteen-bit and scene-linear float
+sources use native decoder paths, with separate display posters.
+
+### Everyday video and audio
+
+**MOV · MP4 · M4V · 3GP · MKV · WebM · AVI · NUT · WMV · ASF · FLV · MPEG · VOB**
+**H.264/AVC · HEVC/H.265 · AV1 · VP8 · VP9 · FFV1 · MJPEG · uncompressed video**
+
+Audio families include **WAV/BWF/RF64/Wave64, AIFF, FLAC, ALAC/M4A, MP3,
+AAC, Opus and Ogg/Vorbis**. Still-image families also include **JPEG,
+JPEG-LS, JPEG XL, BMP, TGA and WebP**.
+
+The in-app **Format support** panel checks installed decoders and encoders.
+Actual import/export also checks the file variant, raster, timing and hardware.
+[The full format guide](docs/FORMAT_SUPPORT.md) explains the exact paths.
+
+## All 24 export profiles
+
+| Workflow | Profiles |
+| --- | --- |
+| **Verified master / original** | Lossless RGB16 FFV1; NVIDIA HEVC codec-lossless; original whole-file packet copy; uncompressed RGB16; reversible JPEG 2000 RGB16 |
+| **Delivery** | HEVC/H.265; H.264/AVC; AV1 |
+| **ProRes editorial** | ProRes Proxy; ProRes 422 LT; ProRes 422; ProRes 422 HQ; ProRes 4444; ProRes 4444 XQ |
+| **Avid editorial** | DNxHR HQX 10-bit; DNxHR 444 10-bit; DNxHD 1080p broadcast |
+| **Broadcast / interchange** | MXF OP1a / DNxHR HQX; MXF MPEG-2 4:2:2 50 Mb/s; CineForm RGB 12-bit |
+| **Image finishing** | PNG16 sequence; TIFF16 sequence; DPX16 sequence; OpenEXR float sequence |
+
+[See every profile's container, pixel format and audio contract →](docs/FORMAT_SUPPORT.md#all-24-export-profiles)
+
+## Designed for your workstation
+
+| Apple Silicon | NVIDIA CUDA | CPU / local operation |
+| --- | --- | --- |
+| Native ARM64 Python and Metal/MPS effects | CUDA effects and probed NVENC output | CPU fallback for supported processing |
+| VideoToolbox delivery when supported | Explicit HEVC target-YUV10 codec-lossless mode | Local browser UI at `127.0.0.1:8770` |
+| FFmpeg-full for HDR viewing and media tools | Requested geometry is tested before hardware success is claimed | No cloud account, subscription or media relay |
+
+**Your source files stay intact.** Imports have SHA-256 records. Projects and
+render snapshots refer to private media IDs. There are no runtime remote fonts,
+analytics, Vercel services or automatic uploads to a cloud editor. Save project
+JSON, reopen local projects and relink sources when moving to another machine.
+
+This is **0.1.0-beta.1**, free application source by Taylor Kalin under
+**GPL-3.0-or-later** with a [scoped NVIDIA runtime permission](LICENSE-EXCEPTION).
+Native 8K proofs include a 24-frame Apple M4 master, RTX 3090 master/effects
+checks and the 48-frame DPX16 cinema showcase. These are offline integrity
+results. Compositing, decoding and audio can use CPU even when a GPU is selected. The
+[validation guide](docs/VALIDATION.md) keeps hardware receipts and limits explicit.
+
+## Start creating
+
+**[Get the latest release](https://github.com/Teylersf/8k-lossless-video-editor/releases)**
+— standalone installers are being prepared. You can run the source now:
+
+<details>
+<summary><strong>Apple Silicon Mac — source setup</strong></summary>
+
+Install native Python **3.13**, Node **22.12+ within 22.x**, and FFmpeg full.
+Use macOS 15+ for the current supported Homebrew setup; pinned dependencies
 require macOS 14+. Install Apple's command-line tools with
-`xcode-select --install` if missing, then obtain [Homebrew](https://docs.brew.sh/Installation).
+`xcode-select --install` if needed, then obtain [Homebrew](https://docs.brew.sh/Installation).
 
 ```bash
 brew install python@3.13 node@22 ffmpeg-full
@@ -41,22 +172,25 @@ bash "SETUP MAC.command"
 bash "START 8K LOSSLESS VIDEO EDITOR.command"
 ```
 
-The browser opens **http://127.0.0.1:8770**. To stop this editor:
+Open **http://127.0.0.1:8770**. To stop this editor:
 
 ```bash
 bash "STOP 8K LOSSLESS VIDEO EDITOR.command"
 ```
 
-Setup installs dependencies and builds the interface; it does not start the
-service. The launchers prefer the keg-only `ffmpeg-full/bin` in their own PATH.
-They do not globally link or uninstall FFmpeg. The full build supplies filters
-needed for HDR viewing proxies. See [Homebrew's full formula](https://formulae.brew.sh/formula/ffmpeg-full)
-and [Apple's PyTorch/MPS requirements](https://developer.apple.com/metal/pytorch/).
+Setup builds the interface and prepares `.venv-editor`; it does not start the
+server. The wrappers select the keg-only `ffmpeg-full/bin` in their own PATH,
+without global linking or uninstalling the regular FFmpeg package.
+[Homebrew full formula](https://formulae.brew.sh/formula/ffmpeg-full) ·
+[Apple PyTorch/MPS requirements](https://developer.apple.com/metal/pytorch/).
 
-## Start on Windows
+</details>
 
-Install Python **3.13** with the `py` launcher, Node **22.12+ within 22.x**, a full
-FFmpeg/ffprobe build on PATH, and a working NVIDIA driver for CUDA/NVENC.
+<details>
+<summary><strong>Windows / NVIDIA — source setup</strong></summary>
+
+Install Python **3.13** with its `py` launcher, Node **22.12+ within 22.x**, a
+full FFmpeg/ffprobe build on PATH, and a working NVIDIA driver for CUDA/NVENC.
 
 ```powershell
 git clone https://github.com/Teylersf/8k-lossless-video-editor.git
@@ -65,73 +199,16 @@ py -3.13 setup_editor.py
 py -3.13 launch.py
 ```
 
-You can also use **SETUP WINDOWS.cmd**, then **START 8K LOSSLESS VIDEO EDITOR.cmd**.
-**STOP 8K LOSSLESS VIDEO EDITOR.cmd** stops only this editor. Setup uses the
-project's `.venv-editor`; PyTorch 2.11.0 with CUDA 12.6 is the NVIDIA installation
-target. [Official PyTorch version commands](https://pytorch.org/get-started/previous-versions/)
-also document the CPU build. To request a CPU setup explicitly, use
+Or use **SETUP WINDOWS.cmd**, then **START 8K LOSSLESS VIDEO EDITOR.cmd**.
+Use **STOP 8K LOSSLESS VIDEO EDITOR.cmd** to stop this editor. Setup targets
+PyTorch **2.11.0 / CUDA 12.6** in `.venv-editor`. CPU setup is available with
 `py -3.13 setup_editor.py --cpu`.
+[Official PyTorch version instructions](https://pytorch.org/get-started/previous-versions/).
 
-An existing incompatible virtual environment is not deleted automatically.
-Move it aside manually before creating another one. Leave enough disk space
-for source copies, browser proxies, temporary renders and completed masters.
+</details>
 
-## Edit a timeline
-
-1. Import video, audio or stills. Import an image sequence at an explicit frame
-   rate; its natural filename order becomes the explicit stored frame order.
-2. Drag sources onto compatible tracks. Move or trim their edges; use **S** to
-   split, duplicate/remove clips, and add titles or markers. Higher video tracks
-   composite over lower tracks. Track mute affects the render; lock protects edits.
-3. Adjust transforms, crop, opacity, color, audio and optional lens effects.
-   Opacity, position, scale and volume support clip-local linear keyframes.
-4. Use **Program** for rendered frames and full-timeline playback proxies.
-   **Source** plays the viewing proxy without timeline edits. Editing invalidates
-   the prior program playback. Save locally or download project JSON; relink
-   imported sources when moving projects between computers.
-5. Select an export profile, render, then download the verified result. The
-   installed format catalogue and output report state the actual codec and quality.
-
-The compositor uses a constant project frame rate, so source VFR timing is
-resampled to that timeline. Project audio supports 44.1/48/96 kHz and
-mono/stereo/5.1/7.1. Each clip currently contributes its first source audio stream.
-
-## Choose what “lossless” means
-
-| Choice | What it preserves |
-| --- | --- |
-| Original packet copy | Currently one unchanged whole source file; no grading, mixing, trimming, transforms or speed changes. The copied file is byte-identical. |
-| Lossless RGB16 master | FFV1/MKV plus float32 PCM. Independently decoded video must match the **rendered 16-bit integer RGB samples**. This is the default. |
-| NVIDIA HEVC codec-lossless | Probed NVENC HEVC with decoded 10-bit 4:2:0 YUV verification. Conversion from RGB to target YUV can still discard information. |
-| Delivery / editing profiles | H.264, HEVC, AV1, ProRes, DNxHR and other explicitly labeled formats. These are not all mathematically lossless. |
-
-Grading, compositing, resizing, transfer conversion and audio mixing change
-samples. Keeping source bytes untouched does not make the edited output equal
-to those source bytes. RGB16 is not floating point; a separate EXR sequence
-profile covers rendered linear float output. ProRes 4444/XQ currently uses
-opaque 10-bit 4:4:4 output and does not preserve an alpha channel.
-
-CUDA, Metal/MPS and CPU are selected in that order by `STUDIO_DEVICE=auto`.
-An explicit unavailable device fails helpfully. Compositing, decoding and audio
-may use CPU; GPU availability does not mean the entire pipeline runs on GPU.
-VideoToolbox delivery is not labeled lossless. Check the
-[format and color notes](docs/FORMAT_SUPPORT.md) before a large job.
-
-## Local storage and privacy
-
-The service binds to loopback on port **8770**. There is no Vercel deployment,
-cloud media relay, account requirement, remote font or analytics integration.
-Original paths are private; browser requests use owned media IDs. Imports,
-projects and renders persist under ignored `data/`; diagnostics use ignored
-`out/`. These folders and your virtual environment are not part of the source
-repository. Back them up separately if you need them.
-
-The rendering queue holds four active/queued jobs and runs one renderer at a
-time. Cancellation targets owned workers. Interrupted jobs are reported after
-a restart rather than presented as completed exports. The separate Lens Studio
-on port 8766 is not started or stopped by this app.
-
-## Development
+<details>
+<summary><strong>Developer checks and local storage</strong></summary>
 
 ```bash
 npm --prefix app ci
@@ -140,12 +217,56 @@ npm --prefix app run lint
 npm --prefix app test
 ```
 
-Use `.venv-editor/bin/python` on Mac/Linux or
-`.venv-editor\Scripts\python.exe` on Windows for the
-[Python checks](docs/VALIDATION.md). The React/Vite interface is served by the
-local FastAPI app; it is not a Next.js server. CI uses standard Linux and native
-ARM64 macOS runners. Passing small CI cases is not a consumer-Mac or sustained
-8K performance result.
+See [Python tests and verification](docs/VALIDATION.md) and the
+[architecture](docs/ARCHITECTURE.md). Imports, projects and renders live in
+ignored `data/`; local diagnostics live in ignored `out/`. Back up those folders
+separately. The queue holds four active/queued jobs and runs one renderer at a
+time. Cancellation targets owned workers. The separate Lens Studio on port
+8766 is not started or stopped by this app.
 
-See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md) for the GPL-2.0-only application
-license, inherited renderer provenance and third-party dependency notices.
+</details>
+
+## A clear finishing contract
+
+- **Original packet copy** currently means one unchanged whole source file.
+  **RGB16 lossless** preserves processed integer RGB samples.
+  **NVENC codec-lossless** preserves target 10-bit YUV samples; RGB conversion
+  can still change information. Delivery/mezzanine codecs are labeled separately.
+- Rendering edits changes pixels and sound. Original source bytes remaining
+  intact does not make a graded output identical to its source. RGB16 is not
+  float EXR; ProRes 4444/XQ currently uses opaque 10-bit output without alpha.
+- BRAW, RED R3D, ARRIRAW, Canon Cinema RAW, ProRes RAW and complete DCP/IMF
+  packages need paths not implemented here. Individual supported MXF/JPEG 2000
+  assets are different from a complete cinema package. ACEScg primaries support
+  is not a full OCIO/ACES mastering pipeline.
+
+The [format guide](docs/FORMAT_SUPPORT.md) gives the exact compatibility,
+color and audio boundaries. Formats are installed capabilities, not a claim
+that every variant or every profile supports 8K.
+
+## Free software, built in the open
+
+Created by **Taylor Kalin**. Explore the code, report a reproducible issue,
+or help expand tested workflows through
+[GitHub](https://github.com/Teylersf/8k-lossless-video-editor).
+
+[GPL-3.0-or-later license](LICENSE) · [NVIDIA runtime permission](LICENSE-EXCEPTION) ·
+[Third-party licenses and source](docs/THIRD_PARTY.md) · [Provenance notices](NOTICE.md) ·
+[Issues](https://github.com/Teylersf/8k-lossless-video-editor/issues) ·
+[Releases](https://github.com/Teylersf/8k-lossless-video-editor/releases)
+
+<a name="showcase-artwork"></a>
+
+<details>
+<summary><strong>Showcase artwork credit and preparation</strong></summary>
+
+The hero artwork comes from etonline's
+[*Taipei Skyline at Night 20210710*](https://commons.wikimedia.org/wiki/File:Taipei_Skyline_at_Night_20210710.jpg),
+licensed [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/).
+The 12,000×8,000 JPEG original is cropped to 12,000×6,750 at vertical offset
+900, then downsampled to 7680×4320. Demo edits add color/lens treatments and
+titles. The photo-derived artwork, modified demo media and showcase imagery
+are shared under CC BY-SA 2.0. These image credits do not change the
+application source's GPL-3.0-or-later license or imply endorsement by the photographer.
+
+</details>

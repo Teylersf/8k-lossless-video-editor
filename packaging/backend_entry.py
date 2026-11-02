@@ -1,4 +1,4 @@
-"""Frozen desktop backend and allowlisted owned-worker entry. GPL-2.0-only.
+"""Frozen desktop backend and allowlisted owned-worker entry. GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION.
 
 The desktop wrapper starts --server with an isolated data directory, loopback
 port and ownership token. The same binary dispatches the existing private
@@ -44,7 +44,7 @@ def configure_runtime(require_data=True):
             if not binary.is_file():
                 raise RuntimeError(f"The application is incomplete: bundled {name} is missing")
             os.environ[variable] = str(binary)
-        os.environ["PATH"] = str(root / "bin") + os.pathsep + os.environ.get("PATH", "")
+        os.environ["PATH"] = os.pathsep.join((str(root / "bin"), str(root / "av.libs"), os.environ.get("PATH", "")))
         # Desktop imports/projects/renders belong to userData, never resources.
         if require_data and not os.environ.get("EDITOR_DATA_DIR"):
             raise RuntimeError("The desktop wrapper must provide EDITOR_DATA_DIR")

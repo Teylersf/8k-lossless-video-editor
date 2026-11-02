@@ -1,4 +1,4 @@
-"""Loopback-only persisted editing API. GPL-2.0-only; port 8770."""
+"""Loopback-only persisted editing API. GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION; port 8770."""
 from __future__ import annotations
 
 import asyncio
@@ -35,7 +35,7 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / 'engine'))
 APP_NAME = '8K Lossless Video Editor'
 AUTHOR = 'Taylor Kalin'
-VERSION = '0.1.0-beta.1' if getattr(sys, 'frozen', False) else '0.1.0-local'
+VERSION = '0.1.0-beta.1'
 PORT = int(os.environ.get('EDITOR_PORT', '8770'))
 if not 1024 <= PORT <= 65535:
     raise ValueError('EDITOR_PORT must be in 1024..65535')
