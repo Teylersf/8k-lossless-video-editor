@@ -1,0 +1,46 @@
+{
+  "component": "LLVM-MinGW20261020 UCRT static libc++/libc++abi/libunwind/compiler-rt andMinGWruntime",
+  "toolchain": "clang23.1.4; x86_64 WindowsUCRT",
+  "archive_url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20261020/llvm-mingw-20261020-ucrt-ubuntu-22.04-x86_64.tar.xz",
+  "archive_sha256": "55064b60b991a1e1e8090b8c2f84e82b22cfe5903d12c159d65064cf5e8ae335",
+  "archive_bytes": 84017268,
+  "scope": "Only runtime libraries are incorporated in cleanFFmpeg DLLs; compiler/linker tools are not shipped. OriginalrootLLVMlicenseand x86_64MinGWcopyrights retainedunaltered.",
+  "files": [
+    {
+      "file": "LICENSE.TXT",
+      "archive_path": "LICENSE.TXT",
+      "sha256": "8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee",
+      "bytes": 15141
+    },
+    {
+      "file": "COPYING",
+      "archive_path": "x86_64-w64-mingw32/share/mingw32/COPYING",
+      "sha256": "99a69660981156c21336fdb5661f89341b013c94e4bf9e1c7467b4745718397f",
+      "bytes": 2326
+    },
+    {
+      "file": "COPYING.MinGW-w64-runtime.txt",
+      "archive_path": "x86_64-w64-mingw32/share/mingw32/COPYING.MinGW-w64-runtime.txt",
+      "sha256": "1db8da07b436c68833c0673ffee3d9fcb2526047f3820b81661865dfedc79a1f",
+      "bytes": 12155
+    },
+    {
+      "file": "COPYING.MinGW-w64.txt",
+      "archive_path": "x86_64-w64-mingw32/share/mingw32/COPYING.MinGW-w64.txt",
+      "sha256": "f38e6194bd3bfa1b654f118e5acefe0aead437bbe669eee43957ccc65a7127f1",
+      "bytes": 5905
+    },
+    {
+      "file": "COPYING.winpthreads.txt",
+      "archive_path": "x86_64-w64-mingw32/share/mingw32/COPYING.winpthreads.txt",
+      "sha256": "63263614cdd29f2f93cba85e992f041b31f9fc7b4033692f31269489a8a1b177",
+      "bytes": 2883
+    },
+    {
+      "file": "COPYING.winstorecompat.txt",
+      "archive_path": "x86_64-w64-mingw32/share/mingw32/COPYING.winstorecompat.txt",
+      "sha256": "fa7368d1f93d890c173177475d8ec7aff265a7d08f1f364d66f74d138978ce36",
+      "bytes": 1099
+    }
+  ]
+}

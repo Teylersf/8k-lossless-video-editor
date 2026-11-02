@@ -2,3 +2,5 @@
 *.cmd text eol=crlf
 *.command text eol=lf
 *.sh text eol=lf
+# Keep the original notice bytes consistent with their provenance hashes.
+packaging/notices/** -text

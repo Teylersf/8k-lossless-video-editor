@@ -174,7 +174,7 @@ class ServerTests(unittest.TestCase):
         for suffix, args, kind in [('.wav', ['-f', 'lavfi', '-i', 'sine=frequency=440:sample_rate=16000:duration=0.25', '-c:a', 'pcm_s16le'], 'audio'),
                                    ('.mov', ['-f', 'lavfi', '-i', 'testsrc2=size=64x48:rate=24:duration=0.25', '-f', 'lavfi', '-i', 'sine=frequency=400:duration=0.25', *media_pipeline._cli_h264_encoder(media_pipeline.FFMPEG), '-pix_fmt', 'yuv420p', '-c:a', 'pcm_s16le', '-shortest'], 'video')]:
             path = Path(self.temp.name) / ('fixture' + suffix)
-            subprocess.run(['ffmpeg', '-v', 'error', '-n', *args, str(path)], check=True, capture_output=True)
+            subprocess.run([media_pipeline.FFMPEG, '-v', 'error', '-n', *args, str(path)], check=True, capture_output=True)
             before = file_hash(path)
             media = self.upload(path.read_bytes(), path.name)
             self.assertEqual(media['kind'], kind)
@@ -233,7 +233,7 @@ class ServerTests(unittest.TestCase):
 
     def test_professional_dnxhr_mxf_actual_ingest(self):
         path = Path(self.temp.name) / 'interchange.mxf'
-        command = ['ffmpeg', '-v', 'error', '-n', '-f', 'lavfi', '-i', 'testsrc2=size=256x144:rate=24:duration=0.125',
+        command = [media_pipeline.FFMPEG, '-v', 'error', '-n', '-f', 'lavfi', '-i', 'testsrc2=size=256x144:rate=24:duration=0.125',
                    '-c:v', 'dnxhd', '-profile:v', 'dnxhr_lb', '-pix_fmt', 'yuv422p', '-threads', '1', str(path)]
         subprocess.run(command, check=True, capture_output=True)
         before = file_hash(path)
@@ -429,6 +429,7 @@ class ServerTests(unittest.TestCase):
         self.assertIn('<local data>', failed['error'])
         self.assertNotIn(str(owned_store), failed['error'])
         self.assertNotIn(str(self.store), failed['error'])
+        self.assertNotIn(str(self.state.store), failed['error'])
         self.assertIsNone(failed['output_url'])
         persisted = json.loads((self.store / 'jobs' / job['id'] / 'job.json').read_text(encoding='utf-8'))
         self.assertEqual(persisted['error'], failed['error'])

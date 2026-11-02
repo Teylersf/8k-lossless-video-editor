@@ -1,0 +1,20 @@
+{
+  "component": "Electron45.2.1 Windowsx64 runtime",
+  "source": "https://github.com/electron/electron/releases/tag/v45.2.1",
+  "runtime_version": "45.2.1",
+  "ffmpeg_dll_sha256": "f035e9879a6d43519467a8d761d2ea643ac63ed89d448eab9aac86bc38c4809f",
+  "ffmpeg_dll_bytes": 3097600,
+  "files": [
+    {
+      "file": "LICENSE",
+      "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+      "bytes": 1096
+    },
+    {
+      "file": "LICENSES.chromium.html",
+      "sha256": "7dac8267ac6da8d959cfe88f5f055b18a397f10230380b5329125e167bf5639b",
+      "bytes": 5705935
+    }
+  ],
+  "scope": "Originalruntimelegalfiles preservedunaltered; ChromiumHTMLcontains component-specific licenses in addition toElectronMIT."
+}
