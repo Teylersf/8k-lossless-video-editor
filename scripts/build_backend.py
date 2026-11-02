@@ -142,6 +142,52 @@ def install_mac_runtime(runtime, destination, source_audit):
     return audit
 
 
+def sign_mac_frameworks(destination):
+    """Seal complete frameworks after COLLECT has installed their resources."""
+    if platform.system() != "Darwin":
+        raise ValueError("Mac framework signing is supported only on macOS")
+    destination = Path(destination).resolve(strict=True)
+    if not (destination / "_internal").is_dir():
+        raise ValueError("Expected the completed frozen backend _internal directory")
+    magics = {bytes.fromhex(value) for value in (
+        "feedface", "cefaedfe", "feedfacf", "cffaedfe", "cafebabe", "bebafeca", "cafebabf", "bfbafeca")}
+    frameworks, binaries = [], []
+    for directory, directories, files in os.walk(destination, followlinks=False):
+        folder = Path(directory)
+        frameworks.extend(folder / name for name in directories
+                          if name.endswith(".framework") and not (folder / name).is_symlink())
+        for name in files:
+            path = folder / name
+            if path.is_symlink() or not path.is_file():
+                continue
+            with path.open("rb") as stream:
+                if stream.read(4) in magics:
+                    binaries.append(path)
+    identity = os.environ.get("EDITOR_CODESIGN_IDENTITY") or "-"
+    signing_options = ["--timestamp=none"] if identity == "-" else ["--timestamp", "--options=runtime"]
+    records = []
+    # Each framework receives a resource seal at its final location. Nested
+    # frameworks must be signed before their enclosing framework; --deep signing
+    # would obscure that order and could change unrelated code signatures.
+    for framework in sorted(frameworks, key=lambda path: (-len(path.parts), str(path))):
+        contained = [path for path in binaries if path.is_relative_to(framework)]
+        before = {str(path.relative_to(destination)): digest(path) for path in contained}
+        command(["/usr/bin/codesign", "--force", "--all-architectures", "--sign", identity,
+                 *signing_options, framework], timeout=120)
+        command(["/usr/bin/codesign", "--verify", "--all-architectures", "--strict", "--deep", framework])
+        records.append(dict(framework=str(framework.relative_to(destination)),
+                            macho_sha256_before=before,
+                            macho_sha256_after={str(path.relative_to(destination)): digest(path) for path in contained},
+                            resource_seals={str(path.relative_to(destination)): digest(path)
+                                            for path in framework.rglob("_CodeSignature/CodeResources")
+                                            if path.is_file() and not path.is_symlink()},
+                            strict_verification=True))
+    for path in binaries:
+        command(["/usr/bin/codesign", "--verify", "--all-architectures", "--strict", path])
+    return dict(identity=identity, timestamp="none" if identity == "-" else "secure",
+                frameworks=records, verified_macho_files=len(binaries), strict_verification=True)
+
+
 def stage_windows(tools, stage):
     outputs = []
     for name, source in tools.items():
@@ -211,8 +257,10 @@ def main():
     subprocess.run([sys.executable, "-m", "PyInstaller", "--noconfirm", "--distpath", str(ROOT / "build/backend"),
                     "--workpath", str(ROOT / "build/pyinstaller-work" / target), str(ROOT / "packaging/backend.spec")],
                    cwd=ROOT, env=environment, check=True)
+    framework_signing = None
     if system == "Darwin":
         private_audit = install_mac_runtime(private_runtime, destination, private_audit)
+        framework_signing = sign_mac_frameworks(destination)
     executable = destination / ("8k-editor-backend.exe" if system == "Windows" else "8k-editor-backend")
     result = command([executable, "--self-test"], timeout=180)
     receipt = json.loads(result)
@@ -221,6 +269,8 @@ def main():
     build_receipt = dict(build=details, self_test=receipt)
     if private_audit is not None:
         build_receipt["private_ffmpeg_audit"] = private_audit
+    if framework_signing is not None:
+        build_receipt["mac_framework_signing"] = framework_signing
     (destination / "build-receipt.json").write_text(json.dumps(build_receipt, indent=2), encoding="utf-8")
     print(result)
     print("Native backend assembled. Test a frozen import/render before publishing any installer.")
