@@ -1,6 +1,6 @@
 """Prepare the local editor environment without changing other applications.
 
-GPL-2.0-only. Native tools are prerequisites; no system files or shell profiles
+GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION. Native tools are prerequisites; no system files or shell profiles
 are modified. Windows can reuse an already installed CUDA PyTorch environment.
 """
 from pathlib import Path

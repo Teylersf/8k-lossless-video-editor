@@ -1,7 +1,7 @@
 {
   "name": "8k-lossless-video-editor",
   "private": true,
-  "version": "0.1.0-local",
+  "version": "0.1.0-beta.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -23,5 +23,7 @@
     "oxlint": "^1.89.0",
     "typescript": "~7.0.2",
     "vite": "^8.3.5"
-  }
+  },
+  "license": "GPL-3.0-or-later",
+  "licenseException": "See ../LICENSE-EXCEPTION: NVIDIA CUDA/cuDNN permission for owner code only."
 }

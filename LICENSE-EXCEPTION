@@ -1,0 +1,34 @@
+NVIDIA CUDA/cuDNN linking permission
+Additional permission under GNU GPL version 3 section 7
+
+Copyright (C) 2026 Taylor Kalin
+
+This permission applies only to original application code whose copyright is
+owned by Taylor Kalin and which is included in this repository (the "Owner
+Code"). It includes Taylor Kalin's own renderer, device-policy and media-adapter
+code copied into this repository from Video Anamorphics & Lens Studio. It
+does not apply to copyrights held by third parties.
+
+For this permission, "NVIDIA Libraries" means the NVIDIA CUDA Toolkit and
+NVIDIA cuDNN, together with their redistributable runtime components and
+redistributable runtime dependencies used by this application through PyTorch,
+under the applicable NVIDIA license terms.
+
+Taylor Kalin permits you to link or combine Owner Code with the NVIDIA
+Libraries, including modified versions of those libraries where their own
+terms permit modification, and to convey the resulting combination. The Owner
+Code remains covered by the GNU General Public License, version 3 or any later
+version. The NVIDIA Libraries remain subject to their applicable NVIDIA terms.
+This additional permission does not require you to provide source code for
+proprietary NVIDIA Libraries. It does not remove any corresponding-source or
+other obligation that applies to Owner Code or to other GPL-covered code.
+
+This is a permission from Taylor Kalin for Taylor Kalin's copyrights only.
+It grants no exception for third-party copyrights and supplies no additional
+rights to redistribute, modify, sublicense or use NVIDIA or other third-party
+components beyond the rights their respective licenses provide. A distributor
+must independently satisfy those components' applicable license conditions.
+
+You may remove this additional permission from a copy in accordance with
+section 7 of the GNU GPL version 3. When relying on this permission, retain
+this notice with the covered Owner Code and the distribution's license texts.

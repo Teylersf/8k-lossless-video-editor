@@ -1,5 +1,5 @@
 "use strict";
-// GPL-2.0-only. Privileged native shell; renderer receives no Node/preload API.
+// GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION. Privileged native shell; renderer receives no Node/preload API.
 const { app, BrowserWindow, Menu, dialog, screen, shell } = require("electron");
 const fs = require("node:fs");
 const path = require("node:path");
@@ -105,7 +105,7 @@ function installMenu() {
       type: "info",
       title: "About 8K Lossless Video Editor",
       message: "8K Lossless Video Editor",
-      detail: `Version ${app.getVersion()}\nBy Taylor Kalin\n\nLocal timeline editing and verified RGB16 masters.\nGPL-2.0-only. Bundled components retain their own licenses.\n\nLocal builds are unsigned/ad-hoc unless separately signed.`,
+      detail: `Version ${app.getVersion()}\nBy Taylor Kalin\n\nLocal timeline editing and verified RGB16 masters.\nCopyright © 2026 Taylor Kalin.\nGPL-3.0-or-later with the owner-code NVIDIA permission in LICENSE-EXCEPTION.\nThis program comes without warranty. You may modify and redistribute it under its license.\nSee Help → Bundled Licenses. Third-party components retain their own terms.\n\nLocal builds are unsigned/ad-hoc unless separately signed.`,
       buttons: ["OK"],
     });
   const template = [];

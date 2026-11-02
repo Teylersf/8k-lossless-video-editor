@@ -6,7 +6,7 @@
   "author": {
     "name": "Taylor Kalin"
   },
-  "license": "GPL-2.0-only",
+  "license": "GPL-3.0-or-later",
   "homepage": "https://github.com/Teylersf/8k-lossless-video-editor",
   "main": "main.cjs",
   "scripts": {
@@ -26,5 +26,6 @@
   },
   "engines": {
     "node": ">=22.12.0"
-  }
+  },
+  "licenseException": "See ../LICENSE-EXCEPTION: NVIDIA CUDA/cuDNN permission for owner code only."
 }

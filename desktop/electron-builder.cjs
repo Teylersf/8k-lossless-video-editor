@@ -1,5 +1,5 @@
 "use strict";
-// GPL-2.0-only. Python/FFmpeg must be built separately before packaging.
+// GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION. Python/FFmpeg must be built separately before packaging.
 const fs = require("node:fs");
 const path = require("node:path");
 const backend = path.resolve(
@@ -29,7 +29,12 @@ module.exports = {
     "assets/icon.*",
     "package.json",
   ],
-  extraResources: [{ from: backend, to: "backend", filter: ["**/*"] }],
+  extraResources: [
+    { from: backend, to: "backend", filter: ["**/*"] },
+    { from: "../LICENSE", to: "LICENSE" },
+    { from: "../LICENSE-EXCEPTION", to: "LICENSE-EXCEPTION" },
+    { from: "../NOTICE.md", to: "NOTICE.md" },
+  ],
   beforePack: async (context) => {
     const binary =
       context.electronPlatformName === "win32"

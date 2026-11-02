@@ -1,4 +1,4 @@
-"""Validated, JSON-only timeline model for 8K Lossless Video Editor. GPL-2.0."""
+"""Validated, JSON-only timeline model for 8K Lossless Video Editor. GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION."""
 from copy import deepcopy
 from fractions import Fraction
 import math

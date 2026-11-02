@@ -22,7 +22,7 @@ PQ uses ST2084 (linear 1 = 10000 nits). HLG uses inverse/forward ARIB-B67 OETF
 without a display-dependent OOTF. Neither path tone maps the exported signal.
 The separate preview helper explicitly performs approximate HDR-to-SDR mapping.
 
-GPL-2.0-only, consistent with the surrounding project. No external models/assets.
+GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION, consistent with the surrounding project. No external models/assets.
 """
 from __future__ import annotations
 

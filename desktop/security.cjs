@@ -1,5 +1,5 @@
 "use strict";
-// GPL-2.0-only. Shared policy is deliberately independent of privileged Electron APIs.
+// GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION. Shared policy is deliberately independent of privileged Electron APIs.
 const APP_IDENTITY = "8K Lossless Video Editor";
 
 function localOrigin(port) {

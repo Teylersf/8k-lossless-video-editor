@@ -1,4 +1,4 @@
-"""Small, shared PyTorch rendering-device policy. GPL-2.0-only.
+"""Small, shared PyTorch rendering-device policy. GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION.
 
 STUDIO_DEVICE=auto (default) prefers CUDA, then Metal MPS, then CPU. An explicit
 unavailable accelerator fails rather than silently changing the user's choice.

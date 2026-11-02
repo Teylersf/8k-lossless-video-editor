@@ -1,4 +1,4 @@
-"""Owned local media imports and bounded browser assets. GPL-2.0-only.
+"""Owned local media imports and bounded browser assets. GPL-3.0-or-later; see LICENSE and LICENSE-EXCEPTION.
 
 The preparation subprocess has its own session, so cancelling shutdown can stop
 its native decoders without signalling another application or the source file.
@@ -371,7 +371,7 @@ def prepare_sequence(folder, fps):
     pattern = folder / ('frame%08d' + Path(frames[0]).suffix)
     _run([media_pipeline.FFMPEG, '-threads', '1', '-filter_threads', '1', '-filter_complex_threads', '1', '-v', 'error', '-xerror', '-n', '-protocol_whitelist', 'file,pipe', '-format_whitelist', safe_formats(),
           '-framerate', str(rate), '-f', 'image2', '-start_number', '0', '-i', str(pattern), '-frames:v', str(len(frames)), '-vf', ','.join(filters),
-          '-an', '-c:v', 'libx264', '-threads', '1', '-preset', 'veryfast', '-crf', '20', '-movflags', '+faststart', str(folder / 'proxy.mp4')], 7200)
+          '-an', *media_pipeline._cli_h264_encoder(media_pipeline.FFMPEG), '-threads', '1', '-movflags', '+faststart', str(folder / 'proxy.mp4')], 7200)
     _run([media_pipeline.FFMPEG, '-v', 'error', '-xerror', '-protocol_whitelist', 'file,pipe', '-format_whitelist', safe_formats(),
           '-i', str(folder / 'proxy.mp4'), '-f', 'null', '-'], 7200)
     atomic_json(folder / 'prepared.json', first)
