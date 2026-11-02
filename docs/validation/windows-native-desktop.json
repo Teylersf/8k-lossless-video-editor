@@ -1,0 +1,421 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "started_utc": "2026-11-02T04:06:55.232189+00:00",
+  "scope": "Actual frozen Windows CUDA backend/API, offline native8K two-frame edit/export proof; no real-time or sensor claim.",
+  "harness_sha256": "fe12963831838c2eade0bf84ec1b6571b35fd1a1c89f1bad26494a20ffdd391a",
+  "backend_executable_sha256": "a50b74839d38acab9aa95961c6158e62a8018e0a7b73246f3f2bbfe387ebd6b1",
+  "reference_fixture": "native-8k-cuda-two-clip-v1",
+  "path_restricted_to_system32": true,
+  "checks": {
+    "rgb16_master": {
+      "name": "master-rgb16.mkv",
+      "file_sha256": "64570b58fe40d7e9d3e402095020d829a366479e1ca450c9c93bd3d8527489c5",
+      "bytes": 65295340,
+      "export_api_seconds": 19.376492000003054,
+      "engine_receipt": {
+        "mode": "lossless",
+        "preview": false,
+        "width": 7680,
+        "height": 4320,
+        "frames": 2,
+        "fps": "24/1",
+        "duration": 0.08333333333333333,
+        "fps_exact": "24",
+        "bit_depth": 16,
+        "container": "mkv",
+        "codec": "ffv1",
+        "encoder": "ffv1",
+        "pixel_format": "gbrp16le",
+        "audio": "pcm_f32le stereo 48000Hz",
+        "encode_quality": "lossless RGB16",
+        "backend": {
+          "device": "cuda",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "accelerated": true,
+          "reason": "CUDA rendering is available."
+        },
+        "compositing": "Float32 linear project RGB",
+        "verification": "Independent decoded RGB16 SHA256 matches rendered samples",
+        "rgb16_sha256": "3a4d25e6f63d347961fa47d4a943c2b5e3237fa29ff3bf10cad73c2fdc77b896",
+        "warnings": [
+          "Color range is unspecified; RGB/YUVJ uses full range and other YUV uses limited range.",
+          "Timeline uses the selected project CFR; source frame timing is sampled onto that grid.",
+          "Transfer is unspecified; effect processing assumes BT.709 without changing source color tags.",
+          "Unspecified source primaries are interpreted as BT.709; set the clip source interpretation to override.",
+          "YUV matrix is unspecified; RGB conversion assumes BT.709 for HD.",
+          "Audio clips use their first source audio stream and are mixed/resampled to project stereo at 48000 Hz."
+        ],
+        "bytes": 65295340
+      },
+      "download_verified": true,
+      "independent_video": {
+        "width": 7680,
+        "height": 4320,
+        "codec": "ffv1",
+        "pixel_format": "gbrp16le",
+        "fps_exact": "24",
+        "frames": 2,
+        "timestamps": [
+          "0",
+          "21/500"
+        ],
+        "sample_sha256": "3a4d25e6f63d347961fa47d4a943c2b5e3237fa29ff3bf10cad73c2fdc77b896",
+        "decoded_bytes": 398131200,
+        "frame_sha256": [
+          "dba3022cf5082f932d5554a80e2c3fdfeb64df732b2f969a0bf08f8187c96cde",
+          "e2175cc932b529af273db6f53b6e7ed91a80db8ebbac4b4dbc2234af510a5e7b"
+        ]
+      },
+      "independent_audio": {
+        "codec": "pcm_f32le",
+        "sample_rate": 48000,
+        "channels": 2,
+        "exact_expected_pcm": true,
+        "sample_sha256": "8f12eb589932cd05fe4a1a24e33ee1a51778c23cd3ec3a81f182f4ee5bcb780c",
+        "decoded_bytes": 32000,
+        "frame_sha256": []
+      },
+      "matches_original_native8k_proof": true
+    },
+    "nvenc_yuv10": {
+      "name": "master-nvenc-yuv10.mkv",
+      "file_sha256": "633de175eac06280694cc15e81059343dfa961a560ee158dd6de2df13a6496cf",
+      "bytes": 23434109,
+      "export_api_seconds": 18.056772399999318,
+      "engine_receipt": {
+        "mode": "nvenc-lossless",
+        "preview": false,
+        "width": 7680,
+        "height": 4320,
+        "frames": 2,
+        "fps": "24/1",
+        "duration": 0.08333333333333333,
+        "fps_exact": "24",
+        "bit_depth": 10,
+        "container": "mkv",
+        "codec": "hevc",
+        "encoder": "hevc_nvenc",
+        "pixel_format": "yuv420p10le",
+        "audio": "pcm_f32le stereo 48000Hz",
+        "encode_quality": "lossless codec",
+        "backend": {
+          "device": "cuda",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "accelerated": true,
+          "reason": "CUDA rendering is available."
+        },
+        "compositing": "Float32 linear project RGB",
+        "verification": "Independent decoded YUV10 SHA256 matches target encoder-input samples; full audio/video decode verified",
+        "rgb16_sha256": null,
+        "warnings": [
+          "Color range is unspecified; RGB/YUVJ uses full range and other YUV uses limited range.",
+          "Timeline uses the selected project CFR; source frame timing is sampled onto that grid.",
+          "Transfer is unspecified; effect processing assumes BT.709 without changing source color tags.",
+          "Unspecified source primaries are interpreted as BT.709; set the clip source interpretation to override.",
+          "YUV matrix is unspecified; RGB conversion assumes BT.709 for HD.",
+          "NVENC is codec-lossless for target YUV10 samples; RGB-to-420 conversion is not lossless RGB.",
+          "Audio clips use their first source audio stream and are mixed/resampled to project stereo at 48000 Hz."
+        ],
+        "yuv10_sha256": "c138e45e6041a74fbfd597a1f7735f198e360640ce35fc6f0f5ace694f8c5483",
+        "bytes": 23434109
+      },
+      "download_verified": true,
+      "independent_video": {
+        "width": 7680,
+        "height": 4320,
+        "codec": "hevc",
+        "pixel_format": "yuv420p10le",
+        "fps_exact": "24",
+        "frames": 2,
+        "timestamps": [
+          "0",
+          "21/500"
+        ],
+        "sample_sha256": "c138e45e6041a74fbfd597a1f7735f198e360640ce35fc6f0f5ace694f8c5483",
+        "decoded_bytes": 199065600,
+        "frame_sha256": [
+          "c1884f102e312d86b481bdb8fe6cc66a9ef1d52332f4d4c4fb1091ef68770356",
+          "7b5c1cfd6375c4c01ccc8c64505fd1ab77ff7bf48605d9b3a25d2f15d8bfc610"
+        ]
+      },
+      "independent_audio": {
+        "codec": "pcm_f32le",
+        "sample_rate": 48000,
+        "channels": 2,
+        "exact_expected_pcm": true,
+        "sample_sha256": "8f12eb589932cd05fe4a1a24e33ee1a51778c23cd3ec3a81f182f4ee5bcb780c",
+        "decoded_bytes": 32000,
+        "frame_sha256": []
+      },
+      "matches_original_native8k_proof": true
+    },
+    "effects_multitrack": {
+      "name": "effects-rgb16.mkv",
+      "file_sha256": "3e5d4308c97e4db7c3db2cf566caf22ae04f15d4d19e66a1c271c7937e458e80",
+      "bytes": 114001347,
+      "export_api_seconds": 27.98441029999958,
+      "engine_receipt": {
+        "mode": "lossless",
+        "preview": false,
+        "width": 7680,
+        "height": 4320,
+        "frames": 2,
+        "fps": "24/1",
+        "duration": 0.08333333333333333,
+        "fps_exact": "24",
+        "bit_depth": 16,
+        "container": "mkv",
+        "codec": "ffv1",
+        "encoder": "ffv1",
+        "pixel_format": "gbrp16le",
+        "audio": "pcm_f32le stereo 48000Hz",
+        "encode_quality": "lossless RGB16",
+        "backend": {
+          "device": "cuda",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "accelerated": true,
+          "reason": "CUDA rendering is available."
+        },
+        "compositing": "Float32 linear project RGB",
+        "verification": "Independent decoded RGB16 SHA256 matches rendered samples",
+        "rgb16_sha256": "65620d1e8737ff1df9416f018583b80ef7d49c0ee67b904bb14ef599498cb74a",
+        "warnings": [
+          "Color range is unspecified; RGB/YUVJ uses full range and other YUV uses limited range.",
+          "Timeline uses the selected project CFR; source frame timing is sampled onto that grid.",
+          "Transfer is unspecified; effect processing assumes BT.709 without changing source color tags.",
+          "Unspecified source primaries are interpreted as BT.709; set the clip source interpretation to override.",
+          "YUV matrix is unspecified; RGB conversion assumes BT.709 for HD.",
+          "Audio clips use their first source audio stream and are mixed/resampled to project stereo at 48000 Hz."
+        ],
+        "bytes": 114001347
+      },
+      "download_verified": true,
+      "independent_video": {
+        "width": 7680,
+        "height": 4320,
+        "codec": "ffv1",
+        "pixel_format": "gbrp16le",
+        "fps_exact": "24",
+        "frames": 2,
+        "timestamps": [
+          "0",
+          "21/500"
+        ],
+        "sample_sha256": "65620d1e8737ff1df9416f018583b80ef7d49c0ee67b904bb14ef599498cb74a",
+        "decoded_bytes": 398131200,
+        "frame_sha256": [
+          "83f8701155d76fe68a6c15ceaa08faedff6b1cd50136efd5d1335196200479c8",
+          "7912170c315b4f21da3336d4c97ac896fb8690e6201a74cf5e117c1074817db6"
+        ]
+      },
+      "independent_audio": {
+        "codec": "pcm_f32le",
+        "sample_rate": 48000,
+        "channels": 2,
+        "exact_expected_pcm": true,
+        "sample_sha256": "8f12eb589932cd05fe4a1a24e33ee1a51778c23cd3ec3a81f182f4ee5bcb780c",
+        "decoded_bytes": 32000,
+        "frame_sha256": []
+      },
+      "matches_original_native8k_proof": true
+    },
+    "av1_input_color": {
+      "name": "av1-rgb16-master.mkv",
+      "file_sha256": "0c177a2902a7454e3aee66243ab2752fb2efa343cc24c2eba225e6c187c4d393",
+      "bytes": 98159,
+      "export_api_seconds": 3.6741905999951996,
+      "engine_receipt": {
+        "mode": "lossless",
+        "preview": false,
+        "width": 160,
+        "height": 96,
+        "frames": 2,
+        "fps": "8/1",
+        "duration": 0.25,
+        "fps_exact": "8",
+        "bit_depth": 16,
+        "container": "mkv",
+        "codec": "ffv1",
+        "encoder": "ffv1",
+        "pixel_format": "gbrp16le",
+        "audio": "pcm_f32le stereo 48000Hz",
+        "encode_quality": "lossless RGB16",
+        "backend": {
+          "device": "cuda",
+          "gpu": "NVIDIA GeForce RTX 3090",
+          "accelerated": true,
+          "reason": "CUDA rendering is available."
+        },
+        "compositing": "Float32 linear project RGB",
+        "verification": "Independent decoded RGB16 SHA256 matches rendered samples",
+        "rgb16_sha256": "54822b2ccd3559854f3a28f7876047f86f59521fee073e10a5160f015e44bd1d",
+        "warnings": [
+          "Timeline uses the selected project CFR; source frame timing is sampled onto that grid.",
+          "Audio clips use their first source audio stream and are mixed/resampled to project stereo at 48000 Hz."
+        ],
+        "bytes": 98159
+      },
+      "download_verified": true,
+      "independent_video": {
+        "width": 160,
+        "height": 96,
+        "codec": "ffv1",
+        "pixel_format": "gbrp16le",
+        "fps_exact": "8",
+        "frames": 2,
+        "timestamps": [
+          "0",
+          "1/8"
+        ],
+        "sample_sha256": "54822b2ccd3559854f3a28f7876047f86f59521fee073e10a5160f015e44bd1d",
+        "decoded_bytes": 184320,
+        "frame_sha256": [
+          "8bc2415bea833e3b0882a6a0459ba67a920e39e054253b9252e0258e67a6bc18",
+          "a3bdceeca10572ec328a7f588fcca146ca99bb7fa45f9f2db1df45ef418279d8"
+        ]
+      },
+      "bicubic_input_conversion_verified": true
+    }
+  },
+  "source_sha256_before": {
+    "source-a.nut": "bb88f368ccfa96a773bf6ec73c53fffd8b31246f5c6db9478a8d65d30bce0dbf",
+    "source-b.nut": "be89bc01bd190dcdffe09db347b4746ba1aa34126cf04ac51355736aa0b01caa",
+    "source-tone.wav": "36448b0fb54898db9412327c9dcb4b20b564355714b176152d6cb58965d2d371",
+    "av1-color.mkv": "f4687bc3acae184d4ee7b7f585f94a608e1a96a34e52cf03feb2068815d5deb5"
+  },
+  "source_service_8770_untouched": true,
+  "runtime": {
+    "app": "8K Lossless Video Editor",
+    "author": "Taylor Kalin",
+    "version": "0.1.0-beta.1",
+    "frozen": true,
+    "python": "3.13.7",
+    "versions": {
+      "torch": "2.11.0+cu126",
+      "av": "17.0.0",
+      "numpy": "2.2.1",
+      "Pillow": "11.3.0",
+      "fastapi": "0.139.0",
+      "uvicorn": "0.40.0",
+      "python-multipart": "0.0.22",
+      "pydantic": "2.12.3"
+    },
+    "cuda_runtime": "12.6",
+    "backend": {
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 3090",
+      "accelerated": true,
+      "reason": "CUDA rendering is available."
+    },
+    "static_assets": true
+  },
+  "reference_decoder": "ffmpeg version 7.0.2-full_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
+  "owned_instance_identity_verified": true,
+  "project_save_reload_verified": true,
+  "owned_server_shutdown_verified": true,
+  "source_sha256_after": {
+    "source-a.nut": "bb88f368ccfa96a773bf6ec73c53fffd8b31246f5c6db9478a8d65d30bce0dbf",
+    "source-b.nut": "be89bc01bd190dcdffe09db347b4746ba1aa34126cf04ac51355736aa0b01caa",
+    "source-tone.wav": "36448b0fb54898db9412327c9dcb4b20b564355714b176152d6cb58965d2d371",
+    "av1-color.mkv": "f4687bc3acae184d4ee7b7f585f94a608e1a96a34e52cf03feb2068815d5deb5"
+  },
+  "sources_unchanged": true,
+  "elapsed_wall_seconds": 174.5092736000006,
+  "finished_utc": "2026-11-02T04:09:49.741460+00:00",
+  "artifact_stage": "Fresh final Windows frozen backend and real API; installer/Electron GUI covered separately",
+  "artifact": {
+    "basename": "8k-editor-backend.exe",
+    "kind": "PyInstaller onedir backend",
+    "bytes": 44266294,
+    "sha256": "a50b74839d38acab9aa95961c6158e62a8018e0a7b73246f3f2bbfe387ebd6b1"
+  },
+  "provenance": {
+    "source_code_revision": "2663eacf743970d36507581856562be2d12d940a",
+    "release_notice_revision": "e1120ca0bf8382b619e112c0033a79a4268bb4aa",
+    "frozen_source_files_match_working_tree": true,
+    "frozen_source_file_sha256": {
+      "server.py": "d48b6b77f4621f7cc174bfa791a58e9766a2113e6eebdd015890206474cea69b",
+      "media_library.py": "ffa45591ee95a5a839f2294f474de680c80121c0cb54a7bc2fe57b67c41850fd",
+      "engine/editor_pipeline.py": "89ee6c9a9c08b73bb74cff8f4773b70e09a7494f0f970a2e818a2b7d312e87d8",
+      "engine/project_model.py": "0034bc53398ba64e78c045bc82f81067c4d0063c9c50a285d51ad6948aae9427",
+      "engine/media_pipeline.py": "72b285d7f1bd5616bfb09bddc61879db143b2c8cbeff474ceb070a0e02829da6",
+      "engine/runtime_backend.py": "daba166477fefc575f8a2c7fc6e622572f67993b3ece7eb556602829c45a534b",
+      "engine/studio_engine.py": "33c4eb7ed8336d370505ac30081129dbad9f87721ebb3d251dad41408cabec3c",
+      "engine/format_catalog.py": "1a4227ffa135dcd3c66ff635661edf7d929562a76b653623ab32810c6783f756"
+    },
+    "original_fixture_recipe": "scripts/validate_native_8k.py --device cuda --frames 2 --nvenc --effects"
+  },
+  "bundle_audit": {
+    "ffmpeg_dlls_exactly_seven": true,
+    "all_in_private_av_libs": true,
+    "all_match_verified_v2": true,
+    "nvperf_host_absent": true,
+    "dlls": [
+      {
+        "name": "avcodec-62.dll",
+        "sha256": "0837a840482fb6d5877d46745bab863450808807aa398cb6d4da4e8088440faa",
+        "bytes": 27158528
+      },
+      {
+        "name": "avdevice-62.dll",
+        "sha256": "38dadc5a19179116ac95050ce1ae2eb3fbf5abd87af5a872324ef4dd2df6896c",
+        "bytes": 3663872
+      },
+      {
+        "name": "avfilter-11.dll",
+        "sha256": "8eb979974c0550d0776cf53734a1209304e3a56386fc2e6bd7ca577fa17b72bb",
+        "bytes": 84830208
+      },
+      {
+        "name": "avformat-62.dll",
+        "sha256": "b910126d0448c4b89cd814ca07347e5febc610a64d6af4ed13dc48c4474a02c6",
+        "bytes": 2369536
+      },
+      {
+        "name": "avutil-60.dll",
+        "sha256": "d353317bbe824c8794657608378e9c71d7b0bf264300b5371e7c6d213aeb903a",
+        "bytes": 2947072
+      },
+      {
+        "name": "swresample-6.dll",
+        "sha256": "52f94587a2ec32a47be82d8108c827fbb07960a86f64850e89258bdc869ce596",
+        "bytes": 723968
+      },
+      {
+        "name": "swscale-9.dll",
+        "sha256": "5ee25bd365bbb02d84f9f3a6211754fb4d09df8dafd00c3e4c043b018bfbc5e8",
+        "bytes": 1911296
+      }
+    ]
+  },
+  "host_prerequisite_check": {
+    "server_child_PATH": "System32 only before owned runtime initialization",
+    "host_python_or_ffmpeg_used_by_backend": false,
+    "bundled_CUDA_runtime": "12.6",
+    "independent_external_reference_decoder_used_only_by_validation_harness": true,
+    "scope": "The frozen backend initialized its own bundled Python/media tools and completed all four actual export jobs."
+  },
+  "ownership_and_cleanup": {
+    "random_instance_token_verified": true,
+    "ownership_token_published": false,
+    "all_jobs_completed_and_downloaded": true,
+    "shutdown_via_matching_owner_token": true,
+    "package_processes_remaining": 0,
+    "owned_port_listening": false,
+    "source_8770_requests_made_by_harness": 0,
+    "shutdown_log_confirmed": true
+  },
+  "test_workload": {
+    "native8k_cases": 3,
+    "native8k_frames_per_case": 2,
+    "width": 7680,
+    "height": 4320,
+    "fps_exact": "24/1",
+    "rgb_master_bit_depth": 16,
+    "nvenc_canonical_pixel_format": "yuv420p10le",
+    "audio_sample_format": "f32le",
+    "audio_samples_per_channel": 4000,
+    "additional_AV1_input_case": "160x96, 2frames at8fps, exact RGB16 against independent bicubic decode"
+  }
+}
