@@ -23,6 +23,7 @@ import sys
 import tarfile
 import tempfile
 import time
+import tomllib
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -676,10 +677,443 @@ def collect_macos_pyav(collector: Collector, *, native_pending=True) -> None:
         if data.get("name") not in {"ffmpeg", "lame", "ogg", "opus", "speex", "vorbis", "dav1d", "libsvtav1", "vpx", "png", "webp", "openh264", "opencore-amr", "x264", "x265"}:
             continue
         url = data["source_url"].replace("http://", "https://", 1)
-        collector.add("mac-pyav-" + data["name"], [url], revision=data["sha256"][:16],
+        urls = [url]
+        if url.startswith("https://ffmpeg.org/"):
+            urls.insert(0, url.replace("https://ffmpeg.org/", "https://www.ffmpeg.org/", 1))
+        collector.add("mac-pyav-" + data["name"], urls, revision=data["sha256"][:16],
                       license="See complete included upstream license files", expected=data["sha256"], recipe="pyav-ffmpeg/scripts/build-ffmpeg.py")
     if native_pending:
         collector.missing.append({"component": "macos-native-ffmpeg", "reason": "Mac native FFmpeg source/formula/dylib receipt must be supplied separately; PyAV sources do not describe Homebrew FFmpeg"})
+
+
+
+# Exact79-formula release capture; changes require reviewing its saved recipes.
+MAC_NATIVE_INVENTORY_SHA256 = "559be72a8bb839e0b8084e427aa37fea0459fcf12acdc2fdf3da31ef4d607b4d"
+MAC_HOMEBREW_AUXILIARY_PLAN = {'schema_version': 1,
+ 'capture_zip_sha256': '0643c3be55f7e824d2050e03e33380a2e1c38dc051fa739ad60595dd6e339c91',
+ 'required_resources': [{'formula': 'glib',
+                         'kind': 'resource',
+                         'name': 'gobject-introspection',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/glib/2.90.1/.brew/glib.rb',
+                         'recipe_line': 51,
+                         'url': 'https://download.gnome.org/sources/gobject-introspection/1.86/gobject-introspection-1.86.0.tar.xz',
+                         'sha256': '920d1a3fcedeadc32acff95c2e203b319039dd4b4a08dd1a2dfd283d19c0b9ae',
+                         'scope': 'stable build source/tool input'},
+                        {'formula': 'jpeg-xl',
+                         'kind': 'resource',
+                         'name': 'sjpeg',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/jpeg-xl/0.12.0_1/.brew/jpeg-xl.rb',
+                         'recipe_line': 35,
+                         'url': 'https://github.com/webmproject/sjpeg/archive/94e0df6d0f8b44228de5be0ff35efb9f946a13c9.tar.gz',
+                         'sha256': 'ac94917fe745a674eabf1e044f23ec55cd5a548c9869c06ec4b19da14ee0227d',
+                         'scope': 'stable build source/tool input'},
+                        {'formula': 'libplacebo',
+                         'kind': 'resource',
+                         'name': 'glad2',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/libplacebo/7.387.0/.brew/libplacebo.rb',
+                         'recipe_line': 23,
+                         'url': 'https://files.pythonhosted.org/packages/6e/5a/d62b24fe1c7c2f34e15c2aa4418a5327a8550fdc272999a59e0dddebc3ee/glad2-2.0.8.tar.gz',
+                         'sha256': 'b84079b9fa404f37171b961bdd1d8da21370e6c818defb8481c5b3fe3d6436da',
+                         'scope': 'stable build source/tool input'},
+                        {'formula': 'libplacebo',
+                         'kind': 'resource',
+                         'name': 'jinja2',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/libplacebo/7.387.0/.brew/libplacebo.rb',
+                         'recipe_line': 28,
+                         'url': 'https://files.pythonhosted.org/packages/df/bf/f7da0350254c0ed7c72f3e33cef02e048281fec7ecec5f032d4aac52226b/jinja2-3.1.6.tar.gz',
+                         'sha256': '0137fb05990d35f1275a587e9aee6d56da821fc83491a0fb838183be43f66d6d',
+                         'scope': 'stable build source/tool input'},
+                        {'formula': 'libplacebo',
+                         'kind': 'resource',
+                         'name': 'markupsafe',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/libplacebo/7.387.0/.brew/libplacebo.rb',
+                         'recipe_line': 33,
+                         'url': 'https://files.pythonhosted.org/packages/38/9b/e422a865e1d5d57d0e509b4e0bf1c1a70a7f6382c29a5aa428df994c8bc8/markupsafe-3.0.4.tar.gz',
+                         'sha256': '2e9ad7dd851bf45fab9f75cbff4cb493fee9979e8d8c7c9c3ee119022518edd6',
+                         'scope': 'stable build source/tool input'},
+                        {'formula': 'shaderc',
+                         'kind': 'resource',
+                         'name': 'glslang',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/shaderc/2026.4/.brew/shaderc.rb',
+                         'recipe_line': 10,
+                         'url': 'https://github.com/KhronosGroup/glslang.git',
+                         'git_revision': 'e1b562a8bed273a02f30b59b66a5d499793cede5',
+                         'source_archive_url': 'https://codeload.github.com/KhronosGroup/glslang/tar.gz/e1b562a8bed273a02f30b59b66a5d499793cede5',
+                         'scope': 'stable build source/tool input'},
+                        {'formula': 'shaderc',
+                         'kind': 'resource',
+                         'name': 'spirv-headers',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/shaderc/2026.4/.brew/shaderc.rb',
+                         'recipe_line': 22,
+                         'url': 'https://github.com/KhronosGroup/SPIRV-Headers.git',
+                         'git_revision': '04fd3caa1e8267e4d95c806cad901181728e1006',
+                         'source_archive_url': 'https://codeload.github.com/KhronosGroup/SPIRV-Headers/tar.gz/04fd3caa1e8267e4d95c806cad901181728e1006',
+                         'scope': 'stable build source/tool input'},
+                        {'formula': 'shaderc',
+                         'kind': 'resource',
+                         'name': 'spirv-tools',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/shaderc/2026.4/.brew/shaderc.rb',
+                         'recipe_line': 34,
+                         'url': 'https://github.com/KhronosGroup/SPIRV-Tools.git',
+                         'git_revision': 'ef96ed763b43b59b33b31b362f09a02b729fa1c9',
+                         'source_archive_url': 'https://codeload.github.com/KhronosGroup/SPIRV-Tools/tar.gz/ef96ed763b43b59b33b31b362f09a02b729fa1c9',
+                         'scope': 'stable build source/tool input'},
+                        {'formula': 'tesseract',
+                         'kind': 'resource',
+                         'name': 'eng',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/tesseract/5.5.4/.brew/tesseract.rb',
+                         'recipe_line': 33,
+                         'url': 'https://github.com/tesseract-ocr/tessdata_fast/raw/4.1.0/eng.traineddata',
+                         'sha256': '7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2',
+                         'scope': 'installed model data; not source'},
+                        {'formula': 'tesseract',
+                         'kind': 'resource',
+                         'name': 'osd',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/tesseract/5.5.4/.brew/tesseract.rb',
+                         'recipe_line': 38,
+                         'url': 'https://github.com/tesseract-ocr/tessdata_fast/raw/4.1.0/osd.traineddata',
+                         'sha256': '9cf5d576fcc47564f11265841e5ca839001e7e6f38ff7f7aacf46d15a96b00ff',
+                         'scope': 'installed model data; not source'}],
+ 'required_remote_patches': [{'formula': 'gnutls',
+                              'kind': 'patch',
+                              'name': 'patch-49',
+                              'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/gnutls/3.8.13_2/.brew/gnutls.rb',
+                              'recipe_line': 49,
+                              'url': 'https://gitlab.com/gnutls/gnutls/-/commit/29c2027c963cf559817d0da37c1fc2efd0c1bd6a.diff',
+                              'sha256': 'c0bfc0164ff131c9d2e1c4d0367430f8b767b64c9c21e0f408bd634d21fb0302',
+                              'scope': 'stable build/install patch'},
+                             {'formula': 'libb2',
+                              'kind': 'patch',
+                              'name': 'patch-11',
+                              'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/libb2/0.98.1/.brew/libb2.rb',
+                              'recipe_line': 11,
+                              'url': 'https://raw.githubusercontent.com/Homebrew/formula-patches/03cf8088210822aa2c1ab544ed58ea04c897d9c4/libtool/configure-big_sur.diff',
+                              'sha256': '35acd6aebc19843f1a2b3a63e880baceb0f5278ab1ace661e57a502d9d78c93c',
+                              'scope': 'stable build/install patch'},
+                             {'formula': 'libsamplerate',
+                              'kind': 'patch',
+                              'name': 'patch-15',
+                              'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/libsamplerate/0.2.2/.brew/libsamplerate.rb',
+                              'recipe_line': 15,
+                              'url': 'https://github.com/libsndfile/libsamplerate/commit/e4a0ab46887029e0f65f145ba3987cc592f18200.patch?full_index=1',
+                              'sha256': '0826fb59d733188645f3dc207c938580970700381b9bc87058b137723cb30bba',
+                              'scope': 'stable build/install patch'},
+                             {'formula': 'libsamplerate',
+                              'kind': 'patch',
+                              'name': 'patch-21',
+                              'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/libsamplerate/0.2.2/.brew/libsamplerate.rb',
+                              'recipe_line': 21,
+                              'url': 'https://github.com/libsndfile/libsamplerate/commit/1abc639420b2df8b9ff2e0bdcc28cf6613c7c0d0.patch?full_index=1',
+                              'sha256': 'b6fb61c763a0f072ef2ebb3a311037d2429a5e294141f6d5e552ccd25efabdc0',
+                              'scope': 'stable build/install patch'},
+                             {'formula': 'libsoxr',
+                              'kind': 'patch',
+                              'name': 'patch-20',
+                              'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/libsoxr/0.1.3/.brew/libsoxr.rb',
+                              'recipe_line': 20,
+                              'url': 'https://raw.githubusercontent.com/Homebrew/formula-patches/76868b36263be42440501d3692fd3a258f507d82/libsoxr/arm64_defines.patch',
+                              'sha256': '9df5737a21b9ce70cc136c302e195fad9f9f6c14418566ad021f14bb34bb022c',
+                              'scope': 'stable build/install patch'},
+                             {'formula': 'openjpeg',
+                              'kind': 'patch',
+                              'name': 'patch-14',
+                              'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/openjpeg/2.5.4_1/.brew/openjpeg.rb',
+                              'recipe_line': 14,
+                              'url': 'https://github.com/uclouvain/openjpeg/commit/91d08b11a72764f6d199f32fa0c1b1abd4edc2ad.patch?full_index=1',
+                              'sha256': '40648d63bfbb0f6c3a41cb9425ac48c396772c3527fff4b2979b07f42aaea6b8',
+                              'scope': 'stable build/install patch'},
+                             {'formula': 'openjpeg',
+                              'kind': 'patch',
+                              'name': 'patch-22',
+                              'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/openjpeg/2.5.4_1/.brew/openjpeg.rb',
+                              'recipe_line': 22,
+                              'url': 'https://github.com/uclouvain/openjpeg/commit/839936aa33eb8899bbbd80fda02796bb65068951.patch?full_index=1',
+                              'sha256': 'd06af7a5e1681bb602e71bc1724718ff07f49aace9d841164658d72b1cfe7d5d',
+                              'scope': 'stable build/install patch'}],
+ 'required_local_patches': [{'formula': 'glib',
+                             'kind': 'patch',
+                             'name': 'patch-61',
+                             'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/glib/2.90.1/.brew/glib.rb',
+                             'recipe_line': 61,
+                             'file': 'Patches/glib/hardcoded-paths.diff',
+                             'sha256': 'd846efd0bf62918350da94f850db33b0f8727fece9bfaf8164566e3094e80c97',
+                             'url': 'https://raw.githubusercontent.com/Homebrew/homebrew-core/HEAD/Patches/glib/hardcoded-paths.diff',
+                             'url_status': 'candidate official body URL; not downloaded; require exact '
+                                           'captured SHA256',
+                             'body_in_capture_zip': False,
+                             'tap_git_head': None}],
+ 'inline_patches_already_captured': [{'formula': 'libvpx',
+                                      'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/libvpx/1.17.0/.brew/libvpx.rb',
+                                      'recipe_line': 15,
+                                      'body_present': True,
+                                      'scope': 'inline patch captured in complete recipe'},
+                                     {'formula': 'snappy',
+                                      'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/snappy/1.3.1/.brew/snappy.rb',
+                                      'recipe_line': 15,
+                                      'body_present': True,
+                                      'scope': 'inline patch captured in complete recipe'},
+                                     {'formula': 'xvid',
+                                      'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/xvid/1.3.7/.brew/xvid.rb',
+                                      'recipe_line': 17,
+                                      'body_present': True,
+                                      'scope': 'inline patch captured in complete recipe'}],
+ 'excluded_resources': [{'formula': 'aom',
+                         'kind': 'resource',
+                         'name': 'homebrew-bus_qcif_15fps.y4m',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/aom/3.15.3/.brew/aom.rb',
+                         'recipe_line': 19,
+                         'url': 'https://media.xiph.org/video/derf/y4m/bus_qcif_15fps.y4m',
+                         'sha256': '868fc3446d37d0c6959a48b68906486bd64788b2e795f0e29613cbb1fa73480e',
+                         'scope': 'test-only; excluded from production build/install inputs'},
+                        {'formula': 'dav1d',
+                         'kind': 'resource',
+                         'name': 'homebrew-00000000.ivf',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/dav1d/1.5.4/.brew/dav1d.rb',
+                         'recipe_line': 23,
+                         'url': 'https://code.videolan.org/videolan/dav1d-test-data/raw/1.1.0/8-bit/data/00000000.ivf',
+                         'sha256': '52b4351f9bc8a876c8f3c9afc403d9e90f319c1882bfe44667d41c8c6f5486f3',
+                         'scope': 'test-only; excluded from production build/install inputs'},
+                        {'formula': 'ggml',
+                         'kind': 'resource',
+                         'name': 'test-backend-ops.cpp',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/ggml/0.28.0/.brew/ggml.rb',
+                         'recipe_line': 35,
+                         'url': 'https://raw.githubusercontent.com/ggml-org/ggml/refs/tags/v0.28.0/tests/test-backend-ops.cpp',
+                         'sha256': 'cc939ea00c5208ca825ca1f20d3dbbe79fbec69537baf3ac75ed78e05f73584e',
+                         'scope': 'test-only; excluded from production build/install inputs'},
+                        {'formula': 'graphite2',
+                         'kind': 'resource',
+                         'name': 'testfont',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/graphite2/1.3.15/.brew/graphite2.rb',
+                         'recipe_line': 27,
+                         'url': 'https://scripts.sil.org/pub/woff/fonts/Simple-Graphite-Font.ttf',
+                         'sha256': '7e573896bbb40088b3a8490f83d6828fb0fd0920ac4ccdfdd7edb804e852186a',
+                         'scope': 'test-only; excluded from production build/install inputs'},
+                        {'formula': 'harfbuzz',
+                         'kind': 'resource',
+                         'name': 'homebrew-test-ttf',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/harfbuzz/15.0.0_1/.brew/harfbuzz.rb',
+                         'recipe_line': 28,
+                         'url': 'https://github.com/harfbuzz/harfbuzz/raw/fc0daafab0336b847ac14682e581a8838f36a0bf/test/shaping/fonts/sha1sum/270b89df543a7e48e206a2d830c0e10e5265c630.ttf',
+                         'sha256': '9535d35dab9e002963eef56757c46881f6b3d3b27db24eefcc80929781856c77',
+                         'scope': 'test-only; excluded from production build/install inputs'},
+                        {'formula': 'libogg',
+                         'kind': 'resource',
+                         'name': 'oggfile',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/libogg/1.3.6/.brew/libogg.rb',
+                         'recipe_line': 30,
+                         'url': 'https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg',
+                         'sha256': 'f57b56d8aae4c847cf01224fb45293610d801cfdac43d932b5eeab1cd318182a',
+                         'scope': 'test-only; excluded from production build/install inputs'},
+                        {'formula': 'libpng',
+                         'kind': 'resource',
+                         'name': 'pngtest.png',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/libpng/1.6.59/.brew/libpng.rb',
+                         'recipe_line': 26,
+                         'url': 'https://src.fedoraproject.org/rpms/libpng/raw/49e9a06ca115aaa911dd3419ee79c1870d1428fb/f/pngtest.png',
+                         'sha256': 'f925a657a5343cfb724414c01e87afd4d60b1f82a46edc0e11f016a126f84064',
+                         'scope': 'Linux-only build/test input; excluded for Mac'},
+                        {'formula': 'libvorbis',
+                         'kind': 'resource',
+                         'name': 'oggfile',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/libvorbis/1.3.7/.brew/libvorbis.rb',
+                         'recipe_line': 27,
+                         'url': 'https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg',
+                         'sha256': 'f57b56d8aae4c847cf01224fb45293610d801cfdac43d932b5eeab1cd318182a',
+                         'scope': 'test-only; excluded from production build/install inputs'},
+                        {'formula': 'rav1e',
+                         'kind': 'resource',
+                         'name': 'homebrew-bus_qcif_7.5fps.y4m',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/rav1e/0.8.1/.brew/rav1e.rb',
+                         'recipe_line': 27,
+                         'url': 'https://media.xiph.org/video/derf/y4m/bus_qcif_7.5fps.y4m',
+                         'sha256': '1f5bfcce0c881567ea31c1eb9ecb1da9f9583fdb7d6bb1c80a8c9acfc6b66f6b',
+                         'scope': 'test-only; excluded from production build/install inputs'},
+                        {'formula': 'shaderc',
+                         'kind': 'resource',
+                         'name': 'glslang',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/shaderc/2026.4/.brew/shaderc.rb',
+                         'recipe_line': 50,
+                         'url': 'https://github.com/KhronosGroup/glslang.git',
+                         'scope': 'head-only; excluded for captured stable bottles'},
+                        {'formula': 'shaderc',
+                         'kind': 'resource',
+                         'name': 'spirv-tools',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/shaderc/2026.4/.brew/shaderc.rb',
+                         'recipe_line': 54,
+                         'url': 'https://github.com/KhronosGroup/SPIRV-Tools.git',
+                         'scope': 'head-only; excluded for captured stable bottles'},
+                        {'formula': 'shaderc',
+                         'kind': 'resource',
+                         'name': 'spirv-headers',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/shaderc/2026.4/.brew/shaderc.rb',
+                         'recipe_line': 58,
+                         'url': 'https://github.com/KhronosGroup/SPIRV-Headers.git',
+                         'scope': 'head-only; excluded for captured stable bottles'},
+                        {'formula': 'svt-av1',
+                         'kind': 'resource',
+                         'name': 'homebrew-testvideo',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/svt-av1/4.2.0/.brew/svt-av1.rb',
+                         'recipe_line': 33,
+                         'url': 'https://github.com/grusell/svt-av1-homebrew-testdata/raw/main/video_64x64_yuv420p_25frames.yuv',
+                         'sha256': '0c5cc90b079d0d9c1ded1376357d23a9782a704a83e01731f50ccd162e246492',
+                         'scope': 'test-only; excluded from production build/install inputs'},
+                        {'formula': 'tesseract',
+                         'kind': 'resource',
+                         'name': 'homebrew-test_resource',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/tesseract/5.5.4/.brew/tesseract.rb',
+                         'recipe_line': 43,
+                         'url': 'https://raw.githubusercontent.com/tesseract-ocr/test/6dd816cdaf3e76153271daf773e562e24c928bf5/testing/eurotext.tif',
+                         'sha256': '7b9bd14aba7d5e30df686fbb6f71782a97f48f81b32dc201a1b75afe6de747d6',
+                         'scope': 'test-only; excluded from production build/install inputs'},
+                        {'formula': 'x265',
+                         'kind': 'resource',
+                         'name': 'homebrew-test_video',
+                         'recipe_zip_path': 'mac-homebrew-capture-v1/formulae/x265/4.3/.brew/x265.rb',
+                         'recipe_line': 71,
+                         'url': 'https://raw.githubusercontent.com/fraunhoferhhi/vvenc/master/test/data/RTn23_80x44p15_f15.yuv',
+                         'sha256': 'ecd2ef466dd2975f4facc889e0ca128a6bea6645df61493a96d8e7763b6f3ae9',
+                         'scope': 'test-only; excluded from production build/install inputs'}]}
+
+def safe_relative(value):
+    path = PurePosixPath(value)
+    if path.is_absolute() or not path.parts or ".." in path.parts or "\\" in value or any(":" in x for x in path.parts):
+        raise ValueError("Unsafe captured source path")
+    return path
+
+
+def capture_recipes(directory, inventory_bytes, recipe_root):
+    recipe_root = recipe_root.resolve()
+    manifest_path = recipe_root / "capture-manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    if manifest["published_summary_binding"]["sha256"] != hashlib.sha256(inventory_bytes).hexdigest():
+        raise ValueError("Mac capture does not bind the supplied native inventory")
+    by_path = {record["path"]: record for record in manifest["files"]}
+    if len(by_path) != len(manifest["files"]):
+        raise ValueError("Duplicate Mac captured paths")
+    for formula in json.loads(inventory_bytes)["formulae"]:
+        for saved in formula["saved_files"]:
+            record = by_path.get(saved["saved"])
+            if not record or record["captured_original_sha256"] != saved["sha256"]:
+                raise ValueError("Mac original capture identity mismatch")
+    copied = []
+    for record in manifest["files"]:
+        relative = safe_relative(record["path"])
+        source = recipe_root.joinpath(*relative.parts)
+        if source.is_symlink() or not source.resolve().is_relative_to(recipe_root) or not source.is_file():
+            raise ValueError("Mac captured body is missing/out of scope")
+        if source.stat().st_size != record["archived_bytes"] or sha256(source) != record["archived_sha256"]:
+            raise ValueError("Mac captured body checksum mismatch")
+        if not record["byte_identical_to_captured_original"]:
+            if record["kind"] != "sanitized_install_receipt" or not record["redactions"] or any(item["field"] not in ("/source/path", "/built_prefix", "/changed_files/11", "/changed_files/12") for item in record["redactions"]):
+                raise ValueError("Unexpected Mac capture redaction")
+            receipt = json.loads(source.read_bytes())
+            for redaction in record["redactions"]:
+                value = receipt
+                for key in redaction["field"].split("/")[1:]:
+                    value = value[int(key)] if isinstance(value, list) else value[key]
+                if value != redaction["sanitized_value"] or not any(marker in value for marker in ("<user-home>", "<homebrew-prefix>")):
+                    raise ValueError("Mac receipt redaction value differs from declared normalization")
+        elif record["archived_sha256"] != record["captured_original_sha256"]:
+            raise ValueError("Mac capture falsely claims original bytes")
+        target = directory / "mac-homebrew-recipes" / Path(*relative.parts)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+        copied.append({"file": target.relative_to(directory).as_posix(),
+                       "sha256": record["archived_sha256"], "bytes": record["archived_bytes"],
+                       "captured_original_sha256": record["captured_original_sha256"],
+                       "redactions": record["redactions"]})
+    for name in ("capture-manifest.json", "README.md"):
+        source = recipe_root / name
+        target = directory / "mac-homebrew-recipes" / name
+        shutil.copy2(source, target)
+        copied.append({"file": target.relative_to(directory).as_posix(), "sha256": sha256(target), "bytes": target.stat().st_size})
+    return copied
+
+
+def store_file(collector, component, url, expected, *, extension, recipe):
+    cached, receipt = fetch(url, collector.cache, safe_name(component + "-" + expected[:16]) + extension, expected)
+    target = collector.directory / "third-party" / cached.name
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(cached, target)
+    collector.records.append({"component": component, "revision": expected, "license": "See pinned recipe/upstream terms",
+                              "recipe": recipe, "file": target.relative_to(collector.directory).as_posix(), **receipt})
+    print("Collected " + component + " " + str(receipt["bytes"]) + " bytes", flush=True)
+
+
+def auxiliary_git_urls(item):
+    urls = git_archive_urls(item["url"], item["git_revision"])
+    if item.get("source_archive_url") not in urls:
+        raise ValueError("Auxiliary archive URL differs from captured repository/ref")
+    return urls
+
+
+def collect_auxiliary(collector, recipe_root):
+    plan = json.loads(json.dumps(MAC_HOMEBREW_AUXILIARY_PLAN))
+    # Every auxiliary URL/ref/hash is checked against the exact saved recipe.
+    for key in ("required_resources", "required_remote_patches", "required_local_patches"):
+        for item in plan[key]:
+            rel = PurePosixPath(item["recipe_zip_path"])
+            recipe = recipe_root.joinpath(*rel.parts[1:])
+            body = recipe.read_text()
+            if item["kind"] == "resource":
+                if item["url"] not in body or item.get("sha256", item.get("git_revision")) not in body:
+                    raise ValueError("Auxiliary source does not match captured recipe")
+            elif key == "required_remote_patches":
+                if item["url"] not in body or item["sha256"] not in body:
+                    raise ValueError("Patch does not match captured recipe")
+            else:
+                api = json.loads((recipe.parent.parent / "cached-api-entry.json").read_text())
+                if api.get("local_patch_checksums", {}).get(item["file"]) != item["sha256"]:
+                    raise ValueError("Local patch checksum is not in captured API data")
+            component = "mac-homebrew-extra-" + item["formula"] + "-" + item["name"]
+            metadata = rel.as_posix() + ":" + str(item["recipe_line"])
+            if item.get("git_revision"):
+                urls = auxiliary_git_urls(item)
+                collector.add(component, urls, revision=item["git_revision"],
+                              repository=item["url"], license="See full included upstream notices", recipe=metadata)
+            elif item["kind"] == "resource" and not item["url"].endswith(".traineddata"):
+                collector.add(component, [item["url"]], revision=item["sha256"][:16], expected=item["sha256"],
+                              license="See full included upstream notices", recipe=metadata)
+            else:
+                try:
+                    store_file(collector, component, item["url"], item["sha256"],
+                               extension=".traineddata" if item["url"].endswith(".traineddata") else ".patch", recipe=metadata)
+                except (OSError, ValueError) as error:
+                    collector.missing.append({"component": component, "reason": str(error)[:240]})
+    # Preserve the selection/exclusion reasoning beside the original recipes.
+    (collector.directory / "mac-homebrew-auxiliary-plan.json").write_text(json.dumps(plan, indent=2) + "\n", encoding="utf-8")
+
+
+def cargo_registry_inputs(raw):
+    crates = []
+    for item in tomllib.loads(raw.decode())["package"]:
+        if "source" not in item:
+            continue
+        if item["source"] != "registry+https://github.com/rust-lang/crates.io-index" or not re.fullmatch(r"[0-9a-f]{64}", item.get("checksum", "")):
+            raise ValueError("Unpinned/unsupported Cargo source")
+        name, version = item["name"], item["version"]
+        if safe_name(name) != name or not re.fullmatch(r"[0-9A-Za-z][0-9A-Za-z.+_-]{0,99}", version):
+            raise ValueError("Unsafe Cargo source identity")
+        url = "https://static.crates.io/crates/" + name + "/" + name + "-" + version + ".crate"
+        crates.append({"name": name, "version": version, "sha256": item["checksum"], "url": url})
+    if len({safe_name(item["name"] + "-" + item["version"]) for item in crates}) != len(crates):
+        raise ValueError("Cargo identities collide after cache filename normalization")
+    return crates
+
+
+def collect_crates(collector):
+    source = collector.cache / "mac-homebrew-rav1e-0.8.1.tar.gz"
+    raw = tar_members(source)["Cargo.lock"]
+    if hashlib.sha256(raw).hexdigest() != "861482385bdef579e207bb371937dd49cb9ff47d9406c40660b760fa672d0589":
+        raise ValueError("Unexpected rav1e Cargo.lock")
+    crates = cargo_registry_inputs(raw)
+    if len(crates) != 271:
+        raise ValueError("Unexpected rav1e registry source count")
+    for item in crates:
+        path, receipt = fetch(item["url"], collector.cache, "mac-rav1e-crate-" + item["name"] + "-" + item["version"] + ".crate", item["sha256"])
+        collector.store("mac-rav1e-crate-" + item["name"], path, receipt, item["version"], "See included per-crate upstream notices", "rav1e0.8.1/Cargo.lock checksum")
+    (collector.directory / "mac-rav1e-crates.json").write_text(json.dumps({"scope": "Full lockfile superset, including optional/dev/platform inputs; not a claim all crates were linked", "crates": crates}, indent=2) + "\n", encoding="utf-8")
 
 
 def collect_macos_sources(args) -> int:
@@ -690,8 +1124,8 @@ def collect_macos_sources(args) -> int:
     inventory_path = Path(args.mac_native_inventory)
     inventory_bytes = inventory_path.read_bytes()
     inventory = json.loads(inventory_bytes)
-    if inventory.get("architecture") != "arm64" or not inventory.get("formulae"):
-        raise ValueError("Expected the actual arm64 Mac native dependency inventory")
+    if inventory.get("architecture") != "arm64" or hashlib.sha256(inventory_bytes).hexdigest() != MAC_NATIVE_INVENTORY_SHA256:
+        raise ValueError("Expected the exact reviewed arm64 release inventory; new versions require a new recipe/resource review")
     (directory / "mac-native-dependencies.json").write_bytes(inventory_bytes)
     formula_records = []
     for formula in inventory["formulae"]:
@@ -718,31 +1152,22 @@ def collect_macos_sources(args) -> int:
     # These are distinct libraries from the Homebrew subprocess media tools.
     collector.add("pyav", [PYAV_SDIST["url"]], revision="17.0.0", license="BSD-3-Clause", expected=PYAV_SDIST["sha256"])
     collect_macos_pyav(collector, native_pending=False)
+    collect_electron_sources(collector)
     recipes = []
     if args.mac_recipe_directory:
         recipe_root = Path(args.mac_recipe_directory).resolve()
-        for formula in inventory["formulae"]:
-            for saved in formula["saved_files"]:
-                relative = PurePosixPath(saved["saved"])
-                if relative.is_absolute() or ".." in relative.parts or "\\" in str(relative):
-                    raise ValueError("Unsafe saved Homebrew recipe path")
-                source_path = recipe_root.joinpath(*relative.parts)
-                if not source_path.is_file() or sha256(source_path) != saved["sha256"]:
-                    collector.missing.append({"component": formula["formula"], "reason": "Exact saved recipe/receipt is unavailable: " + str(relative)})
-                    continue
-                target = directory / "mac-homebrew-recipes" / Path(*relative.parts)
-                target.parent.mkdir(parents=True, exist_ok=True); shutil.copy2(source_path, target)
-                recipes.append({"file": target.relative_to(directory).as_posix(), "sha256": saved["sha256"]})
-        collector.missing.append({"component": "mac-homebrew-build-resources", "reason": "Review exact saved formula resource/patch blocks and include required build resources before declaring Mac source closure complete"})
+        recipes = capture_recipes(directory, inventory_bytes, recipe_root)
+        collect_auxiliary(collector, recipe_root)
+        collect_crates(collector)
     else:
-        collector.missing.append({"component": "mac-homebrew-recipes", "reason": "Exact saved formula/receipt bodies are not embedded in the public inventory; provide --mac-recipe-directory with the captured formulae/ tree"})
+        collector.missing.append({"component": "mac-homebrew-recipes", "reason": "Provide --mac-recipe-directory with the verified314-member captured formulae/ directory; it supplies required recipe/resource/patch provenance"})
     app_files = snapshot_application(directory / "application")
     manifest = {"schema": 1, "platform": "macos-arm64", "application_revision": args.application_revision,
                 "runtime_code_revision": args.runtime_code_revision,
                 "native_inventory_sha256": hashlib.sha256(inventory_bytes).hexdigest(),
                 "sources": collector.records, "homebrew_main_inputs": formula_records, "homebrew_saved_files": recipes,
                 "application_files": app_files, "unresolved": collector.missing,
-                "scope": "Actual Mac shipped native source graph, original PyAV vendor sources, application snapshot and captured recipes; required resource/patch closure is explicitly tracked.",
+                "scope": "Actual Mac native source inputs, original PyAV vendor sources, Electron media sources, application snapshot,314 captured recipe/receipt files,18 auxiliary recipe inputs and the271-crate rav1e lockfile superset. Optional/dev crates are included without claiming every crate was linked. Build scripts are preserved; byte-identical binary rebuilding is not claimed.",
                 "source_coverage": "incomplete" if collector.missing else "listed source inputs collected; final release review required"}
     (directory / "SOURCE-MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8", newline="\n")
     archive = create_archive(directory, output / "8k-editor-macos-corresponding-source.tar.gz")
@@ -904,6 +1329,52 @@ def self_test() -> int:
             inventory = recipe_inventory({"scripts.d/20-libiconv.sh": b'SCRIPT_REPO="https://example.com/lib.git"\nSCRIPT_COMMIT="abc"\necho --enable-iconv\n'})
             self.assertEqual(inventory[0]["revision"], "abc")
             self.assertEqual(inventory[0]["configure_flags"], ["--enable-iconv"])
+
+        def test_mac_auxiliary_archive_bound_to_repository_revision(self):
+            item = next(item for item in MAC_HOMEBREW_AUXILIARY_PLAN["required_resources"] if item.get("git_revision"))
+            self.assertEqual(auxiliary_git_urls(item), [item["source_archive_url"]])
+            with self.assertRaises(ValueError):
+                auxiliary_git_urls({**item, "source_archive_url": "https://codeload.github.com/other/project/tar.gz/" + item["git_revision"]})
+
+        def test_mac_cargo_exact_urls_checksums_and_semver_metadata(self):
+            versions = ("0.7.1+libdav1d.1.4.3", "0.18.1+1.9.0", "0.11.1+wasi-snapshot-preview1", "0.14.2+wasi-0.2.4")
+            raw = "\n".join('[[package]]\nname="crate' + str(i) + '"\nversion="' + version + '"\nsource="registry+https://github.com/rust-lang/crates.io-index"\nchecksum="' + "a" * 64 + '"' for i, version in enumerate(versions)).encode()
+            inputs = cargo_registry_inputs(raw)
+            self.assertEqual([item["version"] for item in inputs], list(versions))
+            for item in inputs:
+                self.assertEqual(item["url"], "https://static.crates.io/crates/" + item["name"] + "/" + item["name"] + "-" + item["version"] + ".crate")
+                self.assertNotIn("+", safe_name(item["name"] + "-" + item["version"]))
+            for changed in (raw.replace(b"registry+https://github.com/rust-lang/crates.io-index", b"git+https://example.com/unpinned"),
+                            raw.replace(b"a" * 64, b"g" * 64), raw.replace(b'"crate0"', b'"../unsafe"')):
+                with self.assertRaises(ValueError):
+                    cargo_registry_inputs(changed)
+
+        def test_mac_capture_original_and_redacted_hashes(self):
+            with tempfile.TemporaryDirectory() as value:
+                root = Path(value); recipes = root / "recipes"; recipes.mkdir()
+                relative = "formulae/fixture/1/INSTALL_RECEIPT.json"
+                receipt_path = recipes / relative; receipt_path.parent.mkdir(parents=True)
+                receipt = b'{"source":{"path":"<user-home>/Library/Caches/Homebrew/api.json"}}'
+                receipt_path.write_bytes(receipt)
+                archived = hashlib.sha256(receipt).hexdigest()
+                inventory = json.dumps({"formulae": [{"saved_files": [{"saved": relative, "sha256": "b" * 64}]}]}).encode()
+                manifest = {"published_summary_binding": {"sha256": hashlib.sha256(inventory).hexdigest()}, "files": [{
+                    "path": relative, "kind": "sanitized_install_receipt", "captured_original_sha256": "b" * 64,
+                    "archived_sha256": archived, "archived_bytes": len(receipt), "byte_identical_to_captured_original": False,
+                    "redactions": [{"field": "/source/path", "sanitized_value": "<user-home>/Library/Caches/Homebrew/api.json"}]}]}
+                (recipes / "capture-manifest.json").write_text(json.dumps(manifest))
+                (recipes / "README.md").write_text("fixture")
+                files = capture_recipes(root / "output", inventory, recipes)
+                self.assertEqual(files[0]["captured_original_sha256"], "b" * 64)
+                self.assertEqual(files[0]["sha256"], archived)
+                receipt_path.write_bytes(receipt + b"corrupt")
+                with self.assertRaises(ValueError): capture_recipes(root / "corrupted", inventory, recipes)
+                receipt_path.write_bytes(receipt)
+                manifest["files"][0]["captured_original_sha256"] = "c" * 64
+                (recipes / "capture-manifest.json").write_text(json.dumps(manifest))
+                with self.assertRaises(ValueError): capture_recipes(root / "wrong-original", inventory, recipes)
+                for path in ("../escape", "C:/private", "/absolute", "folder\\escape"):
+                    with self.assertRaises(ValueError): safe_relative(path)
 
         def test_selected_recipe_dependency_groups(self):
             items = [

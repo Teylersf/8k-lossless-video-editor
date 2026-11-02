@@ -104,9 +104,23 @@ python scripts/collect_release_sources.py --collect \
   --native-override-receipt build/vendor-lgpl/clean-ffmpeg/avcodec-62.dll.receipt.json
 ```
 
-The Windows collection includes actual source archives for the pinned FFmpeg, PyAV, build recipes, LGPL/MPL dependency inputs, libiconv's pinned gnulib, libplacebo's six pinned submodules, and the targeted rebuild's OpenH264/NVIDIA headers/dav1d/SVT-AV1/zlib inputs. LAME is exported from exact SVN revision 6531 with executable properties and per-file hashes. Other recipe inputs retain source-URL/revision provenance. The release must refresh its application snapshot after source freeze, carry the final component notices, and verify that its manifest describes the installer actually published. Build receipts describe source/binary identity; they do not replace real file I/O, codec and frozen GPU tests. macOS's native FFmpeg/Homebrew sources require a separate platform-specific collection.
+The Windows collection includes 39 actual source archives: the pinned FFmpeg, PyAV, build recipes, LGPL/MPL dependency inputs, libiconv's pinned gnulib, libplacebo's six pinned submodules, and the targeted rebuild's OpenH264/NVIDIA headers/dav1d/SVT-AV1/zlib inputs. Electron's separate LGPL FFmpeg fork, its build/patch provenance, and the exact 715-file Chromium Opus tree are also included. LAME is exported from exact SVN revision 6531 with executable properties and per-file hashes. Other recipe inputs retain source-URL/revision provenance. Each release manifest separates the application snapshot from the compiled runtime revision. Build receipts describe source/binary identity; they do not replace real file I/O, codec and frozen GPU tests.
 
-The native notice collection additionally preserves pinned component copyright/license files and NVIDIA's public codec-header grants. GCC/MinGW runtime notices include GPLv3 with the **GCC Runtime Library Exception 3.1**, plus the original compiler/runtime package copyright files. Those exceptions are third-party terms and are not replaced by the application's own permission.
+The Mac collection separately preserves all 79 source inputs in the actual native inventory, PyAV's original vendor source inputs, Electron's media sources, 314 captured recipe/receipt files, and 18 auxiliary recipe resources and patches. Its rav1e `Cargo.lock` collection includes all 271 checksum-pinned registry sources, including optional, development and other-platform packages; inclusion does not claim every crate was compiled. Original receipt hashes remain separate from archived hashes where user-home or Homebrew-prefix fields were normalized. Source recipes remain byte-identical. The captured recipe packet is [published with its manifest](provenance/mac-homebrew-capture-v1.README.md).
+
+After expanding `docs/provenance/mac-homebrew-capture-v1.zip`, the Mac collection can be reproduced with:
+
+```sh
+python scripts/collect_release_sources.py --collect-macos-sources \
+  --mac-recipe-directory /path/to/mac-homebrew-capture-v1 \
+  --application-revision YOUR_SOURCE_COMMIT \
+  --runtime-code-revision YOUR_COMPILED_RUNTIME_COMMIT \
+  --output out/release-sources/macos-release
+```
+
+This collects the reviewed release inventory, rather than silently substituting current Homebrew versions. Sources are preserved with checksums and build recipes; a byte-identical rebuild of upstream vendor binaries is not claimed.
+
+The native notice collection additionally preserves pinned component copyright/license files and NVIDIA's public codec-header grants. The final targeted Windows rebuild uses LLVM-MinGW's UCRT toolchain and preserves the LLVM/libc++/compiler-runtime notices and exceptions. Earlier GCC/MinGW provenance notices, including the **GCC Runtime Library Exception 3.1**, remain identified separately. Those exceptions are third-party terms and are not replaced by the application's own permission.
 
 ## Showcase artwork
 
