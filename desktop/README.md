@@ -5,6 +5,11 @@ PyTorch, PyAV, FFmpeg and other components retain their respective licenses.
 This folder packages the existing local editor rather than a second renderer.
 The installed app requires no Node, Python, Homebrew or build toolchain.
 
+The current arm64 DMG requires **macOS 26.6.2 or later**. This matches the
+highest deployment target in its bundled native libraries. Builds for older
+macOS versions need a matching native payload and an updated
+`mac.minimumSystemVersion`.
+
 The shell pins Electron **45.2.1** and electron-builder **26.18.0**, verified from
 the official npm registry. Renderer sandboxing and context isolation remain on;
 Node integration and webviews remain off. Only fullscreen on the owned page is

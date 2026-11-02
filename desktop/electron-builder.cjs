@@ -73,6 +73,8 @@ module.exports = {
   mac: {
     target: [{ target: "dmg", arch: ["arm64"] }],
     category: "public.app-category.video",
+    // Highest deployment target in this bundled native payload (libtesseract).
+    minimumSystemVersion: "26.6.2",
     bundleShortVersion: "0.1.0",
     bundleVersion: "0.1.0",
     icon: optionalIcon("icon.icns"),
