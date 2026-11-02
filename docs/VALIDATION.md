@@ -64,9 +64,48 @@ preview, queued cancellation and download of a verified 96-frame RGB16/PCM
 master. The downloaded file's SHA256 matched the server's verified output.
 Source-to-program switching passed after a finite-metadata seeking fix.
 
-Consumer Apple Silicon end-to-end 8K results remain pending their own receipt.
-Long-form 8K stability, interactive frame rate and broad real-world
-camera/interchange variant coverage remain separate validation work.
+On 2026-11-01 (America/Los_Angeles), an actual **M4 Mac mini with 16 GiB RAM**,
+macOS 26.6.2, native ARM64 Python 3.13.18, PyTorch 2.11.0 and FFmpeg-full 9.0.2
+passed a **24-frame, two-clip 7680×4320 / 24 fps offline proof** at commit
+`336abdaceea469dd471850fc9f64f6f5ea804948`. All decoded RGB16 samples matched
+the original integer fixtures, including low-bit differences and sharp edges;
+all 48,000 float32 PCM samples per stereo channel matched exactly. A separate
+two-frame lens/title/overlay master recovered its processed RGB16 samples.
+Metal/MPS was selected for supported effects; decoding, compositing and audio
+also use CPU.
+
+| Case | Render + engine verification | Additional independent verification |
+| --- | ---: | ---: |
+| 24-frame FFV1 RGB16 master | 94.593 s | 58.359 s |
+| Two-frame effects, title and overlay | 28.388 s | 6.795 s |
+| 24-frame PNG16 sequence + float32 PCM archive | 85.559 s | 15.801 s |
+
+The PNG16 archive independently recovered all 24 ordered RGB16 frames and exact
+stereo audio; its sequence manifest declares the 24 fps grid. PNG files do not
+carry individual video timestamps. The FFV1/MKV frame timestamps passed CFR
+checks within its millisecond time-base tolerance of 0.501 ms. Source file
+hashes remained unchanged. Frontend build/lint and all 23 client, 20 API,
+25 engine and four format-catalogue tests passed locally.
+
+The native FFV1/effects run's internal and external samplers observed maximum
+summed process-tree RSS of 4.61 and 4.52 GiB; the separate PNG16 run observed
+6.16 GiB. Sampled RSS may double-count shared pages and miss transient peaks.
+These measurements are not Metal allocator or dedicated GPU-memory peaks;
+allocator safeguards remained enabled. See the [sanitized receipt](validation/mac-m4-native-8k.json).
+
+A separate actual Mac browser proof used two original 1080p sources: import,
+split, undo/redo, title/color edits, save/reopen with the correct date, full
+two-second rendered-program playback and two Source→Program switches all
+passed without console errors. A finite 0.5-second seek worked after remount.
+The downloaded 48-frame RGB16/FFV1 master matched the verified published file's
+SHA256; independent decoding recovered the rendered RGB16 samples and all
+96,000 concatenated float32 PCM samples per stereo channel exactly. Source
+hashes remained unchanged. This browser proof supplements the separate
+native-8K raster/precision results above.
+
+These are short synthetic offline results. Long-form 8K stability, interactive
+frame rate and broad real-world camera/interchange variant coverage remain
+separate validation work.
 
 The native macOS CI job asserts ARM64 and reports actual MPS availability. It
 runs small actual Metal renders only when MPS is available; otherwise it reports
