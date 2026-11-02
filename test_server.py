@@ -415,7 +415,9 @@ class ServerTests(unittest.TestCase):
     def test_failed_export_retains_final_worker_cause_and_bounded_private_diagnostics(self):
         job = self.queue()
         final_cause = 'ValueError: Requested pixel format is not supported by this encoder'
-        worker_log = 'Export failed: ' + ('progress and encoder context\n' * 400) + str(self.store) + '\n' + final_cause
+        # Real worker paths use the service's resolved store (macOS aliases /var).
+        owned_store = self.state.store
+        worker_log = 'Export failed: ' + ('progress and encoder context\n' * 400) + str(owned_store) + '\n' + final_cause
         with patch.object(self.pipeline, 'render_project', side_effect=ValueError(worker_log)):
             self.executor.run()
         failed = self.client.get(f"/api/jobs/{job['id']}").json()
@@ -425,6 +427,7 @@ class ServerTests(unittest.TestCase):
         self.assertTrue(failed['error'].startswith('[Earlier diagnostic lines omitted]\n'))
         self.assertTrue(failed['error'].endswith(final_cause))
         self.assertIn('<local data>', failed['error'])
+        self.assertNotIn(str(owned_store), failed['error'])
         self.assertNotIn(str(self.store), failed['error'])
         self.assertIsNone(failed['output_url'])
         persisted = json.loads((self.store / 'jobs' / job['id'] / 'job.json').read_text(encoding='utf-8'))
