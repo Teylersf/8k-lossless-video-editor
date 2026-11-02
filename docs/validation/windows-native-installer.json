@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "project": "8K Lossless Video Editor",
+  "author": "Taylor Kalin",
+  "status": "passed",
+  "artifact_stage": "Final Windows x64 per-user NSIS installer, installed and verified through actual Electron GUI.",
+  "source": {
+    "repository": "https://github.com/Teylersf/8k-lossless-video-editor",
+    "backend_source_commit": "2663eacf743970d36507581856562be2d12d940a",
+    "packaging_checkout_commit": "723faad2635060a06cb2443e9a016804a79f86bc",
+    "source_note": "The backend was freshly frozen from 2663eac. The later packaging checkout added dependency notices and documentation and adjusted API test fixtures, without changing those production sources."
+  },
+  "artifact": {
+    "executable": "8KLosslessVideoEditor-0.1.0-beta.1-win-x64.exe",
+    "bytes": 2095493483,
+    "sha256": "0cce68a7810fcffe246a169d3ffd6ac3e8dd5f0baaa3dc535d9599b667e1dcf6",
+    "below_2gib": true,
+    "headroom_bytes": 51990165,
+    "company": "Taylor Kalin",
+    "product": "8KLosslessVideoEditor",
+    "product_version": "0.1.0-beta.1",
+    "file_version": "0.1.0.0",
+    "description": "Native local 8K Lossless Video Editor by Taylor Kalin",
+    "copyright": "Copyright \u00c2\u00a9 2026 Taylor Kalin",
+    "signature_status": "NotSigned",
+    "trusted_publisher": false
+  },
+  "compatibility": {
+    "target": "Windows x64",
+    "release_channel": "unsigned beta",
+    "build_host_os_version": "10.0.26200",
+    "scope": "An unsigned x64 package is not a verified-publisher release. This packaging receipt does not establish compatibility with every Windows release or GPU."
+  },
+  "build": {
+    "started_utc": "2026-11-02T04:07:14.3322902Z",
+    "completed_utc": "2026-11-02T04:15:34.1146453Z",
+    "seconds": 499.7748525,
+    "exit_code": 0,
+    "electron": "45.2.1",
+    "electron_builder": "26.18.0",
+    "pyinstaller": "6.22.3",
+    "python": "3.13.7"
+  },
+  "installation_policy": {
+    "per_user": true,
+    "requested_execution_level": "asInvoker",
+    "allow_elevation": false,
+    "pack_elevate_helper": false,
+    "preserve_app_data": true
+  },
+  "pe_resources": [
+    {
+      "file": "8KLosslessVideoEditor-0.1.0-beta.1-win-x64.exe",
+      "asInvoker_verified": true,
+      "source_icon_frames": 7,
+      "matching_original_icon_payloads": 7,
+      "all_original_icon_payloads_match": true
+    },
+    {
+      "file": "8KLosslessVideoEditor.exe",
+      "asInvoker_verified": true,
+      "source_icon_frames": 7,
+      "matching_original_icon_payloads": 7,
+      "all_original_icon_payloads_match": true
+    }
+  ],
+  "payload": {
+    "backend_executable_sha256": "a50b74839d38acab9aa95961c6158e62a8018e0a7b73246f3f2bbfe387ebd6b1",
+    "backend_matches_audited_input": true,
+    "elevate_executable_count": 0,
+    "cuda_runtime_files": [
+      {
+        "name": "cublas64_12.dll",
+        "bytes": 104883712
+      },
+      {
+        "name": "cublasLt64_12.dll",
+        "bytes": 531812352
+      },
+      {
+        "name": "cudnn_adv64_9.dll",
+        "bytes": 282445872
+      },
+      {
+        "name": "cudnn_cnn64_9.dll",
+        "bytes": 4618272
+      },
+      {
+        "name": "cudnn_engines_precompiled64_9.dll",
+        "bytes": 513926688
+      },
+      {
+        "name": "cudnn_engines_runtime_compiled64_9.dll",
+        "bytes": 20201008
+      },
+      {
+        "name": "cudnn_graph64_9.dll",
+        "bytes": 2420256
+      },
+      {
+        "name": "cudnn_heuristic64_9.dll",
+        "bytes": 56823328
+      },
+      {
+        "name": "cudnn_ops64_9.dll",
+        "bytes": 126508576
+      },
+      {
+        "name": "cudnn64_9.dll",
+        "bytes": 266288
+      },
+      {
+        "name": "torch_cuda.dll",
+        "bytes": 1048046592
+      }
+    ],
+    "torch": "2.11.0+cu126",
+    "cuda_runtime": "12.6",
+    "av": "17.0.0",
+    "backend_self_test": {
+      "ready": true,
+      "frozen": true,
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 3090",
+      "static_assets_present": true
+    },
+    "frontend_files_matching_frozen_source": 4,
+    "backend_license_notice_copies_matching_frozen_source": 6,
+    "electron_license_notice_copies_matching_frozen_source": 3
+  },
+  "blockmap": {
+    "bytes": 2175907,
+    "sha256": "a24825b09ca85cca4cc63bb81d575b03adbf3a5329a3dec8a02feb4724e6fe8b"
+  },
+  "installation_validation": {
+    "status": "passed",
+    "installer_exit_code": 0,
+    "scope": "Actual per-user silent install on Windows x64; installer and app launched with PATH restricted to Windows System32. No host Python, Node or FFmpeg paths were available.",
+    "registry": {
+      "display_name": "8K Lossless Video Editor",
+      "display_version": "0.1.0-beta.1",
+      "publisher": "Taylor Kalin",
+      "uninstaller_scope": "currentuser"
+    },
+    "installed_files_match_packaged_payload": {
+      "8KLosslessVideoEditor.exe": "84e3852fc77844d428eadc75928a68873f027e8fe0ba0fcf96cdf1ddcb6df7bf",
+      "resources/app.asar": "b61b063cbca3a7762143c05e39e33873ca2468c5f497cd1f7ff33840fdfd1fc1",
+      "resources/backend/8k-editor-backend.exe": "a50b74839d38acab9aa95961c6158e62a8018e0a7b73246f3f2bbfe387ebd6b1",
+      "resources/backend/_internal/av.libs/avcodec-62.dll": "0837a840482fb6d5877d46745bab863450808807aa398cb6d4da4e8088440faa",
+      "resources/backend/_internal/av.libs/avdevice-62.dll": "38dadc5a19179116ac95050ce1ae2eb3fbf5abd87af5a872324ef4dd2df6896c",
+      "resources/backend/_internal/av.libs/avfilter-11.dll": "8eb979974c0550d0776cf53734a1209304e3a56386fc2e6bd7ca577fa17b72bb",
+      "resources/backend/_internal/av.libs/avformat-62.dll": "b910126d0448c4b89cd814ca07347e5febc610a64d6af4ed13dc48c4474a02c6",
+      "resources/backend/_internal/av.libs/avutil-60.dll": "d353317bbe824c8794657608378e9c71d7b0bf264300b5371e7c6d213aeb903a",
+      "resources/backend/_internal/av.libs/swresample-6.dll": "52f94587a2ec32a47be82d8108c827fbb07960a86f64850e89258bdc869ce596",
+      "resources/backend/_internal/av.libs/swscale-9.dll": "5ee25bd365bbb02d84f9f3a6211754fb4d09df8dafd00c3e4c043b018bfbc5e8",
+      "resources/backend/_internal/torch/lib/torch_cuda.dll": "af947392752c442d9f149ebc2d35ac5329e8dc797b2575eef21b510152b7c3b3"
+    },
+    "source_files_unchanged": true
+  },
+  "installed_gui_validation": {
+    "status": "passed",
+    "result": {
+      "status": "passed",
+      "scope": "Actual installed Windows Electron GUI import, two-clip edit, save, native8K RGB16/PCM export and native Save As download. Independent FFmpeg7 CLI decode against original integer fixture hashes.",
+      "job": "75cc396801be4a3096e3fc8a69648db1",
+      "download_sha256": "d8cf080604ef6123742ef496450d8f0254875534f22b8bcd8d2fbd9d7e3bf16f",
+      "download_bytes": 65295340,
+      "download_matches_published_file": true,
+      "video": {
+        "width": 7680,
+        "height": 4320,
+        "codec": "ffv1",
+        "pixel_format": "gbrp16le",
+        "fps_exact": "24",
+        "frames": 2,
+        "timestamps": [
+          "0",
+          "21/500"
+        ],
+        "sample_sha256": "3a4d25e6f63d347961fa47d4a943c2b5e3237fa29ff3bf10cad73c2fdc77b896",
+        "decoded_bytes": 398131200,
+        "frame_sha256": [
+          "dba3022cf5082f932d5554a80e2c3fdfeb64df732b2f969a0bf08f8187c96cde",
+          "e2175cc932b529af273db6f53b6e7ed91a80db8ebbac4b4dbc2234af510a5e7b"
+        ]
+      },
+      "audio": {
+        "codec": "pcm_f32le",
+        "sample_rate": 48000,
+        "channels": 2,
+        "exact_expected_pcm": true,
+        "sample_sha256": "8f12eb589932cd05fe4a1a24e33ee1a51778c23cd3ec3a81f182f4ee5bcb780c",
+        "decoded_bytes": 32000,
+        "frame_sha256": []
+      },
+      "gpu": {
+        "device": "cuda",
+        "gpu": "NVIDIA GeForce RTX 3090",
+        "accelerated": true,
+        "reason": "CUDA rendering is available."
+      },
+      "notes": [
+        "Color range is unspecified; RGB/YUVJ uses full range and other YUV uses limited range.",
+        "Timeline uses the selected project CFR; source frame timing is sampled onto that grid.",
+        "Transfer is unspecified; effect processing assumes BT.709 without changing source color tags.",
+        "Unspecified source primaries are interpreted as BT.709; set the clip source interpretation to override.",
+        "YUV matrix is unspecified; RGB conversion assumes BT.709 for HD.",
+        "Audio clips use their first source audio stream and are mixed/resampled to project stereo at 48000 Hz."
+      ]
+    },
+    "saved_project_name": "Windows native 8K \u00b7 installed app proof",
+    "project_canvas": [
+      7680,
+      4320
+    ],
+    "video_clips": 2,
+    "audio_clips": 1,
+    "project_and_media_preserved_on_relaunch": true,
+    "screenshot": "../images/editor-windows-native-export.png",
+    "lifecycle": {
+      "normal_quit_via_os_shortcut": true,
+      "owned_shutdown_http_status": 200,
+      "backend_exit_logged": true,
+      "prior_owned_port_closed_before_relaunch": true,
+      "unrelated_development_service_8770_preserved": true,
+      "relaunch_native_project_visible": true,
+      "application_left_open": true
+    }
+  },
+  "limitations": [
+    "Installed GUI proof uses two native 8K synthetic frames. It does not establish real-time playback, long-form stability, or universal format/driver compatibility.",
+    "The eleven listed CUDA/cuDNN/cuBLAS DLLs were retained; their presence alone does not prove every GPU or export profile works.",
+    "Third-party dependencies retain their own terms; author metadata and bundled owner-code license notices do not grant third-party rights.",
+    "The private prototype installer is a separate earlier artifact and is not this final installer."
+  ]
+}

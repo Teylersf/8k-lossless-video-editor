@@ -119,6 +119,37 @@ undo/redo, source interpretation, title/audio/keyframes, save/reopen/relink,
 full-timeline preview, cancellation and export/download. Responsive controls
 do not imply a phone can render 8K; processing occurs on the local host.
 
+## Installed desktop applications
+
+The Windows x64 NSIS package installs per user and identifies **Taylor Kalin**
+as its publisher. The installer and installed Electron app were launched with
+PATH restricted to Windows System32. The native GUI imported two 7680×4320
+RGB16 clips and float32 PCM audio, saved a two-frame sequence, exported FFV1,
+and downloaded it through the native Save As dialog. Independent FFmpeg 7
+decoding recovered all original RGB16 pixels and stereo float32 samples
+exactly. Normal quit stopped only its owned backend; relaunch recovered the
+project and media. The installer is an **unsigned beta**.
+
+- [Installed Windows package receipt](validation/windows-native-installer.json)
+- [Frozen CUDA engine, NVENC, effects and AV1 conversion receipt](validation/windows-native-desktop.json)
+- [Installed Windows export screenshot](images/editor-windows-native-export.png)
+
+The final Apple Silicon v5 app also passed installed AV1 export, native
+download, independent decode/audio checks and quit/relaunch with the saved
+project intact. Its two-frame 7680×4320 AV1 delivery test uses lossy video and
+FLAC carrying a documented 24-bit conversion of the float32 timeline mix.
+Successful exports show a green completion state; all seven processing notes
+remain available in a collapsed disclosure. All 52 Python, 26 frontend and
+16 desktop checks passed on the M4 Mac. The current bundled DMG requires
+**macOS 26.6.2 or later** and uses **ad-hoc signing without notarization**.
+
+- [Installed Mac app and final DMG receipt](validation/mac-native-desktop.json)
+- [Verified Mac AV1 export screenshot](images/editor-mac-av1-export.jpg)
+
+These short native tests establish the stated raster, samples and app flows;
+they do not establish real-time playback or long-form 8K stability. The earlier
+24-frame M4 and 48-frame DPX16 proofs above remain separate results.
+
 ## Reproduce the checks
 
 Use the project environment's Python. On Windows replace

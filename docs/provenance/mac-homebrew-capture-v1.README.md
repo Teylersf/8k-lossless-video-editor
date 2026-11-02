@@ -1,0 +1,7 @@
+# Captured Mac Homebrew provenance, v1
+
+This archive preserves the existing local capture behind `docs/validation/mac-native-dependencies.json`. It contains 79 saved `.brew` recipes, 79 install receipts, 79 cached API entries, the available cached OCI bottle manifests, and the already sanitized full and summary manifests. Nothing was replaced with current Homebrew HEAD, downloaded, built, or inferred from a newer recipe.
+
+All recipe, API and OCI bodies are byte-identical to the saved capture and verified against its recorded hashes. Receipts use the earlier public capture's path normalization: local user-home prefixes become `<user-home>` and Homebrew prefixes become `<homebrew-prefix>`. The manifest records both original and archived hashes, sizes and every changed JSON field. Sanitized receipts are not claimed to be raw byte-identical receipts; their parsed content exactly matches the earlier sanitized public manifest. The full and summary public manifests are copied byte-for-byte, with their original digest link verified.
+
+The included manifest inventories every captured body. Archive member timestamps are fixed to 2000-01-01 for reproducibility; they do not represent capture times. Generic upstream `/home/linuxbrew` bottle build paths remain public build metadata. Private manifests, media, executables and credentials are excluded. This is provenance evidence, not a complete corresponding-source bundle or a legal compatibility conclusion.
