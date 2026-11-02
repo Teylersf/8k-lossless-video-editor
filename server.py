@@ -34,8 +34,15 @@ from media_library import MediaLibrary, MediaBusyError, MAX_UPLOAD, atomic_json,
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / 'engine'))
 APP_NAME = '8K Lossless Video Editor'
-VERSION = '0.1.0-local'
-ORIGINS = {'http://127.0.0.1:8770', 'http://localhost:8770', 'http://[::1]:8770',
+AUTHOR = 'Taylor Kalin'
+VERSION = '0.1.0-beta.1' if getattr(sys, 'frozen', False) else '0.1.0-local'
+PORT = int(os.environ.get('EDITOR_PORT', '8770'))
+if not 1024 <= PORT <= 65535:
+    raise ValueError('EDITOR_PORT must be in 1024..65535')
+INSTANCE_TOKEN = os.environ.get('EDITOR_INSTANCE_TOKEN', '')
+if INSTANCE_TOKEN and not re.fullmatch(r'[0-9a-fA-F]{32,128}', INSTANCE_TOKEN):
+    raise ValueError('EDITOR_INSTANCE_TOKEN must be 32..128 hexadecimal characters')
+ORIGINS = {f'http://127.0.0.1:{PORT}', f'http://localhost:{PORT}', f'http://[::1]:{PORT}',
            'http://127.0.0.1:5173', 'http://localhost:5173'}
 ACTIVE = {'queued', 'running', 'cancelling'}
 SERVER = None
@@ -324,7 +331,7 @@ def create_app(store=None, *, pipeline=None, model=None, executor=None):
     application = FastAPI(title=APP_NAME, version=VERSION, lifespan=lifespan)
     application.add_middleware(RequestBounds)
     application.add_middleware(TrustedHostMiddleware, allowed_hosts=['localhost', '127.0.0.1', '[::1]', 'testserver'])
-    application.add_middleware(CORSMiddleware, allow_origins=sorted(ORIGINS), allow_methods=['GET', 'POST'], allow_headers=['Content-Type', 'X-Editor-Client'])
+    application.add_middleware(CORSMiddleware, allow_origins=sorted(ORIGINS), allow_methods=['GET', 'POST'], allow_headers=['Content-Type', 'X-Editor-Client', 'X-Editor-Instance'])
 
     def service():
         return application.state.editor
@@ -367,10 +374,12 @@ def create_app(store=None, *, pipeline=None, model=None, executor=None):
             caps = service().pipeline().capabilities()
             backend = caps.get('acceleration') or importlib.import_module('engine.runtime_backend').backend_info()
             from engine.format_catalog import capabilities as format_capabilities
-            return {'app': APP_NAME, 'version': VERSION, 'ready': ffmpeg, **backend, 'ffmpeg': ffmpeg,
+            return {'app': APP_NAME, 'author': AUTHOR, 'version': VERSION, 'ready': ffmpeg, **backend, 'ffmpeg': ffmpeg,
+                    **({'desktop_instance_token': INSTANCE_TOKEN} if INSTANCE_TOKEN else {}),
                     'capabilities': {**service().clean(caps), 'formats': format_capabilities()}, 'renderer_busy': service().renderer.locked()}
         except (ImportError, ValueError, RuntimeError, OSError) as error:
-            return {'app': APP_NAME, 'version': VERSION, 'ready': False, 'device': None, 'gpu': 'Renderer unavailable',
+            return {'app': APP_NAME, 'author': AUTHOR, 'version': VERSION, 'ready': False, 'device': None, 'gpu': 'Renderer unavailable',
+                    **({'desktop_instance_token': INSTANCE_TOKEN} if INSTANCE_TOKEN else {}),
                     'accelerated': False, 'reason': service().clean(str(error)), 'ffmpeg': ffmpeg, 'capabilities': {}}
 
     @application.get('/api/capabilities')
@@ -514,7 +523,9 @@ def create_app(store=None, *, pipeline=None, model=None, executor=None):
         return FileResponse(path, filename=name, media_type=mimetypes.guess_type(name)[0] or 'application/octet-stream')
 
     @application.post('/api/shutdown')
-    def shutdown():
+    def shutdown(request: Request):
+        if INSTANCE_TOKEN and request.headers.get('X-Editor-Instance') != INSTANCE_TOKEN:
+            raise HTTPException(403, 'This desktop instance requires its ownership token')
         service().request_stop()
         if SERVER is not None:
             SERVER.should_exit = True
@@ -531,7 +542,13 @@ def create_app(store=None, *, pipeline=None, model=None, executor=None):
 
 app = create_app()
 
-if __name__ == '__main__':
+
+def run_server():
+    global SERVER
     import uvicorn
-    SERVER = uvicorn.Server(uvicorn.Config(app, host='127.0.0.1', port=8770, log_level='info'))
+    SERVER = uvicorn.Server(uvicorn.Config(app, host='127.0.0.1', port=PORT, log_level='info'))
     SERVER.run()
+
+
+if __name__ == '__main__':
+    run_server()

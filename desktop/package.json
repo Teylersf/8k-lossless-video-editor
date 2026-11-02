@@ -1,0 +1,30 @@
+{
+  "name": "8k-lossless-video-editor-desktop",
+  "version": "0.1.0-beta.1",
+  "private": true,
+  "description": "Native local 8K Lossless Video Editor by Taylor Kalin",
+  "author": {
+    "name": "Taylor Kalin"
+  },
+  "license": "GPL-2.0-only",
+  "homepage": "https://github.com/Teylersf/8k-lossless-video-editor",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/*.test.cjs",
+    "test:electron": "node test/electron-smoke.cjs",
+    "pack": "electron-builder --config electron-builder.cjs --dir --publish never",
+    "dist:win": "electron-builder --config electron-builder.cjs --win nsis --x64 --publish never",
+    "dist:mac": "electron-builder --config electron-builder.cjs --mac dmg --arm64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "45.2.1",
+    "electron-builder": "26.18.0"
+  },
+  "overrides": {
+    "minimatch@>=5 <11": "11.0.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'unsafe-inline'"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>8K Lossless Video Editor</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #111820;
+        color: #c6d3de;
+        font:
+          14px -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+      body {
+        display: grid;
+        place-items: center;
+      }
+      .card {
+        width: 440px;
+        text-align: center;
+        padding: 42px;
+        border: 1px solid #344551;
+        border-radius: 18px;
+        background: radial-gradient(ellipse at top, #24343c, #17212b);
+        box-shadow: 0 25px 100px #0004;
+      }
+      .logo {
+        color: #e1bd78;
+        margin-bottom: 25px;
+      }
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 4px;
+        color: #7898a9;
+        margin-bottom: 14px;
+      }
+      h1 {
+        font-size: 25px;
+        font-weight: 600;
+        letter-spacing: -0.7px;
+        margin: 0;
+      }
+      p {
+        font-size: 12px;
+        line-height: 1.9;
+        color: #88a6b7;
+        margin-top: 20px;
+      }
+      small {
+        display: block;
+        color: #5f8093;
+        font-size: 10px;
+        margin-top: 24px;
+      }
+      .line {
+        width: 130px;
+        height: 2px;
+        background: #304b52;
+        margin: 28px auto;
+        overflow: hidden;
+      }
+      .line:after {
+        content: "";
+        display: block;
+        width: 45px;
+        height: 2px;
+        background: #9dc9b3;
+        animation: slide 1.5s ease-in-out infinite;
+      }
+      @keyframes slide {
+        0% {
+          transform: translateX(-45px);
+        }
+        100% {
+          transform: translateX(130px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <svg
+        class="logo"
+        width="58"
+        height="58"
+        viewBox="0 0 64 64"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M12 23 32 12l20 11-20 11zm0 9 20 11 20-11M12 42l20 11 20-11"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <div class="eyebrow">NATIVE · LOCAL · PRECISE</div>
+      <h1>8K Lossless Video Editor</h1>
+      <p id="status">Starting your private editing engine…</p>
+      <div class="line"></div>
+      <small>By Taylor Kalin · Your source files stay untouched.</small>
+    </main>
+  </body>
+</html>

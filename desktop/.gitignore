@@ -1,0 +1,4 @@
+.smoke-*/
+node_modules/
+.audit-report.json
+.lock-stage-*/
