@@ -232,5 +232,11 @@
     "The eleven listed CUDA/cuDNN/cuBLAS DLLs were retained; their presence alone does not prove every GPU or export profile works.",
     "Third-party dependencies retain their own terms; author metadata and bundled owner-code license notices do not grant third-party rights.",
     "The private prototype installer is a separate earlier artifact and is not this final installer."
-  ]
+  ],
+  "publication": {
+    "release": "https://github.com/Teylersf/8k-lossless-video-editor/releases/tag/v0.1.0-beta.1",
+    "download": "https://github.com/Teylersf/8k-lossless-video-editor/releases/download/v0.1.0-beta.1/8KLosslessVideoEditor-0.1.0-beta.1-win-x64.exe",
+    "remote_sha256_verified": true,
+    "anonymous_download_head_status": 200
+  }
 }

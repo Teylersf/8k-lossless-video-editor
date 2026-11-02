@@ -6,8 +6,10 @@
     "basename": "8KLosslessVideoEditor-0.1.0-beta.1-mac-arm64.dmg",
     "bytes": 284896376,
     "sha256": "ad5eb2ed5d4f61816f784819a2faa5d2641d3356864d95e58b1e84b8b8b5fe21",
-    "distribution": "Local private ad-hoc test build",
-    "public_binary": "Held for Windows coordinator matching-source and notice collection"
+    "distribution": "Public beta release on GitHub",
+    "public_binary": "https://github.com/Teylersf/8k-lossless-video-editor/releases/download/v0.1.0-beta.1/8KLosslessVideoEditor-0.1.0-beta.1-mac-arm64.dmg",
+    "remote_sha256_verified": true,
+    "anonymous_download_head_status": 200
   },
   "provenance": {
     "product_build_input_revision": "d50d0b100cd43e5cd6078d63bc48065e2e971e7f",

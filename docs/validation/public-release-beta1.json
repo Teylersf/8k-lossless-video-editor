@@ -1,0 +1,75 @@
+{
+  "status": "published-and-all-asset-digests-verified",
+  "checked_utc": "2026-11-02T05:56:51.889039+00:00",
+  "url": "https://github.com/Teylersf/8k-lossless-video-editor/releases/tag/v0.1.0-beta.1",
+  "target_commitish": "f07cecabc0a77a4ce89855b215850c200f37a709",
+  "assets": [
+    {
+      "id": 700564272,
+      "name": "8k-editor-corresponding-source.tar.gz",
+      "size": 180118913,
+      "state": "uploaded",
+      "digest": "sha256:c7385bb0398915b7088f014ef95e2f8735641cc42a960d893e6612dfdbf5a2ca"
+    },
+    {
+      "id": 700646252,
+      "name": "8k-editor-macos-corresponding-source.tar.gz",
+      "size": 743549974,
+      "state": "uploaded",
+      "digest": "sha256:f2f668fec4eb5b4b38f7c30ea948f5cffcbb904140970a8e2c70374511604d27"
+    },
+    {
+      "id": 700560495,
+      "name": "8KLosslessVideoEditor-0.1.0-beta.1-mac-arm64.dmg",
+      "size": 284896376,
+      "state": "uploaded",
+      "digest": "sha256:ad5eb2ed5d4f61816f784819a2faa5d2641d3356864d95e58b1e84b8b8b5fe21"
+    },
+    {
+      "id": 700541349,
+      "name": "8KLosslessVideoEditor-0.1.0-beta.1-win-x64.exe",
+      "size": 2095493483,
+      "state": "uploaded",
+      "digest": "sha256:0cce68a7810fcffe246a169d3ffd6ac3e8dd5f0baaa3dc535d9599b667e1dcf6"
+    },
+    {
+      "id": 700575912,
+      "name": "SHA256SUMS.txt",
+      "size": 442,
+      "state": "uploaded",
+      "digest": "sha256:b2920100c97a2091328d3e87d116907278d861e319f9d8764bf9bb199926afbc"
+    }
+  ],
+  "anonymous_head_checks": [
+    {
+      "name": "8k-editor-corresponding-source.tar.gz",
+      "status": 200,
+      "anonymous_access": true,
+      "declared_bytes": "180118913"
+    },
+    {
+      "name": "8k-editor-macos-corresponding-source.tar.gz",
+      "status": 200,
+      "anonymous_access": true,
+      "declared_bytes": "743549974"
+    },
+    {
+      "name": "8KLosslessVideoEditor-0.1.0-beta.1-mac-arm64.dmg",
+      "status": 200,
+      "anonymous_access": true,
+      "declared_bytes": "284896376"
+    },
+    {
+      "name": "8KLosslessVideoEditor-0.1.0-beta.1-win-x64.exe",
+      "status": 200,
+      "anonymous_access": true,
+      "declared_bytes": "2095493483"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "status": 200,
+      "anonymous_access": true,
+      "declared_bytes": "442"
+    }
+  ]
+}

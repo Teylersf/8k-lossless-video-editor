@@ -11,8 +11,9 @@ and deliver a master in the format your next step needs.
 **Native 8K timelines. 16-bit RGB masters. Float EXR. Multitrack audio.
 24 export profiles. Your footage stays on your computer.**
 
-[**Download / Releases**](https://github.com/Teylersf/8k-lossless-video-editor/releases)
-— installers are being prepared; source setup is available below.
+[**Windows EXE · 2.10 GB**](https://github.com/Teylersf/8k-lossless-video-editor/releases/download/v0.1.0-beta.1/8KLosslessVideoEditor-0.1.0-beta.1-win-x64.exe) ·
+[**Mac DMG · macOS 26.6.2+**](https://github.com/Teylersf/8k-lossless-video-editor/releases/download/v0.1.0-beta.1/8KLosslessVideoEditor-0.1.0-beta.1-mac-arm64.dmg) ·
+[Checksums & source packages](https://github.com/Teylersf/8k-lossless-video-editor/releases/tag/v0.1.0-beta.1)
 
 [Explore the formats](docs/FORMAT_SUPPORT.md) · [See the verification](docs/VALIDATION.md) ·
 [Browse the source](https://github.com/Teylersf/8k-lossless-video-editor) ·
@@ -153,8 +154,29 @@ results. Compositing, decoding and audio can use CPU even when a GPU is selected
 
 ## Start creating
 
-**[Get the latest release](https://github.com/Teylersf/8k-lossless-video-editor/releases)**
-— standalone installers are being prepared. You can run the source now:
+**Download the native app. Open your footage. Make your master.**
+
+| Platform | Installer | Verified hardware / requirements |
+| --- | --- | --- |
+| **Windows / NVIDIA** | **[Download Windows EXE](https://github.com/Teylersf/8k-lossless-video-editor/releases/download/v0.1.0-beta.1/8KLosslessVideoEditor-0.1.0-beta.1-win-x64.exe)** · 2.10 GB | Windows x64; RTX 3090 tested. A compatible NVIDIA driver is needed for CUDA/NVENC. |
+| **Apple Silicon Mac** | **[Download Mac DMG](https://github.com/Teylersf/8k-lossless-video-editor/releases/download/v0.1.0-beta.1/8KLosslessVideoEditor-0.1.0-beta.1-mac-arm64.dmg)** · 285 MB | **macOS 26.6.2+**; Apple M4 tested. |
+
+The native packages include the editor and media engine—**no Python, Node.js
+or Homebrew setup**. On Windows, run the installer for your user account. On
+Mac, open the DMG and drag the app into Applications. Created by **Taylor Kalin**.
+
+Both installed apps passed actual 8K export, native download and quit/reopen
+checks. Successful exports show **Export verified and ready**, with their
+complete processing notes available in a collapsed section.
+
+**Beta signing:** the Windows build is unsigned; the Mac build uses ad-hoc
+signing and is not notarized. The current DMG's OS requirement applies to the
+bundled app; source setup requirements are listed separately below.
+
+[All release assets, matching source archives and checksums](https://github.com/Teylersf/8k-lossless-video-editor/releases/tag/v0.1.0-beta.1)
+· [Installed-app validation](docs/VALIDATION.md#installed-desktop-applications)
+
+Prefer running from source? Expand your platform:
 
 <details>
 <summary><strong>Apple Silicon Mac — source setup</strong></summary>
