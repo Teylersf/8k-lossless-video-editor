@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "project": "8K Lossless Video Editor",
+  "version": "0.1.0-beta.1",
+  "status": "verified",
+  "collector_source_revision": "cdbbab7",
+  "collector_offline_fixture_tests_passed": 12,
+  "assembly_network_access": "Final Mac assembly's urllib requests were explicitly disabled; every input came from the verified cache.",
+  "validation": "Independent SHA-256 and byte-count checks for every source/application record and every tar entry, including notices and provenance; no source code/build scripts executed.",
+  "windows": {
+    "basename": "8k-editor-corresponding-source.tar.gz",
+    "bytes": 180118913,
+    "sha256": "c7385bb0398915b7088f014ef95e2f8735641cc42a960d893e6612dfdbf5a2ca",
+    "source_manifest_sha256": "5e3efdb18d9190c079977eb098ca69a9b9e32c84cb9db586eb02946192dddd9c",
+    "application_snapshot_revision": "f07ceca",
+    "compiled_runtime_revision": "2663eac",
+    "source_inputs": 39,
+    "application_files": 330,
+    "application_notice_files": 229,
+    "all_archive_entries_byte_verified": 472,
+    "unresolved": []
+  },
+  "macos": {
+    "basename": "8k-editor-macos-corresponding-source.tar.gz",
+    "bytes": 743549974,
+    "sha256": "f2f668fec4eb5b4b38f7c30ea948f5cffcbb904140970a8e2c70374511604d27",
+    "source_manifest_sha256": "4a7493d29e14d82abe35a57bb0a4625bd4c160e251936000e83869ce5fed6101",
+    "application_snapshot_revision": "cdbbab7",
+    "compiled_runtime_revision": "d50d0b100cd43e5cd6078d63bc48065e2e971e7f",
+    "source_inputs": 391,
+    "application_files": 330,
+    "application_notice_files": 229,
+    "all_archive_entries_byte_verified": 1870,
+    "unresolved": [],
+    "homebrew_main_inputs": 79,
+    "captured_recipe_receipt_files": 314,
+    "auxiliary_recipe_inputs": 18,
+    "rav1e_registry_crates": 271,
+    "native_inventory_sha256": "559be72a8bb839e0b8084e427aa37fea0459fcf12acdc2fdf3da31ef4d607b4d"
+  },
+  "scope": "Checks source-asset bytes, captured release inputs and provenance. Optional/dev Cargo sources are included without claiming all were linked. Source collection is separate from native binary/render validation; byte-identical rebuilding of upstream binaries is not claimed."
+}
