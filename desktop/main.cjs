@@ -105,7 +105,7 @@ function installMenu() {
       type: "info",
       title: "About 8K Lossless Video Editor",
       message: "8K Lossless Video Editor",
-      detail: `Version ${app.getVersion()}\nBy Taylor Kalin\n\nLocal timeline editing and verified RGB16 masters.\nCopyright © 2026 Taylor Kalin.\nGPL-3.0-or-later with the owner-code NVIDIA permission in LICENSE-EXCEPTION.\nThis program comes without warranty. You may modify and redistribute it under its license.\nSee Help → Bundled Licenses. Third-party components retain their own terms.\n\nLocal builds are unsigned/ad-hoc unless separately signed.`,
+      detail: `Version ${app.getVersion()}\nBy Taylor Kalin\n\nLocal timeline editing and verified RGB16 masters.\nCopyright © 2026 Taylor Kalin.\nGPL-3.0-or-later with the owner-code PyTorch runtime permission in LICENSE-EXCEPTION.\nThis program comes without warranty. You may modify and redistribute it under its license.\nSee Help → Bundled Licenses. Third-party components retain their own terms.\n\nLocal builds are unsigned/ad-hoc unless separately signed.`,
       buttons: ["OK"],
     });
   const template = [];

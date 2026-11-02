@@ -5,8 +5,9 @@ Copyright (C) 2026 Taylor Kalin.
 Taylor Kalin's own application code in this repository is offered under the
 GNU General Public License, version 3 or any later version
 (`GPL-3.0-or-later`). See [LICENSE](LICENSE). The additional permission in
-[LICENSE-EXCEPTION](LICENSE-EXCEPTION) permits the specified NVIDIA CUDA/cuDNN
-combination for that code only.
+[LICENSE-EXCEPTION](LICENSE-EXCEPTION) permits the specified PyTorch runtime
+combination for that code only, including redistributable CPU/GPU dependencies
+such as NVIDIA CUDA/cuDNN and Intel oneMKL when present.
 
 The included lens renderer, device policy and media adapter originated in
 [Video Anamorphics & Lens Studio](https://github.com/Teylersf/video-anamorphics-lens-studio),
@@ -18,9 +19,9 @@ it does not change the older standalone repository or its history.
 
 Third-party dependencies retain their respective copyright notices, licenses,
 source obligations and redistribution terms. Neither the application license
-nor its NVIDIA permission relicenses third-party code or grants rights owned
-by NVIDIA or another supplier. See the separate third-party notices and source
-materials supplied with a distribution.
+nor its PyTorch runtime permission relicenses third-party code or grants rights
+owned by NVIDIA, Intel or another supplier. See the separate third-party
+notices and source materials supplied with a distribution.
 
 Separately credited demonstration media retain their stated licenses,
 including CC BY-SA 2.0 assets where identified. The software license does not

@@ -25,5 +25,5 @@
     "vite": "^8.3.5"
   },
   "license": "GPL-3.0-or-later",
-  "licenseException": "See ../LICENSE-EXCEPTION: NVIDIA CUDA/cuDNN permission for owner code only."
+  "licenseException": "See ../LICENSE-EXCEPTION: PyTorch runtime linking permission for owner code only."
 }

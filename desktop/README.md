@@ -1,6 +1,6 @@
 # Native desktop shell
 
-8K Lossless Video Editor by **Taylor Kalin**. GPL-3.0-or-later with the owner-code NVIDIA permission in ../LICENSE-EXCEPTION; bundled Electron,
+8K Lossless Video Editor by **Taylor Kalin**. GPL-3.0-or-later with the owner-code PyTorch runtime permission in ../LICENSE-EXCEPTION; bundled Electron,
 PyTorch, PyAV, FFmpeg and other components retain their respective licenses.
 This folder packages the existing local editor rather than a second renderer.
 The installed app requires no Node, Python, Homebrew or build toolchain.
