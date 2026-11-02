@@ -1,0 +1,4035 @@
+{
+  "schema_version": 1,
+  "status": "verified",
+  "captured_utc": "2026-11-02T02:35:54.645971+00:00",
+  "capture_git_revision": "49bb767c5f7cd1ad5460a4ad8263da0d42e39b05",
+  "scope": "Existing captured Homebrew recipes, receipts, cached API and OCI evidence; no current Homebrew source or source archives were fetched",
+  "exact_identity_scope": "Recipe/API/OCI and public-manifest bodies are byte-identical to saved captures. Receipt bodies use the earlier public capture's user-home/Homebrew-prefix normalization with every changed field recorded, and must not be described as raw byte-identical receipts.",
+  "counts": {
+    "already_sanitized_full_capture_manifest": 1,
+    "already_sanitized_summary_capture_manifest": 1,
+    "cached_api_entry": 79,
+    "cached_bottle_manifest": 73,
+    "sanitized_install_receipt": 79,
+    "saved_recipe": 79
+  },
+  "source_formula_count": 79,
+  "body_verification": {
+    "recipes_match_embedded_public_manifest": 79,
+    "parsed_sanitized_receipts_match_embedded_public_manifest": 79,
+    "cached_api_entries_match_embedded_public_manifest_after_generic_prefix_normalization": 79,
+    "cached_api_body_bytes_preserved_despite_public_manifest_generic_prefix_normalization": [
+      "ffmpeg-full",
+      "fontconfig",
+      "gettext",
+      "ggml",
+      "glib",
+      "libidn2",
+      "libx11",
+      "mpg123",
+      "openssl@4",
+      "p11-kit",
+      "tesseract",
+      "vulkan-loader"
+    ],
+    "all_original_body_hashes_match_saved_capture_records": true,
+    "full_public_manifest_matches_summary_digest": true
+  },
+  "privacy_scan": {
+    "private_user_home_paths": 0,
+    "credential_patterns": 0,
+    "private_keys": 0,
+    "retained_public_build_path": "Generic upstream /home/linuxbrew build metadata is public bottle provenance, not a local user path",
+    "excluded": [
+      "manifest.private.json",
+      "raw user-home receipt paths",
+      "media",
+      "private binaries"
+    ]
+  },
+  "files": [
+    {
+      "path": "formulae/aom/3.15.3/.brew/aom.rb",
+      "kind": "saved_recipe",
+      "formula": "aom",
+      "captured_original_sha256": "043432d4d7050be6fa2dad1c6388d1ec5e93b403bfdf3eba27d2c4383d3d4578",
+      "captured_original_bytes": 1944,
+      "archived_sha256": "043432d4d7050be6fa2dad1c6388d1ec5e93b403bfdf3eba27d2c4383d3d4578",
+      "archived_bytes": 1944,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/aom/3.15.3/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "aom",
+      "captured_original_sha256": "a2c7ef0c051b95cdb4b0d9bd7f4eefe27d759f32cdc0544d6ebc2e0878a33aad",
+      "captured_original_bytes": 1335,
+      "archived_sha256": "cebf3962df39409a3de6d76e3b5b11200ab025ffd4b21a58e87cc960f2113315",
+      "archived_bytes": 1328,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/aom/3.15.3/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "aom",
+      "captured_original_sha256": "ce7e3a401ee7864e9830647c21b639726968f936dcf56ee6b5e644dc07704310",
+      "captured_original_bytes": 1005,
+      "archived_sha256": "ce7e3a401ee7864e9830647c21b639726968f936dcf56ee6b5e644dc07704310",
+      "archived_bytes": 1005,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/aom/3.15.3/bottle-manifests/2f2dc11f278094917a5c5334a232d2bfba0592bec49247e7ca81b9f8ce49f3be--aom-3.15.3.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "aom",
+      "captured_original_sha256": "ab898672b5869d291c6cdedea04c35ea7da92a9d434beaf1909e68d3f450b75f",
+      "captured_original_bytes": 19763,
+      "archived_sha256": "ab898672b5869d291c6cdedea04c35ea7da92a9d434beaf1909e68d3f450b75f",
+      "archived_bytes": 19763,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/aribb24/1.0.4/.brew/aribb24.rb",
+      "kind": "saved_recipe",
+      "formula": "aribb24",
+      "captured_original_sha256": "4e5d492938e893774535de58ac3b98c58014e39e07e4e0b552ba1ea8a65866a1",
+      "captured_original_bytes": 1123,
+      "archived_sha256": "4e5d492938e893774535de58ac3b98c58014e39e07e4e0b552ba1ea8a65866a1",
+      "archived_bytes": 1123,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/aribb24/1.0.4/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "aribb24",
+      "captured_original_sha256": "de39d9d221d94d5c0d2c203f3762c4005a2b1dfa43499719c73bcbdddfb8e571",
+      "captured_original_bytes": 1148,
+      "archived_sha256": "dde9675b95d7683daba92e452ffeb05964be3f1509a2e1bf255479449c5acba2",
+      "archived_bytes": 1141,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/aribb24/1.0.4/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "aribb24",
+      "captured_original_sha256": "eb50a456a4622e0b4768f97abfb11aff9e952e2ba97bfcbcc0dad1112cdb83ce",
+      "captured_original_bytes": 1053,
+      "archived_sha256": "eb50a456a4622e0b4768f97abfb11aff9e952e2ba97bfcbcc0dad1112cdb83ce",
+      "archived_bytes": 1053,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/aribb24/1.0.4/bottle-manifests/60185994f1623d662ea1959234838b47c2b4b891760a6b2af42d1cd3b36f2c0f--aribb24-1.0.4.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "aribb24",
+      "captured_original_sha256": "e9a9519ab11e524b878c1ea0b6bf1fef29d5e4909b4db23990558a06f0be4923",
+      "captured_original_bytes": 18090,
+      "archived_sha256": "e9a9519ab11e524b878c1ea0b6bf1fef29d5e4909b4db23990558a06f0be4923",
+      "archived_bytes": 18090,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/brotli/1.2.1/.brew/brotli.rb",
+      "kind": "saved_recipe",
+      "formula": "brotli",
+      "captured_original_sha256": "5e2f806ea663cf0b0e8d403236e043855619c22e0c646a23fbbb716461a872b3",
+      "captured_original_bytes": 1382,
+      "archived_sha256": "5e2f806ea663cf0b0e8d403236e043855619c22e0c646a23fbbb716461a872b3",
+      "archived_bytes": 1382,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/brotli/1.2.1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "brotli",
+      "captured_original_sha256": "69371854ba58b72db5937d0e66b55544c5f2e1492ee74ee22b62a406a489920d",
+      "captured_original_bytes": 1217,
+      "archived_sha256": "b6285853b44bae2fbc0d96c297279642835e01b69630bc0f34280d950baaaff9",
+      "archived_bytes": 1210,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/brotli/1.2.1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "brotli",
+      "captured_original_sha256": "037b5839e41e37d5ba5f8bad22e5ff552476102af5db5121efed789f946879a6",
+      "captured_original_bytes": 879,
+      "archived_sha256": "037b5839e41e37d5ba5f8bad22e5ff552476102af5db5121efed789f946879a6",
+      "archived_bytes": 879,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/brotli/1.2.1/bottle-manifests/49b26d728c88a5dd61298ad8b4a5151073a1c4175375f63b7f2866f57e4b9548--brotli-1.2.1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "brotli",
+      "captured_original_sha256": "423247031d5a867b4967b67c2f684dd9577b99cca38bfcc73458793b573168e6",
+      "captured_original_bytes": 13768,
+      "archived_sha256": "423247031d5a867b4967b67c2f684dd9577b99cca38bfcc73458793b573168e6",
+      "archived_bytes": 13768,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/cjson/1.7.19/.brew/cjson.rb",
+      "kind": "saved_recipe",
+      "formula": "cjson",
+      "captured_original_sha256": "d44a44ac5a9d4c67b9458ad5f3a3cafa644f1dc9a5f06a613e1108db0d6071ec",
+      "captured_original_bytes": 1240,
+      "archived_sha256": "d44a44ac5a9d4c67b9458ad5f3a3cafa644f1dc9a5f06a613e1108db0d6071ec",
+      "archived_bytes": 1240,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/cjson/1.7.19/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "cjson",
+      "captured_original_sha256": "8892ff10273878dc2fac79ea592fa3225d90cc5769670f2664dd8a9e54df7cc4",
+      "captured_original_bytes": 1216,
+      "archived_sha256": "21205f071f8a9a4c7f6812e4421a683b4547bb7d7ae414baa083506c8c95ab12",
+      "archived_bytes": 1209,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/cjson/1.7.19/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "cjson",
+      "captured_original_sha256": "a83643aa591beae2806bf0f571bfb5a781a616893ec1c31a6bf9d99fc1102f3b",
+      "captured_original_bytes": 1152,
+      "archived_sha256": "a83643aa591beae2806bf0f571bfb5a781a616893ec1c31a6bf9d99fc1102f3b",
+      "archived_bytes": 1152,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/cjson/1.7.19/bottle-manifests/d7a76219608d917cf875ef1052a7879e813735763e256fe04a9a2867c3c04eab--cjson-1.7.19.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "cjson",
+      "captured_original_sha256": "5161934edec525293eb98dd86cf03e53928465f20fc442d4117da8f9d5d64920",
+      "captured_original_bytes": 13762,
+      "archived_sha256": "5161934edec525293eb98dd86cf03e53928465f20fc442d4117da8f9d5d64920",
+      "archived_bytes": 13762,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/dav1d/1.5.4/.brew/dav1d.rb",
+      "kind": "saved_recipe",
+      "formula": "dav1d",
+      "captured_original_sha256": "3364a5bd9c26e4c9b73d756f8b99944fe3bf74e59e9ded813235c8aeaec63984",
+      "captured_original_bytes": 1154,
+      "archived_sha256": "3364a5bd9c26e4c9b73d756f8b99944fe3bf74e59e9ded813235c8aeaec63984",
+      "archived_bytes": 1154,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/dav1d/1.5.4/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "dav1d",
+      "captured_original_sha256": "a3746b5371c2115cc43673bc9d5000199df08e14fcdb50ea9906617b4f7e36a5",
+      "captured_original_bytes": 962,
+      "archived_sha256": "2ec49fb13507932530834ef0ab3dc842735d1d6bb454c94865c076c722de12cb",
+      "archived_bytes": 955,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/dav1d/1.5.4/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "dav1d",
+      "captured_original_sha256": "f7e306b464d71db2ea04d0689620e119e207ef1ff3704fa56fb2d0b33ff40f8c",
+      "captured_original_bytes": 858,
+      "archived_sha256": "f7e306b464d71db2ea04d0689620e119e207ef1ff3704fa56fb2d0b33ff40f8c",
+      "archived_bytes": 858,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/dav1d/1.5.4/bottle-manifests/6889e53c2209f58b4723a0cde04bc2a86db2bdd3177406fa834636b21a00b7ab--dav1d-1.5.4.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "dav1d",
+      "captured_original_sha256": "d127d4f17b6b42203f3cba43a758d4192401a873a91d4661da0b00be5181895a",
+      "captured_original_bytes": 17356,
+      "archived_sha256": "d127d4f17b6b42203f3cba43a758d4192401a873a91d4661da0b00be5181895a",
+      "archived_bytes": 17356,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/ffmpeg-full/9.0.2_1/.brew/ffmpeg-full.rb",
+      "kind": "saved_recipe",
+      "formula": "ffmpeg-full",
+      "captured_original_sha256": "8dfb709048cdf82fb3f932848a3a3c41c1fa95a4cc05102f098b74d7407b4129",
+      "captured_original_bytes": 4768,
+      "archived_sha256": "8dfb709048cdf82fb3f932848a3a3c41c1fa95a4cc05102f098b74d7407b4129",
+      "archived_bytes": 4768,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/ffmpeg-full/9.0.2_1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "ffmpeg-full",
+      "captured_original_sha256": "fc38b5437cccf4ad65faac8f072b7824ba95277d6ee9c13dd336bee6393f2d5e",
+      "captured_original_bytes": 20492,
+      "archived_sha256": "3a1cd0c0daa1cffcdd9cac8e1bac7eb2fb880195a351dc4bd0fc9958cfcf8bb8",
+      "archived_bytes": 20489,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/built_prefix",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<homebrew-prefix>"
+        },
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/ffmpeg-full/9.0.2_1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "ffmpeg-full",
+      "captured_original_sha256": "11ecc78bc65aac8cf75269c4ed0c0c989eaa547448212be1d2f06ddcd5a8d268",
+      "captured_original_bytes": 3570,
+      "archived_sha256": "11ecc78bc65aac8cf75269c4ed0c0c989eaa547448212be1d2f06ddcd5a8d268",
+      "archived_bytes": 3570,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/ffmpeg-full/9.0.2_1/bottle-manifests/b8bed14c2286908798723ed1d59167d6dbfb0aaa0e007ff5d2d903b82d30afa1--ffmpeg-full-9.0.2_1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "ffmpeg-full",
+      "captured_original_sha256": "038fc4df80811717f0a4f0420da9cd019429e0ff621a1ac1ec65e74d1ee68fac",
+      "captured_original_bytes": 626873,
+      "archived_sha256": "038fc4df80811717f0a4f0420da9cd019429e0ff621a1ac1ec65e74d1ee68fac",
+      "archived_bytes": 626873,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/fontconfig/2.18.3/.brew/fontconfig.rb",
+      "kind": "saved_recipe",
+      "formula": "fontconfig",
+      "captured_original_sha256": "3487cc7274c480e70db8d4e8fee529c53d95da7e905d5f66b90e93d444c37c46",
+      "captured_original_bytes": 2099,
+      "archived_sha256": "3487cc7274c480e70db8d4e8fee529c53d95da7e905d5f66b90e93d444c37c46",
+      "archived_bytes": 2099,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/fontconfig/2.18.3/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "fontconfig",
+      "captured_original_sha256": "04878e8280a5c692c5bfee701c350882fb00088244958c3c581546fe7f46d832",
+      "captured_original_bytes": 2156,
+      "archived_sha256": "5840c064ace549f7a1c5d907d17433635d66c4dd0ad51e72435b9587c40a2335",
+      "archived_bytes": 2153,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/built_prefix",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<homebrew-prefix>"
+        },
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/fontconfig/2.18.3/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "fontconfig",
+      "captured_original_sha256": "8d679e87ec4e60c71c52df77fe0cfab82ee727e7c874c9261ac6347ac9e8f916",
+      "captured_original_bytes": 2107,
+      "archived_sha256": "8d679e87ec4e60c71c52df77fe0cfab82ee727e7c874c9261ac6347ac9e8f916",
+      "archived_bytes": 2107,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/fontconfig/2.18.3/bottle-manifests/02f56bf3898c6f8e43f0b195a5ecf1137bc4a64f4fdcfb87454a26c0582c6cea--fontconfig-2.18.3.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "fontconfig",
+      "captured_original_sha256": "c467a5b2f52d61e417dc2c599989e6c14551786b6bbdc3ec1b22a7bb1d030bf2",
+      "captured_original_bytes": 56276,
+      "archived_sha256": "c467a5b2f52d61e417dc2c599989e6c14551786b6bbdc3ec1b22a7bb1d030bf2",
+      "archived_bytes": 56276,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/freetype/2.15.0/.brew/freetype.rb",
+      "kind": "saved_recipe",
+      "formula": "freetype",
+      "captured_original_sha256": "996aaa19623ee3f24f686922b0ca977fff33c9c2cf39f68ef688b7f9a338bb12",
+      "captured_original_bytes": 1394,
+      "archived_sha256": "996aaa19623ee3f24f686922b0ca977fff33c9c2cf39f68ef688b7f9a338bb12",
+      "archived_bytes": 1394,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/freetype/2.15.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "freetype",
+      "captured_original_sha256": "0ea1a9adf1407f4acfb6ddee2053e416e63b16b11f801fd8a7477d5f70cdf132",
+      "captured_original_bytes": 1463,
+      "archived_sha256": "4b4d21e741522632f909f716bfcdf9a0e587f0acc645334678a6d74dad120ab1",
+      "archived_bytes": 1456,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/freetype/2.15.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "freetype",
+      "captured_original_sha256": "fe9252581a5a33fbd008b1bad10d647de2405e6dfb24373469bf386f41f1f85a",
+      "captured_original_bytes": 992,
+      "archived_sha256": "fe9252581a5a33fbd008b1bad10d647de2405e6dfb24373469bf386f41f1f85a",
+      "archived_bytes": 992,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/freetype/2.15.0/bottle-manifests/f23bb34b7ccd5e8e1efad101d17a151b70c6d994c824d41d3c06f8b65c518e46--freetype-2.15.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "freetype",
+      "captured_original_sha256": "ba83fdb9b926a71c165ef86ca4a0294836a76a0bcdee1dfb46190965d91c47c1",
+      "captured_original_bytes": 27642,
+      "archived_sha256": "ba83fdb9b926a71c165ef86ca4a0294836a76a0bcdee1dfb46190965d91c47c1",
+      "archived_bytes": 27642,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/fribidi/1.0.18/.brew/fribidi.rb",
+      "kind": "saved_recipe",
+      "formula": "fribidi",
+      "captured_original_sha256": "aebb8b26fdaacbc188660b4b765705c1f22b45fc30914ca3e027a7de545704c3",
+      "captured_original_bytes": 952,
+      "archived_sha256": "aebb8b26fdaacbc188660b4b765705c1f22b45fc30914ca3e027a7de545704c3",
+      "archived_bytes": 952,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/fribidi/1.0.18/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "fribidi",
+      "captured_original_sha256": "e90de058678a3feeece4140e1fb4ed34e82e1bbb427aa97abb9e200fdf5ca3d3",
+      "captured_original_bytes": 1074,
+      "archived_sha256": "6f14dee4df9af37dc3ef881a4b7e3a0ea155b51df45a3718e1c1fac055df7145",
+      "archived_bytes": 1067,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/fribidi/1.0.18/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "fribidi",
+      "captured_original_sha256": "16700149e07c8311afb4d59856b89f79d1165c1402335fadf74c57ff2149cbb9",
+      "captured_original_bytes": 940,
+      "archived_sha256": "16700149e07c8311afb4d59856b89f79d1165c1402335fadf74c57ff2149cbb9",
+      "archived_bytes": 940,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/fribidi/1.0.18/bottle-manifests/2e014b3ed8fe97efc5be67951c02f447727e170d06a7291655472ca5f3bf2723--fribidi-1.0.18.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "fribidi",
+      "captured_original_sha256": "6771d6e6f8282e887d9dedc6e90c44b3af2dd7d5b878c6b1fa40d39624627503",
+      "captured_original_bytes": 13508,
+      "archived_sha256": "6771d6e6f8282e887d9dedc6e90c44b3af2dd7d5b878c6b1fa40d39624627503",
+      "archived_bytes": 13508,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/gettext/1.0/.brew/gettext.rb",
+      "kind": "saved_recipe",
+      "formula": "gettext",
+      "captured_original_sha256": "170f5a29d2eb95b9dd1f1f754c0f9b90692c3d5dcf6db02c199c93e2c445177d",
+      "captured_original_bytes": 2157,
+      "archived_sha256": "170f5a29d2eb95b9dd1f1f754c0f9b90692c3d5dcf6db02c199c93e2c445177d",
+      "archived_bytes": 2157,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/gettext/1.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "gettext",
+      "captured_original_sha256": "546602a7a295cab5d171da6d29890cbf6a25af95118d34b3a670700ea5dcb19d",
+      "captured_original_bytes": 1443,
+      "archived_sha256": "876a9e5241728d0d18c3e4633ca9d40aef2eb6984044a19979417840b66b850e",
+      "archived_bytes": 1436,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/formula.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/gettext/1.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "gettext",
+      "captured_original_sha256": "db8e296b2b526ad127ff3eeef8e93595da51309d631ef004aa845538dae6240d",
+      "captured_original_bytes": 1534,
+      "archived_sha256": "db8e296b2b526ad127ff3eeef8e93595da51309d631ef004aa845538dae6240d",
+      "archived_bytes": 1534,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/ggml/0.28.0/.brew/ggml.rb",
+      "kind": "saved_recipe",
+      "formula": "ggml",
+      "captured_original_sha256": "b0958040dcdacaedcbd8fa9829ae716373ddb872eea0a811b383d9b993102ec6",
+      "captured_original_bytes": 3385,
+      "archived_sha256": "b0958040dcdacaedcbd8fa9829ae716373ddb872eea0a811b383d9b993102ec6",
+      "archived_bytes": 3385,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/ggml/0.28.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "ggml",
+      "captured_original_sha256": "f20bdf1c84c8b365b0d99625c7fbba8c5b56f3d098439ab9e43a667fe31a44cd",
+      "captured_original_bytes": 1502,
+      "archived_sha256": "3680dddd2bb6f0103242985321208da0ccdfe86883bc7d1cd957eb54f0455c01",
+      "archived_bytes": 1499,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/built_prefix",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<homebrew-prefix>"
+        },
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/ggml/0.28.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "ggml",
+      "captured_original_sha256": "a715c86be1157ad0135f5d190f6fd6fbba1a7ac301610d58129522d4b0dcb83f",
+      "captured_original_bytes": 1055,
+      "archived_sha256": "a715c86be1157ad0135f5d190f6fd6fbba1a7ac301610d58129522d4b0dcb83f",
+      "archived_bytes": 1055,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/ggml/0.28.0/bottle-manifests/fbe1a41cae6d2ba8a7ec6ecdb734d5a716a9b7a2295d9e7d838e0ce2fbe0cdac--ggml-0.28.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "ggml",
+      "captured_original_sha256": "6f26bfeaac02ddff32073b5f2c763fb4a28e8386a83a8c2f1d2e982739b51bcd",
+      "captured_original_bytes": 70331,
+      "archived_sha256": "6f26bfeaac02ddff32073b5f2c763fb4a28e8386a83a8c2f1d2e982739b51bcd",
+      "archived_bytes": 70331,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/giflib/6.1.3/.brew/giflib.rb",
+      "kind": "saved_recipe",
+      "formula": "giflib",
+      "captured_original_sha256": "cb3ff94693bff78c52478c9496aea435e10b757f36c89ec01fd8edcbc00e8303",
+      "captured_original_bytes": 970,
+      "archived_sha256": "cb3ff94693bff78c52478c9496aea435e10b757f36c89ec01fd8edcbc00e8303",
+      "archived_bytes": 970,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/giflib/6.1.3/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "giflib",
+      "captured_original_sha256": "70b55c75958381f9e5939ec8593f3658e5e6f2a0612ab663b49f2a794235e65d",
+      "captured_original_bytes": 1019,
+      "archived_sha256": "7c3bf2b27cc7c245b9534308f8294cb9d0c7446944c0cfd35475d5ed55f9b91f",
+      "archived_bytes": 1012,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/giflib/6.1.3/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "giflib",
+      "captured_original_sha256": "beb0207b41797c0647a41768d92b7da80d796c3019b95c1514efefa4d7bf233f",
+      "captured_original_bytes": 721,
+      "archived_sha256": "beb0207b41797c0647a41768d92b7da80d796c3019b95c1514efefa4d7bf233f",
+      "archived_bytes": 721,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/giflib/6.1.3/bottle-manifests/2c020d098d29671e9f5e173edd054f51797a609781a769a5f12892a710f2ea86--giflib-6.1.3-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "giflib",
+      "captured_original_sha256": "a76521844887e524b102cb18217ad74a8431a749405fb99426fda296187ec9e1",
+      "captured_original_bytes": 13250,
+      "archived_sha256": "a76521844887e524b102cb18217ad74a8431a749405fb99426fda296187ec9e1",
+      "archived_bytes": 13250,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/glib/2.90.1/.brew/glib.rb",
+      "kind": "saved_recipe",
+      "formula": "glib",
+      "captured_original_sha256": "7352a67a6a1a15554d996d38886812e858bebbbcbf3985901724cab444ee3b3b",
+      "captured_original_bytes": 7546,
+      "archived_sha256": "7352a67a6a1a15554d996d38886812e858bebbbcbf3985901724cab444ee3b3b",
+      "archived_bytes": 7546,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/glib/2.90.1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "glib",
+      "captured_original_sha256": "4fb7247c3b291e965ba0c5de3f9b01cdc5b283536854223c058a98ba22c3c927",
+      "captured_original_bytes": 3189,
+      "archived_sha256": "3f10c9f314596fbff44578ad206e8d4ed6e1508b10d6d55a045bcddea78e6842",
+      "archived_bytes": 3194,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/built_prefix",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<homebrew-prefix>"
+        },
+        {
+          "field": "/changed_files/11",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "share/gdb/auto-load<homebrew-prefix>/Cellar/glib/2.90.1/lib/libglib-2.0.so.0.9000.1-gdb.py"
+        },
+        {
+          "field": "/changed_files/12",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "share/gdb/auto-load<homebrew-prefix>/Cellar/glib/2.90.1/lib/libgobject-2.0.so.0.9000.1-gdb.py"
+        },
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/glib/2.90.1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "glib",
+      "captured_original_sha256": "46cbdfce82417e71d6b3da8e53b87a3fca4ef13fc87c2059effbe14056342f57",
+      "captured_original_bytes": 3018,
+      "archived_sha256": "46cbdfce82417e71d6b3da8e53b87a3fca4ef13fc87c2059effbe14056342f57",
+      "archived_bytes": 3018,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/glib/2.90.1/bottle-manifests/e23151a9738b942cf44772f2c99b77780ce42adbf32896e07171ec90b9bba462--glib-2.90.1-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "glib",
+      "captured_original_sha256": "38bce1356878893d1157ba3f524b140df38b5d635d2e32195127447865b5e67d",
+      "captured_original_bytes": 73144,
+      "archived_sha256": "38bce1356878893d1157ba3f524b140df38b5d635d2e32195127447865b5e67d",
+      "archived_bytes": 73144,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/gmp/6.3.0/.brew/gmp.rb",
+      "kind": "saved_recipe",
+      "formula": "gmp",
+      "captured_original_sha256": "48e3695140b8b9ce2cba663bf47e2015cf2c4b489d1ce5728f4c719afc65adc8",
+      "captured_original_bytes": 2366,
+      "archived_sha256": "48e3695140b8b9ce2cba663bf47e2015cf2c4b489d1ce5728f4c719afc65adc8",
+      "archived_bytes": 2366,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/gmp/6.3.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "gmp",
+      "captured_original_sha256": "72f24ec80cff75593e750dda8f5ef67c7b616f79211aa154cbccbe1333164b34",
+      "captured_original_bytes": 1103,
+      "archived_sha256": "ec985a8c954411a219bf85868a80d1e6c98526c9833047639703992c48fa7a81",
+      "archived_bytes": 1096,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/gmp/6.3.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "gmp",
+      "captured_original_sha256": "382bc366d96979f868319765c4b6164657ee24ccca9f83ccbe498b15fbb3f14c",
+      "captured_original_bytes": 1216,
+      "archived_sha256": "382bc366d96979f868319765c4b6164657ee24ccca9f83ccbe498b15fbb3f14c",
+      "archived_bytes": 1216,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/gmp/6.3.0/bottle-manifests/cf0b1b3513071299d0028f7fbcee5e296d9edab67b10fd8a1a12ae69787daf53--gmp-6.3.0-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "gmp",
+      "captured_original_sha256": "d498604c0311c840e223212878ff7e6b4f8ea906203ba3c8f97791b0ee900f4e",
+      "captured_original_bytes": 16588,
+      "archived_sha256": "d498604c0311c840e223212878ff7e6b4f8ea906203ba3c8f97791b0ee900f4e",
+      "archived_bytes": 16588,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/gnutls/3.8.13_2/.brew/gnutls.rb",
+      "kind": "saved_recipe",
+      "formula": "gnutls",
+      "captured_original_sha256": "1fd64640421eff9fa1508491c82279832647b1bf4475abfc6ead4fea2534f7d0",
+      "captured_original_bytes": 3173,
+      "archived_sha256": "1fd64640421eff9fa1508491c82279832647b1bf4475abfc6ead4fea2534f7d0",
+      "archived_bytes": 3173,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/gnutls/3.8.13_2/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "gnutls",
+      "captured_original_sha256": "6e6f4e17340a49f2c3967ab77191afd757b339a73667bf9599d923a4a05c2bd1",
+      "captured_original_bytes": 2602,
+      "archived_sha256": "2024e03847ba7c15c9a6ab5005be1dc079c0ce1a74b0234ceeaf2e74275b5b04",
+      "archived_bytes": 2595,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/gnutls/3.8.13_2/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "gnutls",
+      "captured_original_sha256": "70e4b7fa80d02f00b695b3c1590192d9717103a2ad13a9e83f986505dfccd29c",
+      "captured_original_bytes": 2095,
+      "archived_sha256": "70e4b7fa80d02f00b695b3c1590192d9717103a2ad13a9e83f986505dfccd29c",
+      "archived_bytes": 2095,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/gnutls/3.8.13_2/bottle-manifests/f209cb2aae38abcc4cb6f848ae9808ad9548bb09945aacc0a8ab504ef2a96346--gnutls-3.8.13_2-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "gnutls",
+      "captured_original_sha256": "f066493fb94b5ee4a094c82255e917f9baeba3fbeb93a16d0eab5f605ba233e0",
+      "captured_original_bytes": 29258,
+      "archived_sha256": "f066493fb94b5ee4a094c82255e917f9baeba3fbeb93a16d0eab5f605ba233e0",
+      "archived_bytes": 29258,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/graphite2/1.3.15/.brew/graphite2.rb",
+      "kind": "saved_recipe",
+      "formula": "graphite2",
+      "captured_original_sha256": "dc60f1784330fbf36c320a92dbf31b0f4f5ed83bab6b252963cdade7b87f6d49",
+      "captured_original_bytes": 1197,
+      "archived_sha256": "dc60f1784330fbf36c320a92dbf31b0f4f5ed83bab6b252963cdade7b87f6d49",
+      "archived_bytes": 1197,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/graphite2/1.3.15/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "graphite2",
+      "captured_original_sha256": "5290ce87dd79d3eb2ca67bffc6a909ef5aa758310167ade0fa201ffd022264db",
+      "captured_original_bytes": 968,
+      "archived_sha256": "1b2e619d4616e231197f65365656dec69e07755250249fbcb60fa46d8aa7e4e2",
+      "archived_bytes": 961,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/graphite2/1.3.15/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "graphite2",
+      "captured_original_sha256": "5f0c6e3065ea35eb0bea9d42d4494579cd43d397060fd5c59b8cc4ab8ee51fc9",
+      "captured_original_bytes": 988,
+      "archived_sha256": "5f0c6e3065ea35eb0bea9d42d4494579cd43d397060fd5c59b8cc4ab8ee51fc9",
+      "archived_bytes": 988,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/graphite2/1.3.15/bottle-manifests/23e607c150e7ddabae30295e11d1d97e24390f329a6a7105f46ac10afbc53c85--graphite2-1.3.15.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "graphite2",
+      "captured_original_sha256": "b8338a98cd5a2b7c435756f1d03510ec4d2b967456d04636b206b59f03ba0fd1",
+      "captured_original_bytes": 10489,
+      "archived_sha256": "b8338a98cd5a2b7c435756f1d03510ec4d2b967456d04636b206b59f03ba0fd1",
+      "archived_bytes": 10489,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/harfbuzz/15.0.0_1/.brew/harfbuzz.rb",
+      "kind": "saved_recipe",
+      "formula": "harfbuzz",
+      "captured_original_sha256": "6a207173ff2ab790555608e9ac9745427687686536adaee43faebc730155b60e",
+      "captured_original_bytes": 1926,
+      "archived_sha256": "6a207173ff2ab790555608e9ac9745427687686536adaee43faebc730155b60e",
+      "archived_bytes": 1926,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/harfbuzz/15.0.0_1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "harfbuzz",
+      "captured_original_sha256": "47bc5fc6dd62378bb18863ad92e187cdb582eeaa28c61e02897f31647b60ead4",
+      "captured_original_bytes": 5498,
+      "archived_sha256": "6ee83dcb5eba5ed5f752e3a32331d712c2540c9131e2c87a028c01363676c801",
+      "archived_bytes": 5491,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/harfbuzz/15.0.0_1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "harfbuzz",
+      "captured_original_sha256": "35d423136e5a664894f76fe497ca7ad49ac49488641ef8157b77811772a4024b",
+      "captured_original_bytes": 1650,
+      "archived_sha256": "35d423136e5a664894f76fe497ca7ad49ac49488641ef8157b77811772a4024b",
+      "archived_bytes": 1650,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/harfbuzz/15.0.0_1/bottle-manifests/b461aa99456765e523ec861a12ebcafb9e8c9574cb396f40da98a34583fa69bb--harfbuzz-15.0.0_1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "harfbuzz",
+      "captured_original_sha256": "dec5fd0cb82503215fee0daa1e04ee155ce1af3f1ecf64250547da0a098b7fdf",
+      "captured_original_bytes": 153128,
+      "archived_sha256": "dec5fd0cb82503215fee0daa1e04ee155ce1af3f1ecf64250547da0a098b7fdf",
+      "archived_bytes": 153128,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/highway/1.4.0/.brew/highway.rb",
+      "kind": "saved_recipe",
+      "formula": "highway",
+      "captured_original_sha256": "c2335618d744b3ca883127451289758a213c3b973d891f685539cb0ca6ad752a",
+      "captured_original_bytes": 1209,
+      "archived_sha256": "c2335618d744b3ca883127451289758a213c3b973d891f685539cb0ca6ad752a",
+      "archived_bytes": 1209,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/highway/1.4.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "highway",
+      "captured_original_sha256": "3a84aa1d27f731bb25ca81c94c799093c403a101929e1c4a218a8228f238b050",
+      "captured_original_bytes": 1001,
+      "archived_sha256": "439369f2e9a069c4b012d84b152d58f2a4c5b644a3f77f1e78f9ba7c7d2df78f",
+      "archived_bytes": 994,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/highway/1.4.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "highway",
+      "captured_original_sha256": "ce7459be0f4e6b6b10fbf42dedc28a27c17d0f6bd22b2bc698dc133c5af5f0a3",
+      "captured_original_bytes": 998,
+      "archived_sha256": "ce7459be0f4e6b6b10fbf42dedc28a27c17d0f6bd22b2bc698dc133c5af5f0a3",
+      "archived_bytes": 998,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/highway/1.4.0/bottle-manifests/2c346a062516e38d0da579b27f2e8156e9dbc7ebc146a1ad704f1b9cfb6cde06--highway-1.4.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "highway",
+      "captured_original_sha256": "2ffc3fe4f3b8af6991a927de73d963c5980fb02406c84408ade921b348d7637c",
+      "captured_original_bytes": 10160,
+      "archived_sha256": "2ffc3fe4f3b8af6991a927de73d963c5980fb02406c84408ade921b348d7637c",
+      "archived_bytes": 10160,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/jpeg-turbo/3.2.1/.brew/jpeg-turbo.rb",
+      "kind": "saved_recipe",
+      "formula": "jpeg-turbo",
+      "captured_original_sha256": "a9839e669928c7ee0666c10f85e11d2c55f60986c58ff0c835845863f71af11b",
+      "captured_original_bytes": 2619,
+      "archived_sha256": "a9839e669928c7ee0666c10f85e11d2c55f60986c58ff0c835845863f71af11b",
+      "archived_bytes": 2619,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/jpeg-turbo/3.2.1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "jpeg-turbo",
+      "captured_original_sha256": "36a0f96eb5764a48020b8b945254640375836fadfa44645fb3c14dbe64319b20",
+      "captured_original_bytes": 1151,
+      "archived_sha256": "214f3374f5a4ed5e957bbc8824b2f3efca7884e5230b1ee6995d6b61cb750930",
+      "archived_bytes": 1144,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/jpeg-turbo/3.2.1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "jpeg-turbo",
+      "captured_original_sha256": "a0e7e72b568e3d200eea92cbdb7c9b6c8b9537e3e1d17157c009cd4f20992f2e",
+      "captured_original_bytes": 1593,
+      "archived_sha256": "a0e7e72b568e3d200eea92cbdb7c9b6c8b9537e3e1d17157c009cd4f20992f2e",
+      "archived_bytes": 1593,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/jpeg-turbo/3.2.1/bottle-manifests/056769e29737c810c033542a3285dc578616c9d6e25cbcb5728083f3c9260eac--jpeg-turbo-3.2.1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "jpeg-turbo",
+      "captured_original_sha256": "610daff0e29c2065f68794a7ecbe352aee66d9c7cbb160f4c0adfe6a6ccf6d0c",
+      "captured_original_bytes": 14240,
+      "archived_sha256": "610daff0e29c2065f68794a7ecbe352aee66d9c7cbb160f4c0adfe6a6ccf6d0c",
+      "archived_bytes": 14240,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/jpeg-xl/0.12.0_1/.brew/jpeg-xl.rb",
+      "kind": "saved_recipe",
+      "formula": "jpeg-xl",
+      "captured_original_sha256": "82fd333a823054833eef66c2b04a5b5961f1eb2c1275c4da8b66f61d2b3fa642",
+      "captured_original_bytes": 3710,
+      "archived_sha256": "82fd333a823054833eef66c2b04a5b5961f1eb2c1275c4da8b66f61d2b3fa642",
+      "archived_bytes": 3710,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/jpeg-xl/0.12.0_1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "jpeg-xl",
+      "captured_original_sha256": "2f3c651f181a52ebe869832dc9e954f05ee806a29f739c6a3f7a32c5895451b8",
+      "captured_original_bytes": 4389,
+      "archived_sha256": "5306cb3d9b87ae1878391976a251300ff988e0632472e67a08b62bbaecf235b1",
+      "archived_bytes": 4382,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/jpeg-xl/0.12.0_1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "jpeg-xl",
+      "captured_original_sha256": "9e1b372a5f3cb205b3515cc2f88e2186b47565eb7e85a1ab54d8ba76463075e7",
+      "captured_original_bytes": 2195,
+      "archived_sha256": "9e1b372a5f3cb205b3515cc2f88e2186b47565eb7e85a1ab54d8ba76463075e7",
+      "archived_bytes": 2195,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/jpeg-xl/0.12.0_1/bottle-manifests/bacda996bd275c988bcaaedaa7915831bdf64382733f635b1a416f6438bb6766--jpeg-xl-0.12.0_1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "jpeg-xl",
+      "captured_original_sha256": "7cc89ab59aa437b32c341a1e4589a18ab2773c026ab9a3c9a49eeedcb3e771a0",
+      "captured_original_bytes": 96748,
+      "archived_sha256": "7cc89ab59aa437b32c341a1e4589a18ab2773c026ab9a3c9a49eeedcb3e771a0",
+      "archived_bytes": 96748,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/lame/4.0/.brew/lame.rb",
+      "kind": "saved_recipe",
+      "formula": "lame",
+      "captured_original_sha256": "54e93fd2d82f830c4a53f56f61afb352c465ea96d37f7e34db48257c78bb5478",
+      "captured_original_bytes": 1039,
+      "archived_sha256": "54e93fd2d82f830c4a53f56f61afb352c465ea96d37f7e34db48257c78bb5478",
+      "archived_bytes": 1039,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/lame/4.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "lame",
+      "captured_original_sha256": "4886ee84885c0b3c56ef1fa65f487aa8a06893f53929cd3a45309ed2570bdd3e",
+      "captured_original_bytes": 1141,
+      "archived_sha256": "aa82a60b5d439d2d12222f7db67fd8395e4451f8c1952dcac85fc9cbe635177b",
+      "archived_bytes": 1134,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/lame/4.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "lame",
+      "captured_original_sha256": "4bcedc1219220b99c614bf25f064a0a738f2f199d0953cdb1c7d48db798c0434",
+      "captured_original_bytes": 931,
+      "archived_sha256": "4bcedc1219220b99c614bf25f064a0a738f2f199d0953cdb1c7d48db798c0434",
+      "archived_bytes": 931,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/lame/4.0/bottle-manifests/65525fb566ec6c295263d1f3b5dec95f8b7991e42af42ab3ff210d2bc6ff28cf--lame-4.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "lame",
+      "captured_original_sha256": "30d931b56885dbe30a24b586920d20f3e60e46af0115c163d165088ae600cf2a",
+      "captured_original_bytes": 26442,
+      "archived_sha256": "30d931b56885dbe30a24b586920d20f3e60e46af0115c163d165088ae600cf2a",
+      "archived_bytes": 26442,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/leptonica/1.87.0/.brew/leptonica.rb",
+      "kind": "saved_recipe",
+      "formula": "leptonica",
+      "captured_original_sha256": "1ad341bd70d01b89ab2ea59282e7eece960f32ecb08135b8ac78d98fb08f3077",
+      "captured_original_bytes": 1213,
+      "archived_sha256": "1ad341bd70d01b89ab2ea59282e7eece960f32ecb08135b8ac78d98fb08f3077",
+      "archived_bytes": 1213,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/leptonica/1.87.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "leptonica",
+      "captured_original_sha256": "7c027a4b51b5e2939f3db8fb275e06a3c84285b0def78720cbe257a229f5082d",
+      "captured_original_bytes": 2761,
+      "archived_sha256": "06a81d432ba3aa652593670b7af351e4bf5d5257a103dc431f9cbf210f8344a7",
+      "archived_bytes": 2754,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/leptonica/1.87.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "leptonica",
+      "captured_original_sha256": "93554088d5dc2d57045c047292553a2d78f056ee96f06d2cd86519fb2e0ec969",
+      "captured_original_bytes": 1195,
+      "archived_sha256": "93554088d5dc2d57045c047292553a2d78f056ee96f06d2cd86519fb2e0ec969",
+      "archived_bytes": 1195,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/leptonica/1.87.0/bottle-manifests/cef0cb26b0be8b6cede9522a3f0979c1c398feca13acfaca18d6e5560b6bea98--leptonica-1.87.0-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "leptonica",
+      "captured_original_sha256": "af62d8f8d56ee7d863f3a58dbaa27799670be4f992f5c00f9307bc937a55911d",
+      "captured_original_bytes": 30299,
+      "archived_sha256": "af62d8f8d56ee7d863f3a58dbaa27799670be4f992f5c00f9307bc937a55911d",
+      "archived_bytes": 30299,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libarchive/3.8.11/.brew/libarchive.rb",
+      "kind": "saved_recipe",
+      "formula": "libarchive",
+      "captured_original_sha256": "523192518bbd752f74036c92a9fdc610256d5cc98ca483ee6f998778c33b40cc",
+      "captured_original_bytes": 1598,
+      "archived_sha256": "523192518bbd752f74036c92a9fdc610256d5cc98ca483ee6f998778c33b40cc",
+      "archived_bytes": 1598,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libarchive/3.8.11/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libarchive",
+      "captured_original_sha256": "25f7085bacde08122a9f16f5739b78877659a755c73f5d8e665246cf5a2dfe6f",
+      "captured_original_bytes": 1844,
+      "archived_sha256": "43c6cc73bbcf499313783d79e49011bc16cb474ba6cad514b76b3bc5f69f98f8",
+      "archived_bytes": 1837,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libarchive/3.8.11/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libarchive",
+      "captured_original_sha256": "36deb0a1c4d9276e95d3ec1fd7a72491a0d9e1340e947bbb4d7d50e86dabe3b3",
+      "captured_original_bytes": 1048,
+      "archived_sha256": "36deb0a1c4d9276e95d3ec1fd7a72491a0d9e1340e947bbb4d7d50e86dabe3b3",
+      "archived_bytes": 1048,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libarchive/3.8.11/bottle-manifests/45f10f922a6696ee546f91a0f70ee55a9f4dc950f896fc2b165292640648e66e--libarchive-3.8.11.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libarchive",
+      "captured_original_sha256": "d7b958bc0992b2c540c02626aa9c52a6a2566aa49fc5161293e5f9c5a8b945f2",
+      "captured_original_bytes": 40699,
+      "archived_sha256": "d7b958bc0992b2c540c02626aa9c52a6a2566aa49fc5161293e5f9c5a8b945f2",
+      "archived_bytes": 40699,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libass/0.17.5_1/.brew/libass.rb",
+      "kind": "saved_recipe",
+      "formula": "libass",
+      "captured_original_sha256": "4caf85bb4b72ada675b82248eece7061286aba93b6ea4f7828d8f85ab64b8311",
+      "captured_original_bytes": 1738,
+      "archived_sha256": "4caf85bb4b72ada675b82248eece7061286aba93b6ea4f7828d8f85ab64b8311",
+      "archived_bytes": 1738,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libass/0.17.5_1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libass",
+      "captured_original_sha256": "abc59ce25acc2be034171263d5691ca94a27da8f842300dadde4eac024955b0a",
+      "captured_original_bytes": 5384,
+      "archived_sha256": "dde9d25abd08e1d5154eb6b5b15ece34cfc9a71e044d7b5396ecb82f6204fb1c",
+      "archived_bytes": 5377,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libass/0.17.5_1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libass",
+      "captured_original_sha256": "fb597abc1ee90644ad1d8fbdb35025654e2c23d6b1d4a1621fd9cd557bd96a82",
+      "captured_original_bytes": 1122,
+      "archived_sha256": "fb597abc1ee90644ad1d8fbdb35025654e2c23d6b1d4a1621fd9cd557bd96a82",
+      "archived_bytes": 1122,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libass/0.17.5_1/bottle-manifests/b88706ea4d8d2c0db99616cd966960b15fd9d9523f77305f76ad7d969523ce05--libass-0.17.5_1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libass",
+      "captured_original_sha256": "4435db5d03dcdcdc64dd1a40132c75b1b876a3c388f5831739f04b9613933828",
+      "captured_original_bytes": 160795,
+      "archived_sha256": "4435db5d03dcdcdc64dd1a40132c75b1b876a3c388f5831739f04b9613933828",
+      "archived_bytes": 160795,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libb2/0.98.1/.brew/libb2.rb",
+      "kind": "saved_recipe",
+      "formula": "libb2",
+      "captured_original_sha256": "35179ede9f32d4cb2ab8ea26eb08735e3cdbbbfa1537177bddc66a7b84b517cd",
+      "captured_original_bytes": 2118,
+      "archived_sha256": "35179ede9f32d4cb2ab8ea26eb08735e3cdbbbfa1537177bddc66a7b84b517cd",
+      "archived_bytes": 2118,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libb2/0.98.1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libb2",
+      "captured_original_sha256": "6cf128a7c20fffcad301ac574765adc6879e90ad34c28544e4b461d5332ef51a",
+      "captured_original_bytes": 965,
+      "archived_sha256": "bca7d101c7c3ca908d325c65e6473410b478ee7b37f79fb9a9d915c0f7181972",
+      "archived_bytes": 958,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libb2/0.98.1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libb2",
+      "captured_original_sha256": "2bb6d9c30709c6ff3b04ae4e5a58ebeccf0034688ab745e43bd087abded7c024",
+      "captured_original_bytes": 834,
+      "archived_sha256": "2bb6d9c30709c6ff3b04ae4e5a58ebeccf0034688ab745e43bd087abded7c024",
+      "archived_bytes": 834,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libb2/0.98.1/bottle-manifests/9bb23dca331f0d74876fa5c769113885b92af8a741a851cdfe99f6dfd420b12d--libb2-0.98.1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libb2",
+      "captured_original_sha256": "fa755b8e8998dd7cfe5bc49151075c08ee100e9f756668c126d5bf0ccb072b4f",
+      "captured_original_bytes": 17579,
+      "archived_sha256": "fa755b8e8998dd7cfe5bc49151075c08ee100e9f756668c126d5bf0ccb072b4f",
+      "archived_bytes": 17579,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libbluray/1.5.0/.brew/libbluray.rb",
+      "kind": "saved_recipe",
+      "formula": "libbluray",
+      "captured_original_sha256": "0880cfce7d8a2cd60511e1cc79c1a404c1b9167903bbef0cce17c7c7e65f328c",
+      "captured_original_bytes": 1408,
+      "archived_sha256": "0880cfce7d8a2cd60511e1cc79c1a404c1b9167903bbef0cce17c7c7e65f328c",
+      "archived_bytes": 1408,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libbluray/1.5.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libbluray",
+      "captured_original_sha256": "c3c362326c280abfaddc7c61c927e1e8ab4a26a9a7c632fba92af1a849935e3e",
+      "captured_original_bytes": 2410,
+      "archived_sha256": "1f3a29717bebcffed72c24030d30ba6a2e24bd3f019903ea1d11c9925c0b84f0",
+      "archived_bytes": 2403,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libbluray/1.5.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libbluray",
+      "captured_original_sha256": "7ee96591d5fe24bab4c1c195c1f289ff786152db929eea180d8453b5288133eb",
+      "captured_original_bytes": 1356,
+      "archived_sha256": "7ee96591d5fe24bab4c1c195c1f289ff786152db929eea180d8453b5288133eb",
+      "archived_bytes": 1356,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libbluray/1.5.0/bottle-manifests/e503cc873ee487450bd20ff576bf369fc6e81f67607685e8fe389a63391c2b00--libbluray-1.5.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libbluray",
+      "captured_original_sha256": "5caaca703e3b8c996704d308487a5f17583315ca3881d5a4813cb5d500c24a0c",
+      "captured_original_bytes": 75014,
+      "archived_sha256": "5caaca703e3b8c996704d308487a5f17583315ca3881d5a4813cb5d500c24a0c",
+      "archived_bytes": 75014,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libidn2/2.3.8/.brew/libidn2.rb",
+      "kind": "saved_recipe",
+      "formula": "libidn2",
+      "captured_original_sha256": "c899b49a77eabe13be5ca7961ace8ecf8e2f6d8dbd4aa1676cbb9e85abbed408",
+      "captured_original_bytes": 2106,
+      "archived_sha256": "c899b49a77eabe13be5ca7961ace8ecf8e2f6d8dbd4aa1676cbb9e85abbed408",
+      "archived_bytes": 2106,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libidn2/2.3.8/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libidn2",
+      "captured_original_sha256": "84675c2c9d6ceb5810af690dba3fb8e90b61e1e6ac0506db28313725ae8b0460",
+      "captured_original_bytes": 1535,
+      "archived_sha256": "7c3bd363875baaab5191b399ea19e6a7ff90cf55c8b8ee98c455bff366a7773b",
+      "archived_bytes": 1532,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/built_prefix",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<homebrew-prefix>"
+        },
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libidn2/2.3.8/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libidn2",
+      "captured_original_sha256": "6bec543f0a566aa5b85a41349f97dd0bf76155cf562fa60f9e268a3cb4c6d903",
+      "captured_original_bytes": 1705,
+      "archived_sha256": "6bec543f0a566aa5b85a41349f97dd0bf76155cf562fa60f9e268a3cb4c6d903",
+      "archived_bytes": 1705,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libidn2/2.3.8/bottle-manifests/f30f50fbde4bff9a71de54d684e482d7da3432656d680b97441163c6e5665468--libidn2-2.3.8.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libidn2",
+      "captured_original_sha256": "7b781555f5d6bbae3c151f8d564ea352b163764f19c5f29cffc74c114171048b",
+      "captured_original_bytes": 18544,
+      "archived_sha256": "7b781555f5d6bbae3c151f8d564ea352b163764f19c5f29cffc74c114171048b",
+      "archived_bytes": 18544,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libogg/1.3.6/.brew/libogg.rb",
+      "kind": "saved_recipe",
+      "formula": "libogg",
+      "captured_original_sha256": "e31fcdaf937004b95262421789f2d9c749dc74cdd47f84e15f2cdd974a0b3bf0",
+      "captured_original_bytes": 2387,
+      "archived_sha256": "e31fcdaf937004b95262421789f2d9c749dc74cdd47f84e15f2cdd974a0b3bf0",
+      "archived_bytes": 2387,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libogg/1.3.6/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libogg",
+      "captured_original_sha256": "ef8f0ccb856f60f162e505c36195f090e402b9642e8e7a09be6089776f96ed0c",
+      "captured_original_bytes": 962,
+      "archived_sha256": "03c1087492547da7efc7f4ddfc4f65dc188714db746e04f78743ba40dd47ca45",
+      "archived_bytes": 955,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libogg/1.3.6/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libogg",
+      "captured_original_sha256": "6a77643e5f4630ca6036ebe026a998845cd7e707bcf529dbf9fa21382677760c",
+      "captured_original_bytes": 807,
+      "archived_sha256": "6a77643e5f4630ca6036ebe026a998845cd7e707bcf529dbf9fa21382677760c",
+      "archived_bytes": 807,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libogg/1.3.6/bottle-manifests/2771c95e2ec94043bd81d507b7f5068b581ad45cd1d3529739b5fd47a5031fe8--libogg-1.3.6.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libogg",
+      "captured_original_sha256": "64f69c475daf6cd6d45037e71ba05242c77e6c8ce02b65a8d6f04beff5443bb2",
+      "captured_original_bytes": 11680,
+      "archived_sha256": "64f69c475daf6cd6d45037e71ba05242c77e6c8ce02b65a8d6f04beff5443bb2",
+      "archived_bytes": 11680,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libomp/23.1.4/.brew/libomp.rb",
+      "kind": "saved_recipe",
+      "formula": "libomp",
+      "captured_original_sha256": "6705a8c559750bb226de1726332ca26f818152fc39ed374d10eeeae396566e2e",
+      "captured_original_bytes": 2088,
+      "archived_sha256": "6705a8c559750bb226de1726332ca26f818152fc39ed374d10eeeae396566e2e",
+      "archived_bytes": 2088,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libomp/23.1.4/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libomp",
+      "captured_original_sha256": "07b756062aff6848ffd180f9d0e3e91eda63b1480abfe0ad5681320431afeece",
+      "captured_original_bytes": 1015,
+      "archived_sha256": "c6b45b549f35b4ee91ff915a5fde707f85f81b75b46f3e0b30525b827367b2e1",
+      "archived_bytes": 1008,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libomp/23.1.4/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libomp",
+      "captured_original_sha256": "fd41bccac3bcf7b73b5f8c46b81ea1537b317a08dd53cde8404736bd89e9a509",
+      "captured_original_bytes": 998,
+      "archived_sha256": "fd41bccac3bcf7b73b5f8c46b81ea1537b317a08dd53cde8404736bd89e9a509",
+      "archived_bytes": 998,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libomp/23.1.4/bottle-manifests/7490ad56730cbdcebbb25164cbbbcb07658b211dfd23a2f36cca9002a00539c7--libomp-23.1.4.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libomp",
+      "captured_original_sha256": "bb2ca25970801e3809f9b32c775e08f01fdd4d1a05a250ec277cc7eef47e1eae",
+      "captured_original_bytes": 44808,
+      "archived_sha256": "bb2ca25970801e3809f9b32c775e08f01fdd4d1a05a250ec277cc7eef47e1eae",
+      "archived_bytes": 44808,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libplacebo/7.387.0/.brew/libplacebo.rb",
+      "kind": "saved_recipe",
+      "formula": "libplacebo",
+      "captured_original_sha256": "f1e1887d4defd6d0b7d768daacaf66403e279664220311d5b3131e9a94376c0b",
+      "captured_original_bytes": 2627,
+      "archived_sha256": "f1e1887d4defd6d0b7d768daacaf66403e279664220311d5b3131e9a94376c0b",
+      "archived_bytes": 2627,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libplacebo/7.387.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libplacebo",
+      "captured_original_sha256": "a12595a8197ceeaf1b5bffd62653ea94eade3ef3b7933bee143af314707259f8",
+      "captured_original_bytes": 3249,
+      "archived_sha256": "19cd2838c639e4cc7e00e1951797f937bf77dc7dfb90604ceb5b29e4c0e721eb",
+      "archived_bytes": 3242,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libplacebo/7.387.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libplacebo",
+      "captured_original_sha256": "de2db2b0b00a94d1f69e723505fc7c917836b27629b254065354dfe6d375ea26",
+      "captured_original_bytes": 1450,
+      "archived_sha256": "de2db2b0b00a94d1f69e723505fc7c917836b27629b254065354dfe6d375ea26",
+      "archived_bytes": 1450,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libplacebo/7.387.0/bottle-manifests/4aeb68a076aa0ee214124c4dd6b71092aafbdf0430ef0e9bb3603a624ee1a4bb--libplacebo-7.387.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libplacebo",
+      "captured_original_sha256": "25cc34e2f65cca5b53b251c24a9b2d2cdb5a0d7311ac9870b82dbd689c79a473",
+      "captured_original_bytes": 101678,
+      "archived_sha256": "25cc34e2f65cca5b53b251c24a9b2d2cdb5a0d7311ac9870b82dbd689c79a473",
+      "archived_bytes": 101678,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libpng/1.6.59/.brew/libpng.rb",
+      "kind": "saved_recipe",
+      "formula": "libpng",
+      "captured_original_sha256": "3ef2e9c5f499c302dc8e9f1f76980732ad850618a00606fbfac2522080632b37",
+      "captured_original_bytes": 1772,
+      "archived_sha256": "3ef2e9c5f499c302dc8e9f1f76980732ad850618a00606fbfac2522080632b37",
+      "archived_bytes": 1772,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libpng/1.6.59/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libpng",
+      "captured_original_sha256": "31fe6ec661a71b8acfb3dba81c7ca9873d8de6a2522803db7b9e28b070b4e931",
+      "captured_original_bytes": 1130,
+      "archived_sha256": "63d801c1eb7275551e95dc16383aebed689da53db9bad841daa594c1dbd89448",
+      "archived_bytes": 1123,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libpng/1.6.59/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libpng",
+      "captured_original_sha256": "ac02d9847e33913211256e5987969bddbfc30e58af6ade7d89cbe81fc2f60a8a",
+      "captured_original_bytes": 979,
+      "archived_sha256": "ac02d9847e33913211256e5987969bddbfc30e58af6ade7d89cbe81fc2f60a8a",
+      "archived_bytes": 979,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libpng/1.6.59/bottle-manifests/4a927b335b66f50d42c144f2bbc7c000384414951a542ced9ccf8ab03da5d05d--libpng-1.6.59.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libpng",
+      "captured_original_sha256": "d248d05da36fbf606e14bf28f1f632d19309bbbfc90aac79b8351ad1bf2bf069",
+      "captured_original_bytes": 15921,
+      "archived_sha256": "d248d05da36fbf606e14bf28f1f632d19309bbbfc90aac79b8351ad1bf2bf069",
+      "archived_bytes": 15921,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/librist/0.2.20/.brew/librist.rb",
+      "kind": "saved_recipe",
+      "formula": "librist",
+      "captured_original_sha256": "40c803adf30f9db567840aa6a8c978738cd093461c2fdf077e24f8ba9294ad33",
+      "captured_original_bytes": 1282,
+      "archived_sha256": "40c803adf30f9db567840aa6a8c978738cd093461c2fdf077e24f8ba9294ad33",
+      "archived_bytes": 1282,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/librist/0.2.20/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "librist",
+      "captured_original_sha256": "e4d5266cb8f6709a5c2a8b76b6bc0a35d1198119459fe22fa524b47cbfe1e313",
+      "captured_original_bytes": 3551,
+      "archived_sha256": "f766e99535fb4d0d34b610918b832a4e46330cf6bb796a7d9a6eb2edc05aedb5",
+      "archived_bytes": 3544,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/librist/0.2.20/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "librist",
+      "captured_original_sha256": "7d20718df8bb118079330a1fbd5cd17d4476d16861196afc8d7d7d73ba3d0e6d",
+      "captured_original_bytes": 1332,
+      "archived_sha256": "7d20718df8bb118079330a1fbd5cd17d4476d16861196afc8d7d7d73ba3d0e6d",
+      "archived_bytes": 1332,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/librist/0.2.20/bottle-manifests/400ebc7b01648266d759b00d61c6a5206d3e86a7085b2424ac6e1251295d01ab--librist-0.2.20-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "librist",
+      "captured_original_sha256": "98f2bacda89d0008a3c4b22f3039044208c396e6aef92cdb9ec522d9efec782d",
+      "captured_original_bytes": 79596,
+      "archived_sha256": "98f2bacda89d0008a3c4b22f3039044208c396e6aef92cdb9ec522d9efec782d",
+      "archived_bytes": 79596,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libsamplerate/0.2.2/.brew/libsamplerate.rb",
+      "kind": "saved_recipe",
+      "formula": "libsamplerate",
+      "captured_original_sha256": "0d1b4314a49ad5b0c06ef8a4f99ae4da36d7b2d2904cca5076c678bedc78ce8d",
+      "captured_original_bytes": 2217,
+      "archived_sha256": "0d1b4314a49ad5b0c06ef8a4f99ae4da36d7b2d2904cca5076c678bedc78ce8d",
+      "archived_bytes": 2217,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libsamplerate/0.2.2/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libsamplerate",
+      "captured_original_sha256": "1b8c548dbf516a2c3518749deb0095dd5a73e365cbf727cf562d233d385e69f7",
+      "captured_original_bytes": 969,
+      "archived_sha256": "d408da445190bce1f5b8fdfe4d5b906b5cdcce1b0be6fac3bc3272b0a7ccd6b4",
+      "archived_bytes": 962,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libsamplerate/0.2.2/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libsamplerate",
+      "captured_original_sha256": "bb3b1f528de37e8a7dfe3581c3067d8bfc8aee2dc88e119b6406bcecb0483e9b",
+      "captured_original_bytes": 1739,
+      "archived_sha256": "bb3b1f528de37e8a7dfe3581c3067d8bfc8aee2dc88e119b6406bcecb0483e9b",
+      "archived_bytes": 1739,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libsamplerate/0.2.2/bottle-manifests/6be12485f3237a33a9c98a4799bc5e05f5f6520175c5e08fb3545d0f7f45f9cc--libsamplerate-0.2.2-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libsamplerate",
+      "captured_original_sha256": "ba137d9986e2ee6b5210195b5bdfef4003ff4022feefa486d939f61a18d0b70f",
+      "captured_original_bytes": 11882,
+      "archived_sha256": "ba137d9986e2ee6b5210195b5bdfef4003ff4022feefa486d939f61a18d0b70f",
+      "archived_bytes": 11882,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libsodium/1.0.22/.brew/libsodium.rb",
+      "kind": "saved_recipe",
+      "formula": "libsodium",
+      "captured_original_sha256": "586a3696dce9da7b9cf72e2a5f00d6f79db3da4d512fb80bac42dc4a76d6dca2",
+      "captured_original_bytes": 1366,
+      "archived_sha256": "586a3696dce9da7b9cf72e2a5f00d6f79db3da4d512fb80bac42dc4a76d6dca2",
+      "archived_bytes": 1366,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libsodium/1.0.22/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libsodium",
+      "captured_original_sha256": "efcb404f5a052bcf41375310f80970e0e0808c9f632e9e5accfa1cce00c0be3c",
+      "captured_original_bytes": 966,
+      "archived_sha256": "b305bff6658fa3e0c4dbeb1caa527912878658950c84708c3fb11b933cb9d79b",
+      "archived_bytes": 959,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libsodium/1.0.22/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libsodium",
+      "captured_original_sha256": "aa31ba0c14baa2e60060d383bc04791a15bca54ce0fc40b77f4dfef161f81d8a",
+      "captured_original_bytes": 845,
+      "archived_sha256": "aa31ba0c14baa2e60060d383bc04791a15bca54ce0fc40b77f4dfef161f81d8a",
+      "archived_bytes": 845,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libsodium/1.0.22/bottle-manifests/8d87a232b6301bba8d9ce16acdff3460eed899798a52b4ed1251ed78be60427e--libsodium-1.0.22.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libsodium",
+      "captured_original_sha256": "19de4392b1659cdca365d016ba11c19c52de6ae843b3bbd957121f37c9825a4b",
+      "captured_original_bytes": 9627,
+      "archived_sha256": "19de4392b1659cdca365d016ba11c19c52de6ae843b3bbd957121f37c9825a4b",
+      "archived_bytes": 9627,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libsoxr/0.1.3/.brew/libsoxr.rb",
+      "kind": "saved_recipe",
+      "formula": "libsoxr",
+      "captured_original_sha256": "351d5eeb9e19c0c1933547ecd02f34d0a766c8c196956f84c3c73c4ac030ca7f",
+      "captured_original_bytes": 1540,
+      "archived_sha256": "351d5eeb9e19c0c1933547ecd02f34d0a766c8c196956f84c3c73c4ac030ca7f",
+      "archived_bytes": 1540,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libsoxr/0.1.3/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libsoxr",
+      "captured_original_sha256": "9ad1fa55cb12c7ee5e0a98d1ec298b5ba377ff341f4103ec35b456f8f5ac6218",
+      "captured_original_bytes": 996,
+      "archived_sha256": "4ec59716b9280470ff743c3a9925d1eb30f41c090708304925254e160b993fad",
+      "archived_bytes": 989,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libsoxr/0.1.3/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libsoxr",
+      "captured_original_sha256": "813c4d07384c792b0372c6f9fa1552d75de3cbaa73807f37df00fce1912712f5",
+      "captured_original_bytes": 1044,
+      "archived_sha256": "813c4d07384c792b0372c6f9fa1552d75de3cbaa73807f37df00fce1912712f5",
+      "archived_bytes": 1044,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libsoxr/0.1.3/bottle-manifests/f10988e95845131f890c95b52caea83e46332718a0787ff7b473f71e9ca6e536--libsoxr-0.1.3-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libsoxr",
+      "captured_original_sha256": "bece2051611de7f5bd27964ba271c2e9e4ef8ef4a252da874f9696d27e4440b1",
+      "captured_original_bytes": 17696,
+      "archived_sha256": "bece2051611de7f5bd27964ba271c2e9e4ef8ef4a252da874f9696d27e4440b1",
+      "archived_bytes": 17696,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libssh/0.12.2_1/.brew/libssh.rb",
+      "kind": "saved_recipe",
+      "formula": "libssh",
+      "captured_original_sha256": "3fb97c1e74912d8726ae257bfee5c34e12c56069456efa897816b94e4cfbfd8f",
+      "captured_original_bytes": 1228,
+      "archived_sha256": "3fb97c1e74912d8726ae257bfee5c34e12c56069456efa897816b94e4cfbfd8f",
+      "archived_bytes": 1228,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libssh/0.12.2_1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libssh",
+      "captured_original_sha256": "36a8495305285f1f82de5e3987fb5c18fbacb05ef8ec25952e9ab94f9e87640f",
+      "captured_original_bytes": 1435,
+      "archived_sha256": "25a078c8228d8d8a43bd44439f05954134238f7727d34bc4649a9d9f9ab0b148",
+      "archived_bytes": 1428,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libssh/0.12.2_1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libssh",
+      "captured_original_sha256": "6a4baaff92d43c9780c807ad514fdfa07dba8e83baa2353821765ec7e13efa3b",
+      "captured_original_bytes": 888,
+      "archived_sha256": "6a4baaff92d43c9780c807ad514fdfa07dba8e83baa2353821765ec7e13efa3b",
+      "archived_bytes": 888,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libssh/0.12.2_1/bottle-manifests/6158047bc32f4e8c6915133e5051992ed38ada510a6eef1a6c8e6d9453fb1ee7--libssh-0.12.2_1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libssh",
+      "captured_original_sha256": "f14a4a2a6f3bd03dc6c664b27924bdeee6d2f283ec5da80ba36e696bc05b54d8",
+      "captured_original_bytes": 25747,
+      "archived_sha256": "f14a4a2a6f3bd03dc6c664b27924bdeee6d2f283ec5da80ba36e696bc05b54d8",
+      "archived_bytes": 25747,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libtasn1/4.21.0/.brew/libtasn1.rb",
+      "kind": "saved_recipe",
+      "formula": "libtasn1",
+      "captured_original_sha256": "751ed417e412362cc0764381e59f342bf860c06cf6aea840cd3ab7d84c538bfe",
+      "captured_original_bytes": 1086,
+      "archived_sha256": "751ed417e412362cc0764381e59f342bf860c06cf6aea840cd3ab7d84c538bfe",
+      "archived_bytes": 1086,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libtasn1/4.21.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libtasn1",
+      "captured_original_sha256": "a9b2ee8117af3a77d8cfc7176e486c86d7722f98dd402ed0cf24f5b24ca6f21a",
+      "captured_original_bytes": 984,
+      "archived_sha256": "9f860fdf1d32a24098eaff0b102837d50fe8865e111ed4cf9c5d970ab38ed4d7",
+      "archived_bytes": 977,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libtasn1/4.21.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libtasn1",
+      "captured_original_sha256": "8c7b204a19d46577c6578885c5763756d48d77fce70fd573ccfabded44c1cd03",
+      "captured_original_bytes": 701,
+      "archived_sha256": "8c7b204a19d46577c6578885c5763756d48d77fce70fd573ccfabded44c1cd03",
+      "archived_bytes": 701,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libtasn1/4.21.0/bottle-manifests/3d3687ec2f9685f880201a5a242610158dff334b09cc92fa23781b31db634c36--libtasn1-4.21.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libtasn1",
+      "captured_original_sha256": "81603515961be58db79a735e7f354ceb6247c26670c48aa9486826594725374b",
+      "captured_original_bytes": 10391,
+      "archived_sha256": "81603515961be58db79a735e7f354ceb6247c26670c48aa9486826594725374b",
+      "archived_bytes": 10391,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libtiff/4.7.2/.brew/libtiff.rb",
+      "kind": "saved_recipe",
+      "formula": "libtiff",
+      "captured_original_sha256": "fc00430585b1c694cc6c2749f0479a910cbc0a4dcc0e5dcb0d77efd5db6fa8ae",
+      "captured_original_bytes": 2685,
+      "archived_sha256": "fc00430585b1c694cc6c2749f0479a910cbc0a4dcc0e5dcb0d77efd5db6fa8ae",
+      "archived_bytes": 2685,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libtiff/4.7.2/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libtiff",
+      "captured_original_sha256": "6bdb8f907e409ad3758106369fc6345f9677a3aee3420041dd1225682a7d2de3",
+      "captured_original_bytes": 2687,
+      "archived_sha256": "dc494ef5ee673753d3991adb94b931a35945c0c5c3af692b89ef9d589b103a99",
+      "archived_bytes": 2680,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libtiff/4.7.2/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libtiff",
+      "captured_original_sha256": "2689780e00d2995d537de482d8f3eb2b0a12a64a77258bf5b07cb8f8f199b3e2",
+      "captured_original_bytes": 1059,
+      "archived_sha256": "2689780e00d2995d537de482d8f3eb2b0a12a64a77258bf5b07cb8f8f199b3e2",
+      "archived_bytes": 1059,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libtiff/4.7.2/bottle-manifests/a4a37d965307e029b7e36c54d34034fef15bf7d4202587fe1c339dd2727ed31a--libtiff-4.7.2-2.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libtiff",
+      "captured_original_sha256": "e27ac2f74fe2170b69a4273f33b98194ae57a700515cc89b2b27ef44ea095a19",
+      "captured_original_bytes": 64189,
+      "archived_sha256": "e27ac2f74fe2170b69a4273f33b98194ae57a700515cc89b2b27ef44ea095a19",
+      "archived_bytes": 64189,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libudfread/1.2.0/.brew/libudfread.rb",
+      "kind": "saved_recipe",
+      "formula": "libudfread",
+      "captured_original_sha256": "613cfcdfbe18e0e45eb4f5a903d715f2c83563707625ac09db8b0e8cbf951e91",
+      "captured_original_bytes": 1002,
+      "archived_sha256": "613cfcdfbe18e0e45eb4f5a903d715f2c83563707625ac09db8b0e8cbf951e91",
+      "archived_bytes": 1002,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libudfread/1.2.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libudfread",
+      "captured_original_sha256": "e1caf342bffa1f3c089b5a3e38855b9cf3afc755dc9a81ac931b7436dc3da947",
+      "captured_original_bytes": 969,
+      "archived_sha256": "0dd14e7fd1a1f25219e86c4f20a33bc756f152d284683e77e5f261587d0ebf11",
+      "archived_bytes": 962,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libudfread/1.2.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libudfread",
+      "captured_original_sha256": "ff180444fd296c5797342ff5dc952bacbfa3ae001ac380f5f6b0871c4bf40267",
+      "captured_original_bytes": 816,
+      "archived_sha256": "ff180444fd296c5797342ff5dc952bacbfa3ae001ac380f5f6b0871c4bf40267",
+      "archived_bytes": 816,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libudfread/1.2.0/bottle-manifests/0e101e8cb6cd3d57390b8ae34720c46dc2f4f1e8f0a00aa7be37a93771109d13--libudfread-1.2.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libudfread",
+      "captured_original_sha256": "308ab7e6c6851f6343cc3d4d09e4b10841f6ae4457b52281b0497f570e0293d6",
+      "captured_original_bytes": 11834,
+      "archived_sha256": "308ab7e6c6851f6343cc3d4d09e4b10841f6ae4457b52281b0497f570e0293d6",
+      "archived_bytes": 11834,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libunibreak/8.0/.brew/libunibreak.rb",
+      "kind": "saved_recipe",
+      "formula": "libunibreak",
+      "captured_original_sha256": "0fea0935edb6bdce9b6509af18caa7dcc1d7286e5ee44200c933a2c6b5110b94",
+      "captured_original_bytes": 1494,
+      "archived_sha256": "0fea0935edb6bdce9b6509af18caa7dcc1d7286e5ee44200c933a2c6b5110b94",
+      "archived_bytes": 1494,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libunibreak/8.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libunibreak",
+      "captured_original_sha256": "1821ce9369aa87925c726e0bbef2b6d717e5674a52b29da5c6289f22e25b2e64",
+      "captured_original_bytes": 1056,
+      "archived_sha256": "8e6499ad24358e30770eb86fc05670af745c5100b87573f614d9ac00a2e979f6",
+      "archived_bytes": 1049,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libunibreak/8.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libunibreak",
+      "captured_original_sha256": "8c09b674ecd145333aa18520c237c3482d631a1743f796c557837e8162489271",
+      "captured_original_bytes": 646,
+      "archived_sha256": "8c09b674ecd145333aa18520c237c3482d631a1743f796c557837e8162489271",
+      "archived_bytes": 646,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libunibreak/8.0/bottle-manifests/608d778dc4b9041c5e2e27c0915294002345cb214ece0e0b4763251b9112e0ea--libunibreak-8.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libunibreak",
+      "captured_original_sha256": "93a0b471746bd854092ccca36194e90b4c48e88885178c58fe77c49ab65e26db",
+      "captured_original_bytes": 12923,
+      "archived_sha256": "93a0b471746bd854092ccca36194e90b4c48e88885178c58fe77c49ab65e26db",
+      "archived_bytes": 12923,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libunistring/1.5/.brew/libunistring.rb",
+      "kind": "saved_recipe",
+      "formula": "libunistring",
+      "captured_original_sha256": "5a0ff014063865e7acebbe3b0e1e5b4434773b8124975898e235e78440279d6d",
+      "captured_original_bytes": 1725,
+      "archived_sha256": "5a0ff014063865e7acebbe3b0e1e5b4434773b8124975898e235e78440279d6d",
+      "archived_bytes": 1725,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libunistring/1.5/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libunistring",
+      "captured_original_sha256": "d66a7cfda97bf954d602eba0b46d5fc0ed779be998fc8f45627a9859b0354499",
+      "captured_original_bytes": 1020,
+      "archived_sha256": "e7a99338994d808358abd3facd18fe40f52d0598028b63732748f3ff4c62e201",
+      "archived_bytes": 1013,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libunistring/1.5/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libunistring",
+      "captured_original_sha256": "1b8c3a440e075d1eb5886b2a4a734a2a0d652c037ef4dfa1f40e10805cdc4d9c",
+      "captured_original_bytes": 674,
+      "archived_sha256": "1b8c3a440e075d1eb5886b2a4a734a2a0d652c037ef4dfa1f40e10805cdc4d9c",
+      "archived_bytes": 674,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libunistring/1.5/bottle-manifests/9f8a3725aea3235422cc8cd4a3e4499aa2ae0b370cba577a48ae271fd9ab9c78--libunistring-1.5.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libunistring",
+      "captured_original_sha256": "b3cdb5514cf3add0e18f63a51437d7d800f4f5c5a56a312099194ed563c9daf9",
+      "captured_original_bytes": 13176,
+      "archived_sha256": "b3cdb5514cf3add0e18f63a51437d7d800f4f5c5a56a312099194ed563c9daf9",
+      "archived_bytes": 13176,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libvidstab/1.1.2/.brew/libvidstab.rb",
+      "kind": "saved_recipe",
+      "formula": "libvidstab",
+      "captured_original_sha256": "3488f435379a6b7fcbd358a2a48d28304821748a79deae999c52b510a03be0d5",
+      "captured_original_bytes": 1034,
+      "archived_sha256": "3488f435379a6b7fcbd358a2a48d28304821748a79deae999c52b510a03be0d5",
+      "archived_bytes": 1034,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libvidstab/1.1.2/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libvidstab",
+      "captured_original_sha256": "fd8888cc224a66a4f636b956583df129071b77458ef37e3911d8bf25b58b65d6",
+      "captured_original_bytes": 983,
+      "archived_sha256": "946053b0e5334543388899b40305e04e0f1a91583310e3c7e2d393390d0f8a9b",
+      "archived_bytes": 976,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libvidstab/1.1.2/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libvidstab",
+      "captured_original_sha256": "d6e1189fbd6281137fbdde6fcd5b894bfc1ed09b082f7485d27dfa776e990057",
+      "captured_original_bytes": 854,
+      "archived_sha256": "d6e1189fbd6281137fbdde6fcd5b894bfc1ed09b082f7485d27dfa776e990057",
+      "archived_bytes": 854,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libvidstab/1.1.2/bottle-manifests/c9a32c243eef895ad04bdb460a1b5d3fe7370612d860019189d04fc60bfc3821--libvidstab-1.1.2.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libvidstab",
+      "captured_original_sha256": "cb599ba46826c42fa89252d25a035acbe57145ffb815da3a119ba6153d868a9b",
+      "captured_original_bytes": 17307,
+      "archived_sha256": "cb599ba46826c42fa89252d25a035acbe57145ffb815da3a119ba6153d868a9b",
+      "archived_bytes": 17307,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libvmaf/3.2.1/.brew/libvmaf.rb",
+      "kind": "saved_recipe",
+      "formula": "libvmaf",
+      "captured_original_sha256": "42eb77b2768bf4f4ff1d64170f54e3c368264cf0d4c555bf3f7d9863f32fa68e",
+      "captured_original_bytes": 1032,
+      "archived_sha256": "42eb77b2768bf4f4ff1d64170f54e3c368264cf0d4c555bf3f7d9863f32fa68e",
+      "archived_bytes": 1032,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libvmaf/3.2.1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libvmaf",
+      "captured_original_sha256": "0243b0233eb11044a97eb259e28483748f4724b79823aab300a315f39f0ab203",
+      "captured_original_bytes": 1049,
+      "archived_sha256": "51975ee5338ecd6b336dfe952d112af8d122939249075bae6c6134a982f4849e",
+      "archived_bytes": 1042,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libvmaf/3.2.1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libvmaf",
+      "captured_original_sha256": "5d1fbd5e5a51b99b3c2509f35bfbc9ccafb99648a0e2d4b22bdd3df5635f2f04",
+      "captured_original_bytes": 1037,
+      "archived_sha256": "5d1fbd5e5a51b99b3c2509f35bfbc9ccafb99648a0e2d4b22bdd3df5635f2f04",
+      "archived_bytes": 1037,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libvmaf/3.2.1/bottle-manifests/f20bac2e6b877181cbe458be6c265feb86acf5aa503115162bd90a8dd3750aa0--libvmaf-3.2.1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libvmaf",
+      "captured_original_sha256": "c4634de95776c3da217d6ab01cf09db5f2a112272215e1dee108c5d26e2cff6e",
+      "captured_original_bytes": 14147,
+      "archived_sha256": "c4634de95776c3da217d6ab01cf09db5f2a112272215e1dee108c5d26e2cff6e",
+      "archived_bytes": 14147,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libvorbis/1.3.7/.brew/libvorbis.rb",
+      "kind": "saved_recipe",
+      "formula": "libvorbis",
+      "captured_original_sha256": "877d592b67f88751b839bd00b6d22af1e3eb11dce990750d0a29aacb5ba1f06d",
+      "captured_original_bytes": 1981,
+      "archived_sha256": "877d592b67f88751b839bd00b6d22af1e3eb11dce990750d0a29aacb5ba1f06d",
+      "archived_bytes": 1981,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libvorbis/1.3.7/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libvorbis",
+      "captured_original_sha256": "0fce4e1f026aa78d0e871c1c1b2fefc67cb915f04a972d1cbce92fce024866a0",
+      "captured_original_bytes": 1214,
+      "archived_sha256": "038ceebaa0cc2029ab4e7b69d19fa330ecfca7ae6faa6bfc64049748253b5efb",
+      "archived_bytes": 1207,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libvorbis/1.3.7/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libvorbis",
+      "captured_original_sha256": "4d8ba3f71e503b8a662a50f255bda2c97f370d52ce0577648b88afeec8fd670f",
+      "captured_original_bytes": 1006,
+      "archived_sha256": "4d8ba3f71e503b8a662a50f255bda2c97f370d52ce0577648b88afeec8fd670f",
+      "archived_bytes": 1006,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libvorbis/1.3.7/bottle-manifests/68d211b8805a2fab148645c2ac8e43495e576876d6f50f0c4af5ea890730b7ea--libvorbis-1.3.7-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libvorbis",
+      "captured_original_sha256": "98f8989aa1cfe565e34743bb8b9e96ee1bb63de0e4e528de14f8673cc00e3518",
+      "captured_original_bytes": 17742,
+      "archived_sha256": "98f8989aa1cfe565e34743bb8b9e96ee1bb63de0e4e528de14f8673cc00e3518",
+      "archived_bytes": 17742,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libvpx/1.17.0/.brew/libvpx.rb",
+      "kind": "saved_recipe",
+      "formula": "libvpx",
+      "captured_original_sha256": "ba588d5d2b2751a239a4d2d122d1c62ff47fa8aea89dddca6914e55c402b9ad4",
+      "captured_original_bytes": 3327,
+      "archived_sha256": "ba588d5d2b2751a239a4d2d122d1c62ff47fa8aea89dddca6914e55c402b9ad4",
+      "archived_bytes": 3327,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libvpx/1.17.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libvpx",
+      "captured_original_sha256": "6c38b9ac8a8b7bc0da3980da6df84d9fae1738b5d7ba3b3573f176bcf12680e1",
+      "captured_original_bytes": 1047,
+      "archived_sha256": "2c592293e58260125c79db94ccca382a38cb588eea7933cb7431d7102061d32c",
+      "archived_bytes": 1040,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libvpx/1.17.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libvpx",
+      "captured_original_sha256": "215303bd2ba2f5d9c8eda5adea2f70196a9c7d4b5210e12e25c37188eddb610b",
+      "captured_original_bytes": 801,
+      "archived_sha256": "215303bd2ba2f5d9c8eda5adea2f70196a9c7d4b5210e12e25c37188eddb610b",
+      "archived_bytes": 801,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libvpx/1.17.0/bottle-manifests/70365eacbeaa4470ca3deab02a4c0258d33a255dfe1dccdfcd8989062128de52--libvpx-1.17.0-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libvpx",
+      "captured_original_sha256": "a43c5508a4d49ff62ee37012f81dacbe9c7a7e85e9c4e8c5f8f780cf8cc6fde8",
+      "captured_original_bytes": 12813,
+      "archived_sha256": "a43c5508a4d49ff62ee37012f81dacbe9c7a7e85e9c4e8c5f8f780cf8cc6fde8",
+      "archived_bytes": 12813,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libx11/1.8.14/.brew/libx11.rb",
+      "kind": "saved_recipe",
+      "formula": "libx11",
+      "captured_original_sha256": "981d2902e9761b397dcf6378f86a3afabc7c1fe89039fb71de93a42e5bd8c94e",
+      "captured_original_bytes": 2310,
+      "archived_sha256": "981d2902e9761b397dcf6378f86a3afabc7c1fe89039fb71de93a42e5bd8c94e",
+      "archived_bytes": 2310,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libx11/1.8.14/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libx11",
+      "captured_original_sha256": "045a8c1a1daf4b16ce1d3a90fc6bad6e9387a875324719aae532ccb2b3cbf726",
+      "captured_original_bytes": 2567,
+      "archived_sha256": "595aecd45d6f92e36cc8ec8dd7d1e8002fbc02861ebf45152d641377f215d893",
+      "archived_bytes": 2564,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/built_prefix",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<homebrew-prefix>"
+        },
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libx11/1.8.14/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libx11",
+      "captured_original_sha256": "9cc9bf3fcc886ed0c7d71bb00423ceae7c76c36228832a083e0cadbebc69bf08",
+      "captured_original_bytes": 956,
+      "archived_sha256": "9cc9bf3fcc886ed0c7d71bb00423ceae7c76c36228832a083e0cadbebc69bf08",
+      "archived_bytes": 956,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libx11/1.8.14/bottle-manifests/8ad7fd4cb0a37b3910059cfd65551ced8c8bf3f5d61babf629679dadda4f7c76--libx11-1.8.14.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libx11",
+      "captured_original_sha256": "6e265e537ad1b2da590e8ab1b8b3f5ea3c8873302bdb02096652b482b58fdc46",
+      "captured_original_bytes": 36745,
+      "archived_sha256": "6e265e537ad1b2da590e8ab1b8b3f5ea3c8873302bdb02096652b482b58fdc46",
+      "archived_bytes": 36745,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libxau/1.0.12/.brew/libxau.rb",
+      "kind": "saved_recipe",
+      "formula": "libxau",
+      "captured_original_sha256": "9c71744bb76db44bba40e0017edc3a398c1fdec4df6772dfa76ce4b21c441e7c",
+      "captured_original_bytes": 846,
+      "archived_sha256": "9c71744bb76db44bba40e0017edc3a398c1fdec4df6772dfa76ce4b21c441e7c",
+      "archived_bytes": 846,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libxau/1.0.12/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libxau",
+      "captured_original_sha256": "a2b50cbb9cd202a0808071c781af69cf814c6dce13301498ef1e31fd895c7dd7",
+      "captured_original_bytes": 1148,
+      "archived_sha256": "33bd3de467d48a55ec560437d189ef8d7dbecb50e65c2502b1dbd158e021f53b",
+      "archived_bytes": 1141,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libxau/1.0.12/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libxau",
+      "captured_original_sha256": "aef066e3821abe7161ea76596a8656bb5c41aebdd4c5e24f8a2efbe686ee81d4",
+      "captured_original_bytes": 841,
+      "archived_sha256": "aef066e3821abe7161ea76596a8656bb5c41aebdd4c5e24f8a2efbe686ee81d4",
+      "archived_bytes": 841,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libxau/1.0.12/bottle-manifests/6335be202d59f96fdee2e4a02f93d8ee87dfcfdbaa4ed132b8fe8c3e3651e27c--libxau-1.0.12.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libxau",
+      "captured_original_sha256": "80da7800fa6d0b2842834f018017c56b63811deeeda6fbce0490a842e42bf82c",
+      "captured_original_bytes": 13601,
+      "archived_sha256": "80da7800fa6d0b2842834f018017c56b63811deeeda6fbce0490a842e42bf82c",
+      "archived_bytes": 13601,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libxcb/1.17.0/.brew/libxcb.rb",
+      "kind": "saved_recipe",
+      "formula": "libxcb",
+      "captured_original_sha256": "d159af9a0da10babe2ca9f953e287eca64e9bfa514deac5d4da7b36096d0d511",
+      "captured_original_bytes": 2360,
+      "archived_sha256": "d159af9a0da10babe2ca9f953e287eca64e9bfa514deac5d4da7b36096d0d511",
+      "archived_bytes": 2360,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libxcb/1.17.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libxcb",
+      "captured_original_sha256": "000f7c91533bb5d818cd924f8591109d052f6ae121c2ac767c7b93170ab35f98",
+      "captured_original_bytes": 2466,
+      "archived_sha256": "98ac79be25bca4f1fae6ebfda4ae5ba8327d94eb1e10064c3fb3c8c68cc3ade3",
+      "archived_bytes": 2459,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libxcb/1.17.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libxcb",
+      "captured_original_sha256": "de7d3c22fcda87f800c9c1610fc63084f9b5737d30c29d5c5b64933a023c86bb",
+      "captured_original_bytes": 976,
+      "archived_sha256": "de7d3c22fcda87f800c9c1610fc63084f9b5737d30c29d5c5b64933a023c86bb",
+      "archived_bytes": 976,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libxcb/1.17.0/bottle-manifests/a17e9d0e04a0013a5be592875b012c409023664b3df084b8051766331d213ff5--libxcb-1.17.0-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libxcb",
+      "captured_original_sha256": "860effcb0c6466a4a87269483d7e45ae21290ca8c081c192989972f575c2a94f",
+      "captured_original_bytes": 26409,
+      "archived_sha256": "860effcb0c6466a4a87269483d7e45ae21290ca8c081c192989972f575c2a94f",
+      "archived_bytes": 26409,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libxdmcp/1.1.5/.brew/libxdmcp.rb",
+      "kind": "saved_recipe",
+      "formula": "libxdmcp",
+      "captured_original_sha256": "58077ec0295ce90d9039752f3c6daf1a1a2d9224232e601c980bcde873070189",
+      "captured_original_bytes": 844,
+      "archived_sha256": "58077ec0295ce90d9039752f3c6daf1a1a2d9224232e601c980bcde873070189",
+      "archived_bytes": 844,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libxdmcp/1.1.5/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "libxdmcp",
+      "captured_original_sha256": "70a88faa28aa29df298c0db8a77c5d37ef51d72ff436b8aace75c4cbb679c601",
+      "captured_original_bytes": 1149,
+      "archived_sha256": "de63fc8d4407f23b97a79b73521bacf4f4034daca62d04634c96c097902bee78",
+      "archived_bytes": 1142,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/libxdmcp/1.1.5/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "libxdmcp",
+      "captured_original_sha256": "bedbafb273acc0bbcce423c6e40d1841a3fa03418055b4f3153497cef9b2abdf",
+      "captured_original_bytes": 760,
+      "archived_sha256": "bedbafb273acc0bbcce423c6e40d1841a3fa03418055b4f3153497cef9b2abdf",
+      "archived_bytes": 760,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/libxdmcp/1.1.5/bottle-manifests/8713e53f73d0be64780dbea522b0ee07027e6cc7828ff1a4fa0a6596f14cfe25--libxdmcp-1.1.5.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "libxdmcp",
+      "captured_original_sha256": "cba18e53d0012d5d9064f191dcc8d72598b76108a37d2b85d6f054644ac736f5",
+      "captured_original_bytes": 15341,
+      "archived_sha256": "cba18e53d0012d5d9064f191dcc8d72598b76108a37d2b85d6f054644ac736f5",
+      "archived_bytes": 15341,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/little-cms2/2.19.1/.brew/little-cms2.rb",
+      "kind": "saved_recipe",
+      "formula": "little-cms2",
+      "captured_original_sha256": "7af482e897b7d6703f41e8595684e59eb2d7799f55055101add65d7301bc569b",
+      "captured_original_bytes": 1324,
+      "archived_sha256": "7af482e897b7d6703f41e8595684e59eb2d7799f55055101add65d7301bc569b",
+      "archived_bytes": 1324,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/little-cms2/2.19.1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "little-cms2",
+      "captured_original_sha256": "21479d424526baf8aca174c4dc1f1925f884257c39b22021f3b82125a064f35e",
+      "captured_original_bytes": 2588,
+      "archived_sha256": "d420278ab5539c8468bbdf16b36c99fabc2dc3db2ccb8a6aa52657b3b075268b",
+      "archived_bytes": 2581,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/little-cms2/2.19.1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "little-cms2",
+      "captured_original_sha256": "a31ae0c147b8f290448bb1759888451328ab052b8b56aafba498249300dc5c0a",
+      "captured_original_bytes": 899,
+      "archived_sha256": "a31ae0c147b8f290448bb1759888451328ab052b8b56aafba498249300dc5c0a",
+      "archived_bytes": 899,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/little-cms2/2.19.1/bottle-manifests/212c9d94d8743ec1fc1c043f2908e2e779ad37da94f2560e2871ab58c99e6166--little-cms2-2.19.1-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "little-cms2",
+      "captured_original_sha256": "8ee8882a8c67494406c995a090924624e4ed95a771c9f24116fe873c73b0e34d",
+      "captured_original_bytes": 67093,
+      "archived_sha256": "8ee8882a8c67494406c995a090924624e4ed95a771c9f24116fe873c73b0e34d",
+      "archived_bytes": 67093,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/lz4/1.10.0/.brew/lz4.rb",
+      "kind": "saved_recipe",
+      "formula": "lz4",
+      "captured_original_sha256": "3b10c1f3e42ea2855214fb53ab884b68b48212495eb058116dc52a9e454a5598",
+      "captured_original_bytes": 961,
+      "archived_sha256": "3b10c1f3e42ea2855214fb53ab884b68b48212495eb058116dc52a9e454a5598",
+      "archived_bytes": 961,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/lz4/1.10.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "lz4",
+      "captured_original_sha256": "5e835cda70c66a49a169c79b653a7b4ba33877ca3c9dc82b5a2991da18a39c58",
+      "captured_original_bytes": 943,
+      "archived_sha256": "a7877ab0771e9fa889f9dc02d20cc047cf7a39fce145bfafa92f22ec6db5dee5",
+      "archived_bytes": 936,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/formula.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/lz4/1.10.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "lz4",
+      "captured_original_sha256": "3c73c93259b04dd9dda814886e9485175dd798b16043ed3801dc1baf091d7810",
+      "captured_original_bytes": 908,
+      "archived_sha256": "3c73c93259b04dd9dda814886e9485175dd798b16043ed3801dc1baf091d7810",
+      "archived_bytes": 908,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/mpg123/1.33.7/.brew/mpg123.rb",
+      "kind": "saved_recipe",
+      "formula": "mpg123",
+      "captured_original_sha256": "309cb93b622f9eaedb587e3e2f2263a21f59177c18c49349936f3bf4d1aa9e88",
+      "captured_original_bytes": 947,
+      "archived_sha256": "309cb93b622f9eaedb587e3e2f2263a21f59177c18c49349936f3bf4d1aa9e88",
+      "archived_bytes": 947,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/mpg123/1.33.7/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "mpg123",
+      "captured_original_sha256": "9a508ff983ea291a298b4dde47bf330651caeb882ca805baea89b0b1c1e46e87",
+      "captured_original_bytes": 1356,
+      "archived_sha256": "63bf28ce4e029fe6afbeeb62e78f9fe7305083745b84a39596098088bfe69807",
+      "archived_bytes": 1353,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/built_prefix",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<homebrew-prefix>"
+        },
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/mpg123/1.33.7/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "mpg123",
+      "captured_original_sha256": "7ba6b9e07500a793a9488d53470e430b6cc0dfdbe8432638ef5a717e39f95b03",
+      "captured_original_bytes": 694,
+      "archived_sha256": "7ba6b9e07500a793a9488d53470e430b6cc0dfdbe8432638ef5a717e39f95b03",
+      "archived_bytes": 694,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/mpg123/1.33.7/bottle-manifests/2756844265ea1ede6d31e19812f568b5020151560a18bcf53cd78ec32b8fe010--mpg123-1.33.7-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "mpg123",
+      "captured_original_sha256": "e7860f687522dd1b61b4ad318a4c87c7972b7bf0b94ccbb4edd0d7dc6b66379e",
+      "captured_original_bytes": 14630,
+      "archived_sha256": "e7860f687522dd1b61b4ad318a4c87c7972b7bf0b94ccbb4edd0d7dc6b66379e",
+      "archived_bytes": 14630,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/nettle/4.0/.brew/nettle.rb",
+      "kind": "saved_recipe",
+      "formula": "nettle",
+      "captured_original_sha256": "b1ed3c65911e70e6d51807f3b55ef59d893cb1f6172d6889b55bd90f7641ae35",
+      "captured_original_bytes": 1203,
+      "archived_sha256": "b1ed3c65911e70e6d51807f3b55ef59d893cb1f6172d6889b55bd90f7641ae35",
+      "archived_bytes": 1203,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/nettle/4.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "nettle",
+      "captured_original_sha256": "821a19766e188e0f9c3073b1d14905b11d9d2eb4f688b56e40baad8d20fb3474",
+      "captured_original_bytes": 1205,
+      "archived_sha256": "5a323bdf38dfeb0fb98e22223b2d72fc9e5d3b602fe71bab9958c21abd47846d",
+      "archived_bytes": 1198,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/nettle/4.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "nettle",
+      "captured_original_sha256": "eb1578de5cdbed77579566e8d6a8e9a3d130a3da20e30fd2cbedf7411f2af8da",
+      "captured_original_bytes": 1117,
+      "archived_sha256": "eb1578de5cdbed77579566e8d6a8e9a3d130a3da20e30fd2cbedf7411f2af8da",
+      "archived_bytes": 1117,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/nettle/4.0/bottle-manifests/e4a3f965876241c1a2506aa0d00e64ee68ef23d1a57aa62254b8101d2e935679--nettle-4.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "nettle",
+      "captured_original_sha256": "5afd358c57630451dca5d99ef78d2cf8d93acf50a423012406b5de83e277dc7e",
+      "captured_original_bytes": 13056,
+      "archived_sha256": "5afd358c57630451dca5d99ef78d2cf8d93acf50a423012406b5de83e277dc7e",
+      "archived_bytes": 13056,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/opencore-amr/0.1.6/.brew/opencore-amr.rb",
+      "kind": "saved_recipe",
+      "formula": "opencore-amr",
+      "captured_original_sha256": "50cf7c0bd863baeb0a1886f46bcc9f01c702627efb063db7625f8a9e9e4d9f7e",
+      "captured_original_bytes": 940,
+      "archived_sha256": "50cf7c0bd863baeb0a1886f46bcc9f01c702627efb063db7625f8a9e9e4d9f7e",
+      "archived_bytes": 940,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/opencore-amr/0.1.6/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "opencore-amr",
+      "captured_original_sha256": "6e7c0e905b5da9e6d64f1f4c0e2f77017aa3cbe6fd3dc0ca08f857142b81a76e",
+      "captured_original_bytes": 1012,
+      "archived_sha256": "68a077c53eb96c67eaf0a38cddf99ea3499c365995fe984836bdd9ff8a68298a",
+      "archived_bytes": 1005,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/opencore-amr/0.1.6/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "opencore-amr",
+      "captured_original_sha256": "c59ee3d700ca8e183a8fe34e5a53dfee513c8ccd3d88910196ee8c881761de27",
+      "captured_original_bytes": 640,
+      "archived_sha256": "c59ee3d700ca8e183a8fe34e5a53dfee513c8ccd3d88910196ee8c881761de27",
+      "archived_bytes": 640,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/opencore-amr/0.1.6/bottle-manifests/e2036ba279d7fa8546fb4e263e4b1276b5a68551a70e99aca9863561b1039962--opencore-amr-0.1.6.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "opencore-amr",
+      "captured_original_sha256": "8859ec244e4efdfcf646b74d45e9614a794b883cb82a7b3e1f03897cae537a96",
+      "captured_original_bytes": 16371,
+      "archived_sha256": "8859ec244e4efdfcf646b74d45e9614a794b883cb82a7b3e1f03897cae537a96",
+      "archived_bytes": 16371,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/openjpeg/2.5.4_1/.brew/openjpeg.rb",
+      "kind": "saved_recipe",
+      "formula": "openjpeg",
+      "captured_original_sha256": "915431603bad9e45dae28681590d4773f3f4b8576880b336b070e45a48f26594",
+      "captured_original_bytes": 2083,
+      "archived_sha256": "915431603bad9e45dae28681590d4773f3f4b8576880b336b070e45a48f26594",
+      "archived_bytes": 2083,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/openjpeg/2.5.4_1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "openjpeg",
+      "captured_original_sha256": "befbcad2a0cafeb74c289bd2a5a84c533c197e557caa16297c3725c526fcec27",
+      "captured_original_bytes": 2747,
+      "archived_sha256": "281f48bd727b816828a24678b9d9f258c3bdcd0ccda52fe636f53a8784f009db",
+      "archived_bytes": 2740,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/openjpeg/2.5.4_1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "openjpeg",
+      "captured_original_sha256": "fcb0ffcc90f2dc3fedc32f11ee629b3dbc373407fb5173cb4c57c8c03a18aa90",
+      "captured_original_bytes": 1885,
+      "archived_sha256": "fcb0ffcc90f2dc3fedc32f11ee629b3dbc373407fb5173cb4c57c8c03a18aa90",
+      "archived_bytes": 1885,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/openjpeg/2.5.4_1/bottle-manifests/dbf6235b963d227d2b229203aff220d9cf7fba411d3451284c9475c7d3d2292b--openjpeg-2.5.4_1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "openjpeg",
+      "captured_original_sha256": "6ce879058b2826518629d7384e77ce74141d32f960e2214aa223687fade95327",
+      "captured_original_bytes": 62373,
+      "archived_sha256": "6ce879058b2826518629d7384e77ce74141d32f960e2214aa223687fade95327",
+      "archived_bytes": 62373,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/openssl@4/4.1.0/.brew/openssl@4.rb",
+      "kind": "saved_recipe",
+      "formula": "openssl@4",
+      "captured_original_sha256": "7ff5915f10c5e950f35e65471fae7e04711bc962689f1369e646e2f68b41b19d",
+      "captured_original_bytes": 4740,
+      "archived_sha256": "7ff5915f10c5e950f35e65471fae7e04711bc962689f1369e646e2f68b41b19d",
+      "archived_bytes": 4740,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/openssl@4/4.1.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "openssl@4",
+      "captured_original_sha256": "0fec1ab815cb1d46909e09d2b0fd07163d01e5372c95287e0b75d8608dd9d546",
+      "captured_original_bytes": 1505,
+      "archived_sha256": "8eda220b01511dee9dac6660d0a735dc9747de46420d8b6918fa1a286adbbde9",
+      "archived_bytes": 1502,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/built_prefix",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<homebrew-prefix>"
+        },
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/openssl@4/4.1.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "openssl@4",
+      "captured_original_sha256": "68f827fa809d895be56360c142cfa982f3606e4eb6ab1c5a5ce75160fe55733f",
+      "captured_original_bytes": 1951,
+      "archived_sha256": "68f827fa809d895be56360c142cfa982f3606e4eb6ab1c5a5ce75160fe55733f",
+      "archived_bytes": 1951,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/openssl@4/4.1.0/bottle-manifests/5af22dbf16746a00108f01eb3ec1c010f19da2e7071814b40972545eef69bf92--openssl@4-4.1.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "openssl@4",
+      "captured_original_sha256": "5334787c00d0174476fcb17e00b3bd4ef11379589acec0ae3d2639d5bdddd541",
+      "captured_original_bytes": 19599,
+      "archived_sha256": "5334787c00d0174476fcb17e00b3bd4ef11379589acec0ae3d2639d5bdddd541",
+      "archived_bytes": 19599,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/opus/1.6.1/.brew/opus.rb",
+      "kind": "saved_recipe",
+      "formula": "opus",
+      "captured_original_sha256": "7ebe72e9352ceb9236cfb49c8ba7134556295ca330ea9054135b1401257f03c4",
+      "captured_original_bytes": 1574,
+      "archived_sha256": "7ebe72e9352ceb9236cfb49c8ba7134556295ca330ea9054135b1401257f03c4",
+      "archived_bytes": 1574,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/opus/1.6.1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "opus",
+      "captured_original_sha256": "fab3c22860cba4f7d3cfdc89f49a714fd09f1468a068a00ada9267712fbce6d1",
+      "captured_original_bytes": 940,
+      "archived_sha256": "ebe6baf84d9e3d410c9e7e91e9eca706b5286194c246c24384841be58757b348",
+      "archived_bytes": 933,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/formula.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/opus/1.6.1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "opus",
+      "captured_original_sha256": "e8cc9e3fa4f08c42e11a3546ed6568e43beeb2838aad6dac81baa6333f6de923",
+      "captured_original_bytes": 813,
+      "archived_sha256": "e8cc9e3fa4f08c42e11a3546ed6568e43beeb2838aad6dac81baa6333f6de923",
+      "archived_bytes": 813,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/p11-kit/0.26.5/.brew/p11-kit.rb",
+      "kind": "saved_recipe",
+      "formula": "p11-kit",
+      "captured_original_sha256": "da0da1b3ea97b6a58a0a86efea95fe59ec99f5ef17c19ec0ef24c14fb704f10d",
+      "captured_original_bytes": 1657,
+      "archived_sha256": "da0da1b3ea97b6a58a0a86efea95fe59ec99f5ef17c19ec0ef24c14fb704f10d",
+      "archived_bytes": 1657,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/p11-kit/0.26.5/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "p11-kit",
+      "captured_original_sha256": "4d552d0df9846780e800dcb4a218988de995fac14fde1b2767f26da537e0bba9",
+      "captured_original_bytes": 1805,
+      "archived_sha256": "0d01e3cfe6c155b800a008f419e2ed0f90600c50629604a933f888f9ecf52316",
+      "archived_bytes": 1802,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/built_prefix",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<homebrew-prefix>"
+        },
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/p11-kit/0.26.5/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "p11-kit",
+      "captured_original_sha256": "9e6408630497155bfa751554059f0862159921e9282171a55749775a56c8e3e9",
+      "captured_original_bytes": 1320,
+      "archived_sha256": "9e6408630497155bfa751554059f0862159921e9282171a55749775a56c8e3e9",
+      "archived_bytes": 1320,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/p11-kit/0.26.5/bottle-manifests/3a2959d4f14b457660774c27716cd30bf56a0bcad68dcbedce894aa7c2ace89d--p11-kit-0.26.5-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "p11-kit",
+      "captured_original_sha256": "70a631db7d891897c57d2178cef87c8b953531106cbfaa2c6578ce7caa7f29b1",
+      "captured_original_bytes": 27428,
+      "archived_sha256": "70a631db7d891897c57d2178cef87c8b953531106cbfaa2c6578ce7caa7f29b1",
+      "archived_bytes": 27428,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/pcre2/10.49/.brew/pcre2.rb",
+      "kind": "saved_recipe",
+      "formula": "pcre2",
+      "captured_original_sha256": "94c19a0d869da4990a8f3f371e37c986ad72124d2d94032e061c4a9019f9e174",
+      "captured_original_bytes": 1181,
+      "archived_sha256": "94c19a0d869da4990a8f3f371e37c986ad72124d2d94032e061c4a9019f9e174",
+      "archived_bytes": 1181,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/pcre2/10.49/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "pcre2",
+      "captured_original_sha256": "efc6567a293fb0b4990010ff371eaa03a5394ec09b8d1677bad8f15d60c8364f",
+      "captured_original_bytes": 1328,
+      "archived_sha256": "a01a5512cf691b834004198c33659c85c36983364565b445cb27b80ce8cd447d",
+      "archived_bytes": 1321,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/pcre2/10.49/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "pcre2",
+      "captured_original_sha256": "390cec48b373cbe35076b608cd851e74355c32e91c26e1853fa183ea40f6a4bc",
+      "captured_original_bytes": 1079,
+      "archived_sha256": "390cec48b373cbe35076b608cd851e74355c32e91c26e1853fa183ea40f6a4bc",
+      "archived_bytes": 1079,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/pcre2/10.49/bottle-manifests/73869938a79a2a80d894ee957e1fcfe49ec630e4af2840c0710e8f5443c8e027--pcre2-10.49.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "pcre2",
+      "captured_original_sha256": "7d76af8bf9fdb701d1be6ed5bf53cec4c85df332d537349aa290f5649dd942df",
+      "captured_original_bytes": 18540,
+      "archived_sha256": "7d76af8bf9fdb701d1be6ed5bf53cec4c85df332d537349aa290f5649dd942df",
+      "archived_bytes": 18540,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/qrencode/4.1.1_1/.brew/qrencode.rb",
+      "kind": "saved_recipe",
+      "formula": "qrencode",
+      "captured_original_sha256": "0b5e984f74661c74091baf8bf334b98aa5bfd270cae7eb7dbe299a3bdb66fe18",
+      "captured_original_bytes": 872,
+      "archived_sha256": "0b5e984f74661c74091baf8bf334b98aa5bfd270cae7eb7dbe299a3bdb66fe18",
+      "archived_bytes": 872,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/qrencode/4.1.1_1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "qrencode",
+      "captured_original_sha256": "c3e94ae00a424af21dfe07275ca6de7135063528339333125a3d6cb07e76fecd",
+      "captured_original_bytes": 1170,
+      "archived_sha256": "c2c387311f71985bc7300545352fc3ad81cfc5fd33dc43dca6cb02b860494b00",
+      "archived_bytes": 1163,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/qrencode/4.1.1_1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "qrencode",
+      "captured_original_sha256": "1eb0b61d745cb82484085c76269913df85985e015987d9bb59c8781264404e7c",
+      "captured_original_bytes": 1046,
+      "archived_sha256": "1eb0b61d745cb82484085c76269913df85985e015987d9bb59c8781264404e7c",
+      "archived_bytes": 1046,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/qrencode/4.1.1_1/bottle-manifests/8dbd96987b2030d2cdb5f45861657a82b929ff9f822fc7ee890da5fa6fc30195--qrencode-4.1.1_1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "qrencode",
+      "captured_original_sha256": "c623eadb6a21bf83cd35d02f62e3e4504eb69e2a25e15f95907c22e60e21c99c",
+      "captured_original_bytes": 26880,
+      "archived_sha256": "c623eadb6a21bf83cd35d02f62e3e4504eb69e2a25e15f95907c22e60e21c99c",
+      "archived_bytes": 26880,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/rav1e/0.8.1/.brew/rav1e.rb",
+      "kind": "saved_recipe",
+      "formula": "rav1e",
+      "captured_original_sha256": "54904fd228a10f968cd72f1fc964eab5517b3430177f7d6a4ef485167dfceffb",
+      "captured_original_bytes": 1094,
+      "archived_sha256": "54904fd228a10f968cd72f1fc964eab5517b3430177f7d6a4ef485167dfceffb",
+      "archived_bytes": 1094,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/rav1e/0.8.1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "rav1e",
+      "captured_original_sha256": "67e8c86d141a0b5ab45da3f4b0e08b7f7ea2202862992888a4629fbdff610661",
+      "captured_original_bytes": 964,
+      "archived_sha256": "9ba76520581dd9a4a68764e142bcff695a1152e7744d8bc37b963451df7e88f8",
+      "archived_bytes": 957,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/rav1e/0.8.1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "rav1e",
+      "captured_original_sha256": "8cb015a62d0c1a1909e9e4b4c4378740f5ff14db5ab91495d946c26efb34d4ab",
+      "captured_original_bytes": 934,
+      "archived_sha256": "8cb015a62d0c1a1909e9e4b4c4378740f5ff14db5ab91495d946c26efb34d4ab",
+      "archived_bytes": 934,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/rav1e/0.8.1/bottle-manifests/f59fec7d446af4f6e923227501c8bcb62c633e50876b69f91d76a629a29b087e--rav1e-0.8.1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "rav1e",
+      "captured_original_sha256": "16db802472a8ea31286f16557a4f84cc08fd9166aa43dd2a5f2a5a80e6422111",
+      "captured_original_bytes": 12171,
+      "archived_sha256": "16db802472a8ea31286f16557a4f84cc08fd9166aa43dd2a5f2a5a80e6422111",
+      "archived_bytes": 12171,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/rubberband/4.0.0/.brew/rubberband.rb",
+      "kind": "saved_recipe",
+      "formula": "rubberband",
+      "captured_original_sha256": "9402010bdbc05c9b905da374250f8ef02b2aeccb20cfee37929f097ae2b30130",
+      "captured_original_bytes": 1149,
+      "archived_sha256": "9402010bdbc05c9b905da374250f8ef02b2aeccb20cfee37929f097ae2b30130",
+      "archived_bytes": 1149,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/rubberband/4.0.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "rubberband",
+      "captured_original_sha256": "dad659ba6b99e6be5eee15c898b9b5728411b655eb0b7c5db6201e614add395a",
+      "captured_original_bytes": 2409,
+      "archived_sha256": "470eda28790d41d6fb2cfbb08b95578c040424a9e44baaf80a736b916ea9b6b3",
+      "archived_bytes": 2402,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/rubberband/4.0.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "rubberband",
+      "captured_original_sha256": "8002d6e227bea66e86aef09575513e6ac3d03c0087ad9ec8a24c9c2780e44942",
+      "captured_original_bytes": 1136,
+      "archived_sha256": "8002d6e227bea66e86aef09575513e6ac3d03c0087ad9ec8a24c9c2780e44942",
+      "archived_bytes": 1136,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/rubberband/4.0.0/bottle-manifests/bc9f458d122d070584e4df5d712d01aaa5ba968f72342eb12ff5ec4cc8bb97bb--rubberband-4.0.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "rubberband",
+      "captured_original_sha256": "c0daf80c57cbec6ac1ad7bd8f0871ed03a974f881d8816dc77c929766f5f44ff",
+      "captured_original_bytes": 34112,
+      "archived_sha256": "c0daf80c57cbec6ac1ad7bd8f0871ed03a974f881d8816dc77c929766f5f44ff",
+      "archived_bytes": 34112,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/shaderc/2026.4/.brew/shaderc.rb",
+      "kind": "saved_recipe",
+      "formula": "shaderc",
+      "captured_original_sha256": "2985f573ef0aa11d3d62ae44e338a658ca0431964f224b1fb99f23b005ed39b5",
+      "captured_original_bytes": 3589,
+      "archived_sha256": "2985f573ef0aa11d3d62ae44e338a658ca0431964f224b1fb99f23b005ed39b5",
+      "archived_bytes": 3589,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/shaderc/2026.4/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "shaderc",
+      "captured_original_sha256": "1149d1c5eab0b97cd645e86494ff9b165a4af410e88881ff6ef002286eec43d8",
+      "captured_original_bytes": 1143,
+      "archived_sha256": "a3004deec9cd2dd128c1fdc4c3421c9042bb32a0b6ecc032290b3be6ae257a8d",
+      "archived_bytes": 1136,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/shaderc/2026.4/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "shaderc",
+      "captured_original_sha256": "29e6be44d6d6b7108d80a5e3ce9c1fe4e24faef4abb53dc09da89d89aa1c214e",
+      "captured_original_bytes": 1081,
+      "archived_sha256": "29e6be44d6d6b7108d80a5e3ce9c1fe4e24faef4abb53dc09da89d89aa1c214e",
+      "archived_bytes": 1081,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/shaderc/2026.4/bottle-manifests/bc991df02da3c6e725fccbf9516bd7564ada86c7ec43de8bad7185485cf6a290--shaderc-2026.4.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "shaderc",
+      "captured_original_sha256": "70f25ad542a9a565604058dddd303df70a0d6f46a60f1bbfa12e894866aa33bd",
+      "captured_original_bytes": 14503,
+      "archived_sha256": "70f25ad542a9a565604058dddd303df70a0d6f46a60f1bbfa12e894866aa33bd",
+      "archived_bytes": 14503,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/snappy/1.3.1/.brew/snappy.rb",
+      "kind": "saved_recipe",
+      "formula": "snappy",
+      "captured_original_sha256": "1687b50d43ecec882c4a7434459f10197d1e619662daeb069ba5344f8d8c273d",
+      "captured_original_bytes": 2731,
+      "archived_sha256": "1687b50d43ecec882c4a7434459f10197d1e619662daeb069ba5344f8d8c273d",
+      "archived_bytes": 2731,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/snappy/1.3.1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "snappy",
+      "captured_original_sha256": "db58719db9b78457f8073bf0327c09eb9283b867a9f7bf7f42262c40b23952cc",
+      "captured_original_bytes": 1022,
+      "archived_sha256": "de03e9ac5a3fcdb6da60f72bc6b99ddd2e8476189d240b42439daccd08ca7846",
+      "archived_bytes": 1015,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/snappy/1.3.1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "snappy",
+      "captured_original_sha256": "f2c55aa4b3f9a99cc0ca224503ea9fdcfe9c8bcaf49f0e17b92bbba93b972d54",
+      "captured_original_bytes": 1004,
+      "archived_sha256": "f2c55aa4b3f9a99cc0ca224503ea9fdcfe9c8bcaf49f0e17b92bbba93b972d54",
+      "archived_bytes": 1004,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/snappy/1.3.1/bottle-manifests/4672b9cfebee5865fd0a0d48e71e86a3326aeafe374b68845f66c71db70025ad--snappy-1.3.1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "snappy",
+      "captured_original_sha256": "7aa45091bec3261d86adf164262644deb2613a3f77e7052c9ba5ff159cae3b01",
+      "captured_original_bytes": 13626,
+      "archived_sha256": "7aa45091bec3261d86adf164262644deb2613a3f77e7052c9ba5ff159cae3b01",
+      "archived_bytes": 13626,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/speex/1.2.1/.brew/speex.rb",
+      "kind": "saved_recipe",
+      "formula": "speex",
+      "captured_original_sha256": "d299f167c716690fbb646666e4f451877a01fcee6043bb01ca186f2f6de59bd1",
+      "captured_original_bytes": 1404,
+      "archived_sha256": "d299f167c716690fbb646666e4f451877a01fcee6043bb01ca186f2f6de59bd1",
+      "archived_bytes": 1404,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/speex/1.2.1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "speex",
+      "captured_original_sha256": "84998ccda40c76c5728f6418ef61cb8c635e65c20bd89d02633adaede29dfa4d",
+      "captured_original_bytes": 1144,
+      "archived_sha256": "412776de54d4fa07f5e3b5ad7d83be8ec5efae181395d3a4e343a46cf6f8bce3",
+      "archived_bytes": 1137,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/speex/1.2.1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "speex",
+      "captured_original_sha256": "a43908aa667cc5ae8794a6cc4561d717c552b52bfd3d1cb2a55da4a03c3742af",
+      "captured_original_bytes": 1019,
+      "archived_sha256": "a43908aa667cc5ae8794a6cc4561d717c552b52bfd3d1cb2a55da4a03c3742af",
+      "archived_bytes": 1019,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/speex/1.2.1/bottle-manifests/483f702af62f72259facb50d3d47cd0bb25c8f0fb887029d30051a8cef860be5--speex-1.2.1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "speex",
+      "captured_original_sha256": "6ab72c60adecd84085d0a993dc4205415efb7beb19cad1fa0bac50585f9732ce",
+      "captured_original_bytes": 18042,
+      "archived_sha256": "6ab72c60adecd84085d0a993dc4205415efb7beb19cad1fa0bac50585f9732ce",
+      "archived_bytes": 18042,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/srt/1.5.7_1/.brew/srt.rb",
+      "kind": "saved_recipe",
+      "formula": "srt",
+      "captured_original_sha256": "48602066d2a45fa5dd8f9d72a117ab9c361769a27da7408abaf80c09c0643c1d",
+      "captured_original_bytes": 1143,
+      "archived_sha256": "48602066d2a45fa5dd8f9d72a117ab9c361769a27da7408abaf80c09c0643c1d",
+      "archived_bytes": 1143,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/srt/1.5.7_1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "srt",
+      "captured_original_sha256": "3a4512aa1e70d28e61290078d9067d09150068da4a6721df9a6b255f21350981",
+      "captured_original_bytes": 1541,
+      "archived_sha256": "9628ea6aafcea392c85f75254bcd6a9c8d3dcea366a7b5ca6158247c5cfa3075",
+      "archived_bytes": 1534,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/srt/1.5.7_1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "srt",
+      "captured_original_sha256": "b6fbb6f274cdcc6310055f3b3fcaf29a4f9359e5609b8b4f7a62df1285f3b1bf",
+      "captured_original_bytes": 1049,
+      "archived_sha256": "b6fbb6f274cdcc6310055f3b3fcaf29a4f9359e5609b8b4f7a62df1285f3b1bf",
+      "archived_bytes": 1049,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/srt/1.5.7_1/bottle-manifests/b7aefdd39062ad0aab01e67f2b91abb8cdf649541ff5fde87d390a93843200c9--srt-1.5.7_1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "srt",
+      "captured_original_sha256": "8ee39598b24cdc8dad8b6bb5195aaac3d69b55e2d408facd0e7043c49630869b",
+      "captured_original_bytes": 25250,
+      "archived_sha256": "8ee39598b24cdc8dad8b6bb5195aaac3d69b55e2d408facd0e7043c49630869b",
+      "archived_bytes": 25250,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/svt-av1/4.2.0/.brew/svt-av1.rb",
+      "kind": "saved_recipe",
+      "formula": "svt-av1",
+      "captured_original_sha256": "41c026d8329602ecc9de6f581524359836611cab34efa89c2d81ca8b02cf266a",
+      "captured_original_bytes": 1458,
+      "archived_sha256": "41c026d8329602ecc9de6f581524359836611cab34efa89c2d81ca8b02cf266a",
+      "archived_bytes": 1458,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/svt-av1/4.2.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "svt-av1",
+      "captured_original_sha256": "b7638b03bab4a6cb2bfe3eb03a645c3d3f9a395a7adb05de5490db281a252bea",
+      "captured_original_bytes": 966,
+      "archived_sha256": "f3b1a35fc4f8654f4f41ba0f267a08bc8e941b8814860bc1f087fa8b03652131",
+      "archived_bytes": 959,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/svt-av1/4.2.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "svt-av1",
+      "captured_original_sha256": "5835a2ea9c0914d00ff0ec4a304c64906b236e55de58eb7d935be6490324aa85",
+      "captured_original_bytes": 878,
+      "archived_sha256": "5835a2ea9c0914d00ff0ec4a304c64906b236e55de58eb7d935be6490324aa85",
+      "archived_bytes": 878,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/svt-av1/4.2.0/bottle-manifests/521378c31004c88cd17bcb1b19efec3c58cd731e07e1a8d34c8e557d474366e8--svt-av1-4.2.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "svt-av1",
+      "captured_original_sha256": "89016b62a3778fadb9be88d750aa4faf0664ff9698e1ae72d770b0c63eb9c249",
+      "captured_original_bytes": 17505,
+      "archived_sha256": "89016b62a3778fadb9be88d750aa4faf0664ff9698e1ae72d770b0c63eb9c249",
+      "archived_bytes": 17505,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/tesseract/5.5.4/.brew/tesseract.rb",
+      "kind": "saved_recipe",
+      "formula": "tesseract",
+      "captured_original_sha256": "1caefce31f4a699a5e278c2b6bfeeb6f2b6b8181491cde0b9dfb94bf0ba9532d",
+      "captured_original_bytes": 2761,
+      "archived_sha256": "1caefce31f4a699a5e278c2b6bfeeb6f2b6b8181491cde0b9dfb94bf0ba9532d",
+      "archived_bytes": 2761,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/tesseract/5.5.4/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "tesseract",
+      "captured_original_sha256": "b6532fdc489e2d48539bc16e2784d3cb177bb365fb23bc9b870807d3a252d86c",
+      "captured_original_bytes": 8437,
+      "archived_sha256": "dd3374827bdf4996fbcaf2e8a7eb180d7a1d031b7ac2e433a63f899ca58aaa01",
+      "archived_bytes": 8434,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/built_prefix",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<homebrew-prefix>"
+        },
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/tesseract/5.5.4/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "tesseract",
+      "captured_original_sha256": "521cce3b03704eb7086052e5c5461eba83a12baa5d8dff3403498f077f82b6ae",
+      "captured_original_bytes": 1966,
+      "archived_sha256": "521cce3b03704eb7086052e5c5461eba83a12baa5d8dff3403498f077f82b6ae",
+      "archived_bytes": 1966,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/tesseract/5.5.4/bottle-manifests/85bb07b7e414d01e2f0a526d890eb7dc2958223e8a8385269ef3ee1f6dcd53c5--tesseract-5.5.4.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "tesseract",
+      "captured_original_sha256": "916abd61592aa7a555dfc226cedc5b3ecd1a4411ccb2f18de7f6eaba54d63ffe",
+      "captured_original_bytes": 240390,
+      "archived_sha256": "916abd61592aa7a555dfc226cedc5b3ecd1a4411ccb2f18de7f6eaba54d63ffe",
+      "archived_bytes": 240390,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/theora/1.2.0/.brew/theora.rb",
+      "kind": "saved_recipe",
+      "formula": "theora",
+      "captured_original_sha256": "c26774a31fd1b0a9c2b5ff6832d470e88c45c218ed509ec60d2776229e082e40",
+      "captured_original_bytes": 1384,
+      "archived_sha256": "c26774a31fd1b0a9c2b5ff6832d470e88c45c218ed509ec60d2776229e082e40",
+      "archived_bytes": 1384,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/theora/1.2.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "theora",
+      "captured_original_sha256": "a4f88f2669cdc5acab347d296438bb0fe1eceef7e97cf51511e983de07b49f6b",
+      "captured_original_bytes": 1394,
+      "archived_sha256": "e2df94235e8ab8da00e5a6c2677bceb3e4a1e5a9a6acffab8a244361db976db8",
+      "archived_bytes": 1387,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/theora/1.2.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "theora",
+      "captured_original_sha256": "dc6ab006045ac529f72b009058b9055ea6ffc16e3712eebeddebbe29d8aad257",
+      "captured_original_bytes": 968,
+      "archived_sha256": "dc6ab006045ac529f72b009058b9055ea6ffc16e3712eebeddebbe29d8aad257",
+      "archived_bytes": 968,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/theora/1.2.0/bottle-manifests/64c0f5cb02e4092a50c5ed8e8407183d148da4ed4c5d581258c31037e443347b--theora-1.2.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "theora",
+      "captured_original_sha256": "14cdfbdda02ce84448f2af8481ceb0752cbe9cf1c8f4b141076c942d7964d498",
+      "captured_original_bytes": 16593,
+      "archived_sha256": "14cdfbdda02ce84448f2af8481ceb0752cbe9cf1c8f4b141076c942d7964d498",
+      "archived_bytes": 16593,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/vulkan-loader/1.4.363.0/.brew/vulkan-loader.rb",
+      "kind": "saved_recipe",
+      "formula": "vulkan-loader",
+      "captured_original_sha256": "87ebe5451f96caa57e30dbd3b2f189ee01112fe5c99f093c465e37ccca5dcd44",
+      "captured_original_bytes": 1744,
+      "archived_sha256": "87ebe5451f96caa57e30dbd3b2f189ee01112fe5c99f093c465e37ccca5dcd44",
+      "archived_bytes": 1744,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/vulkan-loader/1.4.363.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "vulkan-loader",
+      "captured_original_sha256": "009fbb8e34c61c10dc2371a1595a641bc6ca5bc65af4239dd7034ac6c8acebe9",
+      "captured_original_bytes": 1427,
+      "archived_sha256": "c2ae498f0d94b4a0529fd82c8c9dd6a0e36d003412abb502dc797ba0a41b461e",
+      "archived_bytes": 1424,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/built_prefix",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<homebrew-prefix>"
+        },
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/vulkan-loader/1.4.363.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "vulkan-loader",
+      "captured_original_sha256": "e5d5d35b0ca2ecabef96bece227f4f6ff351ea365d781cdd5b2b704358f2ad08",
+      "captured_original_bytes": 1003,
+      "archived_sha256": "e5d5d35b0ca2ecabef96bece227f4f6ff351ea365d781cdd5b2b704358f2ad08",
+      "archived_bytes": 1003,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/vulkan-loader/1.4.363.0/bottle-manifests/a286a231a4f63081414081624f4e82caaee9d7b22b1d249e74f3b07279f907e6--vulkan-loader-1.4.363.0.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "vulkan-loader",
+      "captured_original_sha256": "773f90351feed1ed924f65de3d21a69e47dfcb945f2f0b39b244f16ab8266029",
+      "captured_original_bytes": 43534,
+      "archived_sha256": "773f90351feed1ed924f65de3d21a69e47dfcb945f2f0b39b244f16ab8266029",
+      "archived_bytes": 43534,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/webp/1.6.0/.brew/webp.rb",
+      "kind": "saved_recipe",
+      "formula": "webp",
+      "captured_original_sha256": "c2daf79de310f5aa1a3c8a2e412c6fcec1cc1ff47ba506e4bbddcaffbf7dc90c",
+      "captured_original_bytes": 1461,
+      "archived_sha256": "c2daf79de310f5aa1a3c8a2e412c6fcec1cc1ff47ba506e4bbddcaffbf7dc90c",
+      "archived_bytes": 1461,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/webp/1.6.0/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "webp",
+      "captured_original_sha256": "64de254d5af36195ad88357f1e4d5d5ad67670e119bd4b5b3d93ae5eaab3cf6e",
+      "captured_original_bytes": 2345,
+      "archived_sha256": "23695da07214c157df9bd9842e4c7b21183fea2f5480e61267983aed3779729a",
+      "archived_bytes": 2338,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/formula.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/webp/1.6.0/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "webp",
+      "captured_original_sha256": "3e79156dc1fe13f2491f534d8841bf41903835f83a2bf87e3cea76e5713201be",
+      "captured_original_bytes": 1151,
+      "archived_sha256": "3e79156dc1fe13f2491f534d8841bf41903835f83a2bf87e3cea76e5713201be",
+      "archived_bytes": 1151,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/whisper.cpp/1.9.5/.brew/whisper.cpp.rb",
+      "kind": "saved_recipe",
+      "formula": "whisper.cpp",
+      "captured_original_sha256": "db82bc490dc242e5a19977089649bc62ea3964feaa85711b9efce4aaa335a963",
+      "captured_original_bytes": 2371,
+      "archived_sha256": "db82bc490dc242e5a19977089649bc62ea3964feaa85711b9efce4aaa335a963",
+      "archived_bytes": 2371,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/whisper.cpp/1.9.5/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "whisper.cpp",
+      "captured_original_sha256": "8b4f3d86d166b66d48dad70e922084c640c659c5438fa5fed2ebb9e773f60958",
+      "captured_original_bytes": 2713,
+      "archived_sha256": "fdca73ef669a3b199b1c1e5bae3ed53bda5468c1720e9995170fbb0e63cc2afc",
+      "archived_bytes": 2706,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/whisper.cpp/1.9.5/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "whisper.cpp",
+      "captured_original_sha256": "98a46cdfb2246ee28ad3f82ab817ebf3c41ebec117e921d8439e9cea4e1ad006",
+      "captured_original_bytes": 1621,
+      "archived_sha256": "98a46cdfb2246ee28ad3f82ab817ebf3c41ebec117e921d8439e9cea4e1ad006",
+      "archived_bytes": 1621,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/whisper.cpp/1.9.5/bottle-manifests/aead14033007e05485386209384bc994a65abf448ed3022428d9e38dcb3856c7--whisper.cpp-1.9.5.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "whisper.cpp",
+      "captured_original_sha256": "332d9cdc2fd231e2ea3bb607c6dbeb46701a07307be9bd56f62dbf50ec081295",
+      "captured_original_bytes": 171286,
+      "archived_sha256": "332d9cdc2fd231e2ea3bb607c6dbeb46701a07307be9bd56f62dbf50ec081295",
+      "archived_bytes": 171286,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/x264/r3222/.brew/x264.rb",
+      "kind": "saved_recipe",
+      "formula": "x264",
+      "captured_original_sha256": "9165e288b689999b374401c1045a1904102ff279fb534f514d6569fcb608e264",
+      "captured_original_bytes": 2731,
+      "archived_sha256": "9165e288b689999b374401c1045a1904102ff279fb534f514d6569fcb608e264",
+      "archived_bytes": 2731,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/x264/r3222/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "x264",
+      "captured_original_sha256": "0723540a1a901da73e5c89585d3af393a1901dd4117a32a4dd07b2e6e8736f56",
+      "captured_original_bytes": 940,
+      "archived_sha256": "f0a79db014fa365fca5b3440cbcb93d52464735fa7f56075cb276a9b6a5b4bcb",
+      "archived_bytes": 933,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/formula.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/x264/r3222/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "x264",
+      "captured_original_sha256": "89c84cde7d0962f8cbad214bafef09042b1239cffd28922304071b07c98072d1",
+      "captured_original_bytes": 778,
+      "archived_sha256": "89c84cde7d0962f8cbad214bafef09042b1239cffd28922304071b07c98072d1",
+      "archived_bytes": 778,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/x265/4.3/.brew/x265.rb",
+      "kind": "saved_recipe",
+      "formula": "x265",
+      "captured_original_sha256": "e7bb844d3fb9a1ac402a41d21a507cdc0f532455479b3467a58335541c27ea98",
+      "captured_original_bytes": 2906,
+      "archived_sha256": "e7bb844d3fb9a1ac402a41d21a507cdc0f532455479b3467a58335541c27ea98",
+      "archived_bytes": 2906,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/x265/4.3/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "x265",
+      "captured_original_sha256": "6479bf15851a4eece2646aa249defadcadbd12008127a83d0e9e5a78253cdf09",
+      "captured_original_bytes": 1047,
+      "archived_sha256": "71ec532763114214e8f3fa1430498f9169c4c54d92f906414c2051b84b636617",
+      "archived_bytes": 1040,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/x265/4.3/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "x265",
+      "captured_original_sha256": "8b4b24c85c1d74e69f40eb59be54fc6752060bdfd78eebabee77e4ee2aea7486",
+      "captured_original_bytes": 903,
+      "archived_sha256": "8b4b24c85c1d74e69f40eb59be54fc6752060bdfd78eebabee77e4ee2aea7486",
+      "archived_bytes": 903,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/x265/4.3/bottle-manifests/23a01941bba8e3d36503ecab92c6c6b41f9f112fd29f7dfe22453a77eaf2b1bc--x265-4.3-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "x265",
+      "captured_original_sha256": "a5315e4525a8775901f508b9b2f2148c842f9f2d222a3f97541ec449cd352c72",
+      "captured_original_bytes": 13935,
+      "archived_sha256": "a5315e4525a8775901f508b9b2f2148c842f9f2d222a3f97541ec449cd352c72",
+      "archived_bytes": 13935,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/xvid/1.3.7/.brew/xvid.rb",
+      "kind": "saved_recipe",
+      "formula": "xvid",
+      "captured_original_sha256": "08cce4547057624a181c61018b7398ef2871e3331fb94b2e86f01c4cbce12e7b",
+      "captured_original_bytes": 2413,
+      "archived_sha256": "08cce4547057624a181c61018b7398ef2871e3331fb94b2e86f01c4cbce12e7b",
+      "archived_bytes": 2413,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/xvid/1.3.7/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "xvid",
+      "captured_original_sha256": "04440514752ae2550d8417815b04692a4246e4e255dba260bbc1fb5236e78d49",
+      "captured_original_bytes": 929,
+      "archived_sha256": "6bc1f9147c140815331b6297d877ac4d07e2aa22e6f63a458c119bcb66d0d7f1",
+      "archived_bytes": 922,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/xvid/1.3.7/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "xvid",
+      "captured_original_sha256": "01d0a9ce1a96df2a480f7ce78b9d65e0f723efdc5b5ad595eea6dd9ad844a85a",
+      "captured_original_bytes": 695,
+      "archived_sha256": "01d0a9ce1a96df2a480f7ce78b9d65e0f723efdc5b5ad595eea6dd9ad844a85a",
+      "archived_bytes": 695,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/xvid/1.3.7/bottle-manifests/37e30a8a5c36fb2ffbb802496b4ba4aaf6fc6e00835e02ec9a4f58be13c3a381--xvid-1.3.7-1.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "xvid",
+      "captured_original_sha256": "272966f93f1065f1a256164b61e96a7ddb76e3a49c91757e6e1ded74366c7fbd",
+      "captured_original_bytes": 9504,
+      "archived_sha256": "272966f93f1065f1a256164b61e96a7ddb76e3a49c91757e6e1ded74366c7fbd",
+      "archived_bytes": 9504,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/xz/5.8.4/.brew/xz.rb",
+      "kind": "saved_recipe",
+      "formula": "xz",
+      "captured_original_sha256": "0a0ec0394575eadc853cdb509c8ababc01c8926b973bd76841a1f6f254e1ebdf",
+      "captured_original_bytes": 1085,
+      "archived_sha256": "0a0ec0394575eadc853cdb509c8ababc01c8926b973bd76841a1f6f254e1ebdf",
+      "archived_bytes": 1085,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/xz/5.8.4/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "xz",
+      "captured_original_sha256": "b80371849bdaed341f499157aaea38eab3cae669d679ba7a5bf10e3ce5092a49",
+      "captured_original_bytes": 1122,
+      "archived_sha256": "52c22074842db1d519f52cfcb3ebfb906a34fcec6b9653fef744d0b4804fca24",
+      "archived_bytes": 1115,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/xz/5.8.4/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "xz",
+      "captured_original_sha256": "508e8b0b5eb1e5e381508e92a8ad67de115ffa6c23e968741129ad36116323e8",
+      "captured_original_bytes": 1033,
+      "archived_sha256": "508e8b0b5eb1e5e381508e92a8ad67de115ffa6c23e968741129ad36116323e8",
+      "archived_bytes": 1033,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/xz/5.8.4/bottle-manifests/87a710ae3061016dad6986fdef36b90db543a5d3e6a284110b008b3aa3af7822--xz-5.8.4.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "xz",
+      "captured_original_sha256": "431d66aacc75ad15b7c5e3dc039bceff47122ed930c53545e4d2282be0afced7",
+      "captured_original_bytes": 14574,
+      "archived_sha256": "431d66aacc75ad15b7c5e3dc039bceff47122ed930c53545e4d2282be0afced7",
+      "archived_bytes": 14574,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/zeromq/4.3.5_2/.brew/zeromq.rb",
+      "kind": "saved_recipe",
+      "formula": "zeromq",
+      "captured_original_sha256": "0f48420c80c23abe7c8d43dc9d2226846771e8ef9b146b3ee52eacba35c735ed",
+      "captured_original_bytes": 1704,
+      "archived_sha256": "0f48420c80c23abe7c8d43dc9d2226846771e8ef9b146b3ee52eacba35c735ed",
+      "archived_bytes": 1704,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/zeromq/4.3.5_2/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "zeromq",
+      "captured_original_sha256": "d10aaa7aadfc86115a0e9236a72831d5ab162f2ff5cf6bc0533bee693ec51424",
+      "captured_original_bytes": 1174,
+      "archived_sha256": "329f4bd268431df192f4d56a5a89c35c4c697603831a9069588e0527e1fa492f",
+      "archived_bytes": 1167,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/zeromq/4.3.5_2/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "zeromq",
+      "captured_original_sha256": "f1cb82069ecf1f8ca0ab348181cc2ae82891ecb0aa613e2bda66483de67d2830",
+      "captured_original_bytes": 1320,
+      "archived_sha256": "f1cb82069ecf1f8ca0ab348181cc2ae82891ecb0aa613e2bda66483de67d2830",
+      "archived_bytes": 1320,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/zeromq/4.3.5_2/bottle-manifests/989d9be15d69c6bb45f88c52ab0753ec2a8b814d6196ed3d025b6a85d58c30df--zeromq-4.3.5_2.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "zeromq",
+      "captured_original_sha256": "e3faed054087d4ea767d54892f8431ce9ac6925a581e95fb95232506c1895765",
+      "captured_original_bytes": 14444,
+      "archived_sha256": "e3faed054087d4ea767d54892f8431ce9ac6925a581e95fb95232506c1895765",
+      "archived_bytes": 14444,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/zimg/3.0.6/.brew/zimg.rb",
+      "kind": "saved_recipe",
+      "formula": "zimg",
+      "captured_original_sha256": "ea7f96c5503a87cd9fe38470a518937ad2567a0ea2e81101799b77cb169cbfdb",
+      "captured_original_bytes": 1014,
+      "archived_sha256": "ea7f96c5503a87cd9fe38470a518937ad2567a0ea2e81101799b77cb169cbfdb",
+      "archived_bytes": 1014,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/zimg/3.0.6/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "zimg",
+      "captured_original_sha256": "f55192b3a677c6f92ddf94fe880c82d316a0cc5793bf9ca09d0d946740f57685",
+      "captured_original_bytes": 963,
+      "archived_sha256": "5b1f7274c8e9164e90ef8343285e60783441719094187b40156b2475819e2b1a",
+      "archived_bytes": 956,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/internal/packages.arm64_tahoe.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/zimg/3.0.6/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "zimg",
+      "captured_original_sha256": "71521d114747da771f6c345fccbdecf09b1d6a34df3b49b1a1445d2c449d3f07",
+      "captured_original_bytes": 1018,
+      "archived_sha256": "71521d114747da771f6c345fccbdecf09b1d6a34df3b49b1a1445d2c449d3f07",
+      "archived_bytes": 1018,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/zimg/3.0.6/bottle-manifests/45740a33e379c06fb3de333c55e123be7ff290c395bafa5a9323a2cd02a41c4a--zimg-3.0.6.bottle_manifest.json",
+      "kind": "cached_bottle_manifest",
+      "formula": "zimg",
+      "captured_original_sha256": "1792dd5915bfe602ba8437fc8ccfcefe490ae66343b8e957629e255ac5adfabd",
+      "captured_original_bytes": 11696,
+      "archived_sha256": "1792dd5915bfe602ba8437fc8ccfcefe490ae66343b8e957629e255ac5adfabd",
+      "archived_bytes": 11696,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/zstd/1.5.7_1/.brew/zstd.rb",
+      "kind": "saved_recipe",
+      "formula": "zstd",
+      "captured_original_sha256": "9a9b0183896886e82b915af4db576f27d34d1cee7757d6c5beb0e1eb74c68e0d",
+      "captured_original_bytes": 2573,
+      "archived_sha256": "9a9b0183896886e82b915af4db576f27d34d1cee7757d6c5beb0e1eb74c68e0d",
+      "archived_bytes": 2573,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "formulae/zstd/1.5.7_1/INSTALL_RECEIPT.json",
+      "kind": "sanitized_install_receipt",
+      "formula": "zstd",
+      "captured_original_sha256": "9719218d7471ec7f2eba6267572001f7fa53a23fae4369cf5e7c419e61610f91",
+      "captured_original_bytes": 1311,
+      "archived_sha256": "9d750aceb7ec373334034e9139d93a2383392c46752154b73c509996ea87af9e",
+      "archived_bytes": 1304,
+      "byte_identical_to_captured_original": false,
+      "redactions": [
+        {
+          "field": "/source/path",
+          "rule": "Match earlier public capture's <user-home>/<homebrew-prefix> path normalization",
+          "sanitized_value": "<user-home>/Library/Caches/Homebrew/api/formula.jws.json"
+        }
+      ]
+    },
+    {
+      "path": "formulae/zstd/1.5.7_1/cached-api-entry.json",
+      "kind": "cached_api_entry",
+      "formula": "zstd",
+      "captured_original_sha256": "5a434b7b55b95eb0073fde1be069fb0d5f46080660fa49ce52bdbe7d006a8971",
+      "captured_original_bytes": 1199,
+      "archived_sha256": "5a434b7b55b95eb0073fde1be069fb0d5f46080660fa49ce52bdbe7d006a8971",
+      "archived_bytes": 1199,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "manifest.public.json",
+      "kind": "already_sanitized_full_capture_manifest",
+      "formula": null,
+      "captured_original_sha256": "5ed5f37768be20c6be6c1d78f5b29043447a5166dd25f72e83d0645b2938466d",
+      "captured_original_bytes": 2013480,
+      "archived_sha256": "5ed5f37768be20c6be6c1d78f5b29043447a5166dd25f72e83d0645b2938466d",
+      "archived_bytes": 2013480,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    },
+    {
+      "path": "manifest.summary.public.json",
+      "kind": "already_sanitized_summary_capture_manifest",
+      "formula": null,
+      "captured_original_sha256": "559be72a8bb839e0b8084e427aa37fea0459fcf12acdc2fdf3da31ef4d607b4d",
+      "captured_original_bytes": 279742,
+      "archived_sha256": "559be72a8bb839e0b8084e427aa37fea0459fcf12acdc2fdf3da31ef4d607b4d",
+      "archived_bytes": 279742,
+      "byte_identical_to_captured_original": true,
+      "redactions": []
+    }
+  ],
+  "published_summary_binding": {
+    "path": "docs/validation/mac-native-dependencies.json",
+    "sha256": "559be72a8bb839e0b8084e427aa37fea0459fcf12acdc2fdf3da31ef4d607b4d",
+    "byte_identical_to_capture_summary": true
+  },
+  "archive": {
+    "path": "docs/provenance/mac-homebrew-capture-v1.zip",
+    "sha256": "0643c3be55f7e824d2050e03e33380a2e1c38dc051fa739ad60595dd6e339c91",
+    "bytes": 937522,
+    "members": 314,
+    "crc_and_every_member_verified": true
+  }
+}
